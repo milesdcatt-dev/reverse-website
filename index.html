@@ -823,6 +823,161 @@
     font-weight: 900;
     text-transform: uppercase;
   }
+  .principal-card {
+    grid-column: 1 / 13;
+    position: relative;
+    min-height: 74svh;
+    display: grid;
+    grid-template-columns: minmax(280px, .72fr) 1fr;
+    gap: clamp(1rem, 3vw, 2.4rem);
+    align-items: stretch;
+    margin-top: clamp(1rem, 3vw, 2.6rem);
+    color: white;
+    background:
+      radial-gradient(circle at 22% 12%, rgba(255,255,255,.3), transparent 18rem),
+      linear-gradient(135deg, rgba(5,6,7,.96), rgba(18,21,24,.82)),
+      linear-gradient(135deg, #050607, #20262c);
+    border: 1px solid rgba(255,255,255,.16);
+    overflow: hidden;
+    box-shadow:
+      0 44px 120px rgba(17,19,22,.28),
+      inset 0 0 38px rgba(255,255,255,.08);
+  }
+  .principal-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .72;
+    background:
+      linear-gradient(90deg, transparent 0 42%, rgba(184,138,75,.34) 48%, rgba(248,251,255,.42) 50%, transparent 58%),
+      repeating-linear-gradient(0deg, transparent 0 7.8rem, rgba(223,247,255,.24) 7.95rem, transparent 8.35rem),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.09) 0 1px, transparent 1px 2.4rem);
+    mix-blend-mode: screen;
+    transform: translate3d(0, calc(var(--flow) * -4vh), 0);
+  }
+  .principal-portrait {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 54% 26%, rgba(255,255,255,.26), transparent 8rem),
+      linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.68)),
+      var(--portrait) center / cover;
+    filter: saturate(.9) contrast(1.08);
+  }
+  .principal-portrait::before {
+    content: "";
+    position: absolute;
+    inset: -10%;
+    background:
+      radial-gradient(circle at 54% 24%, rgba(255,255,255,.72), transparent 10rem),
+      linear-gradient(90deg, transparent 38%, rgba(184,138,75,.55) 50%, transparent 62%),
+      repeating-linear-gradient(0deg, transparent 0 6.2rem, rgba(255,255,255,.42) 6.32rem, transparent 6.7rem);
+    mix-blend-mode: screen;
+    opacity: .74;
+  }
+  .principal-portrait::after {
+    content: "";
+    position: absolute;
+    inset: auto 1rem 1rem;
+    min-height: 4.5rem;
+    border: 1px solid rgba(255,255,255,.18);
+    background:
+      linear-gradient(135deg, rgba(5,6,7,.68), rgba(255,255,255,.08)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, transparent 1px 2.6rem);
+    backdrop-filter: blur(18px);
+  }
+  .principal-headshot {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 49%;
+    width: min(76%, 23rem);
+    aspect-ratio: 1;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255,255,255,.38);
+    box-shadow:
+      0 0 0 1rem rgba(255,255,255,.045),
+      0 22px 70px rgba(0,0,0,.38),
+      0 0 70px rgba(235,245,255,.34);
+    filter: grayscale(.18) contrast(1.08) brightness(1.05);
+  }
+  .principal-caption {
+    position: absolute;
+    z-index: 2;
+    left: 1.2rem;
+    right: 1.2rem;
+    bottom: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: rgba(255,255,255,.78);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .principal-caption span:last-child {
+    color: rgba(255,255,255,.48);
+  }
+  .principal-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: clamp(1.25rem, 3vw, 3rem);
+  }
+  .principal-copy h2 {
+    max-width: 8.8ch;
+    font-size: clamp(3.4rem, 9vw, 9.2rem);
+    line-height: .82;
+    text-wrap: balance;
+  }
+  .principal-copy p {
+    max-width: 44rem;
+    color: rgba(255,255,255,.72);
+    font-size: clamp(1rem, 1.4vw, 1.24rem);
+    line-height: 1.48;
+  }
+  .principal-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-top: 1.15rem;
+  }
+  .principal-badges span {
+    padding: .68rem .82rem;
+    color: rgba(255,255,255,.82);
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(12px);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .principal-quote {
+    display: grid;
+    gap: .75rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,.16);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.035)),
+      rgba(0,0,0,.2);
+    box-shadow: inset 0 0 24px rgba(255,255,255,.06);
+  }
+  .principal-quote b {
+    color: var(--electric);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .principal-quote span {
+    color: rgba(255,255,255,.76);
+    line-height: 1.45;
+  }
   .slot {
     min-height: 4.2rem;
     display: grid;
@@ -1338,6 +1493,7 @@
     .intro-copy,
     .intro-side,
     .dna-rail,
+    .principal-card,
     .sticky-copy,
     .system-list,
     .section-heading,
@@ -1355,6 +1511,8 @@
     }
     .proof-grid { grid-template-columns: 1fr 1fr; }
     .dna-rail { grid-template-columns: 1fr 1fr; }
+    .principal-card { grid-template-columns: 1fr; }
+    .principal-portrait { min-height: 58svh; }
     .showcase-card { min-height: 78svh; }
     .showcase-content { grid-template-columns: 1fr; }
     .media-one,
@@ -1394,6 +1552,11 @@
     .proof-grid { grid-template-columns: 1fr; }
     .dna-rail { grid-template-columns: 1fr; }
     .dna-card { min-height: 11rem; }
+    .principal-card { min-height: auto; }
+    .principal-portrait { min-height: 68svh; }
+    .principal-copy h2 {
+      font-size: clamp(3rem, 16vw, 4.7rem);
+    }
     .project-meta {
       inset: auto 1rem 7rem;
     }
@@ -1550,6 +1713,32 @@
             <span>Published authority</span>
           </article>
         </div>
+        <article class="principal-card reveal" aria-label="Inson Wood principal profile" style="--portrait:url('https://www.saatchiart.com/saatchi-s3/2138555/profile/KVNVUTPE_avatar_medium_square.jpg')">
+          <div class="principal-portrait">
+            <img class="principal-headshot" src="https://www.saatchiart.com/saatchi-s3/2138555/profile/KVNVUTPE_avatar_medium_square.jpg" alt="Inson Wood portrait" loading="lazy">
+            <div class="principal-caption" aria-hidden="true">
+              <span>Artist / Architect / Principal</span>
+              <span>New York</span>
+            </div>
+          </div>
+          <div class="principal-copy">
+            <div>
+              <div class="mini-title">The principal</div>
+              <h2>Inson Wood is the flex.</h2>
+              <p>Architect, interior designer, artist, and the sole principal behind a New York studio with Harvard discipline, Cornell precision, global range, and enough published proof to make the rooms feel inevitable.</p>
+              <div class="principal-badges">
+                <span>Thai-French heritage</span>
+                <span>Zen / wabi-sabi lens</span>
+                <span>Private collections</span>
+                <span>Architecture + art</span>
+              </div>
+            </div>
+            <div class="principal-quote">
+              <b>Why he feels different</b>
+              <span>The work is not only decorated. It is authored: proportion, philosophy, antiques, modernism, custom craft, and personal mythology all pulled into one very controlled point of view.</span>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
