@@ -3,16 +3,23 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Reverse Website - Motion Shell</title>
-<meta name="description" content="Animation-first hollow website shell." />
+<title>Reverse Website - Luxury Motion Shell</title>
+<meta name="description" content="Animation-first luxury website shell ready to receive scraped content." />
 <style>
   :root {
-    --cream: #efebe2;
-    --ink: #101719;
-    --muted: rgba(16, 23, 25, .58);
-    --glass: rgba(13, 19, 21, .76);
-    --white-glass: rgba(255, 255, 255, .16);
-    --line: rgba(16, 23, 25, .14);
+    --black: #050607;
+    --black-2: #0d1013;
+    --ink: #111316;
+    --cream: #efebe3;
+    --bone: #fbf8ef;
+    --silver: #cfd3d4;
+    --ice: #eef5f6;
+    --red: #c1121f;
+    --muted: rgba(17, 19, 22, .58);
+    --line-dark: rgba(255, 255, 255, .16);
+    --line-light: rgba(17, 19, 22, .14);
+    --glass-dark: rgba(5, 6, 7, .76);
+    --glass-light: rgba(255, 255, 255, .62);
     --ease: cubic-bezier(.22, 1, .36, 1);
     --snap: cubic-bezier(.65, 0, .35, 1);
   }
@@ -26,16 +33,21 @@
   }
   body {
     margin: 0;
-    font-family: "Helvetica Neue", Arial, sans-serif;
     overflow-x: hidden;
+    font-family: "Helvetica Neue", Arial, sans-serif;
     background:
-      radial-gradient(circle at 80% 10%, rgba(255,255,255,.9), transparent 24rem),
-      radial-gradient(circle at 10% 24%, rgba(136,154,151,.35), transparent 28rem),
-      linear-gradient(180deg, #f2eee7 0%, #ebe5d9 50%, #d8ddd8 100%);
+      radial-gradient(circle at 80% 8%, rgba(255, 255, 255, .9), transparent 24rem),
+      radial-gradient(circle at 8% 20%, rgba(193, 18, 31, .16), transparent 20rem),
+      linear-gradient(180deg, #f3efe6 0%, #dedbd2 42%, #0a0d10 100%);
   }
   body.menu-open { overflow: hidden; }
   a { color: inherit; text-decoration: none; }
-  button { font: inherit; color: inherit; }
+  button, input, textarea { font: inherit; }
+  button { color: inherit; }
+  :focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 4px;
+  }
 
   .loader {
     position: fixed;
@@ -43,7 +55,8 @@
     z-index: 100;
     display: grid;
     place-items: center;
-    background: var(--cream);
+    color: var(--bone);
+    background: var(--black);
     transition: transform 1s var(--snap), opacity .5s ease;
   }
   .loader.is-gone {
@@ -51,109 +64,147 @@
     pointer-events: none;
     transform: translateY(-100%);
   }
-  .loader-cube {
-    width: 72px;
-    height: 72px;
+  .loader-core {
+    position: relative;
+    width: 118px;
+    height: 118px;
     perspective: 900px;
   }
+  .loader-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 50%;
+    animation: ringPulse 1.35s var(--snap) forwards;
+  }
   .cube {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 27px;
     transform-style: preserve-3d;
     animation: cubeSpin 1.35s var(--snap) forwards;
   }
   .cube i {
     position: absolute;
-    inset: 15px;
-    border: 1px solid var(--ink);
-    background: rgba(16, 23, 25, .08);
-    backdrop-filter: blur(12px);
+    inset: 0;
+    border: 1px solid currentColor;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(14px);
   }
-  .cube i:nth-child(1) { transform: translateZ(21px); }
-  .cube i:nth-child(2) { transform: rotateY(180deg) translateZ(21px); }
-  .cube i:nth-child(3) { transform: rotateY(90deg) translateZ(21px); }
-  .cube i:nth-child(4) { transform: rotateY(-90deg) translateZ(21px); }
-  .cube i:nth-child(5) { transform: rotateX(90deg) translateZ(21px); }
-  .cube i:nth-child(6) { transform: rotateX(-90deg) translateZ(21px); }
+  .cube i:nth-child(1) { transform: translateZ(32px); }
+  .cube i:nth-child(2) { transform: rotateY(180deg) translateZ(32px); }
+  .cube i:nth-child(3) { transform: rotateY(90deg) translateZ(32px); }
+  .cube i:nth-child(4) { transform: rotateY(-90deg) translateZ(32px); }
+  .cube i:nth-child(5) { transform: rotateX(90deg) translateZ(32px); }
+  .cube i:nth-child(6) { transform: rotateX(-90deg) translateZ(32px); }
+  @keyframes ringPulse {
+    0% { opacity: 0; transform: scale(.6); }
+    100% { opacity: 1; transform: scale(1); }
+  }
   @keyframes cubeSpin {
     0% { opacity: 0; transform: rotateX(-28deg) rotateY(0deg) scale(.72); }
     18% { opacity: 1; }
     100% { opacity: 1; transform: rotateX(-28deg) rotateY(-315deg) scale(1); }
   }
 
-  .noise {
+  .texture {
     position: fixed;
     inset: 0;
     z-index: 3;
     pointer-events: none;
-    opacity: .14;
+    opacity: .15;
     mix-blend-mode: overlay;
     background-image:
       linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px),
-      linear-gradient(0deg, rgba(0,0,0,.09) 1px, transparent 1px);
-    background-size: 42px 42px;
+      linear-gradient(0deg, rgba(0,0,0,.1) 1px, transparent 1px);
+    background-size: 44px 44px;
   }
-
   .cursor-chip {
     position: fixed;
-    z-index: 40;
-    width: 104px;
-    height: 46px;
+    z-index: 50;
+    width: 112px;
+    height: 48px;
     display: grid;
     place-items: center;
     pointer-events: none;
     opacity: 0;
     color: white;
-    background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.1));
-    border: 1px solid rgba(255,255,255,.22);
+    background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.08));
+    border: 1px solid rgba(255,255,255,.24);
     backdrop-filter: blur(18px);
     font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .11em;
+    font-weight: 800;
+    letter-spacing: 0;
     text-transform: uppercase;
     transform: translate3d(-50%, -50%, 0);
-    transition: opacity .2s ease;
+    transition: opacity .18s ease;
   }
   .cursor-chip.is-visible { opacity: 1; }
+
+  .topline {
+    position: fixed;
+    inset: 1rem 1rem auto;
+    z-index: 25;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+  }
+  .brand-mark::before {
+    content: "";
+    width: .75rem;
+    height: .75rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
 
   .dock {
     position: fixed;
     left: 50%;
-    bottom: 3rem;
-    z-index: 30;
-    width: min(276px, calc(100vw - 2rem));
-    height: 52px;
+    bottom: 2.5rem;
+    z-index: 40;
+    width: min(320px, calc(100vw - 2rem));
+    height: 56px;
     display: grid;
-    grid-template-columns: 52px 1fr 52px;
+    grid-template-columns: 56px 1fr 56px;
     align-items: center;
     color: white;
-    background: var(--glass);
-    backdrop-filter: blur(22px);
+    background: var(--glass-dark);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(24px);
     transform: translateX(-50%);
     overflow: hidden;
+    box-shadow: 0 22px 60px rgba(0,0,0,.28);
   }
   .dock-logo,
   .dock-menu {
-    height: 52px;
+    height: 56px;
     display: grid;
     place-items: center;
   }
   .dock-logo span {
-    width: 18px;
-    height: 18px;
+    width: 19px;
+    height: 19px;
     border: 1px solid currentColor;
     transform: rotate(45deg);
     box-shadow: inset 0 0 0 5px rgba(255,255,255,.08);
   }
   .dock-title {
-    height: 52px;
+    height: 56px;
     overflow: hidden;
     text-align: center;
     font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .12em;
-    line-height: 52px;
+    font-weight: 900;
+    line-height: 56px;
     text-transform: uppercase;
   }
   .dock-title span {
@@ -187,14 +238,15 @@
   .menu {
     position: fixed;
     left: 50%;
-    bottom: 9rem;
-    z-index: 28;
-    width: min(400px, calc(100vw - 2rem));
+    bottom: 8.8rem;
+    z-index: 38;
+    width: min(420px, calc(100vw - 2rem));
     padding: 3rem;
     color: white;
-    background: var(--glass);
-    backdrop-filter: blur(24px);
-    transform: translate(-50%, 24px) scale(.94);
+    background: var(--glass-dark);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(26px);
+    transform: translate(-50%, 28px) scale(.94);
     transform-origin: center bottom;
     opacity: 0;
     visibility: hidden;
@@ -208,10 +260,9 @@
   .menu a {
     display: block;
     overflow: hidden;
-    font-size: 2.35rem;
+    font-size: clamp(2rem, 6vw, 3.1rem);
     line-height: 1;
-    letter-spacing: -.045em;
-    padding: .22rem 0;
+    padding: .26rem 0;
   }
   .menu a span {
     display: inline-block;
@@ -222,40 +273,77 @@
   .menu.is-open a:nth-child(2) span { transition-delay: .04s; }
   .menu.is-open a:nth-child(3) span { transition-delay: .08s; }
   .menu.is-open a:nth-child(4) span { transition-delay: .12s; }
+  .menu.is-open a:nth-child(5) span { transition-delay: .16s; }
+
+  .progress {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 41;
+    width: 3px;
+    background: rgba(255,255,255,.12);
+    mix-blend-mode: difference;
+  }
+  .progress span {
+    display: block;
+    width: 100%;
+    height: calc(var(--scroll, 0) * 100%);
+    background: var(--red);
+  }
 
   .hero {
     position: relative;
-    height: 100svh;
-    min-height: 620px;
+    min-height: 100svh;
     display: grid;
     place-items: center;
     overflow: hidden;
     color: white;
+    background: var(--black);
   }
-  .hero-bg {
+  .hero::before {
+    content: "";
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(110deg, rgba(7,12,14,.78), rgba(7,12,14,.18) 48%, rgba(7,12,14,.72)),
-      linear-gradient(140deg, #68736e, #c5c4ba 35%, #283332 70%, #0d1315);
+      radial-gradient(circle at 74% 14%, rgba(255,255,255,.34), transparent 18rem),
+      linear-gradient(110deg, rgba(5,6,7,.92), rgba(5,6,7,.22) 46%, rgba(5,6,7,.86)),
+      linear-gradient(140deg, #555d62, #e6e4dc 35%, #24282d 67%, #050607);
   }
-  .pane {
+  .puffer-field {
     position: absolute;
-    border: 1px solid rgba(255,255,255,.22);
-    background: linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.04));
-    backdrop-filter: blur(10px);
-    box-shadow: 0 32px 90px rgba(0,0,0,.22);
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    opacity: .48;
+    transform: skewX(-8deg) scale(1.12);
+    filter: contrast(1.06);
+  }
+  .quilt {
+    min-height: 100%;
+    border-right: 1px solid rgba(255,255,255,.18);
+    background:
+      radial-gradient(ellipse at 50% 18%, rgba(255,255,255,.28), transparent 46%),
+      linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,0,0,.28));
+    box-shadow: inset 18px 0 38px rgba(255,255,255,.08), inset -24px 0 42px rgba(0,0,0,.34);
     will-change: transform;
   }
-  .pane-a { width: 38vw; height: 54vh; left: 8vw; top: 18vh; }
-  .pane-b { width: 28vw; height: 38vh; right: 12vw; top: 12vh; }
-  .pane-c { width: 48vw; height: 26vh; right: -8vw; bottom: 12vh; }
-
+  .hero-plate {
+    position: absolute;
+    inset: auto 7vw 9vh auto;
+    width: min(36vw, 470px);
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgba(255,255,255,.24);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.04)),
+      radial-gradient(circle at 70% 10%, rgba(193,18,31,.5), transparent 12rem);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 40px 110px rgba(0,0,0,.36);
+    will-change: transform;
+  }
   .hero-copy {
     position: relative;
     z-index: 4;
-    width: min(86vw, 980px);
-    text-align: center;
+    width: min(88vw, 1120px);
+    padding: 6rem 0 10rem;
   }
   .eyebrow,
   .mini-title {
@@ -263,222 +351,535 @@
     align-items: center;
     gap: .75rem;
     font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .12em;
+    font-weight: 900;
+    letter-spacing: 0;
     text-transform: uppercase;
   }
   .eyebrow::before,
   .mini-title::before {
     content: "";
-    width: .5rem;
-    height: .5rem;
+    width: .52rem;
+    height: .52rem;
     background: currentColor;
     transform: rotate(45deg);
   }
   h1,
+  h2,
+  h3,
+  p { margin: 0; }
+  h1,
   h2 {
-    margin: 0;
     font-weight: 400;
-    letter-spacing: -.06em;
+    letter-spacing: 0;
   }
   h1 {
-    max-width: 13ch;
-    margin: 2rem auto 0;
-    font-size: clamp(4rem, 10vw, 10rem);
-    line-height: .88;
+    max-width: 12ch;
+    margin-top: 2rem;
+    font-size: clamp(3.8rem, 9.5vw, 10rem);
+    line-height: .86;
   }
-  .scroll-cue {
-    position: absolute;
-    left: 50%;
-    bottom: 8.5rem;
-    z-index: 4;
-    opacity: .72;
+  .hero-line {
+    display: flex;
+    align-items: end;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    max-width: 760px;
+  }
+  .hero-line p {
+    max-width: 34rem;
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    line-height: 1.35;
+    color: rgba(255,255,255,.72);
+  }
+  .cta-row {
+    display: flex;
+    gap: .75rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .button {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    padding: .95rem 1.25rem;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
     font-size: 11px;
-    letter-spacing: .1em;
+    font-weight: 900;
+    letter-spacing: 0;
     text-transform: uppercase;
-    transform: translateX(-50%);
+    transition: transform .28s var(--ease), background .25s ease, color .25s ease, box-shadow .28s ease;
+  }
+  .button::before {
+    content: "";
+    width: .55rem;
+    height: .55rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .button.primary {
+    border-color: var(--red);
+    background: var(--red);
+    color: white;
+    box-shadow: 0 18px 38px rgba(193,18,31,.34);
+  }
+  @media (hover: hover) {
+    .button:hover {
+      transform: translateY(-3px);
+      background: white;
+      color: var(--black);
+      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    }
+  }
+  .button:active { transform: translateY(0) scale(.98); }
+
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background: var(--red);
+    border-block: 1px solid rgba(255,255,255,.2);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 24s linear infinite;
+  }
+  .marquee span {
+    padding: 1rem 1.4rem;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
   }
 
   .section {
     position: relative;
-    min-height: 100svh;
-    padding: clamp(6rem, 10vw, 12rem) clamp(1.25rem, 4vw, 4rem);
+    padding: clamp(5rem, 10vw, 11rem) clamp(1.25rem, 4vw, 4rem);
+  }
+  .dark {
+    color: white;
+    background: var(--black);
+  }
+  .light {
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 88% 12%, rgba(255,255,255,.82), transparent 22rem),
+      linear-gradient(180deg, #efebe2, #f8f4eb);
+  }
+  .section-grid {
+    width: min(100%, 1320px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(1rem, 2vw, 1.6rem);
   }
   .reveal {
     opacity: 0;
-    transform: translateY(44px);
-    transition: opacity .75s ease, transform .9s var(--ease);
+    transform: translateY(46px);
+    transition: opacity .75s ease, transform .95s var(--ease);
   }
   .reveal.is-in {
     opacity: 1;
     transform: translateY(0);
   }
-  .statement {
-    display: grid;
-    place-items: center;
-    text-align: center;
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .75s ease, transform .85s var(--ease);
   }
-  .statement h2 {
-    max-width: 15ch;
-    margin: 2rem 0 1.8rem;
-    font-size: clamp(3.2rem, 7vw, 7.3rem);
-    line-height: .92;
+  .stagger.is-in > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger.is-in > *:nth-child(2) { transition-delay: .06s; }
+  .stagger.is-in > *:nth-child(3) { transition-delay: .12s; }
+  .stagger.is-in > *:nth-child(4) { transition-delay: .18s; }
+
+  .intro-copy {
+    grid-column: 2 / 8;
+  }
+  .intro-copy h2,
+  .section-heading h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(3rem, 7.5vw, 8rem);
+    line-height: .9;
+  }
+  .intro-side {
+    grid-column: 9 / 12;
+    align-self: end;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.55;
   }
   .slot {
-    min-height: 4.4rem;
-    display: inline-grid;
+    min-height: 4.2rem;
+    display: grid;
     place-items: center;
-    padding: 1rem 1.35rem;
-    border: 1px dashed rgba(16,23,25,.3);
-    color: var(--muted);
-    background: rgba(255,255,255,.24);
-    backdrop-filter: blur(8px);
+    padding: 1rem 1.2rem;
+    border: 1px dashed currentColor;
+    color: inherit;
+    opacity: .62;
+    background: rgba(255,255,255,.08);
     font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .12em;
+    font-weight: 900;
+    text-align: center;
     text-transform: uppercase;
   }
+  .light .slot { background: rgba(255,255,255,.5); }
 
-  .gallery { min-height: 160vh; }
-  .gallery-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: clamp(1rem, 2vw, 2rem);
-    min-height: 115vh;
+  .image-strip {
+    min-height: 165vh;
+    overflow: hidden;
   }
   .media-card {
     position: relative;
-    min-height: 34rem;
+    min-height: 36rem;
     overflow: hidden;
     color: white;
-    background: #b8bbb2;
+    background: #1b2024;
+    border: 1px solid rgba(255,255,255,.14);
+    box-shadow: 0 38px 90px rgba(0,0,0,.26);
+    will-change: transform;
   }
   .media-card::before {
     content: "";
     position: absolute;
     inset: -18%;
     background:
-      linear-gradient(135deg, rgba(255,255,255,.34), transparent 40%),
-      radial-gradient(circle at 18% 30%, rgba(255,255,255,.42), transparent 20rem),
-      linear-gradient(140deg, #87918c, #d5d1c4 46%, #2c3736);
-    transform: translateY(var(--parallax, 0px)) scale(1.12);
-    transition: transform .1s linear;
+      radial-gradient(circle at 76% 20%, rgba(255,255,255,.42), transparent 16rem),
+      radial-gradient(circle at 20% 84%, rgba(193,18,31,.42), transparent 16rem),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, transparent 1px 5rem),
+      linear-gradient(135deg, #1c2026, #c3c7c8 45%, #07090b);
+    transform: translateY(var(--parallax, 0px)) scale(1.14);
   }
   .media-card::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,.42));
-  }
-  .media-card .label {
-    position: absolute;
-    inset: auto 2rem 2rem;
-    z-index: 2;
-    font-size: clamp(2.2rem, 4vw, 4.8rem);
-    line-height: .9;
-    letter-spacing: -.055em;
+    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.58));
   }
   .media-card .slot {
     position: absolute;
-    inset: 1rem auto auto 1rem;
     z-index: 2;
-    border-color: rgba(255,255,255,.38);
-    color: rgba(255,255,255,.72);
-    background: rgba(0,0,0,.16);
+    inset: 1rem auto auto 1rem;
+    width: min(210px, calc(100% - 2rem));
+    color: rgba(255,255,255,.78);
+    background: rgba(0,0,0,.22);
   }
-  .card-one { grid-column: 2 / 7; }
-  .card-two { grid-column: 8 / 12; margin-top: 16rem; }
-  .card-three { grid-column: 5 / 9; margin-top: 8rem; }
-  .card-four { grid-column: 1 / 5; margin-top: -2rem; }
+  .media-card h3 {
+    position: absolute;
+    z-index: 2;
+    inset: auto 1.4rem 1.35rem;
+    font-size: clamp(2.4rem, 5vw, 5.5rem);
+    font-weight: 400;
+    line-height: .88;
+  }
+  .media-one { grid-column: 1 / 7; margin-top: 0; }
+  .media-two { grid-column: 8 / 12; margin-top: 14rem; }
+  .media-three { grid-column: 5 / 10; margin-top: 8rem; }
+  .media-four { grid-column: 2 / 6; margin-top: -2rem; }
 
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1.25fr;
-    gap: clamp(2rem, 6vw, 7rem);
-    align-items: start;
-  }
-  .split h2 {
-    position: sticky;
-    top: 6rem;
-    font-size: clamp(3rem, 6vw, 6.5rem);
-    line-height: .92;
-  }
-  .blocks { display: grid; }
-  .block {
-    min-height: 16rem;
-    display: grid;
-    grid-template-columns: .5fr 1fr;
-    gap: 2rem;
-    padding: 2rem 0 5rem;
-    border-top: 1px solid var(--line);
-  }
-  .block b {
-    font-size: 1.15rem;
-    font-weight: 500;
-  }
-  .block .slot {
-    width: 100%;
-    min-height: 9rem;
-  }
-
-  .ending {
-    min-height: 100svh;
+  .operating-system {
+    background: var(--black);
     color: white;
-    background: #070a0c;
     overflow: hidden;
   }
-  .ending::before {
+  .sticky-copy {
+    grid-column: 1 / 5;
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+  }
+  .sticky-copy h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(2.8rem, 5.8vw, 6.2rem);
+    line-height: .9;
+  }
+  .system-list {
+    grid-column: 6 / 13;
+    display: grid;
+    gap: 0;
+  }
+  .system-row {
+    display: grid;
+    grid-template-columns: .22fr 1fr;
+    gap: 1.5rem;
+    min-height: 15rem;
+    padding: 2rem 0 4rem;
+    border-top: 1px solid var(--line-dark);
+  }
+  .system-row b {
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .system-row h3 {
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 4vw, 4.8rem);
+    line-height: .92;
+    font-weight: 400;
+  }
+  .system-row p {
+    max-width: 44rem;
+    color: rgba(255,255,255,.62);
+    line-height: 1.55;
+  }
+
+  .lux-grid {
+    background: var(--bone);
+  }
+  .section-heading {
+    grid-column: 1 / 7;
+  }
+  .proof-grid {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+  .proof {
+    position: relative;
+    min-height: 22rem;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--ink);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.86), rgba(255,255,255,.22)),
+      radial-gradient(circle at 70% 10%, rgba(193,18,31,.12), transparent 12rem);
+    border: 1px solid var(--line-light);
+    overflow: hidden;
+    transition: transform .4s var(--ease), box-shadow .35s ease;
+  }
+  .proof::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, rgba(17,19,22,.05) 0 1px, transparent 1px 4.8rem);
+    pointer-events: none;
+  }
+  .proof strong {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.4rem, 5vw, 5rem);
+    line-height: .9;
+    font-weight: 400;
+  }
+  .proof .slot {
+    position: relative;
+    z-index: 1;
+  }
+  @media (hover: hover) {
+    .proof:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 70px rgba(17,19,22,.18);
+    }
+  }
+
+  .showcase {
+    min-height: 120svh;
+    color: white;
+    background:
+      radial-gradient(circle at 65% 26%, rgba(193,18,31,.36), transparent 20rem),
+      linear-gradient(180deg, #080a0c, #15191d 42%, #050607);
+    overflow: hidden;
+  }
+  .showcase-card {
+    grid-column: 2 / 12;
+    position: relative;
+    min-height: 82svh;
+    border: 1px solid rgba(255,255,255,.16);
+    background:
+      linear-gradient(120deg, rgba(255,255,255,.12), rgba(255,255,255,.02)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 7rem);
+    box-shadow: 0 50px 130px rgba(0,0,0,.36);
+    overflow: hidden;
+  }
+  .showcase-card::before {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    background:
+      radial-gradient(circle at var(--mx, 50%) var(--my, 40%), rgba(255,255,255,.46), transparent 13rem),
+      linear-gradient(135deg, #2b3036, #f3f2ea 42%, #07090b 74%);
+    opacity: .64;
+    transform: translateY(var(--showcase, 0px)) scale(1.08);
+  }
+  .showcase-content {
+    position: absolute;
+    inset: auto 2rem 2rem;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr .45fr;
+    gap: 2rem;
+    align-items: end;
+  }
+  .showcase-content h2 {
+    font-size: clamp(3.8rem, 10vw, 12rem);
+    line-height: .82;
+  }
+  .showcase-content .slot {
+    color: rgba(255,255,255,.75);
+    background: rgba(0,0,0,.24);
+  }
+
+  .scrape-map {
+    background: var(--cream);
+  }
+  .map-head {
+    grid-column: 1 / 6;
+  }
+  .map-head h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(3rem, 7vw, 7.4rem);
+    line-height: .9;
+  }
+  .map-board {
+    grid-column: 7 / 13;
+    display: grid;
+    gap: .8rem;
+  }
+  .map-item {
+    display: grid;
+    grid-template-columns: .36fr 1fr;
+    gap: 1rem;
+    min-height: 6rem;
+    padding: 1rem;
+    border: 1px solid var(--line-light);
+    background: rgba(255,255,255,.42);
+    backdrop-filter: blur(10px);
+  }
+  .map-item b {
+    color: var(--red);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .map-item .slot {
+    min-height: auto;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .contact {
+    min-height: 100svh;
+    color: white;
+    background: var(--black);
+    overflow: hidden;
+  }
+  .contact::before {
     content: "";
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(255,255,255,0) 34%, rgba(255,255,255,.12)),
-      radial-gradient(circle at 50% 70%, rgba(198,211,202,.18), transparent 30rem);
+      radial-gradient(circle at 76% 18%, rgba(193,18,31,.28), transparent 18rem),
+      linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.08));
   }
-  .ending-word {
-    position: absolute;
-    inset: auto 0 12vh;
-    opacity: .2;
-    font-size: clamp(5rem, 18vw, 16rem);
-    line-height: .8;
-    letter-spacing: -.075em;
-    text-align: center;
-    transform: translateY(var(--rise, 80px));
-  }
-  .ending-slot {
+  .contact-title {
+    grid-column: 1 / 7;
     position: relative;
-    z-index: 2;
-    top: 34vh;
-    width: min(86vw, 760px);
-    margin: 0 auto;
-    text-align: center;
+    z-index: 1;
   }
-  .ending-slot h2 {
-    margin: 2rem 0 1.8rem;
-    font-size: clamp(3rem, 7vw, 7rem);
-    line-height: .92;
+  .contact-title h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(3.5rem, 9vw, 10rem);
+    line-height: .84;
   }
-  .ending .slot {
-    color: rgba(255,255,255,.68);
-    border-color: rgba(255,255,255,.32);
-    background: rgba(255,255,255,.08);
+  .shell-form {
+    grid-column: 8 / 13;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: .9rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.07);
+    backdrop-filter: blur(16px);
+  }
+  .shell-form label {
+    display: grid;
+    gap: .45rem;
+    color: rgba(255,255,255,.62);
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .shell-form input,
+  .shell-form textarea {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(0,0,0,.22);
+    color: white;
+    padding: .9rem;
+    border-radius: 0;
+  }
+  .shell-form textarea {
+    min-height: 126px;
+    resize: vertical;
+  }
+  .shell-form input::placeholder,
+  .shell-form textarea::placeholder {
+    color: rgba(255,255,255,.36);
   }
 
-  @media (max-width: 760px) {
-    .hero { min-height: 560px; }
-    .pane-a { width: 70vw; left: -12vw; }
-    .pane-b { width: 54vw; right: -8vw; }
-    .pane-c { width: 90vw; }
-    h1 { font-size: clamp(3.4rem, 17vw, 5.6rem); }
-    .gallery-grid { display: block; min-height: auto; }
-    .media-card { min-height: 70svh; margin: 0 0 1.25rem; }
-    .split { grid-template-columns: 1fr; }
-    .split h2 { position: relative; top: auto; }
-    .block { grid-template-columns: 1fr; }
+  @media (max-width: 980px) {
+    .topline { display: none; }
+    .hero-copy { padding-inline: 1.25rem; }
+    .hero-plate { width: 62vw; right: -16vw; bottom: 12vh; }
+    .hero-line { display: block; }
+    .section-grid { grid-template-columns: 1fr; }
+    .intro-copy,
+    .intro-side,
+    .sticky-copy,
+    .system-list,
+    .section-heading,
+    .proof-grid,
+    .showcase-card,
+    .map-head,
+    .map-board,
+    .contact-title,
+    .shell-form {
+      grid-column: 1;
+    }
+    .sticky-copy {
+      position: relative;
+      top: auto;
+    }
+    .proof-grid { grid-template-columns: 1fr 1fr; }
+    .showcase-card { min-height: 78svh; }
+    .showcase-content { grid-template-columns: 1fr; }
+    .media-one,
+    .media-two,
+    .media-three,
+    .media-four {
+      grid-column: 1;
+      margin-top: 0;
+    }
+    .media-card { min-height: 70svh; margin-bottom: 1rem; }
+  }
+  @media (max-width: 640px) {
     .dock { bottom: 1rem; }
-    .menu { bottom: 5.5rem; padding: 2rem; }
-    .menu a { font-size: 2rem; }
+    .menu { bottom: 5.6rem; padding: 2rem; }
+    .puffer-field { grid-template-columns: repeat(5, 1fr); }
+    h1 { font-size: clamp(3.7rem, 19vw, 5.8rem); }
+    .hero-copy { padding: 5.5rem 1.25rem 9rem; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .system-row,
+    .map-item {
+      grid-template-columns: 1fr;
+    }
+    .showcase-content {
+      inset: auto 1rem 1rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -489,102 +890,227 @@
       transition-duration: .001ms !important;
     }
     .loader { display: none; }
-    .reveal { opacity: 1; transform: none; }
+    .reveal,
+    .stagger > * {
+      opacity: 1;
+      transform: none;
+    }
   }
 </style>
 </head>
 <body>
   <div class="loader" aria-hidden="true">
-    <div class="loader-cube">
-      <div class="cube">
-        <i></i><i></i><i></i><i></i><i></i><i></i>
-      </div>
+    <div class="loader-core">
+      <div class="loader-ring"></div>
+      <div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
   </div>
 
-  <div class="noise"></div>
-  <div class="cursor-chip">Drop in</div>
+  <div class="texture"></div>
+  <div class="cursor-chip">Fill slot</div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <div class="topline" aria-hidden="true">
+    <span class="brand-mark">Reverse Shell</span>
+    <span>Luxury motion system</span>
+  </div>
 
   <nav class="dock" aria-label="Motion shell navigation">
     <a class="dock-logo" href="#top" aria-label="Top"><span></span></a>
-    <div class="dock-title"><span>Home<br />Menu</span></div>
+    <div class="dock-title"><span>Home<br>Menu</span></div>
     <button class="dock-menu" type="button" aria-label="Open menu"><span></span></button>
   </nav>
 
   <div class="menu" aria-hidden="true">
-    <a href="#statement"><span>Statement</span></a>
-    <a href="#gallery"><span>Gallery</span></a>
-    <a href="#blocks"><span>Blocks</span></a>
-    <a href="#ending"><span>Ending</span></a>
+    <a href="#brief"><span>Brief</span></a>
+    <a href="#visuals"><span>Visuals</span></a>
+    <a href="#system"><span>System</span></a>
+    <a href="#scrape-map"><span>Data Map</span></a>
+    <a href="#contact"><span>Contact</span></a>
   </div>
 
   <main id="top">
     <section class="hero" data-label="Home">
-      <div class="hero-bg">
-        <div class="pane pane-a"></div>
-        <div class="pane pane-b"></div>
-        <div class="pane pane-c"></div>
+      <div class="puffer-field" aria-hidden="true">
+        <div class="quilt"></div><div class="quilt"></div><div class="quilt"></div><div class="quilt"></div>
+        <div class="quilt"></div><div class="quilt"></div><div class="quilt"></div><div class="quilt"></div>
       </div>
-      <div class="hero-copy reveal">
-        <div class="eyebrow">Animation first shell</div>
-        <h1>Put the story inside the motion.</h1>
-      </div>
-      <div class="scroll-cue">Scroll to explore</div>
-    </section>
-
-    <section class="section statement" id="statement" data-label="Statement">
-      <div class="reveal">
-        <div class="mini-title">Open slot</div>
-        <h2>This is a hollow content stage.</h2>
-        <div class="slot">Drop headline, CTA, or proof here</div>
+      <div class="hero-plate cursor-zone" data-slot="hero-media"></div>
+      <div class="hero-copy reveal" data-slot="hero">
+        <div class="eyebrow">Rich shell ready for scraped content</div>
+        <h1>Make the page move like money.</h1>
+        <div class="hero-line">
+          <p>Luxury, loud, glossy, and structured. The content can change later; the motion system is already alive.</p>
+          <div class="cta-row">
+            <a class="button primary magnetic" href="#scrape-map">Map the scrape</a>
+            <a class="button magnetic" href="#visuals">See the shell</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section gallery" id="gallery" data-label="Gallery">
-      <div class="gallery-grid">
-        <article class="media-card card-one reveal cursor-zone">
-          <div class="slot">Media slot</div>
-          <div class="label">Frame One</div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Chrome glare</span><span>Quilted depth</span><span>Black ice</span><span>Red flash</span>
+        <span>Premium pressure</span><span>Motion first</span><span>Chrome glare</span><span>Quilted depth</span>
+        <span>Black ice</span><span>Red flash</span><span>Premium pressure</span><span>Motion first</span>
+      </div>
+    </div>
+
+    <section class="section light" id="brief" data-label="Brief">
+      <div class="section-grid">
+        <div class="intro-copy reveal" data-slot="brand-story">
+          <div class="mini-title">Positioning slot</div>
+          <h2>Built to feel cocky before the copy arrives.</h2>
+        </div>
+        <div class="intro-side reveal" data-slot="brand-summary">
+          <p>Use this area for scraped company summary, founder story, service promise, or product positioning. The layout already handles long copy without killing the vibe.</p>
+          <div class="slot" style="margin-top:1.2rem">Scraped intro copy goes here</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark image-strip" id="visuals" data-label="Visuals">
+      <div class="section-grid stagger">
+        <article class="media-card media-one cursor-zone" data-slot="visual-1">
+          <div class="slot">Image / video slot</div>
+          <h3>Hero Product</h3>
         </article>
-        <article class="media-card card-two reveal cursor-zone">
-          <div class="slot">Media slot</div>
-          <div class="label">Frame Two</div>
+        <article class="media-card media-two cursor-zone" data-slot="visual-2">
+          <div class="slot">Gallery slot</div>
+          <h3>Proof Shot</h3>
         </article>
-        <article class="media-card card-three reveal cursor-zone">
-          <div class="slot">Media slot</div>
-          <div class="label">Frame Three</div>
+        <article class="media-card media-three cursor-zone" data-slot="visual-3">
+          <div class="slot">Detail slot</div>
+          <h3>Detail Flex</h3>
         </article>
-        <article class="media-card card-four reveal cursor-zone">
-          <div class="slot">Media slot</div>
-          <div class="label">Frame Four</div>
+        <article class="media-card media-four cursor-zone" data-slot="visual-4">
+          <div class="slot">Lifestyle slot</div>
+          <h3>Atmosphere</h3>
         </article>
       </div>
     </section>
 
-    <section class="section split" id="blocks" data-label="Blocks">
-      <h2 class="reveal">Content can be poured in later.</h2>
-      <div class="blocks">
-        <article class="block reveal">
-          <b>01</b>
-          <div class="slot">Copy block, product card, testimonial, pricing, anything</div>
-        </article>
-        <article class="block reveal">
-          <b>02</b>
-          <div class="slot">Another reusable slot with the same reveal timing</div>
-        </article>
-        <article class="block reveal">
-          <b>03</b>
-          <div class="slot">Form, CTA, table, or real section content</div>
-        </article>
+    <section class="section operating-system" id="system" data-label="System">
+      <div class="section-grid">
+        <div class="sticky-copy reveal">
+          <div class="mini-title">Motion OS</div>
+          <h2>The sections are already wired.</h2>
+        </div>
+        <div class="system-list stagger">
+          <article class="system-row" data-slot="section-1">
+            <b>01</b>
+            <div>
+              <h3>Hero content</h3>
+              <p>Designed for a headline, subhead, two CTAs, and a high-status visual. Mouse parallax and scroll movement are already active.</p>
+            </div>
+          </article>
+          <article class="system-row" data-slot="section-2">
+            <b>02</b>
+            <div>
+              <h3>Offer stack</h3>
+              <p>Use for services, products, pricing tiers, or packages from the scraped site. Each row reveals cleanly and keeps the premium pace.</p>
+            </div>
+          </article>
+          <article class="system-row" data-slot="section-3">
+            <b>03</b>
+            <div>
+              <h3>Proof + credibility</h3>
+              <p>Testimonials, certifications, stats, logos, reviews, or before/after assets can drop into the card grid below.</p>
+            </div>
+          </article>
+          <article class="system-row" data-slot="section-4">
+            <b>04</b>
+            <div>
+              <h3>Conversion close</h3>
+              <p>The bottom form area is already styled, readable, and animated so we can connect real fields later without changing the feel.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section ending" id="ending" data-label="Ending">
-      <div class="ending-word">Shell</div>
-      <div class="ending-slot reveal">
-        <div class="mini-title">Final slot</div>
-        <h2>Dark ending, soft landing.</h2>
-        <div class="slot">Drop final CTA or contact form here</div>
+    <section class="section lux-grid" id="proof" data-label="Proof">
+      <div class="section-grid">
+        <div class="section-heading reveal">
+          <div class="mini-title">Flex grid</div>
+          <h2>Flashy, but still useful.</h2>
+        </div>
+        <div class="proof-grid stagger">
+          <article class="proof cursor-zone" data-slot="stat-1">
+            <strong>01</strong>
+            <div class="slot">Metric / review</div>
+          </article>
+          <article class="proof cursor-zone" data-slot="stat-2">
+            <strong>02</strong>
+            <div class="slot">Service / feature</div>
+          </article>
+          <article class="proof cursor-zone" data-slot="stat-3">
+            <strong>03</strong>
+            <div class="slot">Trust badge</div>
+          </article>
+          <article class="proof cursor-zone" data-slot="stat-4">
+            <strong>04</strong>
+            <div class="slot">CTA / guarantee</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section showcase" id="showcase" data-label="Showcase">
+      <div class="section-grid">
+        <div class="showcase-card reveal cursor-zone" data-slot="big-showcase">
+          <div class="showcase-content">
+            <h2>One big cinematic moment.</h2>
+            <div class="slot">Drop flagship offer, location, or main product here</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section scrape-map" id="scrape-map" data-label="Data Map">
+      <div class="section-grid">
+        <div class="map-head reveal">
+          <div class="mini-title">Scrape map</div>
+          <h2>Send the source site next.</h2>
+        </div>
+        <div class="map-board stagger">
+          <article class="map-item" data-slot="scrape-business">
+            <b>Business</b>
+            <div class="slot">Name, tagline, intro copy</div>
+          </article>
+          <article class="map-item" data-slot="scrape-offers">
+            <b>Offers</b>
+            <div class="slot">Services, products, packages, pricing</div>
+          </article>
+          <article class="map-item" data-slot="scrape-proof">
+            <b>Proof</b>
+            <div class="slot">Reviews, awards, stats, locations</div>
+          </article>
+          <article class="map-item" data-slot="scrape-assets">
+            <b>Assets</b>
+            <div class="slot">Images, logo, gallery, social links</div>
+          </article>
+          <article class="map-item" data-slot="scrape-contact">
+            <b>Contact</b>
+            <div class="slot">Phone, email, forms, booking links</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" data-label="Contact">
+      <div class="section-grid">
+        <div class="contact-title reveal">
+          <div class="mini-title">Close slot</div>
+          <h2>Ready for the real pitch.</h2>
+        </div>
+        <form class="shell-form reveal" data-slot="form">
+          <label>Lead name<input type="text" placeholder="Scraped / manual name" /></label>
+          <label>Email<input type="email" placeholder="Email address" /></label>
+          <label>Project<textarea placeholder="What should this become?"></textarea></label>
+          <button class="button primary magnetic" type="button">Placeholder submit</button>
+        </form>
       </div>
     </section>
   </main>
@@ -592,16 +1118,18 @@
 <script>
 (() => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const root = document.documentElement;
   const loader = document.querySelector(".loader");
   const dock = document.querySelector(".dock");
   const menuButton = document.querySelector(".dock-menu");
   const menu = document.querySelector(".menu");
   const dockTitle = document.querySelector(".dock-title span");
   const cursor = document.querySelector(".cursor-chip");
-  const panes = [...document.querySelectorAll(".pane")];
+  const quilts = [...document.querySelectorAll(".quilt")];
+  const heroPlate = document.querySelector(".hero-plate");
   const cards = [...document.querySelectorAll(".media-card")];
-  const ending = document.querySelector(".ending");
-  const endingWord = document.querySelector(".ending-word");
+  const showcase = document.querySelector(".showcase-card");
+  const magnetic = [...document.querySelectorAll(".magnetic")];
 
   if (!reduce) {
     window.setTimeout(() => loader.classList.add("is-gone"), 1450);
@@ -626,7 +1154,7 @@
       revealObserver.unobserve(entry.target);
     });
   }, { threshold: .16 });
-  document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+  document.querySelectorAll(".reveal, .stagger").forEach((item) => revealObserver.observe(item));
 
   const labelObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -645,6 +1173,13 @@
   window.addEventListener("pointermove", (event) => {
     mouseX = event.clientX;
     mouseY = event.clientY;
+    if (showcase) {
+      const rect = showcase.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      showcase.style.setProperty("--mx", `${x}%`);
+      showcase.style.setProperty("--my", `${y}%`);
+    }
   }, { passive: true });
 
   document.querySelectorAll(".cursor-zone").forEach((item) => {
@@ -652,39 +1187,59 @@
     item.addEventListener("pointerleave", () => cursor.classList.remove("is-visible"));
   });
 
-  function frame() {
-    const scrollY = window.scrollY;
-    const width = window.innerWidth || 1;
-    const height = window.innerHeight || 1;
-    const heroProgress = Math.min(1, scrollY / height);
-
-    panes.forEach((pane, index) => {
-      const depth = (index + 1) * 18;
-      const x = (mouseX / width - .5) * depth;
-      const y = heroProgress * depth * -1;
-      pane.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  magnetic.forEach((item) => {
+    item.addEventListener("pointermove", (event) => {
+      const rect = item.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      item.style.transform = `translate(${x * .12}px, ${y * .18}px)`;
     });
+    item.addEventListener("pointerleave", () => {
+      item.style.transform = "";
+    });
+  });
+
+  function tick() {
+    const scrollY = window.scrollY;
+    const height = window.innerHeight || 1;
+    const width = window.innerWidth || 1;
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - height);
+    const progress = scrollY / maxScroll;
+    root.style.setProperty("--scroll", progress.toFixed(4));
+
+    const heroProgress = Math.min(1, scrollY / height);
+    quilts.forEach((quilt, index) => {
+      const depth = (index - quilts.length / 2) * 2.5;
+      const x = (mouseX / width - .5) * depth;
+      const y = heroProgress * (index % 2 ? -24 : -12);
+      quilt.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+    if (heroPlate) {
+      const x = (mouseX / width - .5) * 26;
+      const y = heroProgress * -42;
+      heroPlate.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    }
 
     cards.forEach((card) => {
       const rect = card.getBoundingClientRect();
-      const progress = (rect.top - height) / (height + rect.height);
-      card.style.setProperty("--parallax", `${progress * -70}px`);
+      const cardProgress = (rect.top - height) / (height + rect.height);
+      card.style.setProperty("--parallax", `${cardProgress * -82}px`);
     });
 
-    if (ending && endingWord) {
-      const rect = ending.getBoundingClientRect();
-      const progress = 1 - Math.max(0, Math.min(1, rect.top / height));
-      endingWord.style.setProperty("--rise", `${80 - progress * 120}px`);
+    if (showcase) {
+      const rect = showcase.getBoundingClientRect();
+      const showProgress = (rect.top - height) / (height + rect.height);
+      showcase.style.setProperty("--showcase", `${showProgress * -72}px`);
     }
 
     cursorX += (mouseX - cursorX) * .18;
     cursorY += (mouseY - cursorY) * .18;
     cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
 
-    requestAnimationFrame(frame);
+    requestAnimationFrame(tick);
   }
 
-  if (!reduce) requestAnimationFrame(frame);
+  if (!reduce) requestAnimationFrame(tick);
 })();
 </script>
 </body>
