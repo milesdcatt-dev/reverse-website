@@ -705,6 +705,59 @@
     font-size: 1rem;
     line-height: 1.55;
   }
+  .dna-rail {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .85rem;
+    margin-top: clamp(2rem, 5vw, 5rem);
+  }
+  .dna-card {
+    position: relative;
+    min-height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid rgba(17,19,22,.13);
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.76), rgba(255,255,255,.28)),
+      repeating-linear-gradient(0deg, transparent 0 4.4rem, rgba(223,247,255,.32) 4.5rem, transparent 4.9rem);
+    overflow: hidden;
+    box-shadow: 0 22px 70px rgba(17,19,22,.08);
+  }
+  .dna-card::before {
+    content: "";
+    position: absolute;
+    inset: -30% -20%;
+    opacity: .58;
+    background:
+      linear-gradient(110deg, transparent 36%, rgba(184,138,75,.22) 48%, rgba(255,255,255,.64) 50%, transparent 62%),
+      radial-gradient(circle at 78% 14%, rgba(255,255,255,.82), transparent 8rem);
+    transform: translate3d(calc(var(--flow-velocity) * 1.6rem), calc(var(--flow) * -2rem), 0);
+  }
+  .dna-card b,
+  .dna-card p,
+  .dna-card span {
+    position: relative;
+    z-index: 1;
+  }
+  .dna-card b {
+    color: var(--red);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .dna-card p {
+    max-width: 18rem;
+    color: rgba(17,19,22,.68);
+    line-height: 1.45;
+  }
+  .dna-card span {
+    color: rgba(17,19,22,.42);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
   .slot {
     min-height: 4.2rem;
     display: grid;
@@ -812,6 +865,24 @@
     width: min(210px, calc(100% - 2rem));
     color: rgba(255,255,255,.78);
     background: rgba(0,0,0,.22);
+  }
+  .project-meta {
+    position: absolute;
+    z-index: 2;
+    inset: auto 1.4rem calc(1.35rem + clamp(5rem, 9vw, 9rem));
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+  }
+  .project-meta span {
+    padding: .52rem .65rem;
+    color: rgba(255,255,255,.78);
+    background: rgba(5,6,7,.32);
+    border: 1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(12px);
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
   }
   .media-card h3 {
     position: absolute;
@@ -1158,6 +1229,7 @@
     .section-grid { grid-template-columns: 1fr; }
     .intro-copy,
     .intro-side,
+    .dna-rail,
     .sticky-copy,
     .system-list,
     .section-heading,
@@ -1174,6 +1246,7 @@
       top: auto;
     }
     .proof-grid { grid-template-columns: 1fr 1fr; }
+    .dna-rail { grid-template-columns: 1fr 1fr; }
     .showcase-card { min-height: 78svh; }
     .showcase-content { grid-template-columns: 1fr; }
     .media-one,
@@ -1186,6 +1259,12 @@
     .media-card { min-height: 70svh; margin-bottom: 1rem; }
   }
   @media (max-width: 640px) {
+    body::before { opacity: .34; }
+    .texture { opacity: .12; }
+    .flow-field { display: none; }
+    .hero::after { opacity: .46; }
+    .media-card::after { opacity: .48; }
+    .showcase-card::before { opacity: .64; }
     .dock { bottom: 1rem; }
     .menu { bottom: 5.6rem; padding: 2rem; }
     .puffer-field { grid-template-columns: repeat(5, 1fr); }
@@ -1205,6 +1284,11 @@
       font-size: 9px;
     }
     .proof-grid { grid-template-columns: 1fr; }
+    .dna-rail { grid-template-columns: 1fr; }
+    .dna-card { min-height: 11rem; }
+    .project-meta {
+      inset: auto 1rem 7rem;
+    }
     .system-row,
     .map-item {
       grid-template-columns: 1fr;
@@ -1329,6 +1413,28 @@
           <p>Inson Dubois Wood holds a Master of Architecture from Harvard Graduate School of Design and a Bachelor of Architecture from Cornell. Before founding his studio, he served as design director for Juan Pablo Molyneux and David Easton, shaping high-end residential work across the U.S., Europe, and Asia.</p>
           <div class="slot" style="margin-top:1.2rem">Own studio founded in 2005</div>
         </div>
+        <div class="dna-rail stagger" aria-label="Inson Dubois Wood design DNA">
+          <article class="dna-card">
+            <b>Harvard Modernism</b>
+            <p>Graduate School of Design training under the modernist orbit of Gehry, Koolhaas, Prix, and Hadid.</p>
+            <span>Architecture first</span>
+          </article>
+          <article class="dna-card">
+            <b>Cornell Precision</b>
+            <p>Bachelor of Architecture foundation, class-leading discipline, awards, and traveling fellowships.</p>
+            <span>Rigorous proportion</span>
+          </article>
+          <article class="dna-card">
+            <b>Molyneux / Easton</b>
+            <p>Design-director lineage across ocean-liner scale, Paris, London, Naples, and 18 major residential projects.</p>
+            <span>Old-world muscle</span>
+          </article>
+          <article class="dna-card">
+            <b>Rizzoli Proof</b>
+            <p>A 320-page monograph, Waterfall Mansion, Greenwich, Saint-Tropez, and a five-country body of work.</p>
+            <span>Published authority</span>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -1336,18 +1442,22 @@
       <div class="section-grid stagger">
         <article class="media-card media-one cursor-zone" data-slot="visual-1" data-cursor="Waterfall">
           <div class="slot">Waterfall Mansion</div>
+          <div class="project-meta"><span>New York</span><span>Opulent townhouse scale</span></div>
           <h3>Opulent, not timid.</h3>
         </article>
         <article class="media-card media-two cursor-zone" data-slot="visual-2" data-cursor="Tribeca">
           <div class="slot">Tribeca Loft</div>
+          <div class="project-meta"><span>Downtown loft</span><span>Industrial warmth</span></div>
           <h3>Industrial made livable.</h3>
         </article>
         <article class="media-card media-three cursor-zone" data-slot="visual-3" data-cursor="Upper East">
           <div class="slot">Upper East Side</div>
+          <div class="project-meta"><span>Townhouse</span><span>Architectural control</span></div>
           <h3>Townhouse discipline.</h3>
         </article>
         <article class="media-card media-four cursor-zone" data-slot="visual-4" data-cursor="Sweden">
           <div class="slot">Malmo, Sweden</div>
+          <div class="project-meta"><span>Sweden</span><span>Modernist restraint</span></div>
           <h3>Modernist restraint.</h3>
         </article>
       </div>
