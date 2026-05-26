@@ -23,6 +23,13 @@
     --line-light: rgba(17, 19, 22, .14);
     --glass-dark: rgba(5, 6, 7, .76);
     --glass-light: rgba(255, 255, 255, .62);
+    --bubble-dark:
+      linear-gradient(135deg, rgba(5,6,7,.72), rgba(5,6,7,.36)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.065) 0 1px, transparent 1px 3.1rem);
+    --bubble-light:
+      linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.62)),
+      repeating-linear-gradient(90deg, rgba(17,19,22,.045) 0 1px, transparent 1px 3.1rem);
+    --bubble-shadow: 0 18px 58px rgba(0,0,0,.2), inset 0 0 22px rgba(255,255,255,.08);
     --ease: cubic-bezier(.22, 1, .36, 1);
     --snap: cubic-bezier(.65, 0, .35, 1);
     --scroll: 0;
@@ -484,8 +491,8 @@
   }
   .hero-plate {
     position: absolute;
-    inset: auto 7vw 9vh auto;
-    width: min(36vw, 470px);
+    inset: auto clamp(.75rem, 3vw, 3rem) 8vh auto;
+    width: min(27vw, 380px);
     aspect-ratio: 4 / 5;
     border: 1px solid rgba(255,255,255,.24);
     background:
@@ -525,19 +532,17 @@
     z-index: 4;
     isolation: isolate;
     align-self: start;
-    width: min(88vw, 1120px);
-    padding: 5.5rem 0 8rem;
+    width: min(90vw, 1240px);
+    padding: 5.2rem 0 8rem;
     text-shadow: 0 2px 24px rgba(0,0,0,.62);
   }
   .hero-copy::before {
     content: "";
     position: absolute;
-    inset: 4.1rem auto 5.4rem -1.2rem;
+    inset: 4.05rem auto 5.25rem -1rem;
     z-index: -1;
-    width: min(760px, 78vw);
-    background:
-      linear-gradient(100deg, rgba(5,6,7,.72), rgba(5,6,7,.34) 68%, transparent),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.055) 0 1px, transparent 1px 3.6rem);
+    width: min(700px, 58vw);
+    background: var(--bubble-dark);
     border-left: 1px solid rgba(255,255,255,.22);
     box-shadow: 0 28px 90px rgba(0,0,0,.28);
     pointer-events: none;
@@ -574,41 +579,37 @@
     text-wrap: pretty;
   }
   h1 {
-    max-width: 12ch;
+    max-width: 10.5ch;
     margin-top: 2rem;
-    font-size: clamp(3.5rem, 6.4vw, 7.2rem);
-    line-height: .86;
+    font-size: clamp(3.25rem, 5.45vw, 6.15rem);
+    line-height: .91;
   }
   .hero-line {
-    display: flex;
-    align-items: stretch;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(280px, 34rem) max-content;
+    align-items: start;
+    gap: 1rem;
     margin-top: 1.5rem;
-    max-width: 860px;
+    max-width: 760px;
   }
   .hero-line p {
     max-width: 34rem;
     display: flex;
     align-items: center;
-    min-height: 7.1rem;
+    min-height: 8rem;
     padding: 1rem 1.15rem;
     border: 1px solid rgba(255,255,255,.16);
-    background:
-      linear-gradient(135deg, rgba(5,6,7,.4), rgba(255,255,255,.07)),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 3.2rem);
+    background: var(--bubble-dark);
     backdrop-filter: blur(16px);
-    box-shadow:
-      inset 0 0 24px rgba(255,255,255,.06),
-      0 18px 54px rgba(0,0,0,.24);
+    box-shadow: var(--bubble-shadow);
     font-size: clamp(1rem, 1.8vw, 1.35rem);
     line-height: 1.35;
     color: rgba(255,255,255,.82);
   }
   .cta-row {
-    display: flex;
+    display: grid;
     align-content: stretch;
     gap: .75rem;
-    flex-wrap: wrap;
     margin-top: 0;
   }
   .button {
@@ -616,6 +617,7 @@
     overflow: hidden;
     isolation: isolate;
     min-height: 48px;
+    min-width: 12.5rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1047,12 +1049,8 @@
     border: 1px solid rgba(255,255,255,.22);
     color: inherit;
     opacity: .9;
-    background:
-      linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.045)),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 2.4rem);
-    box-shadow:
-      inset 0 0 22px rgba(255,255,255,.08),
-      0 12px 34px rgba(0,0,0,.12);
+    background: var(--bubble-dark);
+    box-shadow: var(--bubble-shadow);
     font-size: 11px;
     font-weight: 900;
     text-align: center;
@@ -1062,8 +1060,7 @@
     border-color: rgba(17,19,22,.14);
     color: rgba(17,19,22,.68);
     background:
-      linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,255,255,.56)),
-      repeating-linear-gradient(90deg, rgba(17,19,22,.045) 0 1px, transparent 1px 2.4rem);
+      var(--bubble-light);
     box-shadow:
       inset 0 0 20px rgba(255,255,255,.34),
       0 14px 44px rgba(17,19,22,.08);
@@ -1173,10 +1170,11 @@
   .media-card h3 {
     position: absolute;
     z-index: 2;
-    inset: auto 1.4rem 1.35rem;
-    font-size: clamp(2.4rem, 5vw, 5.5rem);
+    inset: auto 1.4rem 9.25rem;
+    max-width: min(92%, 34rem);
+    font-size: clamp(2.05rem, 3.35vw, 3.9rem);
     font-weight: 400;
-    line-height: .88;
+    line-height: .96;
     text-shadow: 0 8px 34px rgba(0,0,0,.54);
   }
   .media-card h3::before {
@@ -1190,7 +1188,7 @@
   }
   .media-one { grid-column: 1 / 7; margin-top: 0; }
   .media-two { grid-column: 8 / 12; margin-top: 14rem; }
-  .media-three { grid-column: 5 / 10; margin-top: 8rem; }
+  .media-three { grid-column: 5 / 10; margin-top: 4rem; }
   .media-four { grid-column: 2 / 6; margin-top: -2rem; }
   .media-one { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_waterfallmansion_living7.jpg"); }
   .media-two { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_tribeca_livingroom.jpg"); }
@@ -1575,10 +1573,13 @@
   @media (max-width: 980px) {
     .topline { display: none; }
     .hero-copy { padding-inline: 1.25rem; }
-    .hero-plate { width: 62vw; right: -16vw; bottom: 12vh; }
+    .hero-plate { width: 54vw; right: -18vw; bottom: 7vh; opacity: .54; }
+    .hero-copy::before { width: min(680px, 92vw); }
     .hero-line {
       display: grid;
       gap: .7rem;
+      grid-template-columns: 1fr;
+      max-width: min(100%, 38rem);
     }
     .hero-line p {
       min-height: auto;
@@ -1641,8 +1642,9 @@
     .menu { bottom: 5.6rem; padding: 2rem; }
     .puffer-field { grid-template-columns: repeat(5, 1fr); }
     h1 {
-      max-width: 7ch;
-      font-size: clamp(3.1rem, 15.5vw, 4.65rem);
+      max-width: 9ch;
+      font-size: clamp(2.8rem, 13vw, 4.3rem);
+      line-height: .95;
       overflow-wrap: normal;
     }
     .hero-copy { padding: 5.5rem 1.25rem 9rem; }
