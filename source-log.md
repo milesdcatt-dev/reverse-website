@@ -63,6 +63,54 @@ The project grid below is copied from the live Projects page. Titles are kept ex
 | 29 | Lower East Side Triplex | https://insonduboiswood.com/lower-east-side-triplex/ | https://insonduboiswood.com/wp-content/uploads/2018/08/1L.jpg |
 | 30 | Palm Beach Villa | https://insonduboiswood.com/palm-beach-villa/ | https://insonduboiswood.com/wp-content/uploads/2023/08/4-Front-3-1024x683.jpg |
 
+## About Page
+
+Source: https://insonduboiswood.com/about/
+
+Live page title: About
+
+Primary portrait image: https://insonduboiswood.com/wp-content/uploads/2023/01/insondwood_biophoto.jpg
+
+### Biography Facts
+
+- Inson Dubois Wood holds a Master of Architecture from the Graduate School of Design at Harvard University.
+- The About page names Frank Gehry, Rem Koolhaas, Wolf D. Prix of Coop Himmelb(l)au, and Zaha Hadid as major modernist figures he studied under at Harvard.
+- He holds a Bachelor of Architecture from Cornell University.
+- The About page says he graduated at the top of his class and won prestigious awards and traveling fellowships.
+- He served as design director for Juan Pablo Molyneux.
+- His work with Molyneux included the residential ocean liner Residensea and high-end residential projects around the world, including homes in Paris, London, and Naples.
+- He later worked as director of design for David Easton.
+- The About page says he directed design for 18 large-scale projects in major cities across the US, Europe, and Asia while working with Easton.
+- Inson formed his own company in 2005.
+- The About page says his work has included projects abroad in Austria, France, Italy, Japan, Sweden, and Thailand.
+- The About page describes his range as moving between traditional, contemporary, and modern styles, often combining styles.
+- The About page frames his practice around homes, memory, family life, attention to the footprint, philosophy, Buddhist principles, and respect for the spirit of each home.
+- The About page says each project is guided by Inson's design eye and custom-tailored to the owner and lifestyle.
+
+### Book And Recognition
+
+- Inson won the Hyland Award for Excellence in Residential Design.
+- The award is connected on the About page to the publication of his 330-page Rizzoli book, Inson Dubois Wood Interiors.
+- Rizzoli link: https://www.rizzoliusa.com/book/9780847848737/
+- The book is described as a full retrospective of his residential projects in five countries.
+
+### Award Assets
+
+| Asset | URL | Link Target |
+| --- | --- | --- |
+| Hyland award image | http://insonduboiswood.com/wp-content/uploads/2018/08/hyland.jpg | none listed |
+| Gold List image | http://insonduboiswood.com/wp-content/uploads/2018/08/goldlist.png | none listed |
+| Houzz badge image 1 | https://insonduboiswood.com/wp-content/uploads/2018/08/houzz-1.png | https://www.houzz.com/badges/user/insonduboiswood#communityBadges |
+| Houzz badge image 2 | https://insonduboiswood.com/wp-content/uploads/2021/06/houzz-2.png | https://www.houzz.com/badges/user/insonduboiswood#communityBadges |
+| HomeAdvisor badge | http://www.homeadvisor.com/images/sp-badges/soap-solid-border.png?sp=14589601&key=dd01b4459e880167dd868e72484f9dda | http://www.homeadvisor.com/rated.InsonDuboisWoodLLC.14589601.html |
+
+### About Page Redesign Notes
+
+- The existing page is mostly a portrait, long biography text, then award badges.
+- The redesign should make the biography easier to scan without losing the seriousness of the credentials.
+- Strong content hierarchy opportunity: Harvard/Cornell, mentors, Molyneux/Easton, studio founded in 2005, international work, design philosophy, book/award proof.
+- Avoid using the old page's paragraph formatting directly; it is dense and undersells the material.
+
 ## Footer Contact
 
 - Address: 526 West 26th St Suite #805, New York, NY 10001
