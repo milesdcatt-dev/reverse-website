@@ -185,25 +185,64 @@
   .cursor-chip {
     position: fixed;
     z-index: 50;
-    width: 124px;
-    height: 48px;
+    width: 34px;
+    height: 34px;
     display: grid;
     place-items: center;
     pointer-events: none;
     opacity: 0;
     color: white;
-    background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,255,255,.08));
-    border: 1px solid rgba(255,255,255,.24);
-    backdrop-filter: blur(18px);
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0;
-    text-transform: uppercase;
+    background: transparent;
+    border: 0;
+    filter: drop-shadow(0 0 7px rgba(255,255,255,.78)) drop-shadow(0 0 18px rgba(223,247,255,.34));
+    mix-blend-mode: screen;
     transform: translate3d(-50%, -50%, 0);
-    box-shadow: 0 0 34px rgba(248,251,255,.14);
-    transition: opacity .18s ease, width .28s var(--ease);
+    transition: opacity .16s ease, filter .22s ease;
   }
-  .cursor-chip.is-visible { opacity: 1; }
+  .cursor-chip svg {
+    width: 30px;
+    height: 30px;
+    overflow: visible;
+  }
+  .cursor-chip path {
+    fill: rgba(5,6,7,.18);
+    stroke: rgba(255,255,255,.95);
+    stroke-width: 2.35;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .cursor-chip::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 17px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0 0 12px rgba(255,255,255,.82);
+    opacity: 0;
+    transform: scale(.55);
+    transition: opacity .18s ease, transform .22s var(--ease);
+  }
+  .cursor-chip.is-visible {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,.9)) drop-shadow(0 0 24px rgba(223,247,255,.46));
+  }
+  .cursor-chip.is-hovering svg {
+    transform: scale(1.08);
+  }
+  .cursor-chip.is-visible::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    body.custom-cursor,
+    body.custom-cursor a,
+    body.custom-cursor button {
+      cursor: none;
+    }
+  }
 
   .topline {
     position: fixed;
@@ -1348,7 +1387,11 @@
 
   <div class="texture"></div>
   <div class="flow-field" aria-hidden="true"></div>
-  <div class="cursor-chip">View detail</div>
+  <div class="cursor-chip" aria-hidden="true">
+    <svg viewBox="0 0 28 28" focusable="false">
+      <path d="M4.6 3.8 22.4 13 14.7 15.1 11.2 22.3 4.6 3.8Z" />
+    </svg>
+  </div>
   <div class="progress" aria-hidden="true"><span></span></div>
 
   <div class="topline" aria-hidden="true">
@@ -1637,6 +1680,7 @@
   let lastScroll = window.scrollY;
   let scrollVelocity = 0;
   let scrollIdleTimer = 0;
+  let cursorVisible = false;
   let active = false;
 
   const diagnostics = {
@@ -1665,6 +1709,10 @@
     revealItems.forEach((item) => item.classList.add("is-in"));
   } else {
     window.setTimeout(() => loader?.classList.add("is-gone"), 1450);
+  }
+
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && cursor) {
+    document.body.classList.add("custom-cursor");
   }
 
   function setMenu(open) {
@@ -1710,6 +1758,10 @@
   window.addEventListener("pointermove", (event) => {
     mouseX = event.clientX;
     mouseY = event.clientY;
+    if (!cursorVisible && cursor) {
+      cursorVisible = true;
+      cursor.classList.add("is-visible");
+    }
     if (showcase) {
       const rect = showcase.getBoundingClientRect();
       const x = clamp((event.clientX - rect.left) / Math.max(1, rect.width)) * 100;
@@ -1722,10 +1774,14 @@
   cursorZones.forEach((item) => {
     item.addEventListener("pointerenter", () => {
       if (!cursor) return;
-      cursor.textContent = item.dataset.cursor || "View detail";
-      cursor.classList.add("is-visible");
+      cursor.dataset.label = item.dataset.cursor || "";
+      cursor.classList.add("is-hovering");
     });
-    item.addEventListener("pointerleave", () => cursor?.classList.remove("is-visible"));
+    item.addEventListener("pointerleave", () => {
+      if (!cursor) return;
+      cursor.dataset.label = "";
+      cursor.classList.remove("is-hovering");
+    });
   });
 
   magnetic.forEach((item) => {
@@ -1825,7 +1881,7 @@
 
     cursorX = lerp(cursorX, mouseX, .18);
     cursorY = lerp(cursorY, mouseY, .18);
-    if (cursor) cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+    if (cursor) cursor.style.transform = `translate3d(${cursorX - 3}px, ${cursorY - 2}px, 0) rotate(-8deg)`;
     updateDockLabel();
 
     rafId = requestFrame(tick);
