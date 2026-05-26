@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Reverse Website - Luxury Motion Shell</title>
-<meta name="description" content="Animation-first luxury website shell ready to receive scraped content." />
+<title>Inson Dubois Wood - Luxury Residential Design</title>
+<meta name="description" content="A cinematic redesign concept for Inson Dubois Wood, New York residential design and interiors." />
 <style>
   :root {
     --black: #050607;
@@ -305,7 +305,8 @@
     inset: 0;
     background:
       radial-gradient(circle at 74% 14%, rgba(255,255,255,.34), transparent 18rem),
-      linear-gradient(110deg, rgba(5,6,7,.92), rgba(5,6,7,.22) 46%, rgba(5,6,7,.86)),
+      linear-gradient(110deg, rgba(5,6,7,.95), rgba(5,6,7,.3) 46%, rgba(5,6,7,.9)),
+      url("https://insonduboiswood.com/wp-content/uploads/2018/08/1.2-7.jpg") center / cover,
       linear-gradient(140deg, #555d62, #e6e4dc 35%, #24282d 67%, #050607);
   }
   .puffer-field {
@@ -339,11 +340,21 @@
     box-shadow: 0 40px 110px rgba(0,0,0,.36);
     will-change: transform;
   }
+  .hero-plate::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.58)),
+      url("https://insonduboiswood.com/wp-content/uploads/2018/08/Inson_Thailand06Ha.jpg") center / cover;
+    opacity: .8;
+  }
   .hero-copy {
     position: relative;
     z-index: 4;
+    align-self: start;
     width: min(88vw, 1120px);
-    padding: 6rem 0 10rem;
+    padding: 5.5rem 0 8rem;
   }
   .eyebrow,
   .mini-title {
@@ -375,7 +386,7 @@
   h1 {
     max-width: 12ch;
     margin-top: 2rem;
-    font-size: clamp(3.8rem, 9.5vw, 10rem);
+    font-size: clamp(3.5rem, 6.4vw, 7.2rem);
     line-height: .86;
   }
   .hero-line {
@@ -554,10 +565,13 @@
     position: absolute;
     inset: -18%;
     background:
-      radial-gradient(circle at 76% 20%, rgba(255,255,255,.42), transparent 16rem),
-      radial-gradient(circle at 20% 84%, rgba(193,18,31,.42), transparent 16rem),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, transparent 1px 5rem),
+      linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.58)),
+      radial-gradient(circle at 76% 20%, rgba(255,255,255,.28), transparent 16rem),
+      radial-gradient(circle at 20% 84%, rgba(193,18,31,.26), transparent 16rem),
+      var(--photo),
       linear-gradient(135deg, #1c2026, #c3c7c8 45%, #07090b);
+    background-size: cover;
+    background-position: center;
     transform: translateY(var(--parallax, 0px)) scale(1.14);
   }
   .media-card::after {
@@ -586,6 +600,10 @@
   .media-two { grid-column: 8 / 12; margin-top: 14rem; }
   .media-three { grid-column: 5 / 10; margin-top: 8rem; }
   .media-four { grid-column: 2 / 6; margin-top: -2rem; }
+  .media-one { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_waterfallmansion_living7.jpg"); }
+  .media-two { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_tribeca_livingroom.jpg"); }
+  .media-three { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/75thStreet_01-1024x690.jpg"); }
+  .media-four { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/MALMO0144-1.jpg"); }
 
   .operating-system {
     background: var(--black);
@@ -710,6 +728,8 @@
     inset: -15%;
     background:
       radial-gradient(circle at var(--mx, 50%) var(--my, 40%), rgba(255,255,255,.46), transparent 13rem),
+      linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.58)),
+      url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_greenwich_staircase.jpg") center / cover,
       linear-gradient(135deg, #2b3036, #f3f2ea 42%, #07090b 74%);
     opacity: .64;
     transform: translateY(var(--showcase, 0px)) scale(1.08);
@@ -870,7 +890,11 @@
     .dock { bottom: 1rem; }
     .menu { bottom: 5.6rem; padding: 2rem; }
     .puffer-field { grid-template-columns: repeat(5, 1fr); }
-    h1 { font-size: clamp(3.7rem, 19vw, 5.8rem); }
+    h1 {
+      max-width: 7ch;
+      font-size: clamp(3.1rem, 15.5vw, 4.65rem);
+      overflow-wrap: normal;
+    }
     .hero-copy { padding: 5.5rem 1.25rem 9rem; }
     .proof-grid { grid-template-columns: 1fr; }
     .system-row,
@@ -911,8 +935,8 @@
   <div class="progress" aria-hidden="true"><span></span></div>
 
   <div class="topline" aria-hidden="true">
-    <span class="brand-mark">Reverse Shell</span>
-    <span>Luxury motion system</span>
+    <span class="brand-mark">Inson Dubois Wood</span>
+    <span>Residential Design and Interiors</span>
   </div>
 
   <nav class="dock" aria-label="Motion shell navigation">
@@ -937,13 +961,13 @@
       </div>
       <div class="hero-plate cursor-zone" data-slot="hero-media"></div>
       <div class="hero-copy reveal" data-slot="hero">
-        <div class="eyebrow">Rich shell ready for scraped content</div>
-        <h1>Make the page move like money.</h1>
+        <div class="eyebrow">New York residential design and interiors</div>
+        <h1>Architecture<br>with a<br>dangerous<br>sense of taste.</h1>
         <div class="hero-line">
-          <p>Luxury, loud, glossy, and structured. The content can change later; the motion system is already alive.</p>
+          <p>Inson Dubois Wood builds homes with Harvard-trained architecture, collector-level interiors, and the kind of confidence that does not ask permission.</p>
           <div class="cta-row">
-            <a class="button primary magnetic" href="#scrape-map">Map the scrape</a>
-            <a class="button magnetic" href="#visuals">See the shell</a>
+            <a class="button primary magnetic" href="#contact">Book consultation</a>
+            <a class="button magnetic" href="#visuals">View projects</a>
           </div>
         </div>
       </div>
@@ -951,21 +975,21 @@
 
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
-        <span>Chrome glare</span><span>Quilted depth</span><span>Black ice</span><span>Red flash</span>
-        <span>Premium pressure</span><span>Motion first</span><span>Chrome glare</span><span>Quilted depth</span>
-        <span>Black ice</span><span>Red flash</span><span>Premium pressure</span><span>Motion first</span>
+        <span>Harvard GSD</span><span>Cornell Architecture</span><span>Rizzoli monograph</span><span>Hyland Award</span>
+        <span>Architectural Digest</span><span>49 Google reviews</span><span>Harvard GSD</span><span>Cornell Architecture</span>
+        <span>Rizzoli monograph</span><span>Hyland Award</span><span>Architectural Digest</span><span>49 Google reviews</span>
       </div>
     </div>
 
     <section class="section light" id="brief" data-label="Brief">
       <div class="section-grid">
         <div class="intro-copy reveal" data-slot="brand-story">
-          <div class="mini-title">Positioning slot</div>
-          <h2>Built to feel cocky before the copy arrives.</h2>
+          <div class="mini-title">Pedigree</div>
+          <h2>Not a decorator. A whole architectural weapon.</h2>
         </div>
         <div class="intro-side reveal" data-slot="brand-summary">
-          <p>Use this area for scraped company summary, founder story, service promise, or product positioning. The layout already handles long copy without killing the vibe.</p>
-          <div class="slot" style="margin-top:1.2rem">Scraped intro copy goes here</div>
+          <p>Inson Dubois Wood holds a Master of Architecture from Harvard Graduate School of Design and a Bachelor of Architecture from Cornell. Before founding his studio, he served as design director for Juan Pablo Molyneux and David Easton, shaping high-end residential work across the U.S., Europe, and Asia.</p>
+          <div class="slot" style="margin-top:1.2rem">Own studio founded in 2005</div>
         </div>
       </div>
     </section>
@@ -973,20 +997,20 @@
     <section class="section dark image-strip" id="visuals" data-label="Visuals">
       <div class="section-grid stagger">
         <article class="media-card media-one cursor-zone" data-slot="visual-1">
-          <div class="slot">Image / video slot</div>
-          <h3>Hero Product</h3>
+          <div class="slot">Waterfall Mansion</div>
+          <h3>Opulent, not timid.</h3>
         </article>
         <article class="media-card media-two cursor-zone" data-slot="visual-2">
-          <div class="slot">Gallery slot</div>
-          <h3>Proof Shot</h3>
+          <div class="slot">Tribeca Loft</div>
+          <h3>Industrial made livable.</h3>
         </article>
         <article class="media-card media-three cursor-zone" data-slot="visual-3">
-          <div class="slot">Detail slot</div>
-          <h3>Detail Flex</h3>
+          <div class="slot">Upper East Side</div>
+          <h3>Townhouse discipline.</h3>
         </article>
         <article class="media-card media-four cursor-zone" data-slot="visual-4">
-          <div class="slot">Lifestyle slot</div>
-          <h3>Atmosphere</h3>
+          <div class="slot">Malmö, Sweden</div>
+          <h3>Modernist restraint.</h3>
         </article>
       </div>
     </section>
@@ -994,36 +1018,36 @@
     <section class="section operating-system" id="system" data-label="System">
       <div class="section-grid">
         <div class="sticky-copy reveal">
-          <div class="mini-title">Motion OS</div>
-          <h2>The sections are already wired.</h2>
+          <div class="mini-title">Services</div>
+          <h2>Full-scale design with no weak rooms.</h2>
         </div>
         <div class="system-list stagger">
           <article class="system-row" data-slot="section-1">
             <b>01</b>
             <div>
-              <h3>Hero content</h3>
-              <p>Designed for a headline, subhead, two CTAs, and a high-status visual. Mouse parallax and scroll movement are already active.</p>
+              <h3>Residential design</h3>
+              <p>Custom homes, home remodeling, restoration, and architectural design for clients who want the entire composition to feel intentional.</p>
             </div>
           </article>
           <article class="system-row" data-slot="section-2">
             <b>02</b>
             <div>
-              <h3>Offer stack</h3>
-              <p>Use for services, products, pricing tiers, or packages from the scraped site. Each row reveals cleanly and keeps the premium pace.</p>
+              <h3>Interior design</h3>
+              <p>Interior design, furniture selection, art selection, custom detailing, and room-by-room decisions handled with architectural control.</p>
             </div>
           </article>
           <article class="system-row" data-slot="section-3">
             <b>03</b>
             <div>
-              <h3>Proof + credibility</h3>
-              <p>Testimonials, certifications, stats, logos, reviews, or before/after assets can drop into the card grid below.</p>
+              <h3>Kitchens and baths</h3>
+              <p>Kitchen design, kitchen remodeling, bathroom design, millwork, storage, lighting, and material moves that make everyday rooms feel expensive.</p>
             </div>
           </article>
           <article class="system-row" data-slot="section-4">
             <b>04</b>
             <div>
-              <h3>Conversion close</h3>
-              <p>The bottom form area is already styled, readable, and animated so we can connect real fields later without changing the feel.</p>
+              <h3>Global residential perspective</h3>
+              <p>Projects and experience span New York, Greenwich, the Hamptons, Paris, London, Italy, Sweden, Thailand, and beyond.</p>
             </div>
           </article>
         </div>
@@ -1033,25 +1057,25 @@
     <section class="section lux-grid" id="proof" data-label="Proof">
       <div class="section-grid">
         <div class="section-heading reveal">
-          <div class="mini-title">Flex grid</div>
-          <h2>Flashy, but still useful.</h2>
+          <div class="mini-title">Receipts</div>
+          <h2>The flex is factual.</h2>
         </div>
         <div class="proof-grid stagger">
           <article class="proof cursor-zone" data-slot="stat-1">
-            <strong>01</strong>
-            <div class="slot">Metric / review</div>
+            <strong>49</strong>
+            <div class="slot">Google reviews marked excellent on his site</div>
           </article>
           <article class="proof cursor-zone" data-slot="stat-2">
-            <strong>02</strong>
-            <div class="slot">Service / feature</div>
+            <strong>5.0</strong>
+            <div class="slot">Houzz rating across 19 reviews</div>
           </article>
           <article class="proof cursor-zone" data-slot="stat-3">
-            <strong>03</strong>
-            <div class="slot">Trust badge</div>
+            <strong>320</strong>
+            <div class="slot">Pages in the Rizzoli monograph</div>
           </article>
           <article class="proof cursor-zone" data-slot="stat-4">
-            <strong>04</strong>
-            <div class="slot">CTA / guarantee</div>
+            <strong>2005</strong>
+            <div class="slot">Studio formed after Molyneux and Easton</div>
           </article>
         </div>
       </div>
@@ -1061,8 +1085,8 @@
       <div class="section-grid">
         <div class="showcase-card reveal cursor-zone" data-slot="big-showcase">
           <div class="showcase-content">
-            <h2>One big cinematic moment.</h2>
-            <div class="slot">Drop flagship offer, location, or main product here</div>
+            <h2>From Waterfall Mansion to Greenwich Manor.</h2>
+            <div class="slot">A portfolio that jumps countries, styles, and tax brackets</div>
           </div>
         </div>
       </div>
@@ -1071,29 +1095,29 @@
     <section class="section scrape-map" id="scrape-map" data-label="Data Map">
       <div class="section-grid">
         <div class="map-head reveal">
-          <div class="mini-title">Scrape map</div>
-          <h2>Send the source site next.</h2>
+          <div class="mini-title">Press and scope</div>
+          <h2>Published enough to stop explaining himself.</h2>
         </div>
         <div class="map-board stagger">
           <article class="map-item" data-slot="scrape-business">
-            <b>Business</b>
-            <div class="slot">Name, tagline, intro copy</div>
+            <b>Book</b>
+            <div class="slot">Inson Dubois Wood: Interiors, published by Rizzoli</div>
           </article>
           <article class="map-item" data-slot="scrape-offers">
-            <b>Offers</b>
-            <div class="slot">Services, products, packages, pricing</div>
+            <b>Press</b>
+            <div class="slot">Architectural Digest, Luxe, Vogue, Traditional Home, Hamptons C&G</div>
           </article>
           <article class="map-item" data-slot="scrape-proof">
-            <b>Proof</b>
-            <div class="slot">Reviews, awards, stats, locations</div>
+            <b>Projects</b>
+            <div class="slot">Central Park Penthouse, Lake Como Farm House, Palm Beach, Paris Penthouse</div>
           </article>
           <article class="map-item" data-slot="scrape-assets">
-            <b>Assets</b>
-            <div class="slot">Images, logo, gallery, social links</div>
+            <b>Awards</b>
+            <div class="slot">Hyland Award for Excellence in Residential Design</div>
           </article>
           <article class="map-item" data-slot="scrape-contact">
-            <b>Contact</b>
-            <div class="slot">Phone, email, forms, booking links</div>
+            <b>Office</b>
+            <div class="slot">526 West 26th St, Suite 805, New York, NY 10001</div>
           </article>
         </div>
       </div>
@@ -1102,14 +1126,15 @@
     <section class="section contact" id="contact" data-label="Contact">
       <div class="section-grid">
         <div class="contact-title reveal">
-          <div class="mini-title">Close slot</div>
-          <h2>Ready for the real pitch.</h2>
+          <div class="mini-title">Consultation</div>
+          <h2>Bring the impossible apartment. Bring the mansion.</h2>
         </div>
-        <form class="shell-form reveal" data-slot="form">
-          <label>Lead name<input type="text" placeholder="Scraped / manual name" /></label>
-          <label>Email<input type="email" placeholder="Email address" /></label>
-          <label>Project<textarea placeholder="What should this become?"></textarea></label>
-          <button class="button primary magnetic" type="button">Placeholder submit</button>
+        <form class="shell-form reveal" data-slot="form" action="mailto:inson@insonwood.com" method="post" enctype="text/plain">
+          <label>Name<input type="text" name="name" placeholder="Your name" /></label>
+          <label>Email<input type="email" name="email" placeholder="Email address" /></label>
+          <label>Project<textarea name="project" placeholder="Townhouse, apartment, country house, gut renovation..."></textarea></label>
+          <button class="button primary magnetic" type="submit">Email Inson</button>
+          <a class="button magnetic" href="tel:+12123431077">Call 212-343-1077</a>
         </form>
       </div>
     </section>
