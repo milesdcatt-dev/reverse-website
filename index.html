@@ -920,6 +920,28 @@
       transform: none;
     }
   }
+  html[data-motion-force="true"] .loader {
+    display: grid;
+  }
+  html[data-motion-force="true"] .loader-ring {
+    animation: ringPulse 1.35s var(--snap) forwards !important;
+  }
+  html[data-motion-force="true"] .cube {
+    animation: cubeSpin 1.35s var(--snap) forwards !important;
+  }
+  html[data-motion-force="true"] .marquee-track {
+    animation: marquee 24s linear infinite !important;
+  }
+  html[data-motion-force="true"] .dock-title span,
+  html[data-motion-force="true"] .dock-menu span,
+  html[data-motion-force="true"] .dock-menu::before,
+  html[data-motion-force="true"] .dock-menu::after,
+  html[data-motion-force="true"] .menu,
+  html[data-motion-force="true"] .button,
+  html[data-motion-force="true"] .reveal,
+  html[data-motion-force="true"] .stagger > * {
+    transition-duration: .45s !important;
+  }
 </style>
 </head>
 <body>
@@ -1142,8 +1164,12 @@
 
 <script>
 (() => {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const root = document.documentElement;
+  const params = new URLSearchParams(window.location.search);
+  const forceMotion = params.get("motion") === "on" || window.location.hash.includes("motion-on");
+  const reduce = motionQuery.matches && !forceMotion;
+  root.dataset.motionForce = String(forceMotion);
   const loader = document.querySelector(".loader");
   const dock = document.querySelector(".dock");
   const menuButton = document.querySelector(".dock-menu");
@@ -1155,61 +1181,109 @@
   const cards = [...document.querySelectorAll(".media-card")];
   const showcase = document.querySelector(".showcase-card");
   const magnetic = [...document.querySelectorAll(".magnetic")];
+  const sections = [...document.querySelectorAll("[data-label]")];
+  const revealItems = [...document.querySelectorAll(".reveal, .stagger")];
+  const cursorZones = [...document.querySelectorAll(".cursor-zone")];
 
-  if (!reduce) {
-    window.setTimeout(() => loader.classList.add("is-gone"), 1450);
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const lerp = (from, to, amount) => from + (to - from) * amount;
+  const vh = () => window.innerHeight || 1;
+  const vw = () => window.innerWidth || 1;
+  const now = () => window.performance?.now?.() || Date.now();
+  const requestFrame = window.requestAnimationFrame
+    ? (callback) => window.requestAnimationFrame(callback)
+    : (callback) => window.setTimeout(() => callback(now()), 16);
+  const cancelFrame = window.cancelAnimationFrame
+    ? (id) => window.cancelAnimationFrame(id)
+    : (id) => window.clearTimeout(id);
+  let rafId = 0;
+  let mouseX = vw() / 2;
+  let mouseY = vh() / 2;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+  let active = false;
+
+  const diagnostics = {
+    version: "inson-precise-1",
+    running: false,
+    lastFrame: 0,
+    getState: () => ({
+      running: active,
+      scroll: root.style.getPropertyValue("--scroll"),
+      menuOpen: Boolean(menu?.classList.contains("is-open")),
+      loaderGone: Boolean(loader?.classList.contains("is-gone")),
+      reduceMotion: motionQuery.matches
+    })
+  };
+  root.dataset.motionShell = diagnostics.version;
+  try {
+    window.__motionShell = diagnostics;
+  } catch (error) {
+    root.dataset.motionShellWindow = "locked";
+  }
+
+  if (reduce) {
+    loader?.classList.add("is-gone");
+    revealItems.forEach((item) => item.classList.add("is-in"));
+  } else {
+    window.setTimeout(() => loader?.classList.add("is-gone"), 1450);
   }
 
   function setMenu(open) {
+    if (!menu || !dock) return;
     menu.classList.toggle("is-open", open);
     dock.classList.toggle("is-open", open);
     document.body.classList.toggle("menu-open", open);
     menu.setAttribute("aria-hidden", String(!open));
+    menuButton?.setAttribute("aria-expanded", String(open));
   }
 
-  menuButton.addEventListener("click", () => setMenu(!menu.classList.contains("is-open")));
-  menu.addEventListener("click", (event) => {
+  menuButton?.setAttribute("aria-expanded", "false");
+  menuButton?.addEventListener("click", () => setMenu(!menu?.classList.contains("is-open")));
+  menu?.addEventListener("click", (event) => {
     if (event.target.closest("a")) setMenu(false);
   });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenu(false);
+  });
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("is-in");
-      revealObserver.unobserve(entry.target);
-    });
-  }, { threshold: .16 });
-  document.querySelectorAll(".reveal, .stagger").forEach((item) => revealObserver.observe(item));
+  if ("IntersectionObserver" in window && !reduce) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: .14 });
+    revealItems.forEach((item) => revealObserver.observe(item));
 
-  const labelObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const label = entry.target.dataset.label || "Home";
-      dockTitle.innerHTML = `${label}<br>Menu`;
-    });
-  }, { rootMargin: "-42% 0px -42% 0px" });
-  document.querySelectorAll("[data-label]").forEach((item) => labelObserver.observe(item));
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let cursorX = mouseX;
-  let cursorY = mouseY;
+    const labelObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || !dockTitle) return;
+        const label = entry.target.dataset.label || "Home";
+        dockTitle.innerHTML = `${label}<br>Menu`;
+      });
+    }, { rootMargin: "-44% 0px -44% 0px", threshold: 0 });
+    sections.forEach((item) => labelObserver.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("is-in"));
+  }
 
   window.addEventListener("pointermove", (event) => {
     mouseX = event.clientX;
     mouseY = event.clientY;
     if (showcase) {
       const rect = showcase.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width) * 100;
-      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      const x = clamp((event.clientX - rect.left) / Math.max(1, rect.width)) * 100;
+      const y = clamp((event.clientY - rect.top) / Math.max(1, rect.height)) * 100;
       showcase.style.setProperty("--mx", `${x}%`);
       showcase.style.setProperty("--my", `${y}%`);
     }
   }, { passive: true });
 
-  document.querySelectorAll(".cursor-zone").forEach((item) => {
-    item.addEventListener("pointerenter", () => cursor.classList.add("is-visible"));
-    item.addEventListener("pointerleave", () => cursor.classList.remove("is-visible"));
+  cursorZones.forEach((item) => {
+    item.addEventListener("pointerenter", () => cursor?.classList.add("is-visible"));
+    item.addEventListener("pointerleave", () => cursor?.classList.remove("is-visible"));
   });
 
   magnetic.forEach((item) => {
@@ -1217,22 +1291,48 @@
       const rect = item.getBoundingClientRect();
       const x = event.clientX - rect.left - rect.width / 2;
       const y = event.clientY - rect.top - rect.height / 2;
-      item.style.transform = `translate(${x * .12}px, ${y * .18}px)`;
+      item.style.transform = `translate3d(${x * .12}px, ${y * .18}px, 0)`;
     });
     item.addEventListener("pointerleave", () => {
       item.style.transform = "";
     });
   });
 
-  function tick() {
-    const scrollY = window.scrollY;
-    const height = window.innerHeight || 1;
-    const width = window.innerWidth || 1;
-    const maxScroll = Math.max(1, document.documentElement.scrollHeight - height);
-    const progress = scrollY / maxScroll;
-    root.style.setProperty("--scroll", progress.toFixed(4));
+  function updateDockLabel() {
+    if (!dockTitle || !sections.length) return;
+    const center = vh() * .5;
+    let current = sections[0];
+    let distance = Infinity;
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const nextDistance = Math.abs((rect.top + rect.height * .5) - center);
+      if (nextDistance < distance) {
+        distance = nextDistance;
+        current = section;
+      }
+    });
+    const label = current.dataset.label || "Home";
+    if (!dockTitle.innerHTML.startsWith(label)) {
+      dockTitle.innerHTML = `${label}<br>Menu`;
+    }
+  }
 
-    const heroProgress = Math.min(1, scrollY / height);
+  function tick(now = 0) {
+    active = true;
+    diagnostics.running = true;
+    diagnostics.lastFrame = Math.round(now);
+    root.dataset.motionRunning = "true";
+    root.dataset.motionFrame = String(diagnostics.lastFrame);
+
+    const scrollY = window.scrollY;
+    const height = vh();
+    const width = vw();
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - height);
+    const progress = clamp(scrollY / maxScroll);
+    root.style.setProperty("--scroll", progress.toFixed(4));
+    root.dataset.motionScroll = progress.toFixed(4);
+
+    const heroProgress = clamp(scrollY / height);
     quilts.forEach((quilt, index) => {
       const depth = (index - quilts.length / 2) * 2.5;
       const x = (mouseX / width - .5) * depth;
@@ -1247,24 +1347,45 @@
 
     cards.forEach((card) => {
       const rect = card.getBoundingClientRect();
-      const cardProgress = (rect.top - height) / (height + rect.height);
+      const cardProgress = clamp((rect.top - height) / (height + rect.height), -1, 1);
       card.style.setProperty("--parallax", `${cardProgress * -82}px`);
     });
 
     if (showcase) {
       const rect = showcase.getBoundingClientRect();
-      const showProgress = (rect.top - height) / (height + rect.height);
+      const showProgress = clamp((rect.top - height) / (height + rect.height), -1, 1);
       showcase.style.setProperty("--showcase", `${showProgress * -72}px`);
     }
 
-    cursorX += (mouseX - cursorX) * .18;
-    cursorY += (mouseY - cursorY) * .18;
-    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+    cursorX = lerp(cursorX, mouseX, .18);
+    cursorY = lerp(cursorY, mouseY, .18);
+    if (cursor) cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+    updateDockLabel();
 
-    requestAnimationFrame(tick);
+    rafId = requestFrame(tick);
   }
 
-  if (!reduce) requestAnimationFrame(tick);
+  function start() {
+    if (reduce || rafId) return;
+    rafId = requestFrame(tick);
+  }
+
+  function stop() {
+    if (!rafId) return;
+    cancelFrame(rafId);
+    rafId = 0;
+    active = false;
+    diagnostics.running = false;
+    root.dataset.motionRunning = "false";
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+    else start();
+  });
+  window.addEventListener("resize", () => requestFrame(updateDockLabel), { passive: true });
+
+  start();
 })();
 </script>
 </body>
