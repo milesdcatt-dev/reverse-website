@@ -274,12 +274,12 @@
   .dock {
     position: fixed;
     left: 50%;
-    bottom: 2.5rem;
+    bottom: .35rem;
     z-index: 40;
     width: min(320px, calc(100vw - 2rem));
-    height: 56px;
+    height: 46px;
     display: grid;
-    grid-template-columns: 56px 1fr 56px;
+    grid-template-columns: 46px 1fr 46px;
     align-items: center;
     color: white;
     background: var(--glass-dark);
@@ -295,7 +295,7 @@
   }
   .dock-logo,
   .dock-menu {
-    height: 56px;
+    height: 46px;
     display: grid;
     place-items: center;
   }
@@ -307,12 +307,12 @@
     box-shadow: inset 0 0 0 5px rgba(255,255,255,.08);
   }
   .dock-title {
-    height: 56px;
+    height: 46px;
     overflow: hidden;
     text-align: center;
     font-size: 11px;
     font-weight: 900;
-    line-height: 56px;
+    line-height: 46px;
     text-transform: uppercase;
   }
   .dock-title span {
@@ -523,10 +523,24 @@
   .hero-copy {
     position: relative;
     z-index: 4;
+    isolation: isolate;
     align-self: start;
     width: min(88vw, 1120px);
     padding: 5.5rem 0 8rem;
     text-shadow: 0 2px 24px rgba(0,0,0,.62);
+  }
+  .hero-copy::before {
+    content: "";
+    position: absolute;
+    inset: 4.1rem auto 5.4rem -1.2rem;
+    z-index: -1;
+    width: min(760px, 78vw);
+    background:
+      linear-gradient(100deg, rgba(5,6,7,.72), rgba(5,6,7,.34) 68%, transparent),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.055) 0 1px, transparent 1px 3.6rem);
+    border-left: 1px solid rgba(255,255,255,.22);
+    box-shadow: 0 28px 90px rgba(0,0,0,.28);
+    pointer-events: none;
   }
   .eyebrow,
   .mini-title {
@@ -685,6 +699,7 @@
   .section {
     position: relative;
     padding: clamp(5rem, 10vw, 11rem) clamp(1.25rem, 4vw, 4rem);
+    padding-bottom: clamp(8rem, 12vw, 13rem);
   }
   .section::before {
     content: "";
@@ -1007,6 +1022,7 @@
   .principal-quote {
     display: grid;
     gap: .75rem;
+    margin-bottom: 3.75rem;
     padding: 1rem;
     border: 1px solid rgba(255,255,255,.16);
     background:
@@ -1044,9 +1060,13 @@
   }
   .light .slot {
     border-color: rgba(17,19,22,.14);
+    color: rgba(17,19,22,.68);
     background:
-      linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.24)),
+      linear-gradient(135deg, rgba(255,255,255,.94), rgba(255,255,255,.56)),
       repeating-linear-gradient(90deg, rgba(17,19,22,.045) 0 1px, transparent 1px 2.4rem);
+    box-shadow:
+      inset 0 0 20px rgba(255,255,255,.34),
+      0 14px 44px rgba(17,19,22,.08);
   }
   .hero-proof {
     display: flex;
@@ -1103,7 +1123,7 @@
     background:
       repeating-linear-gradient(92deg, rgba(255,255,255,.13) 0 1px, transparent 1px 1.5rem),
       repeating-linear-gradient(0deg, transparent 0 7.2rem, rgba(248,251,255,.38) 7.35rem, transparent 7.8rem),
-      linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.58)),
+      linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.72)),
       radial-gradient(circle at 76% 20%, rgba(255,255,255,.28), transparent 16rem),
       radial-gradient(circle at 20% 84%, rgba(193,18,31,.26), transparent 16rem),
       var(--photo),
@@ -1118,7 +1138,7 @@
     inset: 0;
     background:
       radial-gradient(circle, rgba(255,255,255,.5) 0 1px, transparent 1.5px),
-      linear-gradient(180deg, transparent 30%, rgba(0,0,0,.64));
+      linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.72));
     background-size: 29px 37px, 100% 100%;
     mix-blend-mode: screen, normal;
     opacity: .58;
@@ -1129,7 +1149,8 @@
     inset: 1rem auto auto 1rem;
     width: min(210px, calc(100% - 2rem));
     color: rgba(255,255,255,.78);
-    background: rgba(0,0,0,.22);
+    background: rgba(5,6,7,.52);
+    backdrop-filter: blur(16px);
   }
   .project-meta {
     position: absolute;
@@ -1158,6 +1179,15 @@
     line-height: .88;
     text-shadow: 0 8px 34px rgba(0,0,0,.54);
   }
+  .media-card h3::before {
+    content: "";
+    position: absolute;
+    inset: -.7rem -1rem;
+    z-index: -1;
+    background: linear-gradient(135deg, rgba(5,6,7,.62), rgba(5,6,7,.18));
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(10px);
+  }
   .media-one { grid-column: 1 / 7; margin-top: 0; }
   .media-two { grid-column: 8 / 12; margin-top: 14rem; }
   .media-three { grid-column: 5 / 10; margin-top: 8rem; }
@@ -1180,8 +1210,8 @@
   }
   .sticky-copy h2 {
     margin-top: 1.2rem;
-    font-size: clamp(2.8rem, 5.8vw, 6.2rem);
-    line-height: .9;
+    font-size: clamp(2.8rem, 4.9vw, 5.25rem);
+    line-height: .92;
   }
   .system-list {
     grid-column: 6 / 13;
@@ -1285,15 +1315,17 @@
   .proof strong {
     position: relative;
     z-index: 1;
-    font-size: clamp(2.4rem, 5vw, 5rem);
+    font-size: clamp(2.25rem, 4.25vw, 4.7rem);
     line-height: .9;
     font-weight: 400;
+    overflow-wrap: anywhere;
   }
   .proof .slot {
     position: relative;
     z-index: 1;
     align-content: center;
     min-height: 6.5rem;
+    margin-bottom: 7rem;
     color: rgba(17,19,22,.68);
   }
   .proof-note {
@@ -1431,6 +1463,10 @@
     min-height: auto;
     justify-items: start;
     text-align: left;
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.36;
+    text-transform: none;
   }
 
   .contact {
@@ -1601,7 +1637,7 @@
     .hero::after { opacity: .46; }
     .media-card::after { opacity: .48; }
     .showcase-card::before { opacity: .64; }
-    .dock { bottom: 1rem; }
+    .dock { bottom: .35rem; }
     .menu { bottom: 5.6rem; padding: 2rem; }
     .puffer-field { grid-template-columns: repeat(5, 1fr); }
     h1 {
@@ -1714,9 +1750,10 @@
 
   <div class="menu" aria-hidden="true">
     <a href="#brief"><span>Profile</span></a>
-    <a href="#visuals"><span>Projects</span></a>
-    <a href="#system"><span>Services</span></a>
-    <a href="#scrape-map"><span>Credentials</span></a>
+    <a href="#visuals"><span>Rooms</span></a>
+    <a href="#system"><span>Practice</span></a>
+    <a href="#proof"><span>Monograph</span></a>
+    <a href="#scrape-map"><span>Archive</span></a>
     <a href="#contact"><span>Contact</span></a>
   </div>
 
@@ -1728,19 +1765,19 @@
       </div>
       <div class="hero-plate cursor-zone" data-slot="hero-media" data-cursor="Featured room"></div>
       <div class="hero-copy reveal" data-slot="hero">
-        <div class="eyebrow">New York residential design and interiors</div>
-        <h1>Architecture,<br>interiors,<br>and art in<br>one hand.</h1>
+        <div class="eyebrow">Inson Dubois Wood: Interiors</div>
+        <h1>A residential world, composed like an art book.</h1>
         <div class="hero-line">
-          <p>Inson Dubois Wood leads a New York studio for clients who want the plan, the materials, the furniture, and the art to feel composed from the first line to the final object.</p>
+          <p>A moving archive of architecture, interiors, antiques, paintings, objects, texture, and proportion from a New York practice shaped by Harvard, Cornell, Thailand, France, and decades of private residential work.</p>
           <div class="cta-row">
-            <a class="button primary magnetic" href="#contact">Book consultation</a>
-            <a class="button magnetic" href="#visuals">View projects</a>
+            <a class="button primary magnetic" href="#proof">Read monograph</a>
+            <a class="button magnetic" href="#visuals">View rooms</a>
           </div>
         </div>
         <div class="hero-proof" aria-label="Studio proof points">
-          <span>Harvard GSD</span>
-          <span>Founded 2005</span>
-          <span>49 Google reviews</span>
+          <span>Rizzoli, 2016</span>
+          <span>320 pages</span>
+          <span>Photography by Mark Roskams</span>
         </div>
       </div>
     </section>
@@ -1828,7 +1865,7 @@
       </div>
     </section>
 
-    <section class="section dark image-strip" id="visuals" data-label="Visuals">
+    <section class="section dark image-strip" id="visuals" data-label="Rooms">
       <div class="section-grid stagger">
         <article class="media-card media-one cursor-zone" data-slot="visual-1" data-cursor="Waterfall">
           <div class="slot">Waterfall Mansion</div>
@@ -1853,72 +1890,72 @@
       </div>
     </section>
 
-    <section class="section operating-system" id="system" data-label="Services">
+    <section class="section operating-system" id="system" data-label="Practice">
       <div class="section-grid">
         <div class="sticky-copy reveal">
-          <div class="mini-title">Services</div>
-          <h2>Every room held to the same standard.</h2>
+          <div class="mini-title">Practice</div>
+          <h2>The work moves between architecture, rooms, and objects.</h2>
         </div>
         <div class="system-list stagger">
           <article class="system-row" data-slot="section-1">
             <b>01</b>
             <div>
-              <h3>Residential design</h3>
-              <p>Custom homes, townhouses, apartments, restoration, remodeling, and architectural planning handled as one complete residential composition.</p>
+              <h3>Architecture</h3>
+              <p>Plans, circulation, restoration, remodeling, and architectural decisions give the residence its structure before decoration enters.</p>
             </div>
           </article>
           <article class="system-row" data-slot="section-2">
             <b>02</b>
             <div>
-              <h3>Interior design</h3>
-              <p>Furniture, art, lighting, fabrics, finishes, custom detailing, and room-by-room decisions shaped around how the residence is actually lived in.</p>
+              <h3>Rooms</h3>
+              <p>Furniture, art, lighting, fabrics, finishes, and custom detailing are edited into rooms that feel layered rather than staged.</p>
             </div>
           </article>
           <article class="system-row" data-slot="section-3">
             <b>03</b>
             <div>
-              <h3>Kitchens and baths</h3>
-              <p>Kitchen design, bath design, millwork, storage, lighting, hardware, and stone decisions that make the most-used rooms feel considered, durable, and personal.</p>
+              <h3>Objects</h3>
+              <p>Antiques, modern furniture, paintings, and collected objects are treated as part of the architecture, not accessories added at the end.</p>
             </div>
           </article>
           <article class="system-row" data-slot="section-4">
             <b>04</b>
             <div>
-              <h3>Global residential perspective</h3>
-              <p>Projects and experience span New York, Greenwich, the Hamptons, Paris, London, Italy, Sweden, Thailand, and beyond, giving each commission a wider visual vocabulary.</p>
+              <h3>Range</h3>
+              <p>Traditional, contemporary, and modern references move through New York, Greenwich, Sweden, Thailand, Saint-Tropez, Lake Como, and Paris.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section lux-grid" id="proof" data-label="Proof">
+    <section class="section lux-grid" id="proof" data-label="Monograph">
       <div class="section-grid">
         <div class="section-heading reveal">
-          <div class="mini-title">Proof</div>
-          <h2>Credentials clients can verify.</h2>
+          <div class="mini-title">Monograph</div>
+          <h2>The book is the clearest way into the work.</h2>
         </div>
         <div class="proof-grid stagger">
           <article class="proof cursor-zone" data-slot="stat-1" data-cursor="Proof">
-            <strong>49</strong>
-            <div class="slot">Google reviews listed on the studio's site</div>
+            <strong>2016</strong>
+            <div class="slot">Published by Rizzoli on September 20</div>
           </article>
           <article class="proof cursor-zone" data-slot="stat-2" data-cursor="Rating">
-            <strong>5.0</strong>
-            <div class="slot">Houzz rating across 19 reviews</div>
+            <strong>320</strong>
+            <div class="slot">Hardcover pages of residential interiors</div>
           </article>
           <article class="proof cursor-zone" data-slot="stat-3" data-cursor="Book">
-            <strong>320</strong>
-            <div class="slot">Pages in the Rizzoli monograph</div>
+            <strong>Rizzoli</strong>
+            <div class="slot">First monograph on his interior design work</div>
           </article>
           <article class="proof cursor-zone" data-slot="stat-4" data-cursor="Studio">
-            <strong>2005</strong>
-            <div class="slot">Year Inson Dubois Wood founded his studio</div>
+            <strong>Roskams</strong>
+            <div class="slot">Photography by Mark Roskams</div>
           </article>
         </div>
         <div class="proof-note reveal">
-          <b>What the proof means</b>
-          <span>The numbers are not decoration. They support the pitch: a principal-led studio with formal architecture training, published work, client reviews, and enough range to handle a residence as a complete cultural object, not a collection of disconnected rooms.</span>
+          <b>What the book shows</b>
+          <span>Richness, texture, impeccable proportions, subtle tonality, colorful accents, antiques, modern furniture, Waterfall Mansion in New York, a family home in Greenwich, and a villa in Saint-Tropez.</span>
         </div>
       </div>
     </section>
@@ -1934,32 +1971,32 @@
       </div>
     </section>
 
-    <section class="section scrape-map" id="scrape-map" data-label="Credentials">
+    <section class="section scrape-map" id="scrape-map" data-label="Archive">
       <div class="section-grid">
         <div class="map-head reveal">
-          <div class="mini-title">Press and scope</div>
-          <h2>The authority comes from built work.</h2>
+          <div class="mini-title">Archive</div>
+          <h2>His range is the story.</h2>
         </div>
         <div class="map-board stagger">
           <article class="map-item" data-slot="scrape-business">
-            <b>Book</b>
-            <div class="slot">Inson Dubois Wood: Interiors, published by Rizzoli</div>
+            <b>Roots</b>
+            <div class="slot">United States, Thailand, and France shape the studio's cosmopolitan point of view</div>
           </article>
           <article class="map-item" data-slot="scrape-offers">
-            <b>Press</b>
-            <div class="slot">Architectural Digest, Luxe, Vogue, Traditional Home, Hamptons C&amp;G</div>
+            <b>Method</b>
+            <div class="slot">Architectural elements define space before color, furniture, and objects refine it</div>
           </article>
           <article class="map-item" data-slot="scrape-proof">
-            <b>Projects</b>
-            <div class="slot">Central Park Penthouse, Lake Como Farm House, Palm Beach, Paris Penthouse</div>
+            <b>Places</b>
+            <div class="slot">New York, Greenwich, Saint-Tropez, Lake Como, Palm Beach, Paris, Sweden, Thailand</div>
           </article>
           <article class="map-item" data-slot="scrape-assets">
-            <b>Awards</b>
-            <div class="slot">Hyland Award for Excellence in Residential Design</div>
+            <b>Spirit</b>
+            <div class="slot">Buddhist principles and respect for the spirit of the home guide the work</div>
           </article>
           <article class="map-item" data-slot="scrape-contact">
-            <b>Office</b>
-            <div class="slot">526 West 26th St, Suite 805, New York, NY 10001</div>
+            <b>Press</b>
+            <div class="slot">Architectural Digest, Luxe, Vogue, Traditional Home, Hamptons C&amp;G</div>
           </article>
         </div>
       </div>
