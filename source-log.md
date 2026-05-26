@@ -146,6 +146,46 @@ Intro line: Inson Dubois Wood interior design offers professional and personally
 - Strong opportunity: group services into a polished practice menu, but keep the page informational and restrained rather than salesy.
 - The current service language supports the broader site framing: residential design, interiors, art, custom homes, remodeling, restoration, kitchens, and bathrooms.
 
+## Reviews Page
+
+Source: https://insonduboiswood.com/reviews/
+
+Live page title: Reviews
+
+WordPress page ID: 1988
+
+Proof summary:
+
+- Label: EXCELLENT
+- Count: 49 reviews on Google
+- Visible reviews on page: 10
+- Visible review rating: 5 stars on each review card in the screenshot/live page
+
+### Visible Google Reviews
+
+These are logged as structured source notes for design/content planning. Keep names and dates exact. Use short review excerpts or summaries in the redesign instead of reproducing every full review paragraph.
+
+| No. | Reviewer | Date | Source Themes |
+| ---: | --- | --- | --- |
+| 1 | Ezra Bershatsky | July 27, 2022 | Kind, communicative, strong taste, reads vague briefs, helped achieve a beautiful home within a more limited budget. |
+| 2 | Josie Lee | April 26, 2022 | Full apartment renovation, sleek storage, space efficiency, creative details, yacht-like compact interior, budget-aware alternatives. |
+| 3 | Rohan Shetty | November 18, 2021 | Large house relocation, value-added sourcing, modern lifestyle, timeless materials, luxe finishes, professional contractors, transformed family home. |
+| 4 | Kelly Williams | November 16, 2021 | First property, full gut renovation, three-month timeline, difficult co-op board, reliable team, jewel-box apartment result. |
+| 5 | Asher Friedman | November 10, 2021 | Tribeca loft, livable family space, mudroom vestibule, lacquer kitchen, walnut millwork, clean modern bathrooms, durable construction. |
+| 6 | Sandy T | November 1, 2021 | Upper East Side apartment, tight move timeline, architectural transformation, organized process, construction coordination, joyful final home. |
+| 7 | Sarah Rosen | October 5, 2021 | 12,000-square-foot gut renovation in Conyers Farm, eight bathrooms, master wing, new circulation, polite and professional workers. |
+| 8 | Cecile Scherer | September 22, 2021 | Gut renovation completed 11 years earlier, responsive and professional, long-term follow-up, apartment aged well. |
+| 9 | Karrie Kan | March 2, 2021 | Park Avenue pied-a-terre, estate-condition apartment, reconfigured kitchen, master wing dressing/bathroom combination, impeccable taste. |
+| 10 | stephanie smart | January 2, 2021 | Talent, Rizzoli book praise, stunning work. |
+
+### Reviews Page Redesign Notes
+
+- The current review page uses a Google review widget/card stack, with gray cards, profile initials/photos, Google marks, star ratings, and "Read more" links.
+- Keep the proof claim simple and credible: "EXCELLENT" and "49 reviews on Google."
+- The strongest proof themes are budget intelligence, impossible timelines, gut renovations, storage strategy, architectural flow, material taste, contractor/team management, and long-term client care.
+- For the luxury art-book direction, use fewer, stronger testimonial excerpts with reviewer/date metadata, then link or imply the larger review body.
+- Avoid making the testimonials feel like generic sales copy; the real reviews have vivid project-specific details that should carry the section.
+
 ## Footer Contact
 
 - Address: 526 West 26th St Suite #805, New York, NY 10001
