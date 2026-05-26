@@ -14,6 +14,9 @@
     --bone: #fbf8ef;
     --silver: #cfd3d4;
     --ice: #eef5f6;
+    --platinum: #f8fbff;
+    --champagne: #b88a4b;
+    --electric: #dff7ff;
     --red: #c1121f;
     --muted: rgba(17, 19, 22, .58);
     --line-dark: rgba(255, 255, 255, .16);
@@ -39,9 +42,10 @@
     overflow-x: hidden;
     font-family: "Helvetica Neue", Arial, sans-serif;
     background:
-      radial-gradient(circle at 80% 8%, rgba(255, 255, 255, .9), transparent 24rem),
-      radial-gradient(circle at 8% 20%, rgba(193, 18, 31, .16), transparent 20rem),
-      linear-gradient(180deg, #f3efe6 0%, #dedbd2 42%, #0a0d10 100%);
+      radial-gradient(circle at 80% 8%, rgba(255, 255, 255, .88), transparent 24rem),
+      radial-gradient(circle at 8% 20%, rgba(193, 18, 31, .18), transparent 20rem),
+      radial-gradient(circle at 52% 74%, rgba(223,247,255,.14), transparent 28rem),
+      linear-gradient(180deg, #f3efe6 0%, #dedbd2 38%, #0a0d10 100%);
   }
   body::before {
     content: "";
@@ -129,12 +133,13 @@
     inset: 0;
     z-index: 3;
     pointer-events: none;
-    opacity: .15;
+    opacity: .18;
     mix-blend-mode: overlay;
     background-image:
+      radial-gradient(circle, rgba(255,255,255,.52) 0 1px, transparent 1.5px),
       linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px),
       linear-gradient(0deg, rgba(0,0,0,.1) 1px, transparent 1px);
-    background-size: 44px 44px;
+    background-size: 31px 31px, 44px 44px, 44px 44px;
   }
   .flow-field {
     position: fixed;
@@ -142,7 +147,7 @@
     z-index: 2;
     overflow: hidden;
     pointer-events: none;
-    mix-blend-mode: soft-light;
+    mix-blend-mode: screen;
   }
   .flow-field::before,
   .flow-field::after {
@@ -152,8 +157,8 @@
     width: 124vw;
     height: 42vh;
     border-radius: 50%;
-    opacity: .32;
-    filter: blur(24px);
+    opacity: .3;
+    filter: blur(10px);
     transform: translate3d(calc(var(--flow-velocity) * 1.6vw), calc(var(--flow) * -18vh), 0) rotate(-6deg);
     will-change: transform;
   }
@@ -161,7 +166,7 @@
     top: 18vh;
     background:
       linear-gradient(90deg, transparent, rgba(255,255,255,.64), rgba(193,18,31,.18), transparent),
-      repeating-linear-gradient(100deg, rgba(255,255,255,.16) 0 1px, transparent 1px 4.4rem);
+      repeating-linear-gradient(100deg, rgba(255,255,255,.2) 0 1px, transparent 1px 4.4rem);
   }
   .flow-field::after {
     top: 58vh;
@@ -361,6 +366,8 @@
     position: absolute;
     inset: 0;
     background:
+      repeating-linear-gradient(92deg, rgba(255,255,255,.12) 0 1px, transparent 1px 1.65rem),
+      repeating-linear-gradient(0deg, transparent 0 7.5rem, rgba(248,251,255,.3) 7.62rem, transparent 8.05rem),
       radial-gradient(circle at 74% 14%, rgba(255,255,255,.34), transparent 18rem),
       linear-gradient(110deg, rgba(5,6,7,.95), rgba(5,6,7,.3) 46%, rgba(5,6,7,.9)),
       url("https://insonduboiswood.com/wp-content/uploads/2018/08/1.2-7.jpg") center / cover,
@@ -369,23 +376,60 @@
     transform-origin: center top;
     will-change: transform;
   }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: .58;
+    background:
+      linear-gradient(90deg, transparent 0 43%, rgba(184,138,75,.58) 49%, rgba(255,255,255,.5) 50%, rgba(184,138,75,.4) 51%, transparent 58%),
+      repeating-linear-gradient(0deg, transparent 0 8.4rem, rgba(248,251,255,.58) 8.55rem, rgba(223,247,255,.25) 8.75rem, transparent 9.25rem),
+      radial-gradient(ellipse at 50% 5%, rgba(255,255,255,.76), transparent 18rem);
+    mix-blend-mode: screen;
+    mask-image: linear-gradient(90deg, rgba(0,0,0,.46), #000 42%, #000 100%);
+    transform: translate3d(0, calc(var(--flow) * -4vh), 0);
+    will-change: transform;
+  }
   .puffer-field {
     position: absolute;
     inset: 0;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    opacity: .48;
+    z-index: 1;
+    opacity: .72;
     transform: skewX(-8deg) scale(1.12);
-    filter: contrast(1.06);
+    filter: contrast(1.16) saturate(1.05);
   }
   .quilt {
+    position: relative;
     min-height: 100%;
     border-right: 1px solid rgba(255,255,255,.18);
     background:
-      radial-gradient(ellipse at 50% 18%, rgba(255,255,255,.28), transparent 46%),
-      linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,0,0,.28));
-    box-shadow: inset 18px 0 38px rgba(255,255,255,.08), inset -24px 0 42px rgba(0,0,0,.34);
+      radial-gradient(ellipse at 50% 12%, rgba(255,255,255,.54), transparent 42%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, transparent 1px 9px),
+      repeating-linear-gradient(0deg, transparent 0 8.3rem, rgba(248,251,255,.5) 8.45rem, rgba(223,247,255,.18) 8.8rem, transparent 9.4rem),
+      linear-gradient(180deg, rgba(255,255,255,.16), rgba(0,0,0,.36));
+    background-position: 0 calc(var(--flow) * -120px), 0 calc(var(--flow) * -90px), 0 calc(var(--flow) * -180px), 0 0;
+    box-shadow:
+      inset 16px 0 34px rgba(255,255,255,.14),
+      inset -24px 0 42px rgba(0,0,0,.38),
+      inset 0 0 36px rgba(223,247,255,.18);
+    overflow: hidden;
     will-change: transform;
+  }
+  .quilt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .5;
+    background:
+      radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.6px),
+      linear-gradient(180deg, rgba(255,255,255,.32), transparent 30%, rgba(255,255,255,.18));
+    background-size: 23px 31px, 100% 100%;
+    mix-blend-mode: screen;
+    transform: translate3d(0, calc(var(--flow) * -36px), 0);
   }
   .hero-plate {
     position: absolute;
@@ -397,7 +441,11 @@
       linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.04)),
       radial-gradient(circle at 70% 10%, rgba(193,18,31,.5), transparent 12rem);
     backdrop-filter: blur(14px);
-    box-shadow: 0 40px 110px rgba(0,0,0,.36);
+    box-shadow:
+      0 40px 110px rgba(0,0,0,.36),
+      0 0 42px rgba(248,251,255,.26),
+      inset 0 0 34px rgba(255,255,255,.16);
+    z-index: 3;
     will-change: transform;
   }
   .hero-plate::before {
@@ -409,12 +457,25 @@
       url("https://insonduboiswood.com/wp-content/uploads/2018/08/Inson_Thailand06Ha.jpg") center / cover;
     opacity: .8;
   }
+  .hero-plate::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent 44%, rgba(184,138,75,.72) 48%, rgba(255,255,255,.62) 50%, rgba(184,138,75,.58) 52%, transparent 57%),
+      repeating-linear-gradient(0deg, transparent 0 5.8rem, rgba(255,255,255,.55) 5.95rem, transparent 6.35rem),
+      radial-gradient(circle at 72% 16%, rgba(255,255,255,.68), transparent 7rem);
+    mix-blend-mode: screen;
+    opacity: .86;
+  }
   .hero-copy {
     position: relative;
     z-index: 4;
     align-self: start;
     width: min(88vw, 1120px);
     padding: 5.5rem 0 8rem;
+    text-shadow: 0 2px 24px rgba(0,0,0,.62);
   }
   .eyebrow,
   .mini-title {
@@ -496,7 +557,9 @@
     border-color: var(--red);
     background: var(--red);
     color: white;
-    box-shadow: 0 18px 38px rgba(193,18,31,.34);
+    box-shadow:
+      0 18px 38px rgba(193,18,31,.34),
+      0 0 26px rgba(255,255,255,.18);
   }
   @media (hover: hover) {
     .button:hover {
@@ -636,8 +699,11 @@
     overflow: hidden;
     color: white;
     background: #1b2024;
-    border: 1px solid rgba(255,255,255,.14);
-    box-shadow: 0 38px 90px rgba(0,0,0,.26);
+    border: 1px solid rgba(255,255,255,.22);
+    box-shadow:
+      0 38px 90px rgba(0,0,0,.28),
+      0 0 34px rgba(223,247,255,.12),
+      inset 0 0 24px rgba(255,255,255,.08);
     will-change: transform;
     transform: translate3d(0, var(--card-flow, 0px), 0) scale(var(--card-scale, 1));
   }
@@ -646,6 +712,8 @@
     position: absolute;
     inset: -18%;
     background:
+      repeating-linear-gradient(92deg, rgba(255,255,255,.13) 0 1px, transparent 1px 1.5rem),
+      repeating-linear-gradient(0deg, transparent 0 7.2rem, rgba(248,251,255,.38) 7.35rem, transparent 7.8rem),
       linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.58)),
       radial-gradient(circle at 76% 20%, rgba(255,255,255,.28), transparent 16rem),
       radial-gradient(circle at 20% 84%, rgba(193,18,31,.26), transparent 16rem),
@@ -659,7 +727,12 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,.58));
+    background:
+      radial-gradient(circle, rgba(255,255,255,.5) 0 1px, transparent 1.5px),
+      linear-gradient(180deg, transparent 30%, rgba(0,0,0,.64));
+    background-size: 29px 37px, 100% 100%;
+    mix-blend-mode: screen, normal;
+    opacity: .58;
   }
   .media-card .slot {
     position: absolute;
@@ -754,6 +827,7 @@
     color: var(--ink);
     background:
       linear-gradient(135deg, rgba(255,255,255,.86), rgba(255,255,255,.22)),
+      repeating-linear-gradient(0deg, transparent 0 4.9rem, rgba(223,247,255,.36) 5.05rem, transparent 5.4rem),
       radial-gradient(circle at 70% 10%, rgba(193,18,31,.12), transparent 12rem);
     border: 1px solid var(--line-light);
     overflow: hidden;
@@ -763,7 +837,9 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(90deg, rgba(17,19,22,.05) 0 1px, transparent 1px 4.8rem);
+    background:
+      repeating-linear-gradient(90deg, rgba(17,19,22,.05) 0 1px, transparent 1px 4.8rem),
+      radial-gradient(circle at 76% 12%, rgba(255,255,255,.7), transparent 8rem);
     pointer-events: none;
   }
   .proof strong {
@@ -796,11 +872,14 @@
     grid-column: 2 / 12;
     position: relative;
     min-height: 82svh;
-    border: 1px solid rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.26);
     background:
       linear-gradient(120deg, rgba(255,255,255,.12), rgba(255,255,255,.02)),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 7rem);
-    box-shadow: 0 50px 130px rgba(0,0,0,.36);
+      repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 7rem);
+    box-shadow:
+      0 50px 130px rgba(0,0,0,.36),
+      0 0 55px rgba(248,251,255,.16),
+      inset 0 0 36px rgba(255,255,255,.1);
     overflow: hidden;
     transform: translate3d(0, var(--showcase-flow, 0px), 0) scale(var(--showcase-scale, 1));
     will-change: transform;
@@ -810,11 +889,13 @@
     position: absolute;
     inset: -15%;
     background:
+      repeating-linear-gradient(92deg, rgba(255,255,255,.14) 0 1px, transparent 1px 1.7rem),
+      repeating-linear-gradient(0deg, transparent 0 8rem, rgba(248,251,255,.46) 8.12rem, transparent 8.62rem),
       radial-gradient(circle at var(--mx, 50%) var(--my, 40%), rgba(255,255,255,.46), transparent 13rem),
       linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.58)),
       url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_greenwich_staircase.jpg") center / cover,
       linear-gradient(135deg, #2b3036, #f3f2ea 42%, #07090b 74%);
-    opacity: .64;
+    opacity: .72;
     transform: translateY(var(--showcase, 0px)) scale(1.08);
   }
   .showcase-content {
