@@ -111,6 +111,41 @@ Primary portrait image: https://insonduboiswood.com/wp-content/uploads/2023/01/i
 - Strong content hierarchy opportunity: Harvard/Cornell, mentors, Molyneux/Easton, studio founded in 2005, international work, design philosophy, book/award proof.
 - Avoid using the old page's paragraph formatting directly; it is dense and undersells the material.
 
+## Services Page
+
+Source: https://insonduboiswood.com/services/
+
+Live page title: Services
+
+WordPress page ID: 549
+
+Intro line: Inson Dubois Wood interior design offers professional and personally tailored custom services
+
+### Published Services
+
+- Interior design
+- Furniture selection
+- Art selection
+- Bathroom design
+- Kitchen design
+- Kitchen remodeling
+- Residential design
+- Custom homes
+- Home remodeling
+- Home restoration
+
+### Services CTA
+
+- Text: Contact for quotes and consultation
+- URL: https://insonduboiswood.com/contact/
+
+### Services Page Redesign Notes
+
+- The existing page is extremely minimal: a centered intro line, simple service list, and one contact link.
+- Keep the service list exact. Do not add service categories unless they are presentation labels around these same published services.
+- Strong opportunity: group services into a polished practice menu, but keep the page informational and restrained rather than salesy.
+- The current service language supports the broader site framing: residential design, interiors, art, custom homes, remodeling, restoration, kitchens, and bathrooms.
+
 ## Footer Contact
 
 - Address: 526 West 26th St Suite #805, New York, NY 10001
