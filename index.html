@@ -932,9 +932,9 @@
     padding: clamp(1.25rem, 3vw, 3rem);
   }
   .principal-copy h2 {
-    max-width: 8.8ch;
-    font-size: clamp(3.4rem, 9vw, 9.2rem);
-    line-height: .82;
+    max-width: 11ch;
+    font-size: clamp(3.2rem, 6.8vw, 7.4rem);
+    line-height: .86;
     text-wrap: balance;
   }
   .principal-copy p {
@@ -958,6 +958,51 @@
     font-size: 10px;
     font-weight: 900;
     text-transform: uppercase;
+  }
+  .signature-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .7rem;
+    margin-top: 1rem;
+  }
+  .signature-chip {
+    position: relative;
+    min-height: 8.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .9rem;
+    border: 1px solid rgba(255,255,255,.14);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.095), rgba(255,255,255,.026)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 2.7rem);
+    box-shadow: inset 0 0 24px rgba(255,255,255,.045);
+    overflow: hidden;
+  }
+  .signature-chip::before {
+    content: "";
+    position: absolute;
+    inset: -40% -20%;
+    opacity: .46;
+    background:
+      linear-gradient(110deg, transparent 34%, rgba(248,251,255,.34) 50%, transparent 64%),
+      radial-gradient(circle at 78% 12%, rgba(193,18,31,.18), transparent 7rem);
+    transform: translate3d(calc(var(--flow-velocity) * 1rem), calc(var(--flow) * -1.2rem), 0);
+  }
+  .signature-chip b,
+  .signature-chip span {
+    position: relative;
+    z-index: 1;
+  }
+  .signature-chip b {
+    color: var(--electric);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .signature-chip span {
+    color: rgba(255,255,255,.66);
+    font-size: .92rem;
+    line-height: 1.35;
   }
   .principal-quote {
     display: grid;
@@ -1251,6 +1296,30 @@
     min-height: 6.5rem;
     color: rgba(17,19,22,.68);
   }
+  .proof-note {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: .52fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    color: var(--ink);
+    border: 1px solid rgba(17,19,22,.14);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,255,255,.3)),
+      repeating-linear-gradient(90deg, rgba(17,19,22,.04) 0 1px, transparent 1px 3.4rem);
+    box-shadow: 0 24px 70px rgba(17,19,22,.08);
+  }
+  .proof-note b {
+    color: var(--red);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .proof-note span {
+    max-width: 56rem;
+    color: rgba(17,19,22,.68);
+    line-height: 1.5;
+  }
   @media (hover: hover) {
     .proof:hover {
       transform: translateY(-8px);
@@ -1513,6 +1582,7 @@
     .dna-rail { grid-template-columns: 1fr 1fr; }
     .principal-card { grid-template-columns: 1fr; }
     .principal-portrait { min-height: 58svh; }
+    .signature-strip { grid-template-columns: 1fr; }
     .showcase-card { min-height: 78svh; }
     .showcase-content { grid-template-columns: 1fr; }
     .media-one,
@@ -1550,6 +1620,7 @@
       font-size: 9px;
     }
     .proof-grid { grid-template-columns: 1fr; }
+    .proof-note { grid-template-columns: 1fr; }
     .dna-rail { grid-template-columns: 1fr; }
     .dna-card { min-height: 11rem; }
     .principal-card { min-height: auto; }
@@ -1628,6 +1699,7 @@
     </svg>
   </div>
   <div class="progress" aria-hidden="true"><span></span></div>
+  <output class="motion-health" aria-hidden="true" hidden></output>
 
   <div class="topline" aria-hidden="true">
     <span class="brand-mark">Inson Dubois Wood</span>
@@ -1732,6 +1804,20 @@
                 <span>Private collections</span>
                 <span>Architecture + art</span>
               </div>
+              <div class="signature-strip" aria-label="Studio signature">
+                <div class="signature-chip">
+                  <b>01 Architecture</b>
+                  <span>Plans, structure, circulation, and proportion come before surface styling.</span>
+                </div>
+                <div class="signature-chip">
+                  <b>02 Interiors</b>
+                  <span>Furniture, lighting, materials, and custom details are composed as one room language.</span>
+                </div>
+                <div class="signature-chip">
+                  <b>03 Art</b>
+                  <span>Paintings, objects, antiques, and contemporary work become part of the architecture.</span>
+                </div>
+              </div>
             </div>
             <div class="principal-quote">
               <b>Why the work holds together</b>
@@ -1830,6 +1916,10 @@
             <div class="slot">Year Inson Dubois Wood founded his studio</div>
           </article>
         </div>
+        <div class="proof-note reveal">
+          <b>What the proof means</b>
+          <span>The numbers are not decoration. They support the pitch: a principal-led studio with formal architecture training, published work, client reviews, and enough range to handle a residence as a complete cultural object, not a collection of disconnected rooms.</span>
+        </div>
       </div>
     </section>
 
@@ -1912,6 +2002,7 @@
   const menu = document.querySelector(".menu");
   const dockTitle = document.querySelector(".dock-title span");
   const cursor = document.querySelector(".cursor-chip");
+  const healthNode = document.querySelector(".motion-health");
   const quilts = [...document.querySelectorAll(".quilt")];
   const heroPlate = document.querySelector(".hero-plate");
   const cards = [...document.querySelectorAll(".media-card")];
@@ -1943,24 +2034,81 @@
   let scrollIdleTimer = 0;
   let cursorVisible = false;
   let active = false;
+  let activeLabel = "Home";
+  let frameCount = 0;
+  let fps = 0;
+  let previousFrameTime = now();
+  let lastHealthPublish = 0;
 
+  const health = {
+    version: "inson-precise-2",
+    status: "booting",
+    running: false,
+    frameCount: 0,
+    fps: 0,
+    lastFrame: 0,
+    scroll: "0.0000",
+    flow: "0.0000",
+    velocity: "0.0000",
+    activeSection: activeLabel,
+    revealTargets: revealItems.length,
+    revealed: 0,
+    loaderGone: false,
+    menuOpen: false,
+    cursorEnabled: false,
+    ok: false,
+    checks: {
+      loop: false,
+      loader: false,
+      reveals: false,
+      flow: false
+    },
+    reducedMotionPreferred: motionQuery.matches,
+    reducedMotionActive: reduce,
+    forceMotion
+  };
   const diagnostics = {
-    version: "inson-precise-1",
+    version: health.version,
     running: false,
     lastFrame: 0,
-    getState: () => ({
-      running: active,
-      scroll: root.style.getPropertyValue("--scroll"),
-      flow: root.style.getPropertyValue("--flow"),
-      velocity: root.style.getPropertyValue("--flow-velocity"),
-      menuOpen: Boolean(menu?.classList.contains("is-open")),
-      loaderGone: Boolean(loader?.classList.contains("is-gone")),
-      reduceMotion: motionQuery.matches
-    })
+    getState: () => ({ ...health })
   };
-  root.dataset.motionShell = diagnostics.version;
+  function publishHealth(status = active ? "running" : "idle", frameTime = now(), force = false) {
+    if (!force && frameTime - lastHealthPublish < 180) return;
+    lastHealthPublish = frameTime;
+    health.status = reduce ? "reduced-motion" : status;
+    health.running = active;
+    health.frameCount = frameCount;
+    health.fps = Math.min(120, Math.round(fps));
+    health.lastFrame = Math.round(frameTime);
+    health.scroll = root.style.getPropertyValue("--scroll") || "0.0000";
+    health.flow = root.style.getPropertyValue("--flow") || "0.0000";
+    health.velocity = root.style.getPropertyValue("--flow-velocity") || "0.0000";
+    health.activeSection = activeLabel;
+    health.revealed = document.querySelectorAll(".is-in").length;
+    health.loaderGone = Boolean(loader?.classList.contains("is-gone"));
+    health.menuOpen = Boolean(menu?.classList.contains("is-open"));
+    health.cursorEnabled = document.body.classList.contains("custom-cursor");
+    health.checks = {
+      loop: reduce || active,
+      loader: health.loaderGone,
+      reveals: reduce || health.revealed > 0,
+      flow: reduce || Number.parseFloat(health.flow) >= 0
+    };
+    health.ok = Object.values(health.checks).every(Boolean);
+    root.dataset.motionStatus = health.status;
+    root.dataset.motionOk = String(health.ok);
+    root.dataset.motionFps = String(health.fps);
+    root.dataset.motionRevealed = `${health.revealed}/${health.revealTargets}`;
+    root.dataset.motionActiveSection = health.activeSection;
+    if (healthNode) healthNode.textContent = JSON.stringify(health);
+  }
+
+  root.dataset.motionShell = health.version;
   try {
     window.__motionShell = diagnostics;
+    window.__motionHealth = health;
+    window.dispatchEvent(new CustomEvent("motion-shell-ready", { detail: { version: health.version } }));
   } catch (error) {
     root.dataset.motionShellWindow = "locked";
   }
@@ -1968,12 +2116,14 @@
   if (reduce) {
     loader?.classList.add("is-gone");
     revealItems.forEach((item) => item.classList.add("is-in"));
+    publishHealth("reduced-motion", now(), true);
   } else {
     window.setTimeout(() => loader?.classList.add("is-gone"), 1450);
   }
 
   if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && cursor) {
     document.body.classList.add("custom-cursor");
+    health.cursorEnabled = true;
   }
 
   function setMenu(open) {
@@ -2071,6 +2221,7 @@
       }
     });
     const label = current.dataset.label || "Home";
+    activeLabel = label;
     if (!dockTitle.innerHTML.startsWith(label)) {
       dockTitle.innerHTML = `${label}<br>Menu`;
     }
@@ -2080,6 +2231,10 @@
     active = true;
     diagnostics.running = true;
     diagnostics.lastFrame = Math.round(now);
+    frameCount += 1;
+    const frameDelta = Math.max(1, now - previousFrameTime);
+    previousFrameTime = now;
+    fps = fps ? lerp(fps, 1000 / frameDelta, .08) : 1000 / frameDelta;
     root.dataset.motionRunning = "true";
     root.dataset.motionFrame = String(diagnostics.lastFrame);
 
@@ -2144,12 +2299,15 @@
     cursorY = lerp(cursorY, mouseY, .18);
     if (cursor) cursor.style.transform = `translate3d(${cursorX - 3}px, ${cursorY - 2}px, 0) rotate(-8deg)`;
     updateDockLabel();
+    publishHealth("running", now);
 
     rafId = requestFrame(tick);
   }
 
   function start() {
     if (reduce || rafId) return;
+    previousFrameTime = now();
+    publishHealth("starting", previousFrameTime, true);
     rafId = requestFrame(tick);
   }
 
@@ -2160,6 +2318,7 @@
     active = false;
     diagnostics.running = false;
     root.dataset.motionRunning = "false";
+    publishHealth("paused", now(), true);
   }
 
   document.addEventListener("visibilitychange", () => {
