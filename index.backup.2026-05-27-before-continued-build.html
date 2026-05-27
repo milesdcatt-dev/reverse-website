@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inson Dubois Wood — Residential Design and Interiors</title>
-<meta name="description" content="A New York residential design and interiors studio. Architecture-first practice with a 330-page Rizzoli monograph and three decades of international work." />
+<meta name="description" content="A New York residential design and interiors studio. Architecture-first practice with a 320-page Rizzoli monograph and three decades of international work." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap">
@@ -967,7 +967,7 @@
     0%, 100% { transform: scale(1); opacity: 1; }
     50%      { transform: scale(0.6); opacity: 0.5; }
   }
-  @media (max-width: 880px) { .now-playing { display: none; } }
+  @media (max-width: 540px) { .now-playing { display: none; } }
 
   /* ---------- Placeholder section blocks (filled in subsequent chunks) ---------- */
   .placeholder {
@@ -1718,39 +1718,6 @@
     color: var(--paper);
     text-transform: none;
   }
-  .book-cover-link {
-    width: min(100%, 525px);
-    aspect-ratio: 811 / 1024;
-    display: block;
-    position: relative;
-    box-shadow: 0 34px 70px rgba(0,0,0,.45), 0 10px 24px rgba(0,0,0,.28);
-    transform: rotate(-1.2deg);
-    transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out);
-  }
-  .book-cover-link:hover,
-  .book-cover-link:focus-visible {
-    transform: rotate(0deg) translateY(-4px);
-    box-shadow: 0 44px 90px rgba(0,0,0,.5), 0 12px 28px rgba(0,0,0,.3);
-  }
-  .book-cover-link img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .book-cover-link::after {
-    content: "Rizzoli / Mark Roskams";
-    position: absolute;
-    left: .9rem;
-    right: .9rem;
-    bottom: .9rem;
-    padding: .65rem .75rem;
-    background: rgba(20,17,13,.78);
-    color: var(--paper);
-    font-size: .62rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    backdrop-filter: blur(12px);
-  }
   .book-meta {
     display: flex;
     flex-direction: column;
@@ -1953,73 +1920,6 @@
     color: var(--terracotta);
     font-weight: 600;
     margin-right: auto;
-  }
-  .pub--cover {
-    padding: 0;
-    background: var(--paper);
-    color: var(--paper);
-    border: 1px solid rgba(20,17,13,.18);
-    box-shadow: 0 10px 26px rgba(20,17,13,.08);
-  }
-  .pub--cover::after {
-    border-color: rgba(20,17,13,.16);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
-  }
-  .pub--cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.01);
-    transition: transform .55s var(--ease-out), filter .55s var(--ease-out);
-  }
-  .pub--cover:hover img,
-  .pub--cover:focus-visible img {
-    transform: scale(1.055);
-    filter: saturate(1.08) contrast(1.03);
-  }
-  .pub--cover .pub-caption {
-    position: absolute;
-    left: .55rem;
-    right: .55rem;
-    bottom: .55rem;
-    z-index: 2;
-    padding: .6rem .65rem;
-    background: rgba(20,17,13,.78);
-    color: var(--paper);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(250,246,236,.16);
-    display: flex;
-    flex-direction: column;
-    gap: .16rem;
-    transform: translateY(0);
-    transition: transform .4s var(--ease-out), background .4s var(--ease-out);
-  }
-  .pub--cover:hover .pub-caption,
-  .pub--cover:focus-visible .pub-caption {
-    transform: translateY(-3px);
-    background: rgba(193,66,42,.88);
-  }
-  .pub--cover .pub-caption b {
-    font-family: var(--serif);
-    font-size: clamp(.9rem, 1vw, 1.05rem);
-    line-height: 1.02;
-    font-weight: 500;
-  }
-  .pub--cover .pub-caption span {
-    font-size: .58rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    opacity: .78;
-  }
-  .pub--cover[data-feature="true"] { outline: 3px solid var(--terracotta); outline-offset: -3px; }
-  .pub--cover[data-feature="true"] .pub-caption::before {
-    content: "Featured";
-    font-family: var(--sans);
-    font-size: .52rem;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--ochre);
-    margin-bottom: .1rem;
   }
 
   /* ================== JOURNAL ================== */
@@ -2250,41 +2150,6 @@
     font-size: 0.75rem;
   }
   .inquiry-form .btn { cursor: pointer; }
-  .contact-note {
-    background: var(--paper);
-    color: var(--ink);
-    padding: clamp(2rem, 4vw, 3.5rem);
-    display: grid;
-    align-content: space-between;
-    gap: clamp(1.5rem, 3vw, 2.25rem);
-    min-height: 100%;
-  }
-  .contact-note h3 {
-    margin: 0;
-    font-family: var(--serif);
-    font-size: clamp(1.7rem, 3vw, 2.7rem);
-    font-weight: 400;
-    line-height: .98;
-    letter-spacing: -.02em;
-  }
-  .contact-note p {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    max-width: 45ch;
-  }
-  .contact-note .contact-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .85rem;
-  }
-  .contact-note .btn--solid {
-    background: var(--terracotta);
-    border-color: var(--terracotta);
-    color: var(--paper);
-  }
-  .contact-note .btn--solid::before { background: var(--ink); }
 
 </style>
 </head>
@@ -2387,8 +2252,8 @@
         <div><b>Harvard GSD</b><span>Master of Architecture</span></div>
         <div><b>Cornell</b><span>Bachelor of Architecture</span></div>
         <div><b><span data-num="2016" data-suffix="">0</span></b><span>Rizzoli monograph year</span></div>
-        <div><b><span data-num="330" data-suffix="pp">0</span></b><span>Monograph, hardcover</span></div>
-        <div><b>5.0 stars</b><span>49 Google reviews</span></div>
+        <div><b><span data-num="320" data-suffix="pp">0</span></b><span>Monograph, hardcover</span></div>
+        <div><b><span data-num="49" data-suffix="">0</span> / 5.0</b><span>Verified Google reviews</span></div>
       </div>
     </section>
 
@@ -2663,7 +2528,7 @@
             </span>
             <div>
               <b>Rizzoli Monograph</b>
-              <span>330 pages &middot; 2016</span>
+              <span>320 pages &middot; 2016</span>
             </div>
           </div>
           <div class="award reveal">
@@ -2823,16 +2688,23 @@
 
       <div class="book-grid">
         <figure class="book-cover reveal" aria-label="Cover of the Rizzoli monograph">
-          <a class="book-cover-link" href="https://www.rizzoliusa.com/book/9780847848737/" target="_blank" rel="noopener">
-            <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Inson-Dubois-Wood-Interiors-811x1024.jpg" alt="Inson Dubois Wood Interiors book cover, published by Rizzoli" loading="lazy">
-          </a>
+          <div class="book-cover-card">
+            <div class="top">First Monograph &middot; 2016</div>
+            <div class="center">
+              <b>Inson Dubois Wood<br><em>Interiors</em></b>
+            </div>
+            <div class="bottom">
+              <span>Photography by Mark Roskams</span>
+              <span class="rizzoli">Rizzoli</span>
+            </div>
+          </div>
         </figure>
 
         <div class="book-meta">
           <p class="lede reveal">The first monograph on the interior design work of the New York&ndash;based architect, and an essential resource for those seeking to <strong>create luxurious modernist spaces</strong>. From the opulent Waterfall Mansion in New York to a family home in Greenwich to a charming villa in Saint-Tropez on the French Riviera.</p>
 
           <div class="book-stats reveal">
-            <div><b>330</b><span>Pages, hardcover</span></div>
+            <div><b>320</b><span>Pages, hardcover</span></div>
             <div><b>2016</b><span>Published Sept. 20</span></div>
             <div><b>Rizzoli</b><span>Publisher</span></div>
             <div><b>Roskams</b><span>Photography</span></div>
@@ -2897,85 +2769,105 @@
       </div>
 
       <div class="press-wall">
-        <a class="pub pub--cover" data-feature="true" href="#book">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Inson-Dubois-Wood-Interiors-238x300.jpg" alt="Inson Dubois Wood Interiors Rizzoli monograph cover" loading="lazy">
-          <span class="pub-caption"><b>Inson Dubois Wood</b><span>Rizzoli monograph</span></span>
+        <a class="pub" data-tone="ink" data-feature="true" href="#book">
+          <div class="pub-top"><span>2016</span></div>
+          <div class="pub-name">Inson Dubois Wood<em>Interiors / Rizzoli</em></div>
+          <div class="pub-foot"><span>Monograph</span><span>320pp</span></div>
         </a>
-        <a class="pub pub--cover" href="https://www.teneues-boeken.nl/living-in-style-best-interior-design-on-the-planet.html" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/living-in-style-best-interior-design-on-the-planet-226x300.jpg" alt="Living in Style cover" loading="lazy">
-          <span class="pub-caption"><b>Living in Style</b><span>Best interior design</span></span>
+        <a class="pub" data-tone="terra" data-feature="true">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Architectural Digest<em>Creative Minds</em></div>
+          <div class="pub-foot"><span>AD</span><span>NY</span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/press/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2022/10/image_6487327-249x300.jpg" alt="Social Life cover" loading="lazy">
-          <span class="pub-caption"><b>Social Life</b><span>Portrait feature</span></span>
+        <a class="pub" data-tone="cream">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Architectural Digest<em>Before &amp; After</em></div>
+          <div class="pub-foot"><span>AD</span><span>Renovation</span></div>
         </a>
-        <a class="pub pub--cover" data-feature="true" href="https://www.architecturaldigest.com/gallery/eclectic-style-homes-inson-dubois-wood" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/1016-ad-cover-231x300.jpg" alt="Architectural Digest Creative Minds cover" loading="lazy">
-          <span class="pub-caption"><b>Architectural Digest</b><span>Creative Minds</span></span>
+        <a class="pub" data-tone="ochre">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Luxe<em>Interiors + Design</em></div>
+          <div class="pub-foot"><span>Luxe</span><span>NY</span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/luxe-magazine/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Luxe-Magazine-248x300.jpg" alt="Luxe Interiors + Design cover" loading="lazy">
-          <span class="pub-caption"><b>Luxe</b><span>Interiors + Design</span></span>
+        <a class="pub" data-tone="ink">
+          <div class="pub-top"><span>Cover</span></div>
+          <div class="pub-name">The Modern Vogue<em>People, Parties, Places</em></div>
+          <div class="pub-foot"><span>Vogue</span><span>Society</span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/the-world-of-vogue/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/The-World-In-Vogue-235x300.jpg" alt="The World in Vogue cover" loading="lazy">
-          <span class="pub-caption"><b>The World in Vogue</b><span>People, parties, places</span></span>
+        <a class="pub" data-tone="teal">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Traditional Home<em>Effortless Elegance</em></div>
+          <div class="pub-foot"><span>Trad. Home</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/architectural-digest-february-2010/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Architectural-Diegest-February-2010-229x300.jpg" alt="Architectural Digest Before and After cover" loading="lazy">
-          <span class="pub-caption"><b>Architectural Digest</b><span>Before &amp; After</span></span>
+        <a class="pub" data-tone="cream">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Traditional Home<em>All in the Details</em></div>
+          <div class="pub-foot"><span>Trad. Home</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/ny-spaces/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/NYSPACES-Magazine-229x300.jpg" alt="NY Spaces magazine cover" loading="lazy">
-          <span class="pub-caption"><b>NY Spaces</b><span>Design edition</span></span>
+        <a class="pub" data-tone="oxblood">
+          <div class="pub-top"><span>Cover</span></div>
+          <div class="pub-name">Living in Style<em>New York</em></div>
+          <div class="pub-foot"><span>Living in Style</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/hamptons-cottages-and-gardens/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Hamptons-Cottages-and-Gardens-255x300.jpg" alt="Hamptons Cottages and Gardens cover" loading="lazy">
-          <span class="pub-caption"><b>HC&amp;G</b><span>Decorating issue</span></span>
+        <a class="pub" data-tone="ink">
+          <div class="pub-top"><span>Issue</span></div>
+          <div class="pub-name">Living in Style<em>Scandinavia</em></div>
+          <div class="pub-foot"><span>Sweden</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/traditional-home/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Traditional-Home-October-2012-231x300.jpg" alt="Traditional Home Effortless Elegance cover" loading="lazy">
-          <span class="pub-caption"><b>Traditional Home</b><span>Effortless elegance</span></span>
+        <a class="pub" data-tone="terra">
+          <div class="pub-top"><span>Cover</span></div>
+          <div class="pub-name">Social Life<em>The Hamptons</em></div>
+          <div class="pub-foot"><span>Social Life</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/traditional-home-march-2012/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Traditional-Home-Feb-March-2012-232x300.jpg" alt="Traditional Home All in the Details cover" loading="lazy">
-          <span class="pub-caption"><b>Traditional Home</b><span>All in the details</span></span>
+        <a class="pub" data-tone="cream">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">NY Spaces<em>Design Edition</em></div>
+          <div class="pub-foot"><span>NY Spaces</span><span>NY</span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/press/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/New-American-Luxury-Magazine-December-2012-227x300.jpg" alt="New American Luxury magazine cover" loading="lazy">
-          <span class="pub-caption"><b>New American Luxury</b><span>Profile</span></span>
+        <a class="pub" data-tone="teal">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Hamptons C&amp;G<em>Decorating Issue</em></div>
+          <div class="pub-foot"><span>HC&amp;G</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/living-in-style-scandinavia/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Living-In-Styles-Scandinavia-244x300.jpg" alt="Living in Style Scandinavia cover" loading="lazy">
-          <span class="pub-caption"><b>Living in Style</b><span>Scandinavia</span></span>
+        <a class="pub" data-tone="ochre">
+          <div class="pub-top"><span>Cover</span></div>
+          <div class="pub-name">New American Luxury<em>Profile</em></div>
+          <div class="pub-foot"><span>NAL</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/designers-abroad/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Designers-Abroad-246x300.jpg" alt="Designers Abroad cover" loading="lazy">
-          <span class="pub-caption"><b>Designers Abroad</b><span>International work</span></span>
+        <a class="pub" data-tone="oxblood">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Hyland<em>Award Issue</em></div>
+          <div class="pub-foot"><span>Hyland</span><span>Award</span></div>
         </a>
-        <a class="pub pub--cover" data-feature="true" href="https://insonduboiswood.com/hyland-magazine/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Hyland-Inson-Dubois-Wood-225x300.jpg" alt="Hyland Inson Dubois Wood cover" loading="lazy">
-          <span class="pub-caption"><b>Hyland</b><span>Inson Dubois Wood</span></span>
+        <a class="pub" data-tone="ink">
+          <div class="pub-top"><span>Issue</span></div>
+          <div class="pub-name">Hyland<em>Inson Dubois Wood</em></div>
+          <div class="pub-foot"><span>Hyland</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/hyland-magazine-edition-20/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Hyland-Magazine-Edition-20-225x300.jpg" alt="Hyland Magazine edition 20 cover" loading="lazy">
-          <span class="pub-caption"><b>Hyland</b><span>Award issue</span></span>
+        <a class="pub" data-tone="cream">
+          <div class="pub-top"><span>Cover</span></div>
+          <div class="pub-name">Avenue<em>Padma Lakshmi</em></div>
+          <div class="pub-foot"><span>Avenue</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/avenue-november-2012/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Avenue-Magazine-Nov-2012-222x300.jpg" alt="Avenue Magazine November 2012 cover" loading="lazy">
-          <span class="pub-caption"><b>Avenue</b><span>Padma Lakshmi issue</span></span>
+        <a class="pub" data-tone="terra">
+          <div class="pub-top"><span>Issue</span></div>
+          <div class="pub-name">Avenue<em>Society Issue</em></div>
+          <div class="pub-foot"><span>Avenue</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/avenue-november-2011/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Avenue-Magazine-Nov-2011.jpg" alt="Avenue Magazine November 2011 cover" loading="lazy">
-          <span class="pub-caption"><b>Avenue</b><span>Society issue</span></span>
+        <a class="pub" data-tone="teal">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Resident<em>Manhattan</em></div>
+          <div class="pub-foot"><span>Resident</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/resident/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/Resident-Magazine-September-2014-233x300.jpg" alt="Resident Magazine cover" loading="lazy">
-          <span class="pub-caption"><b>Resident</b><span>Manhattan</span></span>
+        <a class="pub" data-tone="ochre">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">Modern Estate<em>Residential</em></div>
+          <div class="pub-foot"><span>Modern Estate</span><span></span></div>
         </a>
-        <a class="pub pub--cover" href="https://insonduboiswood.com/modern-estate/" target="_blank" rel="noopener">
-          <img src="https://insonduboiswood.com/wp-content/uploads/2018/08/modern-estates-winter-2007.jpg" alt="Modern Estate winter 2007 cover" loading="lazy">
-          <span class="pub-caption"><b>Modern Estate</b><span>Residential</span></span>
+        <a class="pub" data-tone="oxblood">
+          <div class="pub-top"><span>Feature</span></div>
+          <div class="pub-name">French Style<em>Interiors</em></div>
+          <div class="pub-foot"><span>French Style</span><span></span></div>
         </a>
       </div>
     </section>
@@ -3077,16 +2969,32 @@
           </svg>
         </div>
 
-        <aside class="contact-note reveal" aria-label="Contact protocol">
-          <div>
-            <h3>Reach the studio directly.</h3>
-            <p>The live contact page is deliberately simple: office, phone, and email. No booking widget. No generic form. The tone is private, direct, and appropriate for residential clients.</p>
+        <form class="inquiry reveal" action="mailto:inson@insonwood.com" method="post" enctype="text/plain">
+          <h3>Send an inquiry.</h3>
+          <p>Tell the studio about the residence, the city, and the standard. Inson will respond personally.</p>
+          <div class="inquiry-form">
+            <label>
+              Name
+              <input type="text" name="name" required>
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required>
+            </label>
+            <label class="span2">
+              Residence
+              <input type="text" name="residence" placeholder="Townhouse, apartment, country house…">
+            </label>
+            <label class="span2">
+              Project notes
+              <textarea name="project" placeholder="Address (city is enough), scope, timeline, references."></textarea>
+            </label>
+            <div class="submit-row">
+              <small>Replies typically within 48 hours.</small>
+              <button type="submit" class="btn btn--solid"><span>Send inquiry</span></button>
+            </div>
           </div>
-          <div class="contact-actions">
-            <a class="btn btn--solid" href="mailto:inson@insonwood.com"><span>Email Inson</span></a>
-            <a class="btn" href="tel:+12123431077"><span>Call the studio</span></a>
-          </div>
-        </aside>
+        </form>
       </div>
     </section>
 
