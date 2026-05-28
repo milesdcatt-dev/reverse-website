@@ -1,0 +1,2373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inson Dubois Wood - Luxury Residential Design</title>
+<meta name="description" content="A cinematic redesign concept for Inson Dubois Wood, New York residential design and interiors." />
+<style>
+  :root {
+    --black: #050607;
+    --black-2: #0d1013;
+    --ink: #111316;
+    --cream: #efebe3;
+    --bone: #fbf8ef;
+    --silver: #cfd3d4;
+    --ice: #eef5f6;
+    --platinum: #f8fbff;
+    --champagne: #b88a4b;
+    --electric: #dff7ff;
+    --red: #c1121f;
+    --muted: rgba(17, 19, 22, .58);
+    --line-dark: rgba(255, 255, 255, .16);
+    --line-light: rgba(17, 19, 22, .14);
+    --glass-dark: rgba(5, 6, 7, .76);
+    --glass-light: rgba(255, 255, 255, .62);
+    --bubble-dark:
+      linear-gradient(135deg, rgba(5,6,7,.72), rgba(5,6,7,.36)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.065) 0 1px, transparent 1px 3.1rem);
+    --bubble-light:
+      linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.62)),
+      repeating-linear-gradient(90deg, rgba(17,19,22,.045) 0 1px, transparent 1px 3.1rem);
+    --bubble-shadow: 0 18px 58px rgba(0,0,0,.2), inset 0 0 22px rgba(255,255,255,.08);
+    --ease: cubic-bezier(.22, 1, .36, 1);
+    --snap: cubic-bezier(.65, 0, .35, 1);
+    --scroll: 0;
+    --flow: 0;
+    --flow-velocity: 0;
+  }
+
+  * { box-sizing: border-box; }
+  html {
+    min-height: 100%;
+    color: var(--ink);
+    background: var(--cream);
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background:
+      radial-gradient(circle at 80% 8%, rgba(255, 255, 255, .88), transparent 24rem),
+      radial-gradient(circle at 8% 20%, rgba(193, 18, 31, .18), transparent 20rem),
+      radial-gradient(circle at 52% 74%, rgba(223,247,255,.14), transparent 28rem),
+      linear-gradient(180deg, #f3efe6 0%, #dedbd2 38%, #0a0d10 100%);
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -20vh -12vw;
+    z-index: 0;
+    pointer-events: none;
+    opacity: .58;
+    background:
+      radial-gradient(circle at calc(78% + var(--flow-velocity) * 2%) calc(8% + var(--flow) * 18%), rgba(255,255,255,.78), transparent 18rem),
+      radial-gradient(circle at calc(10% - var(--flow-velocity) * 3%) calc(28% + var(--flow) * 22%), rgba(193,18,31,.18), transparent 24rem),
+      linear-gradient(118deg, rgba(255,255,255,.18), transparent 28%, rgba(193,18,31,.1) 54%, transparent 72%);
+    filter: blur(2px) saturate(1.04);
+    transform: translate3d(0, calc(var(--flow) * -9vh), 0) rotate(calc(var(--flow-velocity) * .15deg));
+    will-change: transform;
+  }
+  body.menu-open { overflow: hidden; }
+  a { color: inherit; text-decoration: none; }
+  button, input, textarea { font: inherit; }
+  button { color: inherit; }
+  :focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 4px;
+  }
+
+  .loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    color: var(--bone);
+    background: var(--black);
+    transition: transform 1s var(--snap), opacity .5s ease;
+  }
+  .loader.is-gone {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100%);
+  }
+  .loader-core {
+    position: relative;
+    width: 118px;
+    height: 118px;
+    perspective: 900px;
+  }
+  .loader-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, .24);
+    border-radius: 50%;
+    animation: ringPulse 1.35s var(--snap) forwards;
+  }
+  .cube {
+    position: absolute;
+    inset: 27px;
+    transform-style: preserve-3d;
+    animation: cubeSpin 1.35s var(--snap) forwards;
+  }
+  .cube i {
+    position: absolute;
+    inset: 0;
+    border: 1px solid currentColor;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(14px);
+  }
+  .cube i:nth-child(1) { transform: translateZ(32px); }
+  .cube i:nth-child(2) { transform: rotateY(180deg) translateZ(32px); }
+  .cube i:nth-child(3) { transform: rotateY(90deg) translateZ(32px); }
+  .cube i:nth-child(4) { transform: rotateY(-90deg) translateZ(32px); }
+  .cube i:nth-child(5) { transform: rotateX(90deg) translateZ(32px); }
+  .cube i:nth-child(6) { transform: rotateX(-90deg) translateZ(32px); }
+  @keyframes ringPulse {
+    0% { opacity: 0; transform: scale(.6); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes cubeSpin {
+    0% { opacity: 0; transform: rotateX(-28deg) rotateY(0deg) scale(.72); }
+    18% { opacity: 1; }
+    100% { opacity: 1; transform: rotateX(-28deg) rotateY(-315deg) scale(1); }
+  }
+
+  .texture {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: .18;
+    mix-blend-mode: overlay;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,.52) 0 1px, transparent 1.5px),
+      linear-gradient(90deg, rgba(255,255,255,.13) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(0,0,0,.1) 1px, transparent 1px);
+    background-size: 31px 31px, 44px 44px, 44px 44px;
+  }
+  .flow-field {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  .flow-field::before,
+  .flow-field::after {
+    content: "";
+    position: absolute;
+    left: -12vw;
+    width: 124vw;
+    height: 42vh;
+    border-radius: 50%;
+    opacity: .3;
+    filter: blur(10px);
+    transform: translate3d(calc(var(--flow-velocity) * 1.6vw), calc(var(--flow) * -18vh), 0) rotate(-6deg);
+    will-change: transform;
+  }
+  .flow-field::before {
+    top: 18vh;
+    background:
+      linear-gradient(90deg, transparent, rgba(255,255,255,.64), rgba(193,18,31,.18), transparent),
+      repeating-linear-gradient(100deg, rgba(255,255,255,.2) 0 1px, transparent 1px 4.4rem);
+  }
+  .flow-field::after {
+    top: 58vh;
+    opacity: .22;
+    background:
+      linear-gradient(90deg, transparent, rgba(238,245,246,.72), rgba(255,255,255,.22), transparent),
+      repeating-linear-gradient(80deg, rgba(255,255,255,.12) 0 1px, transparent 1px 5.8rem);
+    transform: translate3d(calc(var(--flow-velocity) * -1.2vw), calc(var(--flow) * -28vh), 0) rotate(8deg);
+  }
+  body.is-scrolling .flow-field::before {
+    opacity: .42;
+  }
+  body.is-scrolling .flow-field::after {
+    opacity: .3;
+  }
+  .cursor-chip {
+    position: fixed;
+    z-index: 50;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    opacity: 0;
+    color: white;
+    background: transparent;
+    border: 0;
+    filter: drop-shadow(0 0 7px rgba(255,255,255,.78)) drop-shadow(0 0 18px rgba(223,247,255,.34));
+    mix-blend-mode: screen;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity .16s ease, filter .22s ease;
+  }
+  .cursor-chip svg {
+    width: 30px;
+    height: 30px;
+    overflow: visible;
+  }
+  .cursor-chip path {
+    fill: rgba(5,6,7,.18);
+    stroke: rgba(255,255,255,.95);
+    stroke-width: 2.35;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .cursor-chip::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 17px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0 0 12px rgba(255,255,255,.82);
+    opacity: 0;
+    transform: scale(.55);
+    transition: opacity .18s ease, transform .22s var(--ease);
+  }
+  .cursor-chip.is-visible {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,.9)) drop-shadow(0 0 24px rgba(223,247,255,.46));
+  }
+  .cursor-chip.is-hovering svg {
+    transform: scale(1.08);
+  }
+  .cursor-chip.is-visible::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    body.custom-cursor,
+    body.custom-cursor a,
+    body.custom-cursor button {
+      cursor: none;
+    }
+  }
+
+  .topline {
+    position: fixed;
+    inset: 1rem 1rem auto;
+    z-index: 25;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+  }
+  .brand-mark::before {
+    content: "";
+    width: .75rem;
+    height: .75rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  .dock {
+    position: fixed;
+    left: 50%;
+    bottom: .35rem;
+    z-index: 40;
+    width: min(320px, calc(100vw - 2rem));
+    height: 46px;
+    display: grid;
+    grid-template-columns: 46px 1fr 46px;
+    align-items: center;
+    color: white;
+    background: var(--glass-dark);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(24px);
+    transform: translateX(-50%);
+    overflow: hidden;
+    box-shadow: 0 22px 60px rgba(0,0,0,.28);
+  }
+  main {
+    position: relative;
+    z-index: 1;
+  }
+  .dock-logo,
+  .dock-menu {
+    height: 46px;
+    display: grid;
+    place-items: center;
+  }
+  .dock-logo span {
+    width: 19px;
+    height: 19px;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+    box-shadow: inset 0 0 0 5px rgba(255,255,255,.08);
+  }
+  .dock-title {
+    height: 46px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 46px;
+    text-transform: uppercase;
+  }
+  .dock-title span {
+    display: inline-block;
+    transition: transform .55s var(--ease), opacity .35s ease;
+  }
+  .dock.is-open .dock-title span {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  .dock-menu {
+    gap: 5px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+  .dock-menu span,
+  .dock-menu::before,
+  .dock-menu::after {
+    content: "";
+    width: 18px;
+    height: 1px;
+    display: block;
+    background: currentColor;
+    transition: transform .45s var(--ease), opacity .25s ease;
+  }
+  .dock.is-open .dock-menu span { opacity: 0; }
+  .dock.is-open .dock-menu::before { transform: translateY(6px) rotate(45deg); }
+  .dock.is-open .dock-menu::after { transform: translateY(-6px) rotate(-45deg); }
+
+  .menu {
+    position: fixed;
+    left: 50%;
+    bottom: 8.8rem;
+    z-index: 38;
+    width: min(420px, calc(100vw - 2rem));
+    padding: 3rem;
+    color: white;
+    background: var(--glass-dark);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(26px);
+    transform: translate(-50%, 28px) scale(.94);
+    transform-origin: center bottom;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .55s var(--ease), opacity .35s ease, visibility .35s;
+  }
+  .menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0) scale(1);
+  }
+  .menu a {
+    display: block;
+    overflow: hidden;
+    font-size: clamp(2rem, 6vw, 3.1rem);
+    line-height: 1;
+    padding: .26rem 0;
+  }
+  .menu a span {
+    display: inline-block;
+    transform: translateY(112%);
+    transition: transform .65s var(--ease), color .28s ease, text-shadow .28s ease;
+  }
+  .menu.is-open a span { transform: translateY(0); }
+  .menu.is-open a:nth-child(2) span { transition-delay: .04s; }
+  .menu.is-open a:nth-child(3) span { transition-delay: .08s; }
+  .menu.is-open a:nth-child(4) span { transition-delay: .12s; }
+  .menu.is-open a:nth-child(5) span { transition-delay: .16s; }
+  .menu a:hover span {
+    color: var(--electric);
+    text-shadow: 0 0 24px rgba(223,247,255,.34);
+    transform: translate(14px, 0);
+  }
+
+  .progress {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 41;
+    width: 3px;
+    background: rgba(255,255,255,.12);
+    mix-blend-mode: difference;
+  }
+  .progress span {
+    display: block;
+    width: 100%;
+    height: calc(var(--scroll, 0) * 100%);
+    background: var(--red);
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: white;
+    background: var(--black);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(92deg, rgba(255,255,255,.12) 0 1px, transparent 1px 1.65rem),
+      repeating-linear-gradient(0deg, transparent 0 7.5rem, rgba(248,251,255,.3) 7.62rem, transparent 8.05rem),
+      radial-gradient(circle at 74% 14%, rgba(255,255,255,.34), transparent 18rem),
+      linear-gradient(110deg, rgba(5,6,7,.95), rgba(5,6,7,.3) 46%, rgba(5,6,7,.9)),
+      url("https://insonduboiswood.com/wp-content/uploads/2018/08/1.2-7.jpg") center / cover,
+      linear-gradient(140deg, #555d62, #e6e4dc 35%, #24282d 67%, #050607);
+    transform: scale(calc(1.03 + var(--flow) * .035)) translate3d(0, calc(var(--flow) * -2.6vh), 0);
+    transform-origin: center top;
+    will-change: transform;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: .58;
+    background:
+      linear-gradient(90deg, transparent 0 43%, rgba(184,138,75,.58) 49%, rgba(255,255,255,.5) 50%, rgba(184,138,75,.4) 51%, transparent 58%),
+      repeating-linear-gradient(0deg, transparent 0 8.4rem, rgba(248,251,255,.58) 8.55rem, rgba(223,247,255,.25) 8.75rem, transparent 9.25rem),
+      radial-gradient(ellipse at 50% 5%, rgba(255,255,255,.76), transparent 18rem);
+    mix-blend-mode: screen;
+    mask-image: linear-gradient(90deg, rgba(0,0,0,.46), #000 42%, #000 100%);
+    transform: translate3d(0, calc(var(--flow) * -4vh), 0);
+    will-change: transform;
+  }
+  .puffer-field {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    z-index: 1;
+    opacity: .72;
+    transform: skewX(-8deg) scale(1.12);
+    filter: contrast(1.16) saturate(1.05);
+  }
+  .quilt {
+    position: relative;
+    min-height: 100%;
+    border-right: 1px solid rgba(255,255,255,.18);
+    background:
+      radial-gradient(ellipse at 50% 12%, rgba(255,255,255,.54), transparent 42%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, transparent 1px 9px),
+      repeating-linear-gradient(0deg, transparent 0 8.3rem, rgba(248,251,255,.5) 8.45rem, rgba(223,247,255,.18) 8.8rem, transparent 9.4rem),
+      linear-gradient(180deg, rgba(255,255,255,.16), rgba(0,0,0,.36));
+    background-position: 0 calc(var(--flow) * -120px), 0 calc(var(--flow) * -90px), 0 calc(var(--flow) * -180px), 0 0;
+    box-shadow:
+      inset 16px 0 34px rgba(255,255,255,.14),
+      inset -24px 0 42px rgba(0,0,0,.38),
+      inset 0 0 36px rgba(223,247,255,.18);
+    overflow: hidden;
+    will-change: transform;
+  }
+  .quilt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .5;
+    background:
+      radial-gradient(circle, rgba(255,255,255,.9) 0 1px, transparent 1.6px),
+      linear-gradient(180deg, rgba(255,255,255,.32), transparent 30%, rgba(255,255,255,.18));
+    background-size: 23px 31px, 100% 100%;
+    mix-blend-mode: screen;
+    transform: translate3d(0, calc(var(--flow) * -36px), 0);
+  }
+  .hero-plate {
+    position: absolute;
+    inset: auto clamp(.75rem, 3vw, 3rem) 8vh auto;
+    width: min(27vw, 380px);
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgba(255,255,255,.24);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.04)),
+      radial-gradient(circle at 70% 10%, rgba(193,18,31,.5), transparent 12rem);
+    backdrop-filter: blur(14px);
+    box-shadow:
+      0 40px 110px rgba(0,0,0,.36),
+      0 0 42px rgba(248,251,255,.26),
+      inset 0 0 34px rgba(255,255,255,.16);
+    z-index: 3;
+    will-change: transform;
+  }
+  .hero-plate::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.58)),
+      url("https://insonduboiswood.com/wp-content/uploads/2018/08/Inson_Thailand06Ha.jpg") center / cover;
+    opacity: .8;
+  }
+  .hero-plate::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent 44%, rgba(184,138,75,.72) 48%, rgba(255,255,255,.62) 50%, rgba(184,138,75,.58) 52%, transparent 57%),
+      repeating-linear-gradient(0deg, transparent 0 5.8rem, rgba(255,255,255,.55) 5.95rem, transparent 6.35rem),
+      radial-gradient(circle at 72% 16%, rgba(255,255,255,.68), transparent 7rem);
+    mix-blend-mode: screen;
+    opacity: .86;
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 4;
+    isolation: isolate;
+    align-self: start;
+    width: min(90vw, 1240px);
+    padding: 5.2rem 0 8rem;
+    text-shadow: 0 2px 24px rgba(0,0,0,.62);
+  }
+  .hero-copy::before {
+    content: "";
+    position: absolute;
+    inset: 4.05rem auto 5.25rem -1rem;
+    z-index: -1;
+    width: min(700px, 58vw);
+    background: var(--bubble-dark);
+    border-left: 1px solid rgba(255,255,255,.22);
+    box-shadow: 0 28px 90px rgba(0,0,0,.28);
+    pointer-events: none;
+  }
+  .eyebrow,
+  .mini-title {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  .eyebrow::before,
+  .mini-title::before {
+    content: "";
+    width: .52rem;
+    height: .52rem;
+    background: currentColor;
+    transform: rotate(45deg);
+  }
+  h1,
+  h2,
+  h3,
+  p { margin: 0; }
+  h1,
+  h2 {
+    font-weight: 400;
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  h1 {
+    max-width: 10.5ch;
+    margin-top: 2rem;
+    font-size: clamp(3.25rem, 5.45vw, 6.15rem);
+    line-height: .91;
+  }
+  .hero-line {
+    display: grid;
+    grid-template-columns: minmax(280px, 34rem) max-content;
+    align-items: start;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    max-width: 760px;
+  }
+  .hero-line p {
+    max-width: 34rem;
+    display: flex;
+    align-items: center;
+    min-height: 8rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid rgba(255,255,255,.16);
+    background: var(--bubble-dark);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--bubble-shadow);
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    line-height: 1.35;
+    color: rgba(255,255,255,.82);
+  }
+  .cta-row {
+    display: grid;
+    align-content: stretch;
+    gap: .75rem;
+    margin-top: 0;
+  }
+  .button {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    min-height: 48px;
+    min-width: 12.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    padding: .95rem 1.25rem;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    transition: transform .28s var(--ease), background .25s ease, color .25s ease, box-shadow .28s ease;
+  }
+  .button::before {
+    content: "";
+    position: relative;
+    z-index: 1;
+    width: .55rem;
+    height: .55rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .button::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 0 34%, rgba(255,255,255,.38) 48%, transparent 62%);
+    opacity: 0;
+    transform: translateX(-70%);
+    transition: transform .55s var(--ease), opacity .3s ease;
+  }
+  .button.primary {
+    border-color: var(--red);
+    background: var(--red);
+    color: white;
+    box-shadow:
+      0 18px 38px rgba(193,18,31,.34),
+      0 0 26px rgba(255,255,255,.18);
+  }
+  @media (hover: hover) {
+    .button:hover {
+      transform: translateY(-3px);
+      background: white;
+      color: var(--black);
+      box-shadow: 0 18px 48px rgba(0,0,0,.22);
+    }
+    .button:hover::after {
+      opacity: 1;
+      transform: translateX(70%);
+    }
+  }
+  .button:active { transform: translateY(0) scale(.98); }
+
+  .marquee {
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background: var(--red);
+    border-block: 1px solid rgba(255,255,255,.2);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 24s linear infinite;
+  }
+  .marquee span {
+    padding: 1rem 1.4rem;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+
+  .section {
+    position: relative;
+    padding: clamp(5rem, 10vw, 11rem) clamp(1.25rem, 4vw, 4rem);
+    padding-bottom: clamp(8rem, 12vw, 13rem);
+  }
+  .section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(110deg, transparent 0 22%, rgba(255,255,255,.13) 42%, transparent 62%),
+      radial-gradient(circle at calc(12% + var(--flow) * 76%) 8%, rgba(255,255,255,.12), transparent 20rem);
+    opacity: .42;
+    transform: translate3d(0, calc(var(--flow) * -4vh), 0);
+    will-change: transform;
+  }
+  .section > * {
+    position: relative;
+    z-index: 1;
+  }
+  .dark {
+    color: white;
+    background: var(--black);
+  }
+  .light {
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 88% 12%, rgba(255,255,255,.82), transparent 22rem),
+      linear-gradient(180deg, #efebe2, #f8f4eb);
+  }
+  .section-grid {
+    width: min(100%, 1320px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: clamp(1rem, 2vw, 1.6rem);
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(64px) scale(.982);
+    transition: opacity .9s ease, transform 1.15s var(--ease), filter 1.15s var(--ease);
+    filter: blur(10px);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(44px) scale(.986);
+    transition: opacity .86s ease, transform 1.05s var(--ease), filter 1.05s var(--ease);
+    filter: blur(8px);
+  }
+  .stagger.is-in > * {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  .stagger.is-in > *:nth-child(2) { transition-delay: .06s; }
+  .stagger.is-in > *:nth-child(3) { transition-delay: .12s; }
+  .stagger.is-in > *:nth-child(4) { transition-delay: .18s; }
+
+  .intro-copy {
+    grid-column: 2 / 8;
+  }
+  .intro-copy h2,
+  .section-heading h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(3rem, 7.5vw, 8rem);
+    line-height: .9;
+  }
+  .intro-side {
+    grid-column: 9 / 12;
+    align-self: end;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.55;
+    padding: 1.2rem;
+    border: 1px solid rgba(17,19,22,.12);
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.72), rgba(255,255,255,.25)),
+      repeating-linear-gradient(90deg, rgba(17,19,22,.035) 0 1px, transparent 1px 3rem);
+    box-shadow: 0 22px 64px rgba(17,19,22,.08);
+  }
+  .intro-side p {
+    color: rgba(17,19,22,.68);
+  }
+  .dna-rail {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .85rem;
+    margin-top: clamp(2rem, 5vw, 5rem);
+  }
+  .dna-card {
+    position: relative;
+    min-height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid rgba(17,19,22,.13);
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.76), rgba(255,255,255,.28)),
+      repeating-linear-gradient(0deg, transparent 0 4.4rem, rgba(223,247,255,.32) 4.5rem, transparent 4.9rem);
+    overflow: hidden;
+    box-shadow: 0 22px 70px rgba(17,19,22,.08);
+  }
+  .dna-card::before {
+    content: "";
+    position: absolute;
+    inset: -30% -20%;
+    opacity: .58;
+    background:
+      linear-gradient(110deg, transparent 36%, rgba(184,138,75,.22) 48%, rgba(255,255,255,.64) 50%, transparent 62%),
+      radial-gradient(circle at 78% 14%, rgba(255,255,255,.82), transparent 8rem);
+    transform: translate3d(calc(var(--flow-velocity) * 1.6rem), calc(var(--flow) * -2rem), 0);
+  }
+  .dna-card b,
+  .dna-card p,
+  .dna-card span {
+    position: relative;
+    z-index: 1;
+  }
+  .dna-card b {
+    color: var(--red);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .dna-card p {
+    max-width: 18rem;
+    color: rgba(17,19,22,.68);
+    line-height: 1.45;
+  }
+  .dna-card span {
+    color: rgba(17,19,22,.42);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .principal-card {
+    grid-column: 1 / 13;
+    position: relative;
+    min-height: 74svh;
+    display: grid;
+    grid-template-columns: minmax(280px, .72fr) 1fr;
+    gap: clamp(1rem, 3vw, 2.4rem);
+    align-items: stretch;
+    margin-top: clamp(1rem, 3vw, 2.6rem);
+    color: white;
+    background:
+      radial-gradient(circle at 22% 12%, rgba(255,255,255,.3), transparent 18rem),
+      linear-gradient(135deg, rgba(5,6,7,.96), rgba(18,21,24,.82)),
+      linear-gradient(135deg, #050607, #20262c);
+    border: 1px solid rgba(255,255,255,.16);
+    overflow: hidden;
+    box-shadow:
+      0 44px 120px rgba(17,19,22,.28),
+      inset 0 0 38px rgba(255,255,255,.08);
+  }
+  .principal-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .72;
+    background:
+      linear-gradient(90deg, transparent 0 42%, rgba(184,138,75,.34) 48%, rgba(248,251,255,.42) 50%, transparent 58%),
+      repeating-linear-gradient(0deg, transparent 0 7.8rem, rgba(223,247,255,.24) 7.95rem, transparent 8.35rem),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.09) 0 1px, transparent 1px 2.4rem);
+    mix-blend-mode: screen;
+    transform: translate3d(0, calc(var(--flow) * -4vh), 0);
+  }
+  .principal-portrait {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 54% 26%, rgba(255,255,255,.26), transparent 8rem),
+      linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.68)),
+      var(--portrait) center / cover;
+    filter: saturate(.9) contrast(1.08);
+  }
+  .principal-portrait::before {
+    content: "";
+    position: absolute;
+    inset: -10%;
+    background:
+      radial-gradient(circle at 54% 24%, rgba(255,255,255,.72), transparent 10rem),
+      linear-gradient(90deg, transparent 38%, rgba(184,138,75,.55) 50%, transparent 62%),
+      repeating-linear-gradient(0deg, transparent 0 6.2rem, rgba(255,255,255,.42) 6.32rem, transparent 6.7rem);
+    mix-blend-mode: screen;
+    opacity: .74;
+  }
+  .principal-portrait::after {
+    content: "";
+    position: absolute;
+    inset: auto 1rem 1rem;
+    min-height: 4.5rem;
+    border: 1px solid rgba(255,255,255,.18);
+    background:
+      linear-gradient(135deg, rgba(5,6,7,.68), rgba(255,255,255,.08)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, transparent 1px 2.6rem);
+    backdrop-filter: blur(18px);
+  }
+  .principal-headshot {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 49%;
+    width: min(76%, 23rem);
+    aspect-ratio: 1;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255,255,255,.38);
+    box-shadow:
+      0 0 0 1rem rgba(255,255,255,.045),
+      0 22px 70px rgba(0,0,0,.38),
+      0 0 70px rgba(235,245,255,.34);
+    filter: grayscale(.18) contrast(1.08) brightness(1.05);
+  }
+  .principal-caption {
+    position: absolute;
+    z-index: 2;
+    left: 1.2rem;
+    right: 1.2rem;
+    bottom: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: rgba(255,255,255,.78);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .principal-caption span:last-child {
+    color: rgba(255,255,255,.48);
+  }
+  .principal-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: clamp(1.25rem, 3vw, 3rem);
+  }
+  .principal-copy h2 {
+    max-width: 11ch;
+    font-size: clamp(3.2rem, 6.8vw, 7.4rem);
+    line-height: .86;
+    text-wrap: balance;
+  }
+  .principal-copy p {
+    max-width: 44rem;
+    color: rgba(255,255,255,.72);
+    font-size: clamp(1rem, 1.4vw, 1.24rem);
+    line-height: 1.48;
+  }
+  .principal-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-top: 1.15rem;
+  }
+  .principal-badges span {
+    padding: .68rem .82rem;
+    color: rgba(255,255,255,.82);
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(12px);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .signature-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .7rem;
+    margin-top: 1rem;
+  }
+  .signature-chip {
+    position: relative;
+    min-height: 8.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .9rem;
+    border: 1px solid rgba(255,255,255,.14);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.095), rgba(255,255,255,.026)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 2.7rem);
+    box-shadow: inset 0 0 24px rgba(255,255,255,.045);
+    overflow: hidden;
+  }
+  .signature-chip::before {
+    content: "";
+    position: absolute;
+    inset: -40% -20%;
+    opacity: .46;
+    background:
+      linear-gradient(110deg, transparent 34%, rgba(248,251,255,.34) 50%, transparent 64%),
+      radial-gradient(circle at 78% 12%, rgba(193,18,31,.18), transparent 7rem);
+    transform: translate3d(calc(var(--flow-velocity) * 1rem), calc(var(--flow) * -1.2rem), 0);
+  }
+  .signature-chip b,
+  .signature-chip span {
+    position: relative;
+    z-index: 1;
+  }
+  .signature-chip b {
+    color: var(--electric);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .signature-chip span {
+    color: rgba(255,255,255,.66);
+    font-size: .92rem;
+    line-height: 1.35;
+  }
+  .principal-quote {
+    display: grid;
+    gap: .75rem;
+    margin-bottom: 3.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,.16);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.035)),
+      rgba(0,0,0,.2);
+    box-shadow: inset 0 0 24px rgba(255,255,255,.06);
+  }
+  .principal-quote b {
+    color: var(--electric);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .principal-quote span {
+    color: rgba(255,255,255,.76);
+    line-height: 1.45;
+  }
+  .slot {
+    min-height: 4.2rem;
+    display: grid;
+    place-items: center;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(255,255,255,.22);
+    color: inherit;
+    opacity: .9;
+    background: var(--bubble-dark);
+    box-shadow: var(--bubble-shadow);
+    font-size: 11px;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .light .slot {
+    border-color: rgba(17,19,22,.14);
+    color: rgba(17,19,22,.68);
+    background:
+      var(--bubble-light);
+    box-shadow:
+      inset 0 0 20px rgba(255,255,255,.34),
+      0 14px 44px rgba(17,19,22,.08);
+  }
+  .hero-proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    max-width: 700px;
+    margin-top: 1.3rem;
+  }
+  .hero-proof span {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .65rem .85rem;
+    color: rgba(255,255,255,.82);
+    background: rgba(5,6,7,.32);
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(16px);
+    box-shadow: inset 0 0 18px rgba(255,255,255,.07);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .hero-proof span::before {
+    content: "";
+    width: .45rem;
+    height: .45rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  .image-strip {
+    min-height: 165vh;
+    overflow: hidden;
+  }
+  .media-card {
+    position: relative;
+    min-height: 36rem;
+    overflow: hidden;
+    color: white;
+    background: #1b2024;
+    border: 1px solid rgba(255,255,255,.22);
+    box-shadow:
+      0 38px 90px rgba(0,0,0,.28),
+      0 0 34px rgba(223,247,255,.12),
+      inset 0 0 24px rgba(255,255,255,.08);
+    will-change: transform;
+    transform: translate3d(0, var(--card-flow, 0px), 0) scale(var(--card-scale, 1));
+  }
+  .media-card::before {
+    content: "";
+    position: absolute;
+    inset: -18%;
+    background:
+      repeating-linear-gradient(92deg, rgba(255,255,255,.13) 0 1px, transparent 1px 1.5rem),
+      repeating-linear-gradient(0deg, transparent 0 7.2rem, rgba(248,251,255,.38) 7.35rem, transparent 7.8rem),
+      linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.72)),
+      radial-gradient(circle at 76% 20%, rgba(255,255,255,.28), transparent 16rem),
+      radial-gradient(circle at 20% 84%, rgba(193,18,31,.26), transparent 16rem),
+      var(--photo),
+      linear-gradient(135deg, #1c2026, #c3c7c8 45%, #07090b);
+    background-size: cover;
+    background-position: center;
+    transform: translateY(var(--parallax, 0px)) scale(1.14);
+  }
+  .media-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle, rgba(255,255,255,.5) 0 1px, transparent 1.5px),
+      linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.72));
+    background-size: 29px 37px, 100% 100%;
+    mix-blend-mode: screen, normal;
+    opacity: .58;
+  }
+  .media-card .slot {
+    position: absolute;
+    z-index: 2;
+    inset: 1rem auto auto 1rem;
+    width: min(210px, calc(100% - 2rem));
+    color: rgba(255,255,255,.78);
+    background: rgba(5,6,7,.52);
+    backdrop-filter: blur(16px);
+  }
+  .project-meta {
+    position: absolute;
+    z-index: 2;
+    inset: auto 1.4rem calc(1.35rem + clamp(5rem, 9vw, 9rem));
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+  }
+  .project-meta span {
+    padding: .52rem .65rem;
+    color: rgba(255,255,255,.78);
+    background: rgba(5,6,7,.32);
+    border: 1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(12px);
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .media-card h3 {
+    position: absolute;
+    z-index: 2;
+    inset: auto 1.4rem 9.25rem;
+    max-width: min(92%, 34rem);
+    font-size: clamp(2.05rem, 3.35vw, 3.9rem);
+    font-weight: 400;
+    line-height: .96;
+    text-shadow: 0 8px 34px rgba(0,0,0,.54);
+  }
+  .media-card h3::before {
+    content: "";
+    position: absolute;
+    inset: -.7rem -1rem;
+    z-index: -1;
+    background: linear-gradient(135deg, rgba(5,6,7,.62), rgba(5,6,7,.18));
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(10px);
+  }
+  .media-one { grid-column: 1 / 7; margin-top: 0; }
+  .media-two { grid-column: 8 / 12; margin-top: 14rem; }
+  .media-three { grid-column: 5 / 10; margin-top: 4rem; }
+  .media-four { grid-column: 2 / 6; margin-top: -2rem; }
+  .media-one { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_waterfallmansion_living7.jpg"); }
+  .media-two { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_tribeca_livingroom.jpg"); }
+  .media-three { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/75thStreet_01-1024x690.jpg"); }
+  .media-four { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/MALMO0144-1.jpg"); }
+
+  .operating-system {
+    background: var(--black);
+    color: white;
+    overflow: hidden;
+  }
+  .sticky-copy {
+    grid-column: 1 / 5;
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+  }
+  .sticky-copy h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(2.8rem, 4.9vw, 5.25rem);
+    line-height: .92;
+  }
+  .system-list {
+    grid-column: 6 / 13;
+    display: grid;
+    gap: 0;
+  }
+  .system-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: .22fr 1fr;
+    gap: 1.5rem;
+    min-height: 13rem;
+    padding: 1.15rem;
+    border: 1px solid rgba(255,255,255,.12);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.025)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.055) 0 1px, transparent 1px 4.6rem);
+    box-shadow: inset 0 0 28px rgba(255,255,255,.04);
+    transition: transform .45s var(--ease), border-color .35s ease, background .35s ease;
+  }
+  .system-row::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--electric), transparent);
+    opacity: 0;
+    transform: scaleY(.35);
+    transition: opacity .35s ease, transform .45s var(--ease);
+  }
+  @media (hover: hover) {
+    .system-row:hover {
+      transform: translateX(10px);
+      border-color: rgba(223,247,255,.34);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.065) 0 1px, transparent 1px 4.6rem);
+    }
+    .system-row:hover::after {
+      opacity: .8;
+      transform: scaleY(1);
+    }
+  }
+  .system-row b {
+    color: var(--red);
+    font-size: 1rem;
+  }
+  .system-row h3 {
+    margin-bottom: .9rem;
+    font-size: clamp(2rem, 3.45vw, 4.15rem);
+    line-height: .96;
+    font-weight: 400;
+  }
+  .system-row p {
+    max-width: 44rem;
+    padding: .82rem .95rem;
+    color: rgba(255,255,255,.68);
+    background: rgba(0,0,0,.16);
+    border: 1px solid rgba(255,255,255,.08);
+    line-height: 1.55;
+  }
+
+  .lux-grid {
+    background: var(--bone);
+  }
+  .section-heading {
+    grid-column: 1 / 7;
+  }
+  .proof-grid {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+  .proof {
+    position: relative;
+    min-height: 22rem;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--ink);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.86), rgba(255,255,255,.22)),
+      repeating-linear-gradient(0deg, transparent 0 4.9rem, rgba(223,247,255,.36) 5.05rem, transparent 5.4rem),
+      radial-gradient(circle at 70% 10%, rgba(193,18,31,.12), transparent 12rem);
+    border: 1px solid var(--line-light);
+    overflow: hidden;
+    transition: transform .4s var(--ease), box-shadow .35s ease;
+  }
+  .proof::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(90deg, rgba(17,19,22,.05) 0 1px, transparent 1px 4.8rem),
+      radial-gradient(circle at 76% 12%, rgba(255,255,255,.7), transparent 8rem);
+    pointer-events: none;
+  }
+  .proof strong {
+    position: relative;
+    z-index: 1;
+    font-size: clamp(2.25rem, 4.25vw, 4.7rem);
+    line-height: .9;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+  .proof .slot {
+    position: relative;
+    z-index: 1;
+    align-content: center;
+    min-height: 6.5rem;
+    margin-bottom: 7rem;
+    color: rgba(17,19,22,.68);
+  }
+  .proof-note {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: .52fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    color: var(--ink);
+    border: 1px solid rgba(17,19,22,.14);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,255,255,.3)),
+      repeating-linear-gradient(90deg, rgba(17,19,22,.04) 0 1px, transparent 1px 3.4rem);
+    box-shadow: 0 24px 70px rgba(17,19,22,.08);
+  }
+  .proof-note b {
+    color: var(--red);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .proof-note span {
+    max-width: 56rem;
+    color: rgba(17,19,22,.68);
+    line-height: 1.5;
+  }
+  @media (hover: hover) {
+    .proof:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 70px rgba(17,19,22,.18);
+    }
+  }
+
+  .showcase {
+    min-height: 120svh;
+    color: white;
+    background:
+      radial-gradient(circle at 65% 26%, rgba(193,18,31,.36), transparent 20rem),
+      linear-gradient(180deg, #080a0c, #15191d 42%, #050607);
+    overflow: hidden;
+  }
+  .showcase-card {
+    grid-column: 2 / 12;
+    position: relative;
+    min-height: 82svh;
+    border: 1px solid rgba(255,255,255,.26);
+    background:
+      linear-gradient(120deg, rgba(255,255,255,.12), rgba(255,255,255,.02)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 7rem);
+    box-shadow:
+      0 50px 130px rgba(0,0,0,.36),
+      0 0 55px rgba(248,251,255,.16),
+      inset 0 0 36px rgba(255,255,255,.1);
+    overflow: hidden;
+    transform: translate3d(0, var(--showcase-flow, 0px), 0) scale(var(--showcase-scale, 1));
+    will-change: transform;
+  }
+  .showcase-card::before {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    background:
+      repeating-linear-gradient(92deg, rgba(255,255,255,.14) 0 1px, transparent 1px 1.7rem),
+      repeating-linear-gradient(0deg, transparent 0 8rem, rgba(248,251,255,.46) 8.12rem, transparent 8.62rem),
+      radial-gradient(circle at var(--mx, 50%) var(--my, 40%), rgba(255,255,255,.46), transparent 13rem),
+      linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.58)),
+      url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_greenwich_staircase.jpg") center / cover,
+      linear-gradient(135deg, #2b3036, #f3f2ea 42%, #07090b 74%);
+    opacity: .72;
+    transform: translateY(var(--showcase, 0px)) scale(1.08);
+  }
+  .showcase-content {
+    position: absolute;
+    inset: auto 2rem 2rem;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr .45fr;
+    gap: 2rem;
+    align-items: end;
+  }
+  .showcase-content h2 {
+    font-size: clamp(3.8rem, 10vw, 12rem);
+    line-height: .82;
+  }
+  .showcase-content .slot {
+    color: rgba(255,255,255,.75);
+    background:
+      linear-gradient(135deg, rgba(5,6,7,.62), rgba(255,255,255,.08)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 3rem);
+    backdrop-filter: blur(14px);
+  }
+
+  .scrape-map {
+    background: var(--cream);
+  }
+  .map-head {
+    grid-column: 1 / 6;
+  }
+  .map-head h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(3rem, 7vw, 7.4rem);
+    line-height: .9;
+  }
+  .map-board {
+    grid-column: 7 / 13;
+    display: grid;
+    gap: .8rem;
+  }
+  .map-item {
+    display: grid;
+    grid-template-columns: .36fr 1fr;
+    gap: 1rem;
+    min-height: 6rem;
+    padding: 1rem;
+    border: 1px solid var(--line-light);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.28)),
+      repeating-linear-gradient(90deg, rgba(17,19,22,.035) 0 1px, transparent 1px 3.6rem);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 54px rgba(17,19,22,.07);
+  }
+  .map-item b {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.35rem;
+    padding: .4rem .65rem;
+    color: var(--red);
+    border: 1px solid rgba(193,18,31,.18);
+    background: rgba(255,255,255,.36);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .map-item .slot {
+    min-height: auto;
+    justify-items: start;
+    text-align: left;
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.36;
+    text-transform: none;
+  }
+
+  .contact {
+    min-height: 100svh;
+    color: white;
+    background: var(--black);
+    overflow: hidden;
+  }
+  .contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 76% 18%, rgba(193,18,31,.28), transparent 18rem),
+      linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.08));
+  }
+  .contact::after {
+    content: "";
+    position: absolute;
+    inset: -20% -10%;
+    pointer-events: none;
+    opacity: .42;
+    background:
+      linear-gradient(112deg, transparent 0 45%, rgba(248,251,255,.28) 49%, rgba(184,138,75,.2) 50%, transparent 58%),
+      repeating-linear-gradient(0deg, transparent 0 7.8rem, rgba(223,247,255,.18) 7.95rem, transparent 8.35rem);
+    mix-blend-mode: screen;
+    transform: translate3d(0, calc(var(--flow) * -10vh), 0);
+  }
+  .contact-title {
+    grid-column: 1 / 7;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-title h2 {
+    margin-top: 1.2rem;
+    font-size: clamp(3.5rem, 9vw, 10rem);
+    line-height: .84;
+  }
+  .contact-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: 1.2rem;
+  }
+  .contact-meta span {
+    padding: .65rem .8rem;
+    color: rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(14px);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .shell-form {
+    grid-column: 8 / 13;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: .9rem;
+    padding: clamp(1rem, 2vw, 1.35rem);
+    border: 1px solid rgba(255,255,255,.22);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045)),
+      rgba(255,255,255,.06);
+    backdrop-filter: blur(18px);
+    box-shadow:
+      0 34px 100px rgba(0,0,0,.38),
+      inset 0 0 28px rgba(255,255,255,.08);
+  }
+  .shell-form label {
+    display: grid;
+    gap: .45rem;
+    color: rgba(255,255,255,.62);
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .shell-form input,
+  .shell-form textarea {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(0,0,0,.22);
+    color: white;
+    padding: .9rem;
+    border-radius: 0;
+    transition: border-color .24s ease, box-shadow .24s ease, background .24s ease;
+  }
+  .shell-form input:focus,
+  .shell-form textarea:focus {
+    outline: none;
+    border-color: rgba(223,247,255,.58);
+    background: rgba(0,0,0,.34);
+    box-shadow: 0 0 0 3px rgba(223,247,255,.08);
+  }
+  .shell-form textarea {
+    min-height: 126px;
+    resize: vertical;
+  }
+  .shell-form input::placeholder,
+  .shell-form textarea::placeholder {
+    color: rgba(255,255,255,.36);
+  }
+
+  @media (max-width: 980px) {
+    .topline { display: none; }
+    .hero-copy { padding-inline: 1.25rem; }
+    .hero-plate { width: 54vw; right: -18vw; bottom: 7vh; opacity: .54; }
+    .hero-copy::before { width: min(680px, 92vw); }
+    .hero-line {
+      display: grid;
+      gap: .7rem;
+      grid-template-columns: 1fr;
+      max-width: min(100%, 38rem);
+    }
+    .hero-line p {
+      min-height: auto;
+      padding: .72rem .82rem;
+      font-size: .95rem;
+      line-height: 1.28;
+    }
+    .cta-row {
+      margin-top: 0;
+      gap: .55rem;
+    }
+    .button {
+      min-height: 44px;
+      padding: .8rem 1rem;
+    }
+    .section-grid { grid-template-columns: 1fr; }
+    .intro-copy,
+    .intro-side,
+    .dna-rail,
+    .principal-card,
+    .sticky-copy,
+    .system-list,
+    .section-heading,
+    .proof-grid,
+    .showcase-card,
+    .map-head,
+    .map-board,
+    .contact-title,
+    .shell-form {
+      grid-column: 1;
+    }
+    .sticky-copy {
+      position: relative;
+      top: auto;
+    }
+    .proof-grid { grid-template-columns: 1fr 1fr; }
+    .dna-rail { grid-template-columns: 1fr 1fr; }
+    .principal-card { grid-template-columns: 1fr; }
+    .principal-portrait { min-height: 58svh; }
+    .signature-strip { grid-template-columns: 1fr; }
+    .showcase-card { min-height: 78svh; }
+    .showcase-content { grid-template-columns: 1fr; }
+    .media-one,
+    .media-two,
+    .media-three,
+    .media-four {
+      grid-column: 1;
+      margin-top: 0;
+    }
+    .media-card { min-height: 70svh; margin-bottom: 1rem; }
+  }
+  @media (max-width: 640px) {
+    body::before { opacity: .34; }
+    .texture { opacity: .12; }
+    .flow-field { display: none; }
+    .hero::after { opacity: .46; }
+    .media-card::after { opacity: .48; }
+    .showcase-card::before { opacity: .64; }
+    .dock { bottom: .35rem; }
+    .menu { bottom: 5.6rem; padding: 2rem; }
+    .puffer-field { grid-template-columns: repeat(5, 1fr); }
+    h1 {
+      max-width: 9ch;
+      font-size: clamp(2.8rem, 13vw, 4.3rem);
+      line-height: .95;
+      overflow-wrap: normal;
+    }
+    .hero-copy { padding: 5.5rem 1.25rem 9rem; }
+    .hero-proof {
+      gap: .38rem;
+      margin-top: .65rem;
+    }
+    .hero-proof span {
+      min-height: 28px;
+      padding: .38rem .52rem;
+      font-size: 9px;
+    }
+    .proof-grid { grid-template-columns: 1fr; }
+    .proof-note { grid-template-columns: 1fr; }
+    .dna-rail { grid-template-columns: 1fr; }
+    .dna-card { min-height: 11rem; }
+    .principal-card { min-height: auto; }
+    .principal-portrait { min-height: 68svh; }
+    .principal-copy h2 {
+      font-size: clamp(3rem, 16vw, 4.7rem);
+    }
+    .project-meta {
+      inset: auto 1rem 7rem;
+    }
+    .system-row,
+    .map-item {
+      grid-template-columns: 1fr;
+    }
+    .system-row {
+      min-height: auto;
+    }
+    .showcase-content {
+      inset: auto 1rem 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: .001ms !important;
+    }
+    .loader { display: none; }
+    .reveal,
+    .stagger > * {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+    .flow-field { display: none; }
+  }
+  html[data-motion-force="true"] .loader {
+    display: grid;
+  }
+  html[data-motion-force="true"] .loader-ring {
+    animation: ringPulse 1.35s var(--snap) forwards !important;
+  }
+  html[data-motion-force="true"] .cube {
+    animation: cubeSpin 1.35s var(--snap) forwards !important;
+  }
+  html[data-motion-force="true"] .marquee-track {
+    animation: marquee 24s linear infinite !important;
+  }
+  html[data-motion-force="true"] .dock-title span,
+  html[data-motion-force="true"] .dock-menu span,
+  html[data-motion-force="true"] .dock-menu::before,
+  html[data-motion-force="true"] .dock-menu::after,
+  html[data-motion-force="true"] .menu,
+  html[data-motion-force="true"] .button,
+  html[data-motion-force="true"] .reveal,
+  html[data-motion-force="true"] .stagger > * {
+    transition-duration: .45s !important;
+  }
+</style>
+</head>
+<body>
+  <div class="loader" aria-hidden="true">
+    <div class="loader-core">
+      <div class="loader-ring"></div>
+      <div class="cube"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+
+  <div class="texture"></div>
+  <div class="flow-field" aria-hidden="true"></div>
+  <div class="cursor-chip" aria-hidden="true">
+    <svg viewBox="0 0 28 28" focusable="false">
+      <path d="M4.6 3.8 22.4 13 14.7 15.1 11.2 22.3 4.6 3.8Z" />
+    </svg>
+  </div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+  <output class="motion-health" aria-hidden="true" hidden></output>
+
+  <div class="topline" aria-hidden="true">
+    <span class="brand-mark">Inson Dubois Wood</span>
+    <span>Residential Design and Interiors</span>
+  </div>
+
+  <nav class="dock" aria-label="Site navigation">
+    <a class="dock-logo" href="#top" aria-label="Top"><span></span></a>
+    <div class="dock-title"><span>Home<br>Menu</span></div>
+    <button class="dock-menu" type="button" aria-label="Open menu"><span></span></button>
+  </nav>
+
+  <div class="menu" aria-hidden="true">
+    <a href="#brief"><span>Profile</span></a>
+    <a href="#visuals"><span>Rooms</span></a>
+    <a href="#system"><span>Practice</span></a>
+    <a href="#proof"><span>Monograph</span></a>
+    <a href="#scrape-map"><span>Archive</span></a>
+    <a href="#contact"><span>Contact</span></a>
+  </div>
+
+  <main id="top">
+    <section class="hero" data-label="Home">
+      <div class="puffer-field" aria-hidden="true">
+        <div class="quilt"></div><div class="quilt"></div><div class="quilt"></div><div class="quilt"></div>
+        <div class="quilt"></div><div class="quilt"></div><div class="quilt"></div><div class="quilt"></div>
+      </div>
+      <div class="hero-plate cursor-zone" data-slot="hero-media" data-cursor="Featured room"></div>
+      <div class="hero-copy reveal" data-slot="hero">
+        <div class="eyebrow">Inson Dubois Wood: Interiors</div>
+        <h1>A residential world, composed like an art book.</h1>
+        <div class="hero-line">
+          <p>A moving archive of architecture, interiors, antiques, paintings, objects, texture, and proportion from a New York practice shaped by Harvard, Cornell, Thailand, France, and decades of private residential work.</p>
+          <div class="cta-row">
+            <a class="button primary magnetic" href="#proof">Read monograph</a>
+            <a class="button magnetic" href="#visuals">View rooms</a>
+          </div>
+        </div>
+        <div class="hero-proof" aria-label="Studio proof points">
+          <span>Rizzoli, 2016</span>
+          <span>320 pages</span>
+          <span>Photography by Mark Roskams</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Harvard GSD</span><span>Cornell Architecture</span><span>Rizzoli monograph</span><span>Hyland Award</span>
+        <span>Architectural Digest</span><span>49 Google reviews</span><span>Harvard GSD</span><span>Cornell Architecture</span>
+        <span>Rizzoli monograph</span><span>Hyland Award</span><span>Architectural Digest</span><span>49 Google reviews</span>
+      </div>
+    </div>
+
+    <section class="section light" id="brief" data-label="Profile">
+      <div class="section-grid">
+        <div class="intro-copy reveal" data-slot="brand-story">
+          <div class="mini-title">Pedigree</div>
+          <h2>Architecture first. Decoration with a point of view.</h2>
+        </div>
+        <div class="intro-side reveal" data-slot="brand-summary">
+          <p>Inson Dubois Wood holds a Master of Architecture from Harvard Graduate School of Design and a Bachelor of Architecture from Cornell. Before founding his studio, he served as design director for Juan Pablo Molyneux and David Easton, shaping high-end residential work across the U.S., Europe, and Asia.</p>
+          <div class="slot" style="margin-top:1.2rem">Own studio founded in 2005</div>
+        </div>
+        <div class="dna-rail stagger" aria-label="Inson Dubois Wood design DNA">
+          <article class="dna-card">
+            <b>Harvard Modernism</b>
+            <p>Harvard Graduate School of Design training gives the work a structural backbone before the first fabric, finish, or object is chosen.</p>
+            <span>Plan before polish</span>
+          </article>
+          <article class="dna-card">
+            <b>Cornell Precision</b>
+            <p>Cornell architecture training shows up in the discipline of proportion, circulation, drawings, and decisions that have to work in real rooms.</p>
+            <span>Measured control</span>
+          </article>
+          <article class="dna-card">
+            <b>Molyneux / Easton</b>
+            <p>Design-director experience with Juan Pablo Molyneux and David Easton brings fluency in antiques, craft, restoration, and formal residential scale.</p>
+            <span>Classical range</span>
+          </article>
+          <article class="dna-card">
+            <b>Rizzoli Proof</b>
+            <p>A 320-page Rizzoli monograph documents the rooms, residences, and international range behind the studio's reputation.</p>
+            <span>Printed proof</span>
+          </article>
+        </div>
+        <article class="principal-card reveal" aria-label="Inson Wood principal profile" style="--portrait:url('https://www.saatchiart.com/saatchi-s3/2138555/profile/KVNVUTPE_avatar_medium_square.jpg')">
+          <div class="principal-portrait">
+            <img class="principal-headshot" src="https://www.saatchiart.com/saatchi-s3/2138555/profile/KVNVUTPE_avatar_medium_square.jpg" alt="Inson Wood portrait" loading="lazy">
+            <div class="principal-caption" aria-hidden="true">
+              <span>Artist / Architect / Principal</span>
+              <span>New York</span>
+            </div>
+          </div>
+          <div class="principal-copy">
+            <div>
+              <div class="mini-title">The principal</div>
+              <h2>Inson Wood authors the whole residence.</h2>
+              <p>Architect, interior designer, artist, and sole principal, he brings the room under one eye: proportion, furniture, art, antiques, custom work, and the atmosphere that makes a private home feel resolved.</p>
+              <div class="principal-badges">
+                <span>Thai-French heritage</span>
+                <span>Zen / wabi-sabi lens</span>
+                <span>Private collections</span>
+                <span>Architecture + art</span>
+              </div>
+              <div class="signature-strip" aria-label="Studio signature">
+                <div class="signature-chip">
+                  <b>01 Architecture</b>
+                  <span>Plans, structure, circulation, and proportion come before surface styling.</span>
+                </div>
+                <div class="signature-chip">
+                  <b>02 Interiors</b>
+                  <span>Furniture, lighting, materials, and custom details are composed as one room language.</span>
+                </div>
+                <div class="signature-chip">
+                  <b>03 Art</b>
+                  <span>Paintings, objects, antiques, and contemporary work become part of the architecture.</span>
+                </div>
+              </div>
+            </div>
+            <div class="principal-quote">
+              <b>Why the work holds together</b>
+              <span>The studio is not selling isolated finishes. It is building a complete residential language: architecture, lighting, material, art, history, and daily use brought into one controlled composition.</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark image-strip" id="visuals" data-label="Rooms">
+      <div class="section-grid stagger">
+        <article class="media-card media-one cursor-zone" data-slot="visual-1" data-cursor="Waterfall">
+          <div class="slot">Waterfall Mansion</div>
+          <div class="project-meta"><span>New York</span><span>Townhouse scale</span></div>
+          <h3>Historic scale, edited for modern life.</h3>
+        </article>
+        <article class="media-card media-two cursor-zone" data-slot="visual-2" data-cursor="Tribeca">
+          <div class="slot">Tribeca Loft</div>
+          <div class="project-meta"><span>Downtown loft</span><span>Industrial warmth</span></div>
+          <h3>Open volume with warmth and restraint.</h3>
+        </article>
+        <article class="media-card media-three cursor-zone" data-slot="visual-3" data-cursor="Upper East">
+          <div class="slot">Upper East Side</div>
+          <div class="project-meta"><span>Townhouse</span><span>Architectural control</span></div>
+          <h3>Formal rooms with contemporary control.</h3>
+        </article>
+        <article class="media-card media-four cursor-zone" data-slot="visual-4" data-cursor="Sweden">
+          <div class="slot">Malmo, Sweden</div>
+          <div class="project-meta"><span>Sweden</span><span>Modernist restraint</span></div>
+          <h3>Clean lines, quiet materials, exact balance.</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="section operating-system" id="system" data-label="Practice">
+      <div class="section-grid">
+        <div class="sticky-copy reveal">
+          <div class="mini-title">Practice</div>
+          <h2>The work moves between architecture, rooms, and objects.</h2>
+        </div>
+        <div class="system-list stagger">
+          <article class="system-row" data-slot="section-1">
+            <b>01</b>
+            <div>
+              <h3>Architecture</h3>
+              <p>Plans, circulation, restoration, remodeling, and architectural decisions give the residence its structure before decoration enters.</p>
+            </div>
+          </article>
+          <article class="system-row" data-slot="section-2">
+            <b>02</b>
+            <div>
+              <h3>Rooms</h3>
+              <p>Furniture, art, lighting, fabrics, finishes, and custom detailing are edited into rooms that feel layered rather than staged.</p>
+            </div>
+          </article>
+          <article class="system-row" data-slot="section-3">
+            <b>03</b>
+            <div>
+              <h3>Objects</h3>
+              <p>Antiques, modern furniture, paintings, and collected objects are treated as part of the architecture, not accessories added at the end.</p>
+            </div>
+          </article>
+          <article class="system-row" data-slot="section-4">
+            <b>04</b>
+            <div>
+              <h3>Range</h3>
+              <p>Traditional, contemporary, and modern references move through New York, Greenwich, Sweden, Thailand, Saint-Tropez, Lake Como, and Paris.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lux-grid" id="proof" data-label="Monograph">
+      <div class="section-grid">
+        <div class="section-heading reveal">
+          <div class="mini-title">Monograph</div>
+          <h2>The book is the clearest way into the work.</h2>
+        </div>
+        <div class="proof-grid stagger">
+          <article class="proof cursor-zone" data-slot="stat-1" data-cursor="Proof">
+            <strong>2016</strong>
+            <div class="slot">Published by Rizzoli on September 20</div>
+          </article>
+          <article class="proof cursor-zone" data-slot="stat-2" data-cursor="Rating">
+            <strong>320</strong>
+            <div class="slot">Hardcover pages of residential interiors</div>
+          </article>
+          <article class="proof cursor-zone" data-slot="stat-3" data-cursor="Book">
+            <strong>Rizzoli</strong>
+            <div class="slot">First monograph on his interior design work</div>
+          </article>
+          <article class="proof cursor-zone" data-slot="stat-4" data-cursor="Studio">
+            <strong>Roskams</strong>
+            <div class="slot">Photography by Mark Roskams</div>
+          </article>
+        </div>
+        <div class="proof-note reveal">
+          <b>What the book shows</b>
+          <span>Richness, texture, impeccable proportions, subtle tonality, colorful accents, antiques, modern furniture, Waterfall Mansion in New York, a family home in Greenwich, and a villa in Saint-Tropez.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section showcase" id="showcase" data-label="Showcase">
+      <div class="section-grid">
+        <div class="showcase-card reveal cursor-zone" data-slot="big-showcase" data-cursor="Portfolio">
+          <div class="showcase-content">
+            <h2>From Waterfall Mansion to Greenwich Manor.</h2>
+            <div class="slot">Large residences, city apartments, country houses, and international projects with a consistent architectural hand</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section scrape-map" id="scrape-map" data-label="Archive">
+      <div class="section-grid">
+        <div class="map-head reveal">
+          <div class="mini-title">Archive</div>
+          <h2>His range is the story.</h2>
+        </div>
+        <div class="map-board stagger">
+          <article class="map-item" data-slot="scrape-business">
+            <b>Roots</b>
+            <div class="slot">United States, Thailand, and France shape the studio's cosmopolitan point of view</div>
+          </article>
+          <article class="map-item" data-slot="scrape-offers">
+            <b>Method</b>
+            <div class="slot">Architectural elements define space before color, furniture, and objects refine it</div>
+          </article>
+          <article class="map-item" data-slot="scrape-proof">
+            <b>Places</b>
+            <div class="slot">New York, Greenwich, Saint-Tropez, Lake Como, Palm Beach, Paris, Sweden, Thailand</div>
+          </article>
+          <article class="map-item" data-slot="scrape-assets">
+            <b>Spirit</b>
+            <div class="slot">Buddhist principles and respect for the spirit of the home guide the work</div>
+          </article>
+          <article class="map-item" data-slot="scrape-contact">
+            <b>Press</b>
+            <div class="slot">Architectural Digest, Luxe, Vogue, Traditional Home, Hamptons C&amp;G</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" data-label="Contact">
+      <div class="section-grid">
+        <div class="contact-title reveal">
+          <div class="mini-title">Consultation</div>
+          <h2>Start with the residence. Define the standard.</h2>
+          <div class="contact-meta" aria-label="Contact details">
+            <span>New York studio</span>
+            <span>inson@insonwood.com</span>
+            <span>212-343-1077</span>
+          </div>
+        </div>
+        <form class="shell-form reveal" data-slot="form" action="mailto:inson@insonwood.com" method="post" enctype="text/plain">
+          <label>Name<input type="text" name="name" placeholder="Your name" /></label>
+          <label>Email<input type="email" name="email" placeholder="Email address" /></label>
+          <label>Project<textarea name="project" placeholder="Townhouse, apartment, country house, gut renovation..."></textarea></label>
+          <button class="button primary magnetic" type="submit">Email Inson</button>
+          <a class="button magnetic" href="tel:+12123431077">Call 212-343-1077</a>
+        </form>
+      </div>
+    </section>
+  </main>
+
+<script>
+(() => {
+  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const root = document.documentElement;
+  const params = new URLSearchParams(window.location.search);
+  const localPreview = ["127.0.0.1", "localhost"].includes(window.location.hostname);
+  const forceMotion = params.get("motion") === "on" || window.location.hash.includes("motion-on") || (localPreview && params.get("motion") !== "off");
+  const reduce = motionQuery.matches && !forceMotion;
+  root.dataset.motionForce = String(forceMotion);
+  const loader = document.querySelector(".loader");
+  const dock = document.querySelector(".dock");
+  const menuButton = document.querySelector(".dock-menu");
+  const menu = document.querySelector(".menu");
+  const dockTitle = document.querySelector(".dock-title span");
+  const cursor = document.querySelector(".cursor-chip");
+  const healthNode = document.querySelector(".motion-health");
+  const quilts = [...document.querySelectorAll(".quilt")];
+  const heroPlate = document.querySelector(".hero-plate");
+  const cards = [...document.querySelectorAll(".media-card")];
+  const showcase = document.querySelector(".showcase-card");
+  const magnetic = [...document.querySelectorAll(".magnetic")];
+  const sections = [...document.querySelectorAll("[data-label]")];
+  const revealItems = [...document.querySelectorAll(".reveal, .stagger")];
+  const cursorZones = [...document.querySelectorAll(".cursor-zone")];
+
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const lerp = (from, to, amount) => from + (to - from) * amount;
+  const vh = () => window.innerHeight || 1;
+  const vw = () => window.innerWidth || 1;
+  const now = () => window.performance?.now?.() || Date.now();
+  const requestFrame = window.requestAnimationFrame
+    ? (callback) => window.requestAnimationFrame(callback)
+    : (callback) => window.setTimeout(() => callback(now()), 16);
+  const cancelFrame = window.cancelAnimationFrame
+    ? (id) => window.cancelAnimationFrame(id)
+    : (id) => window.clearTimeout(id);
+  let rafId = 0;
+  let mouseX = vw() / 2;
+  let mouseY = vh() / 2;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+  let smoothScroll = window.scrollY;
+  let lastScroll = window.scrollY;
+  let scrollVelocity = 0;
+  let scrollIdleTimer = 0;
+  let cursorVisible = false;
+  let active = false;
+  let activeLabel = "Home";
+  let frameCount = 0;
+  let fps = 0;
+  let previousFrameTime = now();
+  let lastHealthPublish = 0;
+
+  const health = {
+    version: "inson-precise-2",
+    status: "booting",
+    running: false,
+    frameCount: 0,
+    fps: 0,
+    lastFrame: 0,
+    scroll: "0.0000",
+    flow: "0.0000",
+    velocity: "0.0000",
+    activeSection: activeLabel,
+    revealTargets: revealItems.length,
+    revealed: 0,
+    loaderGone: false,
+    menuOpen: false,
+    cursorEnabled: false,
+    ok: false,
+    checks: {
+      loop: false,
+      loader: false,
+      reveals: false,
+      flow: false
+    },
+    reducedMotionPreferred: motionQuery.matches,
+    reducedMotionActive: reduce,
+    forceMotion
+  };
+  const diagnostics = {
+    version: health.version,
+    running: false,
+    lastFrame: 0,
+    getState: () => ({ ...health })
+  };
+  function publishHealth(status = active ? "running" : "idle", frameTime = now(), force = false) {
+    if (!force && frameTime - lastHealthPublish < 180) return;
+    lastHealthPublish = frameTime;
+    health.status = reduce ? "reduced-motion" : status;
+    health.running = active;
+    health.frameCount = frameCount;
+    health.fps = Math.min(120, Math.round(fps));
+    health.lastFrame = Math.round(frameTime);
+    health.scroll = root.style.getPropertyValue("--scroll") || "0.0000";
+    health.flow = root.style.getPropertyValue("--flow") || "0.0000";
+    health.velocity = root.style.getPropertyValue("--flow-velocity") || "0.0000";
+    health.activeSection = activeLabel;
+    health.revealed = document.querySelectorAll(".is-in").length;
+    health.loaderGone = Boolean(loader?.classList.contains("is-gone"));
+    health.menuOpen = Boolean(menu?.classList.contains("is-open"));
+    health.cursorEnabled = document.body.classList.contains("custom-cursor");
+    health.checks = {
+      loop: reduce || active,
+      loader: health.loaderGone,
+      reveals: reduce || health.revealed > 0,
+      flow: reduce || Number.parseFloat(health.flow) >= 0
+    };
+    health.ok = Object.values(health.checks).every(Boolean);
+    root.dataset.motionStatus = health.status;
+    root.dataset.motionOk = String(health.ok);
+    root.dataset.motionFps = String(health.fps);
+    root.dataset.motionRevealed = `${health.revealed}/${health.revealTargets}`;
+    root.dataset.motionActiveSection = health.activeSection;
+    if (healthNode) healthNode.textContent = JSON.stringify(health);
+  }
+
+  root.dataset.motionShell = health.version;
+  try {
+    window.__motionShell = diagnostics;
+    window.__motionHealth = health;
+    window.dispatchEvent(new CustomEvent("motion-shell-ready", { detail: { version: health.version } }));
+  } catch (error) {
+    root.dataset.motionShellWindow = "locked";
+  }
+
+  if (reduce) {
+    loader?.classList.add("is-gone");
+    revealItems.forEach((item) => item.classList.add("is-in"));
+    publishHealth("reduced-motion", now(), true);
+  } else {
+    window.setTimeout(() => loader?.classList.add("is-gone"), 1450);
+  }
+
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && cursor) {
+    document.body.classList.add("custom-cursor");
+    health.cursorEnabled = true;
+  }
+
+  function setMenu(open) {
+    if (!menu || !dock) return;
+    menu.classList.toggle("is-open", open);
+    dock.classList.toggle("is-open", open);
+    document.body.classList.toggle("menu-open", open);
+    menu.setAttribute("aria-hidden", String(!open));
+    menuButton?.setAttribute("aria-expanded", String(open));
+  }
+
+  menuButton?.setAttribute("aria-expanded", "false");
+  menuButton?.addEventListener("click", () => setMenu(!menu?.classList.contains("is-open")));
+  menu?.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setMenu(false);
+  });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenu(false);
+  });
+
+  if ("IntersectionObserver" in window && !reduce) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: .14 });
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const labelObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || !dockTitle) return;
+        const label = entry.target.dataset.label || "Home";
+        dockTitle.innerHTML = `${label}<br>Menu`;
+      });
+    }, { rootMargin: "-44% 0px -44% 0px", threshold: 0 });
+    sections.forEach((item) => labelObserver.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("is-in"));
+  }
+
+  window.addEventListener("pointermove", (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    if (!cursorVisible && cursor) {
+      cursorVisible = true;
+      cursor.classList.add("is-visible");
+    }
+    if (showcase) {
+      const rect = showcase.getBoundingClientRect();
+      const x = clamp((event.clientX - rect.left) / Math.max(1, rect.width)) * 100;
+      const y = clamp((event.clientY - rect.top) / Math.max(1, rect.height)) * 100;
+      showcase.style.setProperty("--mx", `${x}%`);
+      showcase.style.setProperty("--my", `${y}%`);
+    }
+  }, { passive: true });
+
+  cursorZones.forEach((item) => {
+    item.addEventListener("pointerenter", () => {
+      if (!cursor) return;
+      cursor.dataset.label = item.dataset.cursor || "";
+      cursor.classList.add("is-hovering");
+    });
+    item.addEventListener("pointerleave", () => {
+      if (!cursor) return;
+      cursor.dataset.label = "";
+      cursor.classList.remove("is-hovering");
+    });
+  });
+
+  magnetic.forEach((item) => {
+    item.addEventListener("pointermove", (event) => {
+      const rect = item.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      item.style.transform = `translate3d(${x * .12}px, ${y * .18}px, 0)`;
+    });
+    item.addEventListener("pointerleave", () => {
+      item.style.transform = "";
+    });
+  });
+
+  function updateDockLabel() {
+    if (!dockTitle || !sections.length) return;
+    const center = vh() * .5;
+    let current = sections[0];
+    let distance = Infinity;
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const nextDistance = Math.abs((rect.top + rect.height * .5) - center);
+      if (nextDistance < distance) {
+        distance = nextDistance;
+        current = section;
+      }
+    });
+    const label = current.dataset.label || "Home";
+    activeLabel = label;
+    if (!dockTitle.innerHTML.startsWith(label)) {
+      dockTitle.innerHTML = `${label}<br>Menu`;
+    }
+  }
+
+  function tick(now = 0) {
+    active = true;
+    diagnostics.running = true;
+    diagnostics.lastFrame = Math.round(now);
+    frameCount += 1;
+    const frameDelta = Math.max(1, now - previousFrameTime);
+    previousFrameTime = now;
+    fps = fps ? lerp(fps, 1000 / frameDelta, .08) : 1000 / frameDelta;
+    root.dataset.motionRunning = "true";
+    root.dataset.motionFrame = String(diagnostics.lastFrame);
+
+    const targetScroll = window.scrollY;
+    const height = vh();
+    const width = vw();
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - height);
+    const rawVelocity = clamp(targetScroll - lastScroll, -90, 90);
+    if (Math.abs(rawVelocity) > 1.5) {
+      document.body.classList.add("is-scrolling");
+      window.clearTimeout(scrollIdleTimer);
+      scrollIdleTimer = window.setTimeout(() => document.body.classList.remove("is-scrolling"), 180);
+    }
+    smoothScroll = Math.abs(targetScroll - smoothScroll) < .08
+      ? targetScroll
+      : lerp(smoothScroll, targetScroll, .115);
+    scrollVelocity = lerp(scrollVelocity, rawVelocity, .14);
+    lastScroll = targetScroll;
+
+    const flowVelocity = clamp(scrollVelocity / 90, -1, 1);
+    const progress = clamp(smoothScroll / maxScroll);
+    const pageFlow = clamp(progress * 1.08);
+    root.style.setProperty("--scroll", progress.toFixed(4));
+    root.style.setProperty("--flow", pageFlow.toFixed(4));
+    root.style.setProperty("--flow-velocity", flowVelocity.toFixed(4));
+    root.dataset.motionScroll = progress.toFixed(4);
+    root.dataset.motionVelocity = flowVelocity.toFixed(4);
+
+    const heroProgress = clamp(smoothScroll / height);
+    quilts.forEach((quilt, index) => {
+      const depth = (index - quilts.length / 2) * 2.5;
+      const x = (mouseX / width - .5) * depth + flowVelocity * (index % 2 ? 10 : -8);
+      const y = heroProgress * (index % 2 ? -34 : -18);
+      quilt.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+    if (heroPlate) {
+      const x = (mouseX / width - .5) * 26 + flowVelocity * 18;
+      const y = heroProgress * -58;
+      const rotate = flowVelocity * .65;
+      heroPlate.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rotate}deg)`;
+    }
+
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const cardProgress = clamp((rect.top - height) / (height + rect.height), -1, 1);
+      const centerOffset = clamp(((rect.top + rect.height * .5) - height * .5) / height, -1, 1);
+      card.style.setProperty("--parallax", `${cardProgress * -112 + flowVelocity * 20}px`);
+      card.style.setProperty("--card-flow", `${centerOffset * -22 + flowVelocity * 10}px`);
+      card.style.setProperty("--card-scale", `${(1 - Math.abs(centerOffset) * .018).toFixed(4)}`);
+    });
+
+    if (showcase) {
+      const rect = showcase.getBoundingClientRect();
+      const showProgress = clamp((rect.top - height) / (height + rect.height), -1, 1);
+      const centerOffset = clamp(((rect.top + rect.height * .5) - height * .5) / height, -1, 1);
+      showcase.style.setProperty("--showcase", `${showProgress * -94 + flowVelocity * 16}px`);
+      showcase.style.setProperty("--showcase-flow", `${centerOffset * -18}px`);
+      showcase.style.setProperty("--showcase-scale", `${(1.006 - Math.abs(centerOffset) * .012).toFixed(4)}`);
+    }
+
+    cursorX = lerp(cursorX, mouseX, .18);
+    cursorY = lerp(cursorY, mouseY, .18);
+    if (cursor) cursor.style.transform = `translate3d(${cursorX - 3}px, ${cursorY - 2}px, 0) rotate(-8deg)`;
+    updateDockLabel();
+    publishHealth("running", now);
+
+    rafId = requestFrame(tick);
+  }
+
+  function start() {
+    if (reduce || rafId) return;
+    previousFrameTime = now();
+    publishHealth("starting", previousFrameTime, true);
+    rafId = requestFrame(tick);
+  }
+
+  function stop() {
+    if (!rafId) return;
+    cancelFrame(rafId);
+    rafId = 0;
+    active = false;
+    diagnostics.running = false;
+    root.dataset.motionRunning = "false";
+    publishHealth("paused", now(), true);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+    else start();
+  });
+  window.addEventListener("resize", () => requestFrame(updateDockLabel), { passive: true });
+
+  start();
+})();
+</script>
+</body>
+</html>
