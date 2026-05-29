@@ -934,6 +934,62 @@
     font-weight: 900;
     text-transform: uppercase;
   }
+  .authority-grid {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .75rem;
+    margin-top: clamp(1rem, 3vw, 2.6rem);
+  }
+  .authority-card {
+    position: relative;
+    min-height: 12.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: rgba(255,250,241,.82);
+    background:
+      linear-gradient(145deg, rgba(5,6,7,.94), rgba(31,26,22,.84)),
+      radial-gradient(circle at 82% 8%, rgba(184,138,75,.18), transparent 10rem);
+    border: 1px solid rgba(184,138,75,.22);
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(18,17,16,.16);
+  }
+  .authority-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .32;
+    background:
+      linear-gradient(90deg, transparent 0 45%, rgba(184,138,75,.36) 50%, transparent 58%),
+      repeating-linear-gradient(90deg, rgba(255,250,241,.045) 0 1px, transparent 1px 3rem),
+      repeating-linear-gradient(0deg, transparent 0 4.8rem, rgba(255,250,241,.09) 4.9rem, transparent 5.2rem);
+    pointer-events: none;
+  }
+  .authority-card b,
+  .authority-card p,
+  .authority-card span {
+    position: relative;
+    z-index: 1;
+  }
+  .authority-card b {
+    color: #f0d7ad;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .authority-card p {
+    margin-top: 1.6rem;
+    color: rgba(255,250,241,.72);
+    line-height: 1.45;
+  }
+  .authority-card span {
+    color: rgba(255,250,241,.42);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
   .principal-card {
     grid-column: 1 / 13;
     position: relative;
@@ -2323,6 +2379,12 @@
       padding: 2rem;
     }
     .puffer-field { grid-template-columns: repeat(5, 1fr); }
+    #brief .authority-grid {
+      grid-template-columns: 1fr;
+    }
+    .authority-card {
+      min-height: 10.5rem;
+    }
     h1 {
       max-width: 9ch;
       font-size: clamp(2.8rem, 13vw, 4.3rem);
@@ -2485,6 +2547,22 @@
   }
   .dna-card span {
     color: rgba(18,17,16,.38);
+  }
+  .authority-grid {
+    gap: 1px;
+    border: 1px solid var(--archive-rule);
+    background: var(--archive-rule);
+  }
+  .authority-card {
+    min-height: 14rem;
+    border: 0;
+    background:
+      linear-gradient(145deg, rgba(23,20,18,.96), rgba(49,39,33,.9)),
+      radial-gradient(circle at 80% 12%, rgba(184,138,75,.16), transparent 12rem);
+    box-shadow: none;
+  }
+  .authority-card p {
+    color: rgba(255,250,241,.68);
   }
   .principal-card {
     min-height: 78svh;
@@ -3233,6 +3311,10 @@
       grid-column: 1;
       grid-template-columns: 1fr 1fr;
     }
+    #brief .authority-grid {
+      grid-column: 1;
+      grid-template-columns: 1fr 1fr;
+    }
     #brief .principal-card {
       grid-column: 1;
     }
@@ -3554,6 +3636,28 @@
             <span>Printed proof</span>
           </article>
         </div>
+        <div class="authority-grid stagger" aria-label="Public profile proof points">
+          <article class="authority-card">
+            <b>International range</b>
+            <p>Published profiles place the work across five countries, from New York residences to Europe and Asia.</p>
+            <span>U.S. / Europe / Asia</span>
+          </article>
+          <article class="authority-card">
+            <b>Rare commissions</b>
+            <p>His residential portfolio has included homes in Paris and London, plus a residential ocean liner commission.</p>
+            <span>Beyond ordinary rooms</span>
+          </article>
+          <article class="authority-card">
+            <b>Show-house proof</b>
+            <p>Decorator show-house work and the Academy Mansion project show the studio can handle theatrical scale.</p>
+            <span>Public rooms / private houses</span>
+          </article>
+          <article class="authority-card">
+            <b>Published eye</b>
+            <p>Architectural Digest, Elle Decor, Luxe, Traditional Home, Vogue, HC&amp;G, and NY Spaces all belong in the proof stack.</p>
+            <span>Magazine credibility</span>
+          </article>
+        </div>
         <article class="principal-card reveal" aria-label="Inson Wood principal profile" style="--portrait:url('assets/inson/images/038-insondwood-biophoto.jpg')">
           <div class="principal-portrait">
             <img class="principal-headshot" src="assets/inson/images/038-insondwood-biophoto.jpg" alt="Inson Wood portrait" loading="lazy">
@@ -3671,16 +3775,24 @@
             <b>03</b>
             <div>
               <h3>Kitchens and baths</h3>
-              <p>Storage, surfaces, fixtures, lighting, and small details that make use feel luxurious.</p>
+              <p>Kitchen and bathroom work with the storage, surface, fixture, and lighting discipline clients praise in reviews.</p>
               <div class="service-menu"><span>Bathroom design</span><span>Kitchen design</span><span>Kitchen remodeling</span></div>
             </div>
           </article>
           <article class="system-row" data-slot="section-4">
             <b>04</b>
             <div>
+              <h3>Project command</h3>
+              <p>Reviews point to gut renovations, tight timelines, co-op boards, contractors, storage, and homes that keep working after years of use.</p>
+              <div class="service-menu"><span>Gut renovations</span><span>Tight timelines</span><span>Storage solutions</span><span>Contractor coordination</span><span>Homes that age well</span></div>
+            </div>
+          </article>
+          <article class="system-row" data-slot="section-5">
+            <b>05</b>
+            <div>
               <h3>Consultation</h3>
               <p>Begin with the residence, the scope, and the standard the project needs to meet.</p>
-              <div class="service-menu"><span>Contact for quotes and consultation</span></div>
+              <div class="service-menu"><span>Contact for quotes and consultation</span><span>New York office</span><span>Private residence brief</span></div>
             </div>
           </article>
         </div>
@@ -3848,11 +3960,15 @@
         <div class="map-board stagger">
           <article class="map-item" data-slot="scrape-business">
             <b>Projects</b>
-            <div class="slot">30 published residences: Greenwich, Tribeca, Paris, Lake Como, Palm Beach, Northern Thailand</div>
+            <div class="slot">30 published residences: Greenwich, Tribeca, Paris, Lake Como, Palm Beach, Northern Thailand, and Mediterranean estate work</div>
+          </article>
+          <article class="map-item" data-slot="scrape-market">
+            <b>Market</b>
+            <div class="slot">The live site describes the practice around residential projects in Manhattan, Greenwich, Scarsdale, and the Hamptons</div>
           </article>
           <article class="map-item" data-slot="scrape-offers">
             <b>Services</b>
-            <div class="slot">Interior design, residential design, custom homes, restoration, remodeling, kitchens, baths, furniture selection, and art selection</div>
+            <div class="slot">Interior design, furniture selection, art selection, bathroom design, kitchen design, kitchen remodeling, residential design, custom homes, home remodeling, and home restoration</div>
           </article>
           <article class="map-item" data-slot="scrape-proof">
             <b>Reviews</b>
@@ -3865,6 +3981,10 @@
           <article class="map-item" data-slot="scrape-contact">
             <b>Press</b>
             <div class="slot">Architectural Digest, Luxe, Vogue, Traditional Home, Hamptons C&amp;G, NY Spaces, Avenue, Hyland, Resident, and Modern Estate</div>
+          </article>
+          <article class="map-item" data-slot="scrape-profile">
+            <b>Profile</b>
+            <div class="slot">Public profiles emphasize five-country range, Paris and London residences, show-house rooms, and even a residential ocean liner commission</div>
           </article>
           <article class="map-item" data-slot="scrape-blog">
             <b>Blog</b>
