@@ -1429,6 +1429,41 @@
     color: white;
     overflow: hidden;
   }
+  .services-plate {
+    margin-top: 2rem;
+    border: 1px solid rgba(184,138,75,.22);
+    background:
+      linear-gradient(180deg, rgba(5,6,7,.06), rgba(5,6,7,.78)),
+      url("assets/inson/images/033-75thstreet-8.jpg") center / cover;
+    box-shadow: 0 24px 70px rgba(0,0,0,.24);
+    aspect-ratio: 4 / 3;
+  }
+  .services-proof {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .65rem;
+    margin-top: .75rem;
+  }
+  .services-proof span {
+    min-height: 4.4rem;
+    display: grid;
+    align-content: space-between;
+    padding: .72rem;
+    color: rgba(255,250,241,.74);
+    border: 1px solid rgba(184,138,75,.22);
+    background: rgba(255,250,241,.035);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .services-proof b {
+    color: #f0d7ad;
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(1.35rem, 2vw, 2rem);
+    line-height: 1;
+    font-weight: 400;
+    text-transform: none;
+  }
   .sticky-copy {
     grid-column: 1 / 5;
     position: sticky;
@@ -1448,15 +1483,18 @@
   .system-row {
     position: relative;
     display: grid;
-    grid-template-columns: .22fr 1fr;
-    gap: 1.5rem;
-    min-height: 13rem;
-    padding: 1.15rem;
-    border: 1px solid rgba(255,255,255,.12);
+    grid-template-columns: 5.6rem 1fr;
+    gap: clamp(1rem, 2vw, 1.8rem);
+    min-height: 11.2rem;
+    padding: clamp(1rem, 1.8vw, 1.55rem);
+    border: 1px solid rgba(184,138,75,.26);
     background:
-      linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
-    box-shadow: inset 0 0 28px rgba(255,255,255,.04);
-    transition: transform .45s var(--ease), border-color .35s ease, background .35s ease;
+      radial-gradient(circle at 0 0, rgba(184,138,75,.15), transparent 14rem),
+      linear-gradient(135deg, rgba(255,250,241,.08), rgba(255,250,241,.018));
+    box-shadow:
+      inset 0 0 0 1px rgba(255,250,241,.025),
+      0 18px 60px rgba(0,0,0,.16);
+    transition: transform .45s var(--ease), border-color .35s ease, background .35s ease, box-shadow .35s ease;
   }
   .system-row::after {
     content: "";
@@ -1471,10 +1509,12 @@
   @media (hover: hover) {
     .system-row:hover {
       transform: translateX(10px);
-      border-color: rgba(223,247,255,.34);
+      border-color: rgba(240,215,173,.42);
       background:
-        linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04)),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.065) 0 1px, transparent 1px 4.6rem);
+        radial-gradient(circle at 0 0, rgba(184,138,75,.2), transparent 16rem),
+        linear-gradient(135deg, rgba(255,250,241,.11), rgba(255,250,241,.035)),
+        repeating-linear-gradient(90deg, rgba(255,250,241,.045) 0 1px, transparent 1px 4.6rem);
+      box-shadow: 0 24px 70px rgba(0,0,0,.24);
     }
     .system-row:hover::after {
       opacity: .8;
@@ -1482,13 +1522,21 @@
     }
   }
   .system-row b {
-    color: var(--red);
+    width: 3.15rem;
+    height: 3.15rem;
+    display: grid;
+    place-items: center;
+    color: #f0d7ad;
+    border: 1px solid rgba(184,138,75,.36);
+    background: rgba(184,138,75,.075);
+    font-family: "Quattrocento", Georgia, serif;
     font-size: 1rem;
+    font-weight: 400;
   }
   .system-row h3 {
-    margin-bottom: .9rem;
+    margin-bottom: .7rem;
     font-family: "Quattrocento", Georgia, serif;
-    font-size: clamp(2rem, 3.45vw, 4.15rem);
+    font-size: clamp(2.1rem, 3.15vw, 3.65rem);
     line-height: 1;
     font-weight: 400;
   }
@@ -1504,10 +1552,10 @@
     margin-top: .95rem;
   }
   .service-menu span {
-    padding: .52rem .62rem;
-    color: rgba(255,255,255,.72);
-    border: 1px solid rgba(255,255,255,.16);
-    background: rgba(255,255,255,.045);
+    padding: .5rem .65rem;
+    color: rgba(255,250,241,.76);
+    border: 1px solid rgba(184,138,75,.24);
+    background: rgba(255,250,241,.045);
     font-size: 10px;
     font-weight: 900;
     text-transform: uppercase;
@@ -3222,6 +3270,12 @@
       width: 2.8rem;
       height: 2.8rem;
     }
+    .services-proof {
+      grid-template-columns: 1fr;
+    }
+    .services-plate {
+      aspect-ratio: 16 / 10;
+    }
     .showcase-card {
       padding: 1rem;
       min-height: 82svh;
@@ -3524,8 +3578,13 @@
       <div class="section-grid">
         <div class="sticky-copy reveal">
           <div class="mini-title">Services</div>
-          <h2>Personally tailored residential design services.</h2>
-          <p class="page-note" style="color:rgba(255,255,255,.62);margin-top:1rem">Custom homes, restoration, interiors, art, kitchens, baths, and furniture selection.</p>
+          <h2>A full-service residential practice.</h2>
+          <p class="page-note" style="color:rgba(255,255,255,.62);margin-top:1rem">The published service list is simple. The value is how architecture, interiors, art, storage, and restoration are held together.</p>
+          <div class="services-plate" aria-hidden="true"></div>
+          <div class="services-proof" aria-label="Published service proof">
+            <span><b>10</b> Published services</span>
+            <span><b>01</b> Contact for quotes and consultation</span>
+          </div>
         </div>
         <div class="system-list stagger">
           <article class="system-row" data-slot="section-1">
