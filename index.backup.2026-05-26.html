@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Inson Dubois Wood - Luxury Residential Design</title>
-<meta name="description" content="A cinematic redesign concept for Inson Dubois Wood, New York residential design and interiors." />
+<title>Inson Dubois Wood - Residential Design and Interiors</title>
+<meta name="description" content="A cinematic editorial archive for Inson Dubois Wood, New York residential design and interiors." />
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Abel&family=Quattrocento:wght@400;700&display=swap");
+
   :root {
     --black: #050607;
     --black-2: #0d1013;
@@ -16,6 +18,7 @@
     --ice: #eef5f6;
     --platinum: #f8fbff;
     --champagne: #b88a4b;
+    --sienna: #9d4f24;
     --electric: #dff7ff;
     --red: #c1121f;
     --muted: rgba(17, 19, 22, .58);
@@ -40,6 +43,8 @@
   * { box-sizing: border-box; }
   html {
     min-height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     color: var(--ink);
     background: var(--cream);
     scroll-behavior: smooth;
@@ -47,7 +52,8 @@
   body {
     margin: 0;
     overflow-x: hidden;
-    font-family: "Helvetica Neue", Arial, sans-serif;
+    max-width: 100%;
+    font-family: "Abel", "Helvetica Neue", Arial, sans-serif;
     background:
       radial-gradient(circle at 80% 8%, rgba(255, 255, 255, .88), transparent 24rem),
       radial-gradient(circle at 8% 20%, rgba(193, 18, 31, .18), transparent 20rem),
@@ -70,6 +76,13 @@
     will-change: transform;
   }
   body.menu-open { overflow: hidden; }
+  main,
+  .section,
+  .hero,
+  .marquee {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
   a { color: inherit; text-decoration: none; }
   button, input, textarea { font: inherit; }
   button { color: inherit; }
@@ -205,6 +218,8 @@
     mix-blend-mode: screen;
     transform: translate3d(-50%, -50%, 0);
     transition: opacity .16s ease, filter .22s ease;
+    will-change: transform;
+    contain: layout paint;
   }
   .cursor-chip svg {
     width: 30px;
@@ -253,13 +268,16 @@
 
   .topline {
     position: fixed;
-    inset: 1rem 1rem auto;
+    inset: 0 0 auto;
     z-index: 25;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    mix-blend-mode: difference;
+    display: grid;
+    justify-items: center;
+    gap: .08rem;
+    padding: .55rem 1rem .32rem;
+    color: rgba(255,255,255,.86);
+    background: rgba(5,6,7,.72);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(18px);
     pointer-events: none;
     font-size: 11px;
     font-weight: 800;
@@ -269,6 +287,10 @@
     display: inline-flex;
     align-items: center;
     gap: .65rem;
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: none;
   }
   .brand-mark::before {
     content: "";
@@ -277,11 +299,65 @@
     border: 1px solid currentColor;
     transform: rotate(45deg);
   }
+  .site-tabs {
+    position: fixed;
+    left: 50%;
+    top: 2.95rem;
+    z-index: 39;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(.75rem, 2vw, 1.8rem);
+    width: min(760px, calc(100vw - 2rem));
+    min-height: 32px;
+    padding: .35rem .85rem;
+    color: rgba(255,255,255,.82);
+    background: rgba(5,6,7,.56);
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(16px);
+    transform: translateX(-50%);
+    box-shadow: 0 14px 34px rgba(0,0,0,.18);
+  }
+  .site-tabs a {
+    position: relative;
+    color: rgba(255,255,255,.76);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: color .24s ease, transform .24s var(--ease);
+  }
+  .site-tabs a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -.34rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0;
+    transform: scaleX(.35);
+    transition: opacity .24s ease, transform .24s var(--ease);
+  }
+  .site-tabs a:hover {
+    color: var(--electric);
+    transform: translateY(-1px);
+  }
+  .site-tabs a:hover::after {
+    opacity: .75;
+    transform: scaleX(1);
+  }
+
+  @media (min-width: 981px) {
+    .dock,
+    .menu {
+      display: none;
+    }
+  }
 
   .dock {
     position: fixed;
     left: 50%;
-    bottom: .35rem;
+    top: .9rem;
     z-index: 40;
     width: min(320px, calc(100vw - 2rem));
     height: 46px;
@@ -294,7 +370,7 @@
     backdrop-filter: blur(24px);
     transform: translateX(-50%);
     overflow: hidden;
-    box-shadow: 0 22px 60px rgba(0,0,0,.28);
+    box-shadow: 0 22px 60px rgba(0,0,0,.34), 0 0 34px rgba(223,247,255,.1);
   }
   main {
     position: relative;
@@ -353,7 +429,7 @@
   .menu {
     position: fixed;
     left: 50%;
-    bottom: 8.8rem;
+    top: 5.2rem;
     z-index: 38;
     width: min(420px, calc(100vw - 2rem));
     padding: 3rem;
@@ -361,8 +437,8 @@
     background: var(--glass-dark);
     border: 1px solid rgba(255,255,255,.12);
     backdrop-filter: blur(26px);
-    transform: translate(-50%, 28px) scale(.94);
-    transform-origin: center bottom;
+    transform: translate(-50%, -24px) scale(.94);
+    transform-origin: center top;
     opacity: 0;
     visibility: hidden;
     transition: transform .55s var(--ease), opacity .35s ease, visibility .35s;
@@ -428,7 +504,7 @@
       repeating-linear-gradient(0deg, transparent 0 7.5rem, rgba(248,251,255,.3) 7.62rem, transparent 8.05rem),
       radial-gradient(circle at 74% 14%, rgba(255,255,255,.34), transparent 18rem),
       linear-gradient(110deg, rgba(5,6,7,.95), rgba(5,6,7,.3) 46%, rgba(5,6,7,.9)),
-      url("https://insonduboiswood.com/wp-content/uploads/2018/08/1.2-7.jpg") center / cover,
+      url("assets/inson/images/001-1-2-7.jpg") center / cover,
       linear-gradient(140deg, #555d62, #e6e4dc 35%, #24282d 67%, #050607);
     transform: scale(calc(1.03 + var(--flow) * .035)) translate3d(0, calc(var(--flow) * -2.6vh), 0);
     transform-origin: center top;
@@ -512,7 +588,7 @@
     inset: 0;
     background:
       linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.58)),
-      url("https://insonduboiswood.com/wp-content/uploads/2018/08/Inson_Thailand06Ha.jpg") center / cover;
+      url("assets/inson/images/005-inson-thailand06ha.jpg") center / cover;
     opacity: .8;
   }
   .hero-plate::after {
@@ -571,6 +647,7 @@
   p { margin: 0; }
   h1,
   h2 {
+    font-family: "Quattrocento", Georgia, serif;
     font-weight: 400;
     letter-spacing: 0;
     text-wrap: balance;
@@ -768,8 +845,8 @@
   .intro-copy h2,
   .section-heading h2 {
     margin-top: 1.2rem;
-    font-size: clamp(3rem, 7.5vw, 8rem);
-    line-height: .9;
+    font-size: clamp(3.1rem, 6.7vw, 7.25rem);
+    line-height: .96;
   }
   .intro-side {
     grid-column: 9 / 12;
@@ -777,15 +854,31 @@
     color: var(--muted);
     font-size: 1rem;
     line-height: 1.55;
-    padding: 1.2rem;
-    border: 1px solid rgba(17,19,22,.12);
-    background:
-      linear-gradient(145deg, rgba(255,255,255,.72), rgba(255,255,255,.25)),
-      repeating-linear-gradient(90deg, rgba(17,19,22,.035) 0 1px, transparent 1px 3rem);
-    box-shadow: 0 22px 64px rgba(17,19,22,.08);
+    padding: 0 0 0 1.2rem;
+    border-left: 1px solid rgba(17,19,22,.18);
   }
   .intro-side p {
     color: rgba(17,19,22,.68);
+  }
+  .bio-proof {
+    display: grid;
+    gap: .5rem;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(17,19,22,.14);
+  }
+  .bio-proof span {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: rgba(17,19,22,.64);
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .bio-proof b {
+    color: var(--red);
+    font-weight: 900;
   }
   .dna-rail {
     grid-column: 1 / 13;
@@ -803,16 +896,16 @@
     padding: 1rem;
     border: 1px solid rgba(17,19,22,.13);
     background:
-      linear-gradient(145deg, rgba(255,255,255,.76), rgba(255,255,255,.28)),
-      repeating-linear-gradient(0deg, transparent 0 4.4rem, rgba(223,247,255,.32) 4.5rem, transparent 4.9rem);
+      linear-gradient(145deg, rgba(255,255,255,.9), rgba(255,255,255,.42)),
+      linear-gradient(180deg, rgba(184,138,75,.08), transparent 42%);
     overflow: hidden;
-    box-shadow: 0 22px 70px rgba(17,19,22,.08);
+    box-shadow: 0 18px 54px rgba(17,19,22,.055);
   }
   .dna-card::before {
     content: "";
     position: absolute;
     inset: -30% -20%;
-    opacity: .58;
+    opacity: .3;
     background:
       linear-gradient(110deg, transparent 36%, rgba(184,138,75,.22) 48%, rgba(255,255,255,.64) 50%, transparent 62%),
       radial-gradient(circle at 78% 14%, rgba(255,255,255,.82), transparent 8rem);
@@ -880,7 +973,7 @@
     background:
       radial-gradient(circle at 54% 26%, rgba(255,255,255,.26), transparent 8rem),
       linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.68)),
-      var(--portrait) center / cover;
+      var(--portrait) center 42% / cover;
     filter: saturate(.9) contrast(1.08);
   }
   .principal-portrait::before {
@@ -909,10 +1002,11 @@
     position: absolute;
     z-index: 1;
     left: 50%;
-    top: 49%;
-    width: min(76%, 23rem);
-    aspect-ratio: 1;
+    top: 47%;
+    width: min(82%, 27rem);
+    aspect-ratio: 4 / 3;
     object-fit: cover;
+    object-position: center 42%;
     transform: translate(-50%, -50%);
     border: 1px solid rgba(255,255,255,.38);
     box-shadow:
@@ -949,8 +1043,8 @@
     padding: clamp(1.25rem, 3vw, 3rem);
   }
   .principal-copy h2 {
-    max-width: 11ch;
-    font-size: clamp(3.2rem, 6.8vw, 7.4rem);
+    max-width: 12.5ch;
+    font-size: clamp(3.2rem, 6.2vw, 6.7rem);
     line-height: .86;
     text-wrap: balance;
   }
@@ -1032,6 +1126,12 @@
       rgba(0,0,0,.2);
     box-shadow: inset 0 0 24px rgba(255,255,255,.06);
   }
+  .page-note {
+    max-width: 52rem;
+    color: rgba(17,19,22,.62);
+    font-size: clamp(1rem, 1.35vw, 1.22rem);
+    line-height: 1.55;
+  }
   .principal-quote b {
     color: var(--electric);
     font-size: 11px;
@@ -1040,6 +1140,26 @@
   .principal-quote span {
     color: rgba(255,255,255,.76);
     line-height: 1.45;
+  }
+  .award-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .55rem;
+    margin-top: .9rem;
+  }
+  .award {
+    min-height: 6.5rem;
+    display: grid;
+    place-items: center;
+    padding: .65rem;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.045);
+  }
+  .award img {
+    max-width: 100%;
+    max-height: 5rem;
+    object-fit: contain;
+    filter: saturate(.95) contrast(1.05);
   }
   .slot {
     min-height: 4.2rem;
@@ -1069,7 +1189,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: .65rem;
-    max-width: 700px;
+    max-width: 820px;
     margin-top: 1.3rem;
   }
   .hero-proof span {
@@ -1093,6 +1213,47 @@
     height: .45rem;
     border: 1px solid currentColor;
     transform: rotate(45deg);
+  }
+  .hero-thumbs {
+    width: min(100%, 42rem);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .55rem;
+    margin-top: .8rem;
+  }
+  .hero-thumb {
+    min-height: 4.8rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.16);
+    background: #151515;
+  }
+  .hero-thumb img {
+    width: 100%;
+    height: 100%;
+    min-height: 4.8rem;
+    display: block;
+    object-fit: cover;
+    opacity: .76;
+    filter: saturate(.88) contrast(1.05);
+    transition: opacity .3s ease, transform .45s var(--ease);
+  }
+  .hero-thumb span {
+    position: absolute;
+    left: .55rem;
+    right: .55rem;
+    bottom: .45rem;
+    color: rgba(255,255,255,.8);
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 0 8px 18px rgba(0,0,0,.6);
+  }
+  @media (hover: hover) {
+    .hero-thumb:hover img {
+      opacity: 1;
+      transform: scale(1.06);
+    }
   }
 
   .image-strip {
@@ -1176,6 +1337,7 @@
     font-weight: 400;
     line-height: .96;
     text-shadow: 0 8px 34px rgba(0,0,0,.54);
+    overflow-wrap: break-word;
   }
   .media-card h3::before {
     content: "";
@@ -1190,10 +1352,77 @@
   .media-two { grid-column: 8 / 12; margin-top: 14rem; }
   .media-three { grid-column: 5 / 10; margin-top: 4rem; }
   .media-four { grid-column: 2 / 6; margin-top: -2rem; }
-  .media-one { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_waterfallmansion_living7.jpg"); }
-  .media-two { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_tribeca_livingroom.jpg"); }
-  .media-three { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/75thStreet_01-1024x690.jpg"); }
-  .media-four { --photo: url("https://insonduboiswood.com/wp-content/uploads/2018/08/MALMO0144-1.jpg"); }
+  .media-one { --photo: url("assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg"); }
+  .media-two { --photo: url("assets/inson/images/014-insonwood-interiordesign-tribeca-livingroom.jpg"); }
+  .media-three { --photo: url("assets/inson/images/003-75thstreet-01.jpg"); }
+  .media-four { --photo: url("assets/inson/images/007-malmo0144-1.jpg"); }
+  .project-gallery {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: .75rem;
+    margin-top: clamp(1.5rem, 4vw, 3.5rem);
+  }
+  .project-card {
+    position: relative;
+    grid-column: span 3;
+    min-height: 18rem;
+    overflow: hidden;
+    color: white;
+    border: .5rem solid rgba(255,250,241,.9);
+    background: #111;
+    box-shadow: 0 20px 60px rgba(0,0,0,.28);
+  }
+  .project-card:nth-child(1),
+  .project-card:nth-child(6) {
+    grid-column: span 5;
+    min-height: 24rem;
+  }
+  .project-card:nth-child(4),
+  .project-card:nth-child(8) {
+    grid-column: span 4;
+  }
+  .project-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.9) contrast(1.05);
+    transition: transform .55s var(--ease), filter .4s ease;
+  }
+  .project-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 25%, rgba(5,6,7,.78));
+  }
+  .project-card b,
+  .project-card span {
+    position: absolute;
+    z-index: 1;
+    left: .85rem;
+    right: .85rem;
+  }
+  .project-card b {
+    top: .85rem;
+    color: rgba(255,255,255,.76);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .project-card span {
+    bottom: .85rem;
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(1.35rem, 2vw, 2.25rem);
+    line-height: 1;
+    text-shadow: 0 12px 28px rgba(0,0,0,.6);
+  }
+  @media (hover: hover) {
+    .project-card:hover img {
+      transform: scale(1.06);
+      filter: saturate(1) contrast(1.08);
+    }
+  }
 
   .operating-system {
     background: var(--black);
@@ -1225,8 +1454,7 @@
     padding: 1.15rem;
     border: 1px solid rgba(255,255,255,.12);
     background:
-      linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.025)),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.055) 0 1px, transparent 1px 4.6rem);
+      linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
     box-shadow: inset 0 0 28px rgba(255,255,255,.04);
     transition: transform .45s var(--ease), border-color .35s ease, background .35s ease;
   }
@@ -1259,17 +1487,30 @@
   }
   .system-row h3 {
     margin-bottom: .9rem;
+    font-family: "Quattrocento", Georgia, serif;
     font-size: clamp(2rem, 3.45vw, 4.15rem);
-    line-height: .96;
+    line-height: 1;
     font-weight: 400;
   }
   .system-row p {
     max-width: 44rem;
-    padding: .82rem .95rem;
     color: rgba(255,255,255,.68);
-    background: rgba(0,0,0,.16);
-    border: 1px solid rgba(255,255,255,.08);
     line-height: 1.55;
+  }
+  .service-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem;
+    margin-top: .95rem;
+  }
+  .service-menu span {
+    padding: .52rem .62rem;
+    color: rgba(255,255,255,.72);
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.045);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
   }
 
   .lux-grid {
@@ -1329,16 +1570,15 @@
   .proof-note {
     grid-column: 1 / 13;
     display: grid;
-    grid-template-columns: .52fr 1fr;
-    gap: 1rem;
+    grid-template-columns: .35fr 1fr;
+    gap: clamp(1rem, 3vw, 3rem);
     margin-top: 1rem;
-    padding: 1rem;
+    padding: clamp(1rem, 2.4vw, 2rem);
     color: var(--ink);
     border: 1px solid rgba(17,19,22,.14);
     background:
-      linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,255,255,.3)),
-      repeating-linear-gradient(90deg, rgba(17,19,22,.04) 0 1px, transparent 1px 3.4rem);
-    box-shadow: 0 24px 70px rgba(17,19,22,.08);
+      linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.42));
+    box-shadow: 0 18px 60px rgba(17,19,22,.065);
   }
   .proof-note b {
     color: var(--red);
@@ -1348,7 +1588,15 @@
   .proof-note span {
     max-width: 56rem;
     color: rgba(17,19,22,.68);
-    line-height: 1.5;
+    font-size: clamp(1rem, 1.25vw, 1.18rem);
+    line-height: 1.58;
+  }
+  .book-actions {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: .9rem;
   }
   @media (hover: hover) {
     .proof:hover {
@@ -1390,7 +1638,7 @@
       repeating-linear-gradient(0deg, transparent 0 8rem, rgba(248,251,255,.46) 8.12rem, transparent 8.62rem),
       radial-gradient(circle at var(--mx, 50%) var(--my, 40%), rgba(255,255,255,.46), transparent 13rem),
       linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.58)),
-      url("https://insonduboiswood.com/wp-content/uploads/2018/08/insonwood_interiordesign_greenwich_staircase.jpg") center / cover,
+      url("assets/inson/images/018-insonwood-interiordesign-greenwich-staircase.jpg") center / cover,
       linear-gradient(135deg, #2b3036, #f3f2ea 42%, #07090b 74%);
     opacity: .72;
     transform: translateY(var(--showcase, 0px)) scale(1.08);
@@ -1405,8 +1653,8 @@
     align-items: end;
   }
   .showcase-content h2 {
-    font-size: clamp(3.8rem, 10vw, 12rem);
-    line-height: .82;
+    font-size: clamp(3.35rem, 8vw, 9.8rem);
+    line-height: .88;
   }
   .showcase-content .slot {
     color: rgba(255,255,255,.75);
@@ -1414,6 +1662,78 @@
       linear-gradient(135deg, rgba(5,6,7,.62), rgba(255,255,255,.08)),
       repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 1px, transparent 1px 3rem);
     backdrop-filter: blur(14px);
+  }
+  .review-wall {
+    display: grid;
+    gap: .75rem;
+  }
+  .review-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    width: max-content;
+    padding-bottom: .55rem;
+    color: var(--electric);
+    border-bottom: 1px solid rgba(223,247,255,.34);
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .review-pull {
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(5,6,7,.42);
+    backdrop-filter: blur(14px);
+  }
+  .review-pull p {
+    color: rgba(255,255,255,.8);
+    font-size: clamp(1rem, 1.4vw, 1.24rem);
+    line-height: 1.45;
+  }
+  .review-pull b {
+    display: block;
+    margin-top: .75rem;
+    color: rgba(255,255,255,.52);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .review-cards {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .75rem;
+    margin-top: 1rem;
+  }
+  .review-card {
+    min-height: 17rem;
+    display: grid;
+    align-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    color: rgba(255,250,241,.78);
+    border: 1px solid rgba(184,138,75,.2);
+    background: rgba(5,6,7,.58);
+  }
+  .review-card p {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+  .review-card div {
+    display: grid;
+    gap: .22rem;
+  }
+  .review-card b {
+    display: block;
+    color: #f0d7ad;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .review-card span {
+    display: block;
+    color: rgba(255,250,241,.48);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
   }
 
   .scrape-map {
@@ -1424,8 +1744,8 @@
   }
   .map-head h2 {
     margin-top: 1.2rem;
-    font-size: clamp(3rem, 7vw, 7.4rem);
-    line-height: .9;
+    font-size: clamp(3rem, 6.3vw, 6.75rem);
+    line-height: .96;
   }
   .map-board {
     grid-column: 7 / 13;
@@ -1440,8 +1760,7 @@
     padding: 1rem;
     border: 1px solid var(--line-light);
     background:
-      linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.28)),
-      repeating-linear-gradient(90deg, rgba(17,19,22,.035) 0 1px, transparent 1px 3.6rem);
+      linear-gradient(135deg, rgba(255,255,255,.82), rgba(255,255,255,.34));
     backdrop-filter: blur(10px);
     box-shadow: 0 18px 54px rgba(17,19,22,.07);
   }
@@ -1462,9 +1781,214 @@
     justify-items: start;
     text-align: left;
     font-size: .95rem;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.36;
     text-transform: none;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+  .press-wall {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr));
+    gap: .85rem;
+    margin-top: 1.4rem;
+  }
+  .press-tile {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    min-height: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .9rem;
+    color: rgba(251,248,239,.92);
+    border: 1px solid rgba(17,19,22,.12);
+    background:
+      linear-gradient(160deg, rgba(8,10,12,.82), rgba(8,10,12,.36)),
+      radial-gradient(circle at 78% 12%, rgba(193,18,31,.28), transparent 6rem),
+      linear-gradient(135deg, #2b211c, #8c2f21 58%, #111316);
+    box-shadow: 0 18px 44px rgba(17,19,22,.12);
+    overflow: hidden;
+  }
+  .press-tile::before {
+    content: "";
+    position: absolute;
+    inset: .55rem;
+    border: 1px solid rgba(255,255,255,.28);
+    pointer-events: none;
+  }
+  .press-tile::after {
+    content: "";
+    position: absolute;
+    inset: -18%;
+    opacity: .32;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 1.4rem),
+      radial-gradient(circle at 30% 80%, rgba(255,255,255,.34), transparent 5rem);
+    mix-blend-mode: screen;
+  }
+  .press-tile b {
+    position: relative;
+    z-index: 1;
+    color: rgba(255,255,255,.72);
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .press-tile span {
+    position: relative;
+    z-index: 1;
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(1.2rem, 1.65vw, 1.75rem);
+    line-height: 1.05;
+  }
+  .press-tile:nth-child(2),
+  .press-tile:nth-child(5) {
+    background:
+      linear-gradient(160deg, rgba(8,10,12,.72), rgba(8,10,12,.28)),
+      linear-gradient(135deg, #f6eee1, #b88a4b 46%, #19100d);
+  }
+  .press-tile:nth-child(3),
+  .press-tile:nth-child(6) {
+    background:
+      linear-gradient(160deg, rgba(8,10,12,.7), rgba(8,10,12,.26)),
+      linear-gradient(135deg, #24343b, #d9e3e4 48%, #0b0d10);
+  }
+  .press-tile:nth-child(4),
+  .press-tile:nth-child(8) {
+    background:
+      linear-gradient(160deg, rgba(8,10,12,.78), rgba(8,10,12,.34)),
+      linear-gradient(135deg, #441116, #d8c0a0 46%, #090a0c);
+  }
+  .source-nav {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .55rem;
+    margin-top: 1rem;
+  }
+  .source-nav a {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .62rem .82rem;
+    color: rgba(17,19,22,.7);
+    border: 1px solid rgba(17,19,22,.13);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.28)),
+      repeating-linear-gradient(90deg, rgba(17,19,22,.035) 0 1px, transparent 1px 2.8rem);
+    box-shadow: 0 14px 40px rgba(17,19,22,.06);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: transform .28s var(--ease), border-color .24s ease, color .24s ease;
+  }
+  .source-nav a::before {
+    content: "";
+    width: .45rem;
+    height: .45rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .project-index {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    gap: .8rem;
+    margin-top: 1rem;
+  }
+  .journal-strip {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+    gap: .85rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--archive-rule);
+  }
+  .journal-card {
+    min-height: 16rem;
+    display: grid;
+    align-content: end;
+    gap: .55rem;
+    padding: .75rem;
+    color: rgba(255,250,241,.88);
+    border: 1px solid rgba(18,17,16,.12);
+    background:
+      linear-gradient(180deg, rgba(5,6,7,.06), rgba(5,6,7,.76)),
+      var(--journal-image) center / cover;
+    box-shadow: 0 18px 44px rgba(51,37,24,.12);
+    overflow: hidden;
+    transition: transform .3s var(--ease), border-color .24s ease;
+  }
+  .journal-card b {
+    width: max-content;
+    max-width: 100%;
+    padding: .35rem .45rem;
+    color: rgba(255,250,241,.86);
+    border: 1px solid rgba(255,250,241,.24);
+    background: rgba(5,6,7,.42);
+    font-size: 9px;
+    text-transform: uppercase;
+  }
+  .journal-card span {
+    max-width: 18rem;
+    color: white;
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(1.25rem, 1.55vw, 1.7rem);
+    line-height: 1.05;
+  }
+  .project-chip {
+    min-height: auto;
+    display: grid;
+    gap: .45rem;
+    align-content: start;
+    padding: .5rem;
+    color: rgba(17,19,22,.72);
+    border: 1px solid rgba(17,19,22,.12);
+    background: rgba(255,255,255,.58);
+    box-shadow: 0 12px 34px rgba(17,19,22,.055);
+    font-size: .78rem;
+    line-height: 1.2;
+    transition: transform .3s var(--ease), color .24s ease, border-color .24s ease;
+  }
+  .project-chip img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    display: block;
+    object-fit: cover;
+    filter: saturate(.92) contrast(1.03);
+  }
+  .project-chip span {
+    min-height: 2.3rem;
+    display: flex;
+    align-items: center;
+  }
+  .project-chip::after {
+    content: "Open";
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    border: 0;
+    transform: none;
+    opacity: .5;
+    color: currentColor;
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  @media (hover: hover) {
+    .source-nav a:hover,
+    .project-chip:hover,
+    .journal-card:hover {
+      color: var(--red);
+      border-color: rgba(193,18,31,.28);
+      transform: translateY(-3px);
+    }
   }
 
   .contact {
@@ -1519,6 +2043,61 @@
     font-weight: 900;
     text-transform: uppercase;
   }
+  .contact-card {
+    grid-column: 8 / 13;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: .9rem;
+    padding: clamp(1rem, 2vw, 1.35rem);
+    border: 1px solid rgba(255,255,255,.22);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045)),
+      rgba(255,255,255,.06);
+    backdrop-filter: blur(18px);
+    box-shadow:
+      0 34px 100px rgba(0,0,0,.38),
+      inset 0 0 28px rgba(255,255,255,.08);
+  }
+  .contact-ornament {
+    width: 3.1rem;
+    height: 3.1rem;
+    display: grid;
+    place-items: center;
+    color: rgba(255,255,255,.76);
+    border: 1px solid rgba(255,255,255,.2);
+    transform: rotate(45deg);
+    box-shadow: inset 0 0 18px rgba(255,255,255,.08), 0 0 26px rgba(223,247,255,.12);
+  }
+  .contact-ornament span {
+    display: block;
+    transform: rotate(-45deg);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0;
+  }
+  .contact-row {
+    display: grid;
+    gap: .32rem;
+    padding: .92rem;
+    border: 1px solid rgba(255,255,255,.13);
+    background: rgba(0,0,0,.18);
+  }
+  .contact-row b {
+    color: var(--electric);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .contact-row span,
+  .contact-row a {
+    color: rgba(255,255,255,.74);
+    line-height: 1.45;
+  }
+  .contact-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
   .shell-form {
     grid-column: 8 / 13;
     position: relative;
@@ -1572,6 +2151,7 @@
 
   @media (max-width: 980px) {
     .topline { display: none; }
+    .site-tabs { display: none; }
     .hero-copy { padding-inline: 1.25rem; }
     .hero-plate { width: 54vw; right: -18vw; bottom: 7vh; opacity: .54; }
     .hero-copy::before { width: min(680px, 92vw); }
@@ -1604,10 +2184,16 @@
     .system-list,
     .section-heading,
     .proof-grid,
+    .book-actions,
     .showcase-card,
     .map-head,
     .map-board,
+    .press-wall,
+    .source-nav,
+    .journal-strip,
+    .project-index,
     .contact-title,
+    .contact-card,
     .shell-form {
       grid-column: 1;
     }
@@ -1636,10 +2222,21 @@
     .texture { opacity: .12; }
     .flow-field { display: none; }
     .hero::after { opacity: .46; }
+    .hero-plate {
+      width: min(46vw, 15rem);
+      right: 1rem;
+      bottom: 8vh;
+      opacity: .32;
+    }
     .media-card::after { opacity: .48; }
     .showcase-card::before { opacity: .64; }
-    .dock { bottom: .35rem; }
-    .menu { bottom: 5.6rem; padding: 2rem; }
+    .dock { top: .7rem; }
+    .menu {
+      top: 4.75rem;
+      max-height: calc(100svh - 5.75rem);
+      overflow: auto;
+      padding: 2rem;
+    }
     .puffer-field { grid-template-columns: repeat(5, 1fr); }
     h1 {
       max-width: 9ch;
@@ -1673,11 +2270,972 @@
     .map-item {
       grid-template-columns: 1fr;
     }
+    .contact-actions {
+      grid-template-columns: 1fr;
+    }
     .system-row {
       min-height: auto;
     }
     .showcase-content {
+      position: relative;
       inset: auto 1rem 1rem;
+    }
+    .showcase-card {
+      padding: 5.25rem 1rem 1rem;
+    }
+  }
+
+  /* Editorial lower-page system */
+  main > .section:not(.hero) {
+    --paper: #f4eee3;
+    --paper-warm: #fffaf1;
+    --paper-cool: #e7e9e5;
+    --archive-ink: #121110;
+    --archive-muted: rgba(18,17,16,.62);
+    --archive-rule: rgba(75,47,31,.18);
+    --wine: #6e151d;
+    --gold-rule: rgba(184,138,75,.34);
+    isolation: isolate;
+  }
+  main > .section:not(.hero)::before {
+    background:
+      radial-gradient(circle at 92% 8%, rgba(255,255,255,.5), transparent 18rem),
+      radial-gradient(circle at 10% 28%, rgba(110,21,29,.08), transparent 20rem),
+      repeating-linear-gradient(90deg, rgba(18,17,16,.025) 0 1px, transparent 1px 5rem),
+      linear-gradient(180deg, rgba(255,255,255,.16), transparent 48%);
+    opacity: .8;
+    transform: translate3d(0, calc(var(--flow) * -2.4vh), 0);
+  }
+  main > .section:not(.hero)::after {
+    content: attr(data-label);
+    position: absolute;
+    left: clamp(1rem, 2vw, 1.8rem);
+    top: clamp(1rem, 2vw, 1.8rem);
+    z-index: 0;
+    writing-mode: vertical-rl;
+    color: rgba(18,17,16,.28);
+    border-left: 1px solid rgba(18,17,16,.08);
+    padding-left: .62rem;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    pointer-events: none;
+  }
+  .light,
+  .lux-grid,
+  .scrape-map {
+    background:
+      linear-gradient(180deg, rgba(255,250,241,.96), rgba(244,238,227,.97)),
+      radial-gradient(circle at 74% 10%, rgba(184,138,75,.13), transparent 24rem);
+  }
+  .light .mini-title,
+  .lux-grid .mini-title,
+  .scrape-map .mini-title {
+    color: var(--wine);
+  }
+  .intro-copy h2,
+  .section-heading h2,
+  .map-head h2 {
+    max-width: 11ch;
+    color: var(--archive-ink);
+    letter-spacing: 0;
+  }
+  .intro-side {
+    align-self: center;
+    padding: clamp(1rem, 2vw, 1.6rem);
+    color: var(--archive-muted);
+    border: 1px solid var(--archive-rule);
+    background:
+      linear-gradient(135deg, rgba(255,250,241,.82), rgba(255,255,255,.42)),
+      repeating-linear-gradient(0deg, transparent 0 3.4rem, rgba(75,47,31,.05) 3.44rem, transparent 3.55rem);
+    box-shadow: 0 18px 54px rgba(51,37,24,.075);
+  }
+  .bio-proof {
+    border-top-color: var(--archive-rule);
+  }
+  .bio-proof span {
+    align-items: baseline;
+    color: rgba(18,17,16,.54);
+    border-bottom: 1px solid rgba(75,47,31,.09);
+    padding-bottom: .42rem;
+  }
+  .bio-proof span:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  .bio-proof b,
+  .dna-card b,
+  .proof-note b,
+  .map-item b {
+    color: var(--wine);
+  }
+  .dna-rail {
+    gap: 1px;
+    border: 1px solid var(--archive-rule);
+    background: var(--archive-rule);
+  }
+  .dna-card {
+    min-height: 17rem;
+    padding: clamp(1rem, 1.6vw, 1.35rem);
+    border: 0;
+    background:
+      linear-gradient(180deg, rgba(255,250,241,.97), rgba(241,234,222,.94));
+    box-shadow: none;
+  }
+  .dna-card::before {
+    inset: auto 1rem 1rem auto;
+    width: 4.2rem;
+    height: 4.2rem;
+    opacity: .38;
+    background:
+      linear-gradient(45deg, transparent calc(50% - 1px), rgba(110,21,29,.3) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+      linear-gradient(-45deg, transparent calc(50% - 1px), rgba(110,21,29,.22) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px));
+    border: 1px solid rgba(110,21,29,.18);
+    transform: rotate(45deg);
+  }
+  .dna-card p,
+  .page-note {
+    color: var(--archive-muted);
+  }
+  .dna-card span {
+    color: rgba(18,17,16,.38);
+  }
+  .principal-card {
+    min-height: 78svh;
+    color: var(--paper-warm);
+    background:
+      linear-gradient(90deg, rgba(5,6,7,.98), rgba(17,14,13,.88)),
+      radial-gradient(circle at 82% 14%, rgba(184,138,75,.18), transparent 20rem);
+    border: 1px solid rgba(184,138,75,.26);
+    box-shadow: 0 46px 110px rgba(18,17,16,.28);
+  }
+  .principal-card::before {
+    opacity: .42;
+    background:
+      linear-gradient(90deg, transparent 0 43%, rgba(184,138,75,.18) 49%, rgba(255,250,241,.25) 50%, transparent 58%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.055) 0 1px, transparent 1px 5.5rem);
+  }
+  .principal-portrait {
+    border-right: 1px solid rgba(184,138,75,.2);
+  }
+  .principal-portrait::before {
+    opacity: .52;
+  }
+  .principal-headshot {
+    width: min(78%, 26rem);
+    box-shadow:
+      0 0 0 .65rem rgba(255,250,241,.05),
+      0 24px 72px rgba(0,0,0,.42),
+      0 0 46px rgba(255,250,241,.18);
+  }
+  .principal-badges span,
+  .signature-chip,
+  .principal-quote {
+    border-color: rgba(184,138,75,.22);
+    background: rgba(255,250,241,.045);
+    backdrop-filter: none;
+  }
+  .signature-chip::before {
+    opacity: .25;
+  }
+  .signature-chip b,
+  .principal-quote b {
+    color: #f0d7ad;
+  }
+  .image-strip {
+    min-height: 150vh;
+    background:
+      linear-gradient(180deg, #101010 0%, #19140f 50%, #0a0b0c 100%);
+  }
+  .image-strip::before {
+    background:
+      radial-gradient(circle at 80% 14%, rgba(184,138,75,.2), transparent 22rem),
+      radial-gradient(circle at 16% 46%, rgba(110,21,29,.2), transparent 23rem),
+      repeating-linear-gradient(90deg, rgba(255,250,241,.04) 0 1px, transparent 1px 7rem);
+  }
+  .media-card {
+    color: var(--paper-warm);
+    border: .72rem solid rgba(255,250,241,.9);
+    background: #0d0d0d;
+    box-shadow:
+      0 34px 90px rgba(0,0,0,.38),
+      0 0 0 1px rgba(18,17,16,.3);
+  }
+  .media-card::before {
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.52)),
+      radial-gradient(circle at 74% 18%, rgba(255,255,255,.16), transparent 14rem),
+      var(--photo),
+      linear-gradient(135deg, #1c2026, #c3c7c8 45%, #07090b);
+    background-size: cover;
+    background-position: center;
+    transform: translateY(var(--parallax, 0px)) scale(1.08);
+  }
+  .media-card::after {
+    inset: auto 0 0;
+    min-height: 46%;
+    opacity: 1;
+    mix-blend-mode: normal;
+    background:
+      linear-gradient(180deg, transparent, rgba(5,6,7,.78) 42%, rgba(5,6,7,.95)),
+      repeating-linear-gradient(90deg, rgba(255,250,241,.05) 0 1px, transparent 1px 4rem);
+  }
+  .media-card .slot {
+    inset: 1rem 1rem auto auto;
+    width: auto;
+    min-height: 2.5rem;
+    padding: .56rem .72rem;
+    color: rgba(18,17,16,.72);
+    border: 1px solid rgba(255,250,241,.9);
+    background: rgba(255,250,241,.86);
+    backdrop-filter: none;
+    box-shadow: 0 12px 30px rgba(0,0,0,.14);
+  }
+  .project-meta {
+    inset: auto 1rem 1rem;
+  }
+  .project-meta span {
+    color: rgba(255,250,241,.8);
+    border-color: rgba(255,250,241,.22);
+    background: rgba(5,6,7,.42);
+    backdrop-filter: none;
+  }
+  .media-card h3 {
+    inset: auto 1rem 4.7rem;
+    max-width: min(90%, 30rem);
+    font-size: clamp(2rem, 3.4vw, 3.85rem);
+  }
+  .media-card h3::before {
+    inset: -.55rem 0;
+    border-color: rgba(255,250,241,.12);
+    background: rgba(5,6,7,.42);
+    backdrop-filter: blur(4px);
+  }
+  .media-one { grid-column: 1 / 7; margin-top: 0; }
+  .media-two { grid-column: 8 / 13; margin-top: 12rem; }
+  .media-three { grid-column: 6 / 13; margin-top: 4rem; }
+  .media-four { grid-column: 1 / 6; margin-top: 7rem; }
+  .operating-system {
+    color: var(--paper-warm);
+    background:
+      radial-gradient(circle at 83% 8%, rgba(184,138,75,.16), transparent 24rem),
+      linear-gradient(180deg, #090807, #13100e 58%, #050607);
+  }
+  .operating-system::before {
+    background:
+      repeating-linear-gradient(90deg, rgba(255,250,241,.04) 0 1px, transparent 1px 6rem),
+      linear-gradient(180deg, rgba(184,138,75,.08), transparent 44%);
+    opacity: .9;
+  }
+  .sticky-copy h2 {
+    max-width: 9ch;
+  }
+  .system-list {
+    gap: .72rem;
+  }
+  .system-row {
+    min-height: 12rem;
+    grid-template-columns: 4.6rem 1fr;
+    padding: clamp(1rem, 1.8vw, 1.45rem);
+    border: 1px solid rgba(184,138,75,.22);
+    background:
+      linear-gradient(135deg, rgba(255,250,241,.07), rgba(255,250,241,.025)),
+      linear-gradient(90deg, rgba(110,21,29,.18), transparent 34%);
+    box-shadow: none;
+  }
+  .system-row::after {
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(240,215,173,.72), transparent);
+  }
+  .system-row b {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: grid;
+    place-items: center;
+    color: #f0d7ad;
+    border: 1px solid rgba(184,138,75,.32);
+    font-size: .95rem;
+  }
+  .system-row h3 {
+    font-size: clamp(2rem, 3.05vw, 3.7rem);
+  }
+  .system-row p {
+    color: rgba(255,250,241,.68);
+  }
+  .service-menu span {
+    color: rgba(255,250,241,.7);
+    border-color: rgba(184,138,75,.24);
+    background: rgba(255,250,241,.035);
+  }
+  .proof-grid {
+    gap: 1px;
+    border: 1px solid var(--archive-rule);
+    background: var(--archive-rule);
+  }
+  .proof {
+    min-height: 18rem;
+    padding: clamp(1rem, 1.7vw, 1.4rem);
+    background:
+      linear-gradient(180deg, rgba(255,250,241,.98), rgba(238,231,218,.94));
+    border: 0;
+    box-shadow: none;
+  }
+  .proof::before {
+    opacity: .55;
+    background:
+      radial-gradient(circle at 82% 16%, rgba(110,21,29,.08), transparent 9rem),
+      repeating-linear-gradient(0deg, transparent 0 4.1rem, rgba(75,47,31,.055) 4.16rem, transparent 4.28rem);
+  }
+  .proof strong {
+    color: var(--archive-ink);
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(2rem, 3.5vw, 4.1rem);
+  }
+  .proof .slot {
+    min-height: auto;
+    margin-bottom: 0;
+    place-items: end start;
+    color: var(--archive-muted);
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    text-align: left;
+  }
+  .proof-note {
+    align-items: start;
+    border-color: var(--archive-rule);
+    background:
+      linear-gradient(135deg, rgba(255,250,241,.92), rgba(255,255,255,.5));
+    box-shadow: none;
+  }
+  .proof-note span {
+    color: var(--archive-muted);
+  }
+  #proof.section {
+    padding-top: clamp(4.5rem, 7vw, 7.5rem);
+    padding-bottom: clamp(5rem, 8vw, 8rem);
+  }
+  #proof .section-grid {
+    align-items: center;
+  }
+  .book-spread {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: minmax(240px, .52fr) 1fr;
+    gap: clamp(1rem, 3vw, 3rem);
+    align-items: stretch;
+    padding: clamp(.8rem, 1.4vw, 1.1rem);
+    border: 1px solid var(--archive-rule);
+    background:
+      linear-gradient(135deg, rgba(255,250,241,.94), rgba(238,231,218,.74));
+    box-shadow: 0 28px 80px rgba(51,37,24,.1);
+  }
+  .book-cover {
+    position: relative;
+    min-height: clamp(28rem, 55vw, 42rem);
+    display: block;
+    padding: .65rem;
+    color: white;
+    overflow: hidden;
+    background: #17120f;
+  }
+  .book-cover::before {
+    content: "";
+    position: absolute;
+    inset: .85rem;
+    border: 1px solid rgba(255,255,255,.28);
+    pointer-events: none;
+  }
+  .book-cover b,
+  .book-cover span {
+    position: relative;
+    z-index: 1;
+  }
+  .book-cover img {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+  .book-cover b {
+    max-width: 8ch;
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(2.6rem, 5vw, 5rem);
+    line-height: .92;
+    font-weight: 400;
+  }
+  .book-cover span {
+    color: rgba(255,255,255,.72);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .book-copy {
+    display: grid;
+    align-content: center;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    padding: clamp(.8rem, 2vw, 1.6rem);
+  }
+  .book-copy .mini-title {
+    color: var(--wine);
+  }
+  .book-copy h2 {
+    max-width: 12ch;
+    color: var(--archive-ink);
+    font-size: clamp(2.7rem, 5vw, 6rem);
+    line-height: .96;
+  }
+  .book-copy p {
+    max-width: 43rem;
+    color: var(--archive-muted);
+    font-size: clamp(1rem, 1.22vw, 1.16rem);
+    line-height: 1.55;
+  }
+  .book-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--archive-rule);
+    background: var(--archive-rule);
+    gap: 1px;
+  }
+  .book-stats span {
+    display: grid;
+    gap: .35rem;
+    padding: .85rem;
+    background: rgba(255,250,241,.84);
+    color: rgba(18,17,16,.54);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .book-stats b {
+    color: var(--archive-ink);
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    line-height: 1;
+    font-weight: 400;
+    text-transform: none;
+  }
+  #proof .book-actions {
+    grid-column: auto;
+    margin-top: 0;
+  }
+  .showcase {
+    min-height: 112svh;
+    background:
+      radial-gradient(circle at 75% 12%, rgba(184,138,75,.18), transparent 24rem),
+      linear-gradient(180deg, #070707, #17110f 46%, #050607);
+  }
+  .showcase-card {
+    grid-column: 1 / 13;
+    min-height: 76svh;
+    border: 1px solid rgba(184,138,75,.28);
+    background:
+      linear-gradient(90deg, rgba(5,6,7,.88), rgba(5,6,7,.4)),
+      repeating-linear-gradient(90deg, rgba(255,250,241,.05) 0 1px, transparent 1px 6rem);
+    box-shadow: 0 46px 120px rgba(0,0,0,.4);
+  }
+  .showcase-card::before {
+    opacity: .58;
+    background:
+      linear-gradient(90deg, rgba(5,6,7,.82), rgba(5,6,7,.08) 55%, rgba(5,6,7,.78)),
+      radial-gradient(circle at var(--mx, 50%) var(--my, 40%), rgba(255,250,241,.22), transparent 13rem),
+      url("assets/inson/images/018-insonwood-interiordesign-greenwich-staircase.jpg") center / cover;
+  }
+  .showcase-content {
+    inset: 2rem;
+    grid-template-columns: minmax(0, .95fr) minmax(19rem, .46fr);
+    align-items: end;
+  }
+  .showcase-content h2 {
+    max-width: 9ch;
+    font-size: clamp(3rem, 6.8vw, 8rem);
+  }
+  .review-pull {
+    border-color: rgba(184,138,75,.24);
+    background: rgba(5,6,7,.7);
+    backdrop-filter: none;
+  }
+  .review-pull p {
+    color: rgba(255,250,241,.82);
+  }
+  .scrape-map {
+    background:
+      linear-gradient(180deg, #f7f0e6, #eee4d5);
+  }
+  .map-board {
+    gap: 1px;
+    border: 1px solid var(--archive-rule);
+    background: var(--archive-rule);
+  }
+  .map-item {
+    min-height: 7rem;
+    padding: clamp(.95rem, 1.45vw, 1.2rem);
+    border: 0;
+    background:
+      linear-gradient(135deg, rgba(255,250,241,.94), rgba(245,237,224,.92));
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .map-item b {
+    justify-content: flex-start;
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  .map-item .slot {
+    color: var(--archive-muted);
+  }
+  .press-wall {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    align-items: start;
+    gap: clamp(.7rem, 1.1vw, 1rem);
+    margin-top: 2rem;
+  }
+  .press-tile {
+    position: relative;
+    aspect-ratio: auto;
+    min-height: 13.4rem;
+    display: grid;
+    align-content: end;
+    padding: .65rem;
+    color: var(--archive-ink);
+    border: .34rem solid rgba(255,250,241,.95);
+    background: rgba(255,250,241,.82);
+    box-shadow:
+      0 18px 44px rgba(51,37,24,.16),
+      0 0 0 1px rgba(75,47,31,.18);
+  }
+  .press-tile::before,
+  .press-tile::after {
+    display: none;
+  }
+  .press-tile img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    background: #e9dfd0;
+  }
+  .press-tile b {
+    display: block;
+    margin-top: .55rem;
+    color: var(--wine);
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+  .press-tile span {
+    display: block;
+    margin-top: .15rem;
+    color: rgba(18,17,16,.68);
+    font-family: "Abel", "Helvetica Neue", Arial, sans-serif;
+    font-size: .88rem;
+    line-height: 1.12;
+  }
+  .press-tile:nth-child(odd) {
+    margin-top: 1.15rem;
+  }
+  .press-wall .press-tile:nth-child(n) {
+    background: rgba(255,250,241,.82);
+  }
+  .source-nav,
+  .journal-strip,
+  .project-index {
+    border-top: 1px solid var(--archive-rule);
+    padding-top: 1rem;
+  }
+  .source-nav a,
+  .project-chip {
+    border-color: var(--archive-rule);
+    background: rgba(255,250,241,.72);
+    box-shadow: none;
+  }
+  .project-chip {
+    color: rgba(18,17,16,.72);
+  }
+  .book-quote-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .7rem;
+  }
+  .book-quote-grid figure {
+    min-height: 8rem;
+    display: grid;
+    align-content: space-between;
+    gap: 1rem;
+    margin: 0;
+    padding: .85rem;
+    border: 1px solid var(--archive-rule);
+    background: rgba(255,250,241,.58);
+  }
+  .book-quote-grid blockquote {
+    margin: 0;
+    color: var(--archive-ink);
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(1.05rem, 1.2vw, 1.28rem);
+    line-height: 1.22;
+  }
+  .book-quote-grid figcaption {
+    color: var(--wine);
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .review-cards {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  }
+  .review-card {
+    min-height: 14.5rem;
+    background:
+      linear-gradient(135deg, rgba(5,6,7,.76), rgba(5,6,7,.52)),
+      repeating-linear-gradient(90deg, rgba(255,250,241,.035) 0 1px, transparent 1px 3.6rem);
+  }
+  .review-card::before {
+    content: "5-star Google review";
+    width: max-content;
+    max-width: 100%;
+    color: #f0d7ad;
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .project-chip {
+    overflow: hidden;
+  }
+  .project-chip img {
+    border: 1px solid rgba(18,17,16,.09);
+  }
+  .project-chip span {
+    overflow-wrap: anywhere;
+  }
+  .contact {
+    min-height: auto;
+    background:
+      radial-gradient(circle at 78% 14%, rgba(184,138,75,.18), transparent 26rem),
+      radial-gradient(circle at 20% 86%, rgba(110,21,29,.18), transparent 22rem),
+      linear-gradient(180deg, #0b0a09, #050607);
+  }
+  .contact::before {
+    background:
+      linear-gradient(116deg, transparent 0 45%, rgba(255,250,241,.16) 49%, rgba(184,138,75,.16) 50%, transparent 58%),
+      repeating-linear-gradient(90deg, rgba(255,250,241,.04) 0 1px, transparent 1px 6rem);
+  }
+  .contact::after {
+    opacity: .25;
+  }
+  .contact-title h2 {
+    max-width: 10ch;
+    font-size: clamp(3.6rem, 6.8vw, 7.4rem);
+    line-height: .9;
+  }
+  .contact-meta span,
+  .contact-card,
+  .contact-row {
+    border-color: rgba(184,138,75,.24);
+    background: rgba(255,250,241,.045);
+    backdrop-filter: none;
+  }
+  .contact-card {
+    max-width: 34rem;
+    justify-self: end;
+    padding: clamp(1.1rem, 2vw, 1.55rem);
+    box-shadow: 0 34px 96px rgba(0,0,0,.34);
+  }
+  .contact-deck {
+    max-width: 28rem;
+    margin-top: 1.2rem;
+    color: rgba(255,250,241,.68);
+    font-size: clamp(1rem, 1.2vw, 1.12rem);
+    line-height: 1.5;
+  }
+  .contact-row b {
+    color: #f0d7ad;
+  }
+  .contact-row span,
+  .contact-row a {
+    color: rgba(255,250,241,.76);
+  }
+
+  #brief.section {
+    padding-top: clamp(4rem, 7vw, 7rem);
+    padding-bottom: clamp(5rem, 8vw, 8rem);
+  }
+  #brief .intro-copy {
+    grid-column: 2 / 7;
+    align-self: center;
+  }
+  #brief .intro-copy h2 {
+    max-width: 9ch;
+    font-size: clamp(3.4rem, 5.5vw, 6.25rem);
+    line-height: .98;
+  }
+  #brief .intro-side {
+    grid-column: 8 / 12;
+    padding: clamp(1rem, 1.5vw, 1.25rem);
+  }
+  #brief .dna-rail {
+    grid-column: 1 / 13;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .75rem;
+    margin-top: clamp(2rem, 3.5vw, 3.5rem);
+    border: 0;
+    background: transparent;
+  }
+  #brief .dna-card {
+    min-height: 20rem;
+    color: var(--paper-warm);
+    border: .42rem solid rgba(255,250,241,.88);
+    background:
+      linear-gradient(180deg, rgba(5,6,7,.08), rgba(5,6,7,.82)),
+      var(--thumb),
+      linear-gradient(135deg, #1c1b18, #e8dfd0);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 20px 52px rgba(51,37,24,.16);
+  }
+  #brief .dna-card:nth-child(1) { --thumb: url("assets/inson/images/018-insonwood-interiordesign-greenwich-staircase.jpg"); }
+  #brief .dna-card:nth-child(2) { --thumb: url("assets/inson/images/014-insonwood-interiordesign-tribeca-livingroom.jpg"); }
+  #brief .dna-card:nth-child(3) { --thumb: url("assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg"); }
+  #brief .dna-card:nth-child(4) { --thumb: url("assets/inson/images/003-75thstreet-01.jpg"); }
+  #brief .dna-card::before {
+    inset: 0;
+    width: auto;
+    height: auto;
+    opacity: 1;
+    border: 0;
+    background:
+      linear-gradient(180deg, rgba(255,250,241,.12), transparent 28%, rgba(5,6,7,.78)),
+      repeating-linear-gradient(90deg, rgba(255,250,241,.055) 0 1px, transparent 1px 3.8rem);
+    transform: none;
+  }
+  #brief .dna-card b {
+    color: #fff4df;
+    font-size: 10px;
+    letter-spacing: .04em;
+  }
+  #brief .dna-card p {
+    max-width: 15rem;
+    color: rgba(255,250,241,.78);
+    font-size: .98rem;
+  }
+  #brief .dna-card span {
+    color: rgba(255,250,241,.56);
+  }
+  #brief .principal-card {
+    min-height: 58svh;
+    margin-top: clamp(1rem, 2.4vw, 2rem);
+  }
+  #brief .principal-copy h2 {
+    font-size: clamp(2.8rem, 4.6vw, 5.2rem);
+  }
+  #brief .principal-copy p {
+    max-width: 36rem;
+  }
+
+  @media (hover: hover) {
+    .dna-card:hover,
+    .proof:hover,
+    .map-item:hover,
+    .project-chip:hover,
+    .source-nav a:hover {
+      transform: translateY(-4px);
+      border-color: rgba(110,21,29,.28);
+    }
+    .system-row:hover {
+      transform: translateX(6px);
+      border-color: rgba(184,138,75,.42);
+      background:
+        linear-gradient(135deg, rgba(255,250,241,.095), rgba(255,250,241,.03)),
+        linear-gradient(90deg, rgba(110,21,29,.22), transparent 36%);
+    }
+    .press-tile:hover {
+      transform: translateY(-5px) rotate(.4deg);
+    }
+  }
+
+  @media (max-width: 980px) {
+    main > .section:not(.hero)::after {
+      writing-mode: horizontal-tb;
+      left: 1.25rem;
+      top: .9rem;
+      border-left: 0;
+      border-bottom: 1px solid rgba(18,17,16,.08);
+      padding-left: 0;
+      padding-bottom: .3rem;
+    }
+    .intro-copy h2,
+    .section-heading h2,
+    .map-head h2,
+    .sticky-copy h2,
+    .showcase-content h2,
+    .contact-title h2 {
+      max-width: 11ch;
+    }
+    .contact-deck {
+      max-width: 36rem;
+    }
+    .intro-side {
+      padding: 1rem;
+    }
+    #brief .intro-copy,
+    #brief .intro-side {
+      grid-column: 1;
+    }
+    #brief .intro-copy h2 {
+      max-width: 10ch;
+    }
+    #brief .dna-rail {
+      grid-column: 1;
+      grid-template-columns: 1fr 1fr;
+    }
+    #brief .principal-card {
+      grid-column: 1;
+    }
+    .award-strip,
+    .review-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+    .project-gallery {
+      grid-template-columns: 1fr 1fr;
+    }
+    .project-card,
+    .project-card:nth-child(n) {
+      grid-column: auto;
+      min-height: 18rem;
+    }
+    .system-row {
+      grid-template-columns: 3.8rem 1fr;
+    }
+    .media-one,
+    .media-two,
+    .media-three,
+    .media-four {
+      grid-column: 1;
+      margin-top: 0;
+    }
+    .showcase-content {
+      inset: 1rem;
+      grid-template-columns: 1fr;
+      align-content: end;
+    }
+    .book-spread {
+      grid-template-columns: 1fr;
+    }
+    .book-cover {
+      min-height: 32rem;
+    }
+    .book-stats {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .section {
+      padding-inline: 1rem;
+    }
+    .intro-copy h2,
+    .section-heading h2,
+    .map-head h2 {
+      font-size: clamp(2.65rem, 12vw, 4.05rem);
+    }
+    .principal-card,
+    .showcase-card {
+      border-width: 1px;
+    }
+    #brief .dna-rail {
+      grid-template-columns: 1fr;
+    }
+    #brief .dna-card {
+      min-height: 18rem;
+    }
+    #brief .principal-card {
+      min-height: auto;
+    }
+    .hero-thumbs,
+    .award-strip,
+    .review-cards,
+    .project-gallery {
+      grid-template-columns: 1fr;
+    }
+    .hero-thumbs {
+      display: none;
+    }
+    .project-card,
+    .project-card:nth-child(n) {
+      min-height: 20rem;
+    }
+    .media-card {
+      border-width: .45rem;
+      min-height: 72svh;
+    }
+    .media-card h3 {
+      inset: auto .8rem 5.1rem;
+      width: calc(100% - 1.6rem);
+      max-width: none;
+      font-size: clamp(1.85rem, 9vw, 2.75rem);
+    }
+    .project-meta {
+      inset: auto .8rem .8rem;
+    }
+    .system-row {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .system-row b {
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+    .showcase-card {
+      padding: 1rem;
+      min-height: 82svh;
+    }
+    .showcase-content {
+      position: relative;
+      inset: auto;
+      min-height: calc(82svh - 2rem);
+    }
+    .review-kicker {
+      width: 100%;
+    }
+    .map-item {
+      gap: .45rem;
+    }
+    .press-tile:nth-child(odd) {
+      margin-top: 0;
+    }
+    .book-copy h2 {
+      font-size: clamp(2.45rem, 11vw, 3.8rem);
+    }
+    .book-cover {
+      min-height: 25rem;
+    }
+    .book-stats {
+      grid-template-columns: 1fr;
+    }
+    .book-quote-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-card {
+      max-width: none;
+      justify-self: stretch;
+    }
+    .contact-title h2 {
+      font-size: clamp(3rem, 14vw, 4.7rem);
+      line-height: .95;
+    }
+  }
+
+  @media (min-width: 981px) {
+    body .dock,
+    body .menu {
+      display: none;
     }
   }
 
@@ -1744,6 +3302,17 @@
     <span>Residential Design and Interiors</span>
   </div>
 
+  <nav class="site-tabs" aria-label="Primary sections">
+    <a href="#visuals">Projects</a>
+    <a href="#brief">About</a>
+    <a href="#system">Services</a>
+    <a href="#showcase">Reviews</a>
+    <a href="#proof">Book</a>
+    <a href="#scrape-map">Press</a>
+    <a href="https://insonduboiswood.com/blog/" target="_blank" rel="noreferrer">Blog</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
   <nav class="dock" aria-label="Site navigation">
     <a class="dock-logo" href="#top" aria-label="Top"><span></span></a>
     <div class="dock-title"><span>Home<br>Menu</span></div>
@@ -1751,11 +3320,13 @@
   </nav>
 
   <div class="menu" aria-hidden="true">
-    <a href="#brief"><span>Profile</span></a>
-    <a href="#visuals"><span>Rooms</span></a>
-    <a href="#system"><span>Practice</span></a>
-    <a href="#proof"><span>Monograph</span></a>
-    <a href="#scrape-map"><span>Archive</span></a>
+    <a href="#visuals"><span>Projects</span></a>
+    <a href="#brief"><span>About</span></a>
+    <a href="#system"><span>Services</span></a>
+    <a href="#showcase"><span>Reviews</span></a>
+    <a href="#proof"><span>Book</span></a>
+    <a href="#scrape-map"><span>Press</span></a>
+    <a href="https://insonduboiswood.com/blog/" target="_blank" rel="noreferrer"><span>Blog</span></a>
     <a href="#contact"><span>Contact</span></a>
   </div>
 
@@ -1768,9 +3339,9 @@
       <div class="hero-plate cursor-zone" data-slot="hero-media" data-cursor="Featured room"></div>
       <div class="hero-copy reveal" data-slot="hero">
         <div class="eyebrow">Inson Dubois Wood: Interiors</div>
-        <h1>A residential world, composed like an art book.</h1>
+        <h1>Residential interiors with architectural command.</h1>
         <div class="hero-line">
-          <p>A moving archive of architecture, interiors, antiques, paintings, objects, texture, and proportion from a New York practice shaped by Harvard, Cornell, Thailand, France, and decades of private residential work.</p>
+          <p>Architecture, interiors, antiques, art, and proportion brought into one residential language.</p>
           <div class="cta-row">
             <a class="button primary magnetic" href="#proof">Read monograph</a>
             <a class="button magnetic" href="#visuals">View rooms</a>
@@ -1778,8 +3349,15 @@
         </div>
         <div class="hero-proof" aria-label="Studio proof points">
           <span>Rizzoli, 2016</span>
-          <span>320 pages</span>
+          <span>330 pages</span>
           <span>Photography by Mark Roskams</span>
+          <span>49 Google reviews</span>
+        </div>
+        <div class="hero-thumbs" aria-label="Selected rooms">
+          <a class="hero-thumb" href="#visuals"><img src="assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg" alt="Waterfall Mansion room" loading="lazy"><span>Waterfall</span></a>
+          <a class="hero-thumb" href="#visuals"><img src="assets/inson/images/014-insonwood-interiordesign-tribeca-livingroom.jpg" alt="Tribeca Loft living room" loading="lazy"><span>Tribeca</span></a>
+          <a class="hero-thumb" href="#visuals"><img src="assets/inson/images/018-insonwood-interiordesign-greenwich-staircase.jpg" alt="Greenwich staircase" loading="lazy"><span>Greenwich</span></a>
+          <a class="hero-thumb" href="#visuals"><img src="assets/inson/images/034-madeline0148.jpg" alt="Paris Penthouse room" loading="lazy"><span>Paris</span></a>
         </div>
       </div>
     </section>
@@ -1792,41 +3370,45 @@
       </div>
     </div>
 
-    <section class="section light" id="brief" data-label="Profile">
+    <section class="section light" id="brief" data-label="About">
       <div class="section-grid">
         <div class="intro-copy reveal" data-slot="brand-story">
-          <div class="mini-title">Pedigree</div>
-          <h2>Architecture first. Decoration with a point of view.</h2>
+          <div class="mini-title">About</div>
+          <h2>Architecture first. Rooms with memory.</h2>
         </div>
         <div class="intro-side reveal" data-slot="brand-summary">
-          <p>Inson Dubois Wood holds a Master of Architecture from Harvard Graduate School of Design and a Bachelor of Architecture from Cornell. Before founding his studio, he served as design director for Juan Pablo Molyneux and David Easton, shaping high-end residential work across the U.S., Europe, and Asia.</p>
-          <div class="slot" style="margin-top:1.2rem">Own studio founded in 2005</div>
+          <p>Harvard GSD and Cornell trained, Inson Dubois Wood founded his New York studio after design-director roles with Juan Pablo Molyneux and David Easton.</p>
+          <div class="bio-proof" aria-label="Biography proof points">
+            <span><b>Education</b> Harvard GSD / Cornell Architecture</span>
+            <span><b>Studio</b> Founded in New York in 2005</span>
+            <span><b>Recognition</b> Hyland Award / Rizzoli monograph</span>
+          </div>
         </div>
         <div class="dna-rail stagger" aria-label="Inson Dubois Wood design DNA">
           <article class="dna-card">
             <b>Harvard Modernism</b>
-            <p>Harvard Graduate School of Design training gives the work a structural backbone before the first fabric, finish, or object is chosen.</p>
-            <span>Plan before polish</span>
+            <p>Modernist training gives the work its plan, proportion, and backbone.</p>
+            <span>Modernist lineage</span>
           </article>
           <article class="dna-card">
             <b>Cornell Precision</b>
-            <p>Cornell architecture training shows up in the discipline of proportion, circulation, drawings, and decisions that have to work in real rooms.</p>
+            <p>Architecture discipline shows up in circulation, drawings, and rooms that work.</p>
             <span>Measured control</span>
           </article>
           <article class="dna-card">
             <b>Molyneux / Easton</b>
-            <p>Design-director experience with Juan Pablo Molyneux and David Easton brings fluency in antiques, craft, restoration, and formal residential scale.</p>
+            <p>Experience with Molyneux and Easton brings antiques, craft, and formal scale.</p>
             <span>Classical range</span>
           </article>
           <article class="dna-card">
             <b>Rizzoli Proof</b>
-            <p>A 320-page Rizzoli monograph documents the rooms, residences, and international range behind the studio's reputation.</p>
+            <p>A 330-page Rizzoli monograph documents the residences and range.</p>
             <span>Printed proof</span>
           </article>
         </div>
-        <article class="principal-card reveal" aria-label="Inson Wood principal profile" style="--portrait:url('https://www.saatchiart.com/saatchi-s3/2138555/profile/KVNVUTPE_avatar_medium_square.jpg')">
+        <article class="principal-card reveal" aria-label="Inson Wood principal profile" style="--portrait:url('assets/inson/images/038-insondwood-biophoto.jpg')">
           <div class="principal-portrait">
-            <img class="principal-headshot" src="https://www.saatchiart.com/saatchi-s3/2138555/profile/KVNVUTPE_avatar_medium_square.jpg" alt="Inson Wood portrait" loading="lazy">
+            <img class="principal-headshot" src="assets/inson/images/038-insondwood-biophoto.jpg" alt="Inson Wood portrait" loading="lazy">
             <div class="principal-caption" aria-hidden="true">
               <span>Artist / Architect / Principal</span>
               <span>New York</span>
@@ -1835,13 +3417,19 @@
           <div class="principal-copy">
             <div>
               <div class="mini-title">The principal</div>
-              <h2>Inson Wood authors the whole residence.</h2>
-              <p>Architect, interior designer, artist, and sole principal, he brings the room under one eye: proportion, furniture, art, antiques, custom work, and the atmosphere that makes a private home feel resolved.</p>
+              <h2>The residence under one eye.</h2>
+              <p>Architecture, furniture, art, antiques, and atmosphere held in one controlled composition.</p>
               <div class="principal-badges">
-                <span>Thai-French heritage</span>
-                <span>Zen / wabi-sabi lens</span>
-                <span>Private collections</span>
+                <span>United States / Thailand / France</span>
+                <span>Buddhist principles</span>
+                <span>Private residences</span>
                 <span>Architecture + art</span>
+              </div>
+              <div class="award-strip" aria-label="Recognition badges">
+                <div class="award"><img src="assets/inson/images/039-hyland.jpg" alt="Hyland award" loading="lazy"></div>
+                <div class="award"><img src="assets/inson/images/040-goldlist.png" alt="Gold List recognition" loading="lazy"></div>
+                <div class="award"><img src="assets/inson/images/041-houzz-1.png" alt="Houzz recognition" loading="lazy"></div>
+                <div class="award"><img src="assets/inson/images/042-houzz-2.png" alt="Houzz Best of Houzz 2021" loading="lazy"></div>
               </div>
               <div class="signature-strip" aria-label="Studio signature">
                 <div class="signature-chip">
@@ -1860,14 +3448,14 @@
             </div>
             <div class="principal-quote">
               <b>Why the work holds together</b>
-              <span>The studio is not selling isolated finishes. It is building a complete residential language: architecture, lighting, material, art, history, and daily use brought into one controlled composition.</span>
+              <span>The work holds because architecture, lighting, material, art, history, and daily use are considered together rather than added in separate passes.</span>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section dark image-strip" id="visuals" data-label="Rooms">
+    <section class="section dark image-strip" id="visuals" data-label="Projects">
       <div class="section-grid stagger">
         <article class="media-card media-one cursor-zone" data-slot="visual-1" data-cursor="Waterfall">
           <div class="slot">Waterfall Mansion</div>
@@ -1889,117 +3477,267 @@
           <div class="project-meta"><span>Sweden</span><span>Modernist restraint</span></div>
           <h3>Clean lines, quiet materials, exact balance.</h3>
         </article>
+        <div class="project-gallery" aria-label="Real project gallery from Inson Dubois Wood">
+          <a class="project-card" href="https://insonduboiswood.com/greenwich-manor-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/010-epicurean-distinction-1.jpg" alt="Greenwich Manor House" loading="lazy"><b>Project</b><span>Greenwich Manor House</span></a>
+          <a class="project-card" href="https://insonduboiswood.com/west-village-townhouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/012-001-1024x667.jpg" alt="West Village Townhouse" loading="lazy"><b>Project</b><span>West Village Townhouse</span></a>
+          <a class="project-card" href="https://insonduboiswood.com/palm-beach-residence/" target="_blank" rel="noreferrer"><img src="assets/inson/images/013-yndyoppq-1024x768.jpg" alt="Palm Beach Residence" loading="lazy"><b>Project</b><span>Palm Beach Residence</span></a>
+          <a class="project-card" href="https://insonduboiswood.com/lake-como-farm-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/022-insonwood-interiordesign-lakecomo-livingroom.jpg" alt="Lake Como Farm House" loading="lazy"><b>Project</b><span>Lake Como Farm House</span></a>
+          <a class="project-card" href="https://insonduboiswood.com/5th-avenue/" target="_blank" rel="noreferrer"><img src="assets/inson/images/027-insonwood-interiordesign-lauto-livingroom-e1666558191293.png" alt="5th Avenue Museum Mile" loading="lazy"><b>Project</b><span>5th Avenue Museum Mile</span></a>
+          <a class="project-card" href="https://insonduboiswood.com/greenwich-manor/" target="_blank" rel="noreferrer"><img src="assets/inson/images/028-insonwood-interiordesign-stanwich-11-diningroom.jpg" alt="Greenwich Manor" loading="lazy"><b>Project</b><span>Greenwich Manor</span></a>
+          <a class="project-card" href="https://insonduboiswood.com/paris/" target="_blank" rel="noreferrer"><img src="assets/inson/images/034-madeline0148.jpg" alt="Paris Penthouse" loading="lazy"><b>Project</b><span>Paris Penthouse</span></a>
+          <a class="project-card" href="https://insonduboiswood.com/palm-beach-villa/" target="_blank" rel="noreferrer"><img src="assets/inson/images/037-4-front-3.jpg" alt="Palm Beach Villa" loading="lazy"><b>Project</b><span>Palm Beach Villa</span></a>
+        </div>
       </div>
     </section>
 
-    <section class="section operating-system" id="system" data-label="Practice">
+    <section class="section operating-system" id="system" data-label="Services">
       <div class="section-grid">
         <div class="sticky-copy reveal">
-          <div class="mini-title">Practice</div>
-          <h2>The work moves between architecture, rooms, and objects.</h2>
+          <div class="mini-title">Services</div>
+          <h2>Personally tailored residential design services.</h2>
+          <p class="page-note" style="color:rgba(255,255,255,.62);margin-top:1rem">Custom homes, restoration, interiors, art, kitchens, baths, and furniture selection.</p>
         </div>
         <div class="system-list stagger">
           <article class="system-row" data-slot="section-1">
             <b>01</b>
             <div>
-              <h3>Architecture</h3>
-              <p>Plans, circulation, restoration, remodeling, and architectural decisions give the residence its structure before decoration enters.</p>
+              <h3>Residential design</h3>
+              <p>Custom homes, remodeling, and restoration shaped by plan, proportion, and circulation.</p>
+              <div class="service-menu"><span>Residential design</span><span>Custom homes</span><span>Home remodeling</span><span>Home restoration</span></div>
             </div>
           </article>
           <article class="system-row" data-slot="section-2">
             <b>02</b>
             <div>
-              <h3>Rooms</h3>
-              <p>Furniture, art, lighting, fabrics, finishes, and custom detailing are edited into rooms that feel layered rather than staged.</p>
+              <h3>Interior design</h3>
+              <p>Furniture, art, materials, and color composed into rooms that feel collected.</p>
+              <div class="service-menu"><span>Interior design</span><span>Furniture selection</span><span>Art selection</span></div>
             </div>
           </article>
           <article class="system-row" data-slot="section-3">
             <b>03</b>
             <div>
-              <h3>Objects</h3>
-              <p>Antiques, modern furniture, paintings, and collected objects are treated as part of the architecture, not accessories added at the end.</p>
+              <h3>Kitchens and baths</h3>
+              <p>Storage, surfaces, fixtures, lighting, and small details that make use feel luxurious.</p>
+              <div class="service-menu"><span>Bathroom design</span><span>Kitchen design</span><span>Kitchen remodeling</span></div>
             </div>
           </article>
           <article class="system-row" data-slot="section-4">
             <b>04</b>
             <div>
-              <h3>Range</h3>
-              <p>Traditional, contemporary, and modern references move through New York, Greenwich, Sweden, Thailand, Saint-Tropez, Lake Como, and Paris.</p>
+              <h3>Consultation</h3>
+              <p>Begin with the residence, the scope, and the standard the project needs to meet.</p>
+              <div class="service-menu"><span>Contact for quotes and consultation</span></div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section lux-grid" id="proof" data-label="Monograph">
+    <section class="section lux-grid" id="proof" data-label="Book">
       <div class="section-grid">
-        <div class="section-heading reveal">
-          <div class="mini-title">Monograph</div>
-          <h2>The book is the clearest way into the work.</h2>
-        </div>
-        <div class="proof-grid stagger">
-          <article class="proof cursor-zone" data-slot="stat-1" data-cursor="Proof">
-            <strong>2016</strong>
-            <div class="slot">Published by Rizzoli on September 20</div>
-          </article>
-          <article class="proof cursor-zone" data-slot="stat-2" data-cursor="Rating">
-            <strong>320</strong>
-            <div class="slot">Hardcover pages of residential interiors</div>
-          </article>
-          <article class="proof cursor-zone" data-slot="stat-3" data-cursor="Book">
-            <strong>Rizzoli</strong>
-            <div class="slot">First monograph on his interior design work</div>
-          </article>
-          <article class="proof cursor-zone" data-slot="stat-4" data-cursor="Studio">
-            <strong>Roskams</strong>
-            <div class="slot">Photography by Mark Roskams</div>
-          </article>
-        </div>
-        <div class="proof-note reveal">
-          <b>What the book shows</b>
-          <span>Richness, texture, impeccable proportions, subtle tonality, colorful accents, antiques, modern furniture, Waterfall Mansion in New York, a family home in Greenwich, and a villa in Saint-Tropez.</span>
-        </div>
+        <article class="book-spread reveal cursor-zone" data-cursor="Monograph" aria-label="Inson Dubois Wood Interiors monograph">
+          <div class="book-cover" aria-hidden="true">
+            <img src="assets/inson/images/043-inson-dubois-wood-interiors-811x1024.jpg" alt="" loading="lazy">
+          </div>
+          <div class="book-copy">
+            <div class="mini-title">Monograph</div>
+            <h2>Inson Dubois Wood: Interiors.</h2>
+            <p>Rizzoli's monograph presents modernist residential interiors with texture, proportion, antiques, color, and family life in the same frame.</p>
+            <div class="book-stats" aria-label="Book details">
+              <span><b>2016</b> Published September 20</span>
+              <span><b>330</b> Hardcover pages</span>
+              <span><b>Rizzoli</b> First monograph</span>
+              <span><b>Roskams</b> Photography</span>
+            </div>
+            <div class="book-actions" aria-label="Book links">
+              <a class="button primary magnetic" href="https://www.rizzoliusa.com/book/9780847848737/" target="_blank" rel="noreferrer">View at Rizzoli</a>
+              <a class="button magnetic" href="https://insonduboiswood.com/book/" target="_blank" rel="noreferrer">Open book page</a>
+            </div>
+            <div class="book-quote-grid" aria-label="Published book review excerpts">
+              <figure>
+                <blockquote>&ldquo;Planned with care and executed with elan.&rdquo;</blockquote>
+                <figcaption>HuffingtonPost.com</figcaption>
+              </figure>
+              <figure>
+                <blockquote>&ldquo;Spaces of astonishing interest.&rdquo;</blockquote>
+                <figcaption>French Style</figcaption>
+              </figure>
+              <figure>
+                <blockquote>&ldquo;Eclectic aesthetic&rdquo; that caught attention.</blockquote>
+                <figcaption>Architectural Digest</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section showcase" id="showcase" data-label="Showcase">
+    <section class="section showcase" id="showcase" data-label="Reviews">
       <div class="section-grid">
         <div class="showcase-card reveal cursor-zone" data-slot="big-showcase" data-cursor="Portfolio">
           <div class="showcase-content">
-            <h2>From Waterfall Mansion to Greenwich Manor.</h2>
-            <div class="slot">Large residences, city apartments, country houses, and international projects with a consistent architectural hand</div>
+            <h2>Clients remember what had to be solved.</h2>
+            <div class="review-wall" aria-label="Google review themes">
+              <div class="review-kicker">Excellent / 49 Google reviews</div>
+              <article class="review-pull">
+                <p>Clients point to gut renovations, tight timelines, compact planning, lacquer kitchens, walnut millwork, and homes that age well.</p>
+                <b>From reviews by Ezra Bershatsky, Josie Lee, Kelly Williams, Asher Friedman, Sandy T</b>
+              </article>
+              <article class="review-pull">
+                <p>The praise is practical: budgets, boards, contractors, family moves, and daily rooms that work.</p>
+                <b>Excellent rating / 49 Google reviews</b>
+              </article>
+            </div>
           </div>
+        </div>
+        <div class="review-cards stagger" aria-label="Selected review excerpts">
+          <article class="review-card">
+            <p>&ldquo;He is clearly a fabulous divo as he has very good taste and understands how to read his clients.&rdquo;</p>
+            <div><b>Ezra Bershatsky</b><span>July 27, 2022</span></div>
+          </article>
+          <article class="review-card">
+            <p>&ldquo;The end result is like the interior of a small yacht with a place for everything.&rdquo;</p>
+            <div><b>Josie Lee</b><span>April 26, 2022</span></div>
+          </article>
+          <article class="review-card">
+            <p>Modern lifestyle, timeless materials, luxe finishes, professional specialists, and a family home transformed.</p>
+            <div><b>Rohan Shetty</b><span>November 18, 2021</span></div>
+          </article>
+          <article class="review-card">
+            <p>Full gut renovation, three-month timeline, difficult co-op board, reliable team, jewel-box apartment result.</p>
+            <div><b>Kelly Williams</b><span>November 16, 2021</span></div>
+          </article>
+          <article class="review-card">
+            <p>&ldquo;What was once a cold industrial space is now very livable and suits our family to a T.&rdquo;</p>
+            <div><b>Asher Friedman</b><span>November 10, 2021</span></div>
+          </article>
+          <article class="review-card">
+            <p>&ldquo;What we thought would be a highly stressful undertaking was surprisingly really fun and enjoyable.&rdquo;</p>
+            <div><b>Sandy T</b><span>November 1, 2021</span></div>
+          </article>
+          <article class="review-card">
+            <p>12,000-square-foot gut renovation, eight bathrooms, a new master wing, new circulation, and a professional team.</p>
+            <div><b>Sarah Rosen</b><span>October 5, 2021</span></div>
+          </article>
+          <article class="review-card">
+            <p>A gut renovation that aged well over 11 years, with responsive follow-up long after the work ended.</p>
+            <div><b>Cecile Scherer</b><span>September 22, 2021</span></div>
+          </article>
+          <article class="review-card">
+            <p>Estate-condition Park Avenue pied-a-terre reworked through kitchen planning, dressing rooms, bath detail, and taste.</p>
+            <div><b>Karrie Kan</b><span>March 2, 2021</span></div>
+          </article>
+          <article class="review-card">
+            <p>&ldquo;Very talented - his Rizzoli book is fab!!! Stunning work.&rdquo;</p>
+            <div><b>stephanie smart</b><span>January 2, 2021</span></div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section scrape-map" id="scrape-map" data-label="Archive">
+    <section class="section scrape-map" id="scrape-map" data-label="Press">
       <div class="section-grid">
         <div class="map-head reveal">
-          <div class="mini-title">Archive</div>
-          <h2>His range is the story.</h2>
+          <div class="mini-title">Press / Archive</div>
+          <h2>Published work, residential range, lasting proof.</h2>
         </div>
         <div class="map-board stagger">
           <article class="map-item" data-slot="scrape-business">
-            <b>Roots</b>
-            <div class="slot">United States, Thailand, and France shape the studio's cosmopolitan point of view</div>
+            <b>Projects</b>
+            <div class="slot">30 published residences: Greenwich, Tribeca, Paris, Lake Como, Palm Beach, Northern Thailand</div>
           </article>
           <article class="map-item" data-slot="scrape-offers">
-            <b>Method</b>
-            <div class="slot">Architectural elements define space before color, furniture, and objects refine it</div>
+            <b>Services</b>
+            <div class="slot">Interior design, residential design, custom homes, restoration, remodeling, kitchens, baths, furniture selection, and art selection</div>
           </article>
           <article class="map-item" data-slot="scrape-proof">
-            <b>Places</b>
-            <div class="slot">New York, Greenwich, Saint-Tropez, Lake Como, Palm Beach, Paris, Sweden, Thailand</div>
+            <b>Reviews</b>
+            <div class="slot">49 Google reviews: renovations, timelines, storage, contractors, and homes that age well</div>
           </article>
           <article class="map-item" data-slot="scrape-assets">
-            <b>Spirit</b>
-            <div class="slot">Buddhist principles and respect for the spirit of the home guide the work</div>
+            <b>Book</b>
+            <div class="slot">Inson Dubois Wood: Interiors, Rizzoli, photography by Mark Roskams</div>
           </article>
           <article class="map-item" data-slot="scrape-contact">
             <b>Press</b>
-            <div class="slot">Architectural Digest, Luxe, Vogue, Traditional Home, Hamptons C&amp;G</div>
+            <div class="slot">Architectural Digest, Luxe, Vogue, Traditional Home, Hamptons C&amp;G, NY Spaces, Avenue, Hyland, Resident, and Modern Estate</div>
           </article>
+          <article class="map-item" data-slot="scrape-blog">
+            <b>Blog</b>
+            <div class="slot">Custom kitchens, French countryside, Le Corbusier, Ch&acirc;teau du Champ de Bataille, and the South of Spain</div>
+          </article>
+        </div>
+        <div class="press-wall reveal" aria-label="Press archive">
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/043-inson-dubois-wood-interiors-811x1024.jpg" alt="Inson Dubois Wood Interiors cover" loading="lazy"><b>Book</b><span>Inson Dubois Wood Interiors</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/044-living-in-style-best-interior-design-on-the-planet.jpg" alt="Best Interior Design on the Planet cover" loading="lazy"><b>Publication</b><span>Best Interior Design on the Planet</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/045-image-6487327.jpg" alt="Social Life cover" loading="lazy"><b>Magazine</b><span>Social Life</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/046-1016-ad-cover-789x1024.jpg" alt="Architectural Digest October 2016 cover" loading="lazy"><b>Magazine</b><span>Architectural Digest October 2016</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/047-luxe-magazine.jpg" alt="Luxe Magazine cover" loading="lazy"><b>Magazine</b><span>Luxe Magazine</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/048-the-world-in-vogue.jpg" alt="The World In Vogue cover" loading="lazy"><b>Book</b><span>The World In Vogue</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/049-architectural-diegest-february-2010-229x300.jpg" alt="Architectural Digest February 2010 cover" loading="lazy"><b>Magazine</b><span>Architectural Digest February 2010</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/050-nyspaces-magazine.jpg" alt="NY Spaces cover" loading="lazy"><b>Magazine</b><span>NY Spaces</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/051-hamptons-cottages-and-gardens.jpg" alt="Hamptons Cottages and Gardens cover" loading="lazy"><b>Regional</b><span>Hamptons Cottages and Gardens</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/052-traditional-home-october-2012.jpg" alt="Traditional Home October 2012 cover" loading="lazy"><b>Magazine</b><span>Traditional Home October 2012</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/053-traditional-home-feb-march-2012.jpg" alt="Traditional Home February 2012 cover" loading="lazy"><b>Magazine</b><span>Traditional Home February 2012</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/054-new-american-luxury-magazine-december-2012.jpg" alt="New American Luxury December 2012 cover" loading="lazy"><b>Trade</b><span>New American Luxury December 2012</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/055-living-in-styles-scandinavia.jpg" alt="Living In Style Scandinavia cover" loading="lazy"><b>Publication</b><span>Living In Style: Scandinavia</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/056-designers-abroad.jpg" alt="Designers Abroad cover" loading="lazy"><b>Publication</b><span>Designers Abroad</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/057-hyland-inson-dubois-wood.jpg" alt="Hyland Inson Dubois Wood cover" loading="lazy"><b>Award</b><span>Hyland Magazine</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/058-hyland-magazine-edition-20.jpg" alt="Hyland Magazine Edition 20 cover" loading="lazy"><b>Award</b><span>Hyland Magazine Edition 20</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/059-avenue-magazine-nov-2012.jpg" alt="Avenue Magazine November 2012 cover" loading="lazy"><b>Magazine</b><span>Avenue Magazine November 2012</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/060-avenue-magazine-nov-2011.jpg" alt="Avenue Magazine November 2011 cover" loading="lazy"><b>Magazine</b><span>Avenue Magazine November 2011</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/061-resident-magazine-september-2014.jpg" alt="Resident Magazine September 2014 cover" loading="lazy"><b>Magazine</b><span>Resident September 2014</span></a>
+          <a class="press-tile" href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer"><img src="assets/inson/images/062-modern-estates-winter-2007.jpg" alt="Modern Estates Winter 2007 cover" loading="lazy"><b>Trade</b><span>Modern Estates Winter 2007</span></a>
+        </div>
+        <nav class="source-nav reveal" aria-label="Live source pages">
+          <a href="https://insonduboiswood.com/" target="_blank" rel="noreferrer">Projects</a>
+          <a href="https://insonduboiswood.com/about/" target="_blank" rel="noreferrer">About</a>
+          <a href="https://insonduboiswood.com/services/" target="_blank" rel="noreferrer">Services</a>
+          <a href="https://insonduboiswood.com/reviews/" target="_blank" rel="noreferrer">Reviews</a>
+          <a href="https://insonduboiswood.com/book/" target="_blank" rel="noreferrer">Book</a>
+          <a href="https://insonduboiswood.com/press/" target="_blank" rel="noreferrer">Press</a>
+          <a href="https://insonduboiswood.com/blog/" target="_blank" rel="noreferrer">Blog</a>
+          <a href="https://insonduboiswood.com/contact/" target="_blank" rel="noreferrer">Contact</a>
+        </nav>
+        <div class="journal-strip reveal" aria-label="Blog archive">
+          <a class="journal-card" href="https://insonduboiswood.com/custom-kitchen-ideas/" target="_blank" rel="noreferrer" style="--journal-image:url('assets/inson/images/063-img-6644.jpg')"><b>August 8, 2018</b><span>Custom kitchen ideas</span></a>
+          <a class="journal-card" href="https://insonduboiswood.com/no-other-more-romantic-place-on-earth-like-the-french-countryside-to-host-a-private-event-or-wedding/" target="_blank" rel="noreferrer" style="--journal-image:url('assets/inson/images/064-chateau-de-villette-library.jpg')"><b>August 21, 2018</b><span>French countryside as private event setting</span></a>
+          <a class="journal-card" href="https://insonduboiswood.com/le-corbusier-architect-as-true-renaissance-man-was-also-an-artist-designer-planner-writer-and-athlete/" target="_blank" rel="noreferrer" style="--journal-image:url('assets/inson/images/065-6a00d8341d883053ef00e550ec18a78833-800wi.jpg')"><b>August 21, 2018</b><span>Le Corbusier as Renaissance man</span></a>
+          <a class="journal-card" href="https://insonduboiswood.com/chateau-du-champ-de-bataille-in-normandy-will-take-you-back-in-time/" target="_blank" rel="noreferrer" style="--journal-image:url('assets/inson/images/066-main-chateau-salon-de-compagnie.jpg')"><b>August 21, 2018</b><span>Ch&acirc;teau du Champ de Bataille in Normandy</span></a>
+          <a class="journal-card" href="https://insonduboiswood.com/the-south-of-spain/" target="_blank" rel="noreferrer" style="--journal-image:url('assets/inson/images/067-santanyi0349.jpg')"><b>August 27, 2018</b><span>The South of Spain</span></a>
+        </div>
+        <div class="project-index stagger" aria-label="Published project archive">
+          <a class="project-chip" href="https://insonduboiswood.com/greenwich-manor-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/010-epicurean-distinction-1.jpg" alt="Greenwich Manor House" loading="lazy"><span>Greenwich Manor House</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/midcentury-modern-pool-house-in-malmo-sweden/" target="_blank" rel="noreferrer"><img src="assets/inson/images/011-malmo0114.jpg" alt="Midcentury Modern Pool House in Malmo, Sweden" loading="lazy"><span>Midcentury Modern Pool House in Malm&ouml;, Sweden</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/west-village-townhouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/012-001-1024x667.jpg" alt="West Village Townhouse" loading="lazy"><span>West Village Townhouse</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/upper-east-side-townhouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/003-75thstreet-01.jpg" alt="Upper East Side Townhouse" loading="lazy"><span>Upper East Side Townhouse</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/palm-beach-residence/" target="_blank" rel="noreferrer"><img src="assets/inson/images/013-yndyoppq-1024x768.jpg" alt="Palm Beach Residence" loading="lazy"><span>Palm Beach Residence</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/tribeca-loft/" target="_blank" rel="noreferrer"><img src="assets/inson/images/014-insonwood-interiordesign-tribeca-livingroom.jpg" alt="Tribeca Loft" loading="lazy"><span>Tribeca Loft</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/5th-avenue-condo/" target="_blank" rel="noreferrer"><img src="assets/inson/images/015-insonwood-interiordesign-uppereastside-2-moderndecor.png" alt="5th Avenue Condo" loading="lazy"><span>5th Avenue Condo</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/upper-east-side-condo/" target="_blank" rel="noreferrer"><img src="assets/inson/images/016-inson-73rd-st0142.jpg" alt="Upper Eastside Condo" loading="lazy"><span>Upper Eastside Condo</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/ues-condo-renovation/" target="_blank" rel="noreferrer"><img src="assets/inson/images/017-dsc-1407.jpg" alt="Upper Eastside Condo" loading="lazy"><span>Upper Eastside Condo</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/greenwich-carriage-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/018-insonwood-interiordesign-greenwich-staircase.jpg" alt="Greenwich Carriage House" loading="lazy"><span>Greenwich Carriage House</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/greenwich-village-church-condo/" target="_blank" rel="noreferrer"><img src="assets/inson/images/019-insonwood-interiordesign-judelaw-livingroom.jpg" alt="Greenwich Village Church Condo" loading="lazy"><span>Greenwich Village Church Condo</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/central-park-penthouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/020-dale-ny-0240.jpg" alt="Central Park Penthouse" loading="lazy"><span>Central Park Penthouse</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/ues-carriage-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg" alt="Upper East Side Carriage House" loading="lazy"><span>Upper East Side Carriage House</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/lake-como-farm-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/022-insonwood-interiordesign-lakecomo-livingroom.jpg" alt="Lake Como Farm House" loading="lazy"><span>Lake Como Farm House</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/ues-modern-studio/" target="_blank" rel="noreferrer"><img src="assets/inson/images/023-hyman-0006-1.jpg" alt="Upper East Side Studio" loading="lazy"><span>Upper East Side Studio</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/townhouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/024-insonwood-interiordesign-holiday-livingroom.jpg" alt="Townhouse" loading="lazy"><span>Townhouse</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/greenwich-village-townhouse-makeover/" target="_blank" rel="noreferrer"><img src="assets/inson/images/025-insonwood-interiordesign-greenwichave-livingroom3.jpg" alt="Greenwich Village Townhouse" loading="lazy"><span>Greenwich Village Townhouse</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/xvii/" target="_blank" rel="noreferrer"><img src="assets/inson/images/026-insonwood-interiordesign-52parkave-livingroom3.jpg" alt="Park Avenue Duplex" loading="lazy"><span>Park Avenue Duplex</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/5th-avenue/" target="_blank" rel="noreferrer"><img src="assets/inson/images/027-insonwood-interiordesign-lauto-livingroom-e1666558191293.png" alt="5th Avenue Museum Mile" loading="lazy"><span>5th Avenue Museum Mile</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/greenwich-manor/" target="_blank" rel="noreferrer"><img src="assets/inson/images/028-insonwood-interiordesign-stanwich-11-diningroom.jpg" alt="Greenwich Manor" loading="lazy"><span>Greenwich Manor</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/connecticut-country-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/029-insonwood-interiordesign-fallsvillage-livingroom2.jpg" alt="Connecticut Country House" loading="lazy"><span>Connecticut Country House</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/academy-mansion/" target="_blank" rel="noreferrer"><img src="assets/inson/images/030-insonwood-interiordesign-bradfield-avantgarde1.jpg" alt="Mardi Gras Insipred Academy Mansion" loading="lazy"><span>Mardi Gras Insipred Academy Mansion</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/xiv/" target="_blank" rel="noreferrer"><img src="assets/inson/images/031-insonwood-interiordesign-quogue-livingroom.jpg" alt="Hamptons Colonial" loading="lazy"><span>Hamptons Colonial</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/xi/" target="_blank" rel="noreferrer"><img src="assets/inson/images/005-inson-thailand06ha.jpg" alt="Northern Thailand Retreat" loading="lazy"><span>Northern Thailand Retreat</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/chiangmai-country-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/032-insonwood-interiordesign-chiangmai-livingroom.jpg" alt="Chiangmai Thailand Country House" loading="lazy"><span>Chiangmai Thailand Country House</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/ues-modern-kitchen/" target="_blank" rel="noreferrer"><img src="assets/inson/images/033-75thstreet-8.jpg" alt="Upper Eastside Custom Modern Kitchen" loading="lazy"><span>Upper Eastside Custom Modern Kitchen</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/paris/" target="_blank" rel="noreferrer"><img src="assets/inson/images/034-madeline0148.jpg" alt="Paris Penthouse" loading="lazy"><span>Paris Penthouse</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/mediterranean-country-estate-villa/" target="_blank" rel="noreferrer"><img src="assets/inson/images/035-santanyi0483.jpg" alt="Mediterranean Country Estate Villa" loading="lazy"><span>Mediterranean Country Estate Villa</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/lower-east-side-triplex/" target="_blank" rel="noreferrer"><img src="assets/inson/images/036-1l.jpg" alt="Lower East Side Triplex" loading="lazy"><span>Lower East Side Triplex</span></a>
+          <a class="project-chip" href="https://insonduboiswood.com/palm-beach-villa/" target="_blank" rel="noreferrer"><img src="assets/inson/images/037-4-front-3.jpg" alt="Palm Beach Villa" loading="lazy"><span>Palm Beach Villa</span></a>
         </div>
       </div>
     </section>
@@ -2008,20 +3746,33 @@
       <div class="section-grid">
         <div class="contact-title reveal">
           <div class="mini-title">Consultation</div>
-          <h2>Start with the residence. Define the standard.</h2>
+          <h2>Begin the residence.</h2>
+          <p class="contact-deck">For quotes and consultation, contact the New York office directly.</p>
           <div class="contact-meta" aria-label="Contact details">
-            <span>New York studio</span>
+            <span>526 West 26th St Suite #805</span>
             <span>inson@insonwood.com</span>
             <span>212-343-1077</span>
           </div>
         </div>
-        <form class="shell-form reveal" data-slot="form" action="mailto:inson@insonwood.com" method="post" enctype="text/plain">
-          <label>Name<input type="text" name="name" placeholder="Your name" /></label>
-          <label>Email<input type="email" name="email" placeholder="Email address" /></label>
-          <label>Project<textarea name="project" placeholder="Townhouse, apartment, country house, gut renovation..."></textarea></label>
-          <button class="button primary magnetic" type="submit">Email Inson</button>
-          <a class="button magnetic" href="tel:+12123431077">Call 212-343-1077</a>
-        </form>
+        <article class="contact-card reveal" data-slot="contact-card" aria-label="Inson Dubois Wood contact details">
+          <div class="contact-ornament" aria-hidden="true"><span>IDW</span></div>
+          <div class="contact-row">
+            <b>Office</b>
+            <span>526 West 26th St Suite #805<br>New York, NY 10001</span>
+          </div>
+          <div class="contact-row">
+            <b>Phone</b>
+            <a href="tel:+12123431077">212-343-1077</a>
+          </div>
+          <div class="contact-row">
+            <b>Email</b>
+            <a href="mailto:inson@insonwood.com">inson@insonwood.com</a>
+          </div>
+          <div class="contact-actions">
+            <a class="button primary magnetic" href="mailto:inson@insonwood.com">Email Inson</a>
+            <a class="button magnetic" href="tel:+12123431077">Call 212-343-1077</a>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -2030,6 +3781,9 @@
 (() => {
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const root = document.documentElement;
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
   const params = new URLSearchParams(window.location.search);
   const localPreview = ["127.0.0.1", "localhost"].includes(window.location.hostname);
   const forceMotion = params.get("motion") === "on" || window.location.hash.includes("motion-on") || (localPreview && params.get("motion") !== "off");
@@ -2051,6 +3805,12 @@
   const revealItems = [...document.querySelectorAll(".reveal, .stagger")];
   const cursorZones = [...document.querySelectorAll(".cursor-zone")];
 
+  function normalizeTopAnchor() {
+    if (window.location.hash === "#top") {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+  }
+
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   const lerp = (from, to, amount) => from + (to - from) * amount;
   const vh = () => window.innerHeight || 1;
@@ -2065,8 +3825,6 @@
   let rafId = 0;
   let mouseX = vw() / 2;
   let mouseY = vh() / 2;
-  let cursorX = mouseX;
-  let cursorY = mouseY;
   let smoothScroll = window.scrollY;
   let lastScroll = window.scrollY;
   let scrollVelocity = 0;
@@ -2182,6 +3940,9 @@
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") setMenu(false);
   });
+  window.addEventListener("hashchange", normalizeTopAnchor);
+  window.addEventListener("load", normalizeTopAnchor, { once: true });
+  normalizeTopAnchor();
 
   if ("IntersectionObserver" in window && !reduce) {
     const revealObserver = new IntersectionObserver((entries) => {
@@ -2211,6 +3972,9 @@
     if (!cursorVisible && cursor) {
       cursorVisible = true;
       cursor.classList.add("is-visible");
+    }
+    if (cursor) {
+      cursor.style.transform = `translate3d(${mouseX - 3}px, ${mouseY - 2}px, 0) rotate(-8deg)`;
     }
     if (showcase) {
       const rect = showcase.getBoundingClientRect();
@@ -2334,9 +4098,6 @@
       showcase.style.setProperty("--showcase-scale", `${(1.006 - Math.abs(centerOffset) * .012).toFixed(4)}`);
     }
 
-    cursorX = lerp(cursorX, mouseX, .18);
-    cursorY = lerp(cursorY, mouseY, .18);
-    if (cursor) cursor.style.transform = `translate3d(${cursorX - 3}px, ${cursorY - 2}px, 0) rotate(-8deg)`;
     updateDockLabel();
     publishHealth("running", now);
 
