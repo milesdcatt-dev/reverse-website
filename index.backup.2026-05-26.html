@@ -1679,6 +1679,11 @@
     font-weight: 900;
     text-transform: uppercase;
   }
+  .review-kicker .stars,
+  .review-stars {
+    color: #f8b400;
+    letter-spacing: .04em;
+  }
   .review-pull {
     padding: 1rem;
     border: 1px solid rgba(255,255,255,.16);
@@ -1715,8 +1720,12 @@
     background: rgba(5,6,7,.58);
   }
   .review-card p {
-    font-size: 1rem;
-    line-height: 1.45;
+    font-size: .96rem;
+    line-height: 1.44;
+  }
+  .review-stars {
+    font-size: .88rem;
+    line-height: 1;
   }
   .review-card div {
     display: grid;
@@ -2889,22 +2898,17 @@
     text-transform: uppercase;
   }
   .review-cards {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
   }
   .review-card {
-    min-height: 14.5rem;
+    min-height: 18rem;
+    align-content: start;
     background:
       linear-gradient(135deg, rgba(5,6,7,.76), rgba(5,6,7,.52)),
       repeating-linear-gradient(90deg, rgba(255,250,241,.035) 0 1px, transparent 1px 3.6rem);
   }
   .review-card::before {
-    content: "5-star Google review";
-    width: max-content;
-    max-width: 100%;
-    color: #f0d7ad;
-    font-size: 9px;
-    font-weight: 900;
-    text-transform: uppercase;
+    display: none;
   }
   .project-chip {
     overflow: hidden;
@@ -3579,13 +3583,13 @@
           <div class="showcase-content">
             <h2>Clients remember what had to be solved.</h2>
             <div class="review-wall" aria-label="Google review themes">
-              <div class="review-kicker">Excellent / 49 Google reviews</div>
+              <div class="review-kicker"><span>Excellent</span><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>49 reviews on Google</span></div>
               <article class="review-pull">
-                <p>Clients point to gut renovations, tight timelines, compact planning, lacquer kitchens, walnut millwork, and homes that age well.</p>
-                <b>From reviews by Ezra Bershatsky, Josie Lee, Kelly Williams, Asher Friedman, Sandy T</b>
+                <p>Clients describe full gut renovations, impossible timelines, yacht-like storage, lacquer kitchens, walnut millwork, and rooms that finally work for real family life.</p>
+                <b>From reviews by Ezra Bershatsky, Josie Lee, Rohan Shetty, Kelly Williams, Asher Friedman, Sandy T</b>
               </article>
               <article class="review-pull">
-                <p>The praise is practical: budgets, boards, contractors, family moves, and daily rooms that work.</p>
+                <p>The praise is specific: budgets, co-op boards, contractors, moving deadlines, old apartments, country houses, Park Avenue pied-a-terres, and work that ages well.</p>
                 <b>Excellent rating / 49 Google reviews</b>
               </article>
             </div>
@@ -3593,43 +3597,53 @@
         </div>
         <div class="review-cards stagger" aria-label="Selected review excerpts">
           <article class="review-card">
-            <p>&ldquo;He is clearly a fabulous divo as he has very good taste and understands how to read his clients.&rdquo;</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>It was my pleasure to work with the artist Inson Wood. He was kind and communicative but also very real in his preferred mode of informal short texts. He has very good taste and understands how to read his clients and deliver even with a vague brief.</p>
             <div><b>Ezra Bershatsky</b><span>July 27, 2022</span></div>
           </article>
           <article class="review-card">
-            <p>&ldquo;The end result is like the interior of a small yacht with a place for everything.&rdquo;</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Inson helped me do what some would call an impossible task, renovating my entire apartment, creating sleek and space-efficient storage, and sticking to my budget. The end result is like the interior of a small yacht with a place for everything.</p>
             <div><b>Josie Lee</b><span>April 26, 2022</span></div>
           </article>
           <article class="review-card">
-            <p>Modern lifestyle, timeless materials, luxe finishes, professional specialists, and a family home transformed.</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>INSON was referred by a friend as we were relocating to a large house outside the city. He exceeded our expectations while creating value added and a path way to getting everything we wanted, using timeless materials with luxe finishes.</p>
             <div><b>Rohan Shetty</b><span>November 18, 2021</span></div>
           </article>
           <article class="review-card">
-            <p>Full gut renovation, three-month timeline, difficult co-op board, reliable team, jewel-box apartment result.</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>We bought our first property as a full gut - what we thought would be impossible to complete in 3 months, Inson and his reliable team managed to do despite a challenging co-op board and managing agent. We are so pleased with our jewel box of an apartment.</p>
             <div><b>Kelly Williams</b><span>November 16, 2021</span></div>
           </article>
           <article class="review-card">
-            <p>&ldquo;What was once a cold industrial space is now very livable and suits our family to a T.&rdquo;</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>We were delighted to work with Inson and his team on our Tribeca loft. What was once a cold industrial space is now very livable and suits our family to a T. He created a fantastic mudroom vestibule and a fabulous kitchen in high gloss lacquer.</p>
             <div><b>Asher Friedman</b><span>November 10, 2021</span></div>
           </article>
           <article class="review-card">
-            <p>&ldquo;What we thought would be a highly stressful undertaking was surprisingly really fun and enjoyable.&rdquo;</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Inson and his team were a godsend. We had a limited amount of time before we needed to leave our old residence and move into our new apartment on the Upper East Side. He worked in a zen-like, organized and methodical way.</p>
             <div><b>Sandy T</b><span>November 1, 2021</span></div>
           </article>
           <article class="review-card">
-            <p>12,000-square-foot gut renovation, eight bathrooms, a new master wing, new circulation, and a professional team.</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Just finished a large 12,000 gut of a home we wanted to customize in Conyers Farm. We gutted 8 bathrooms and made a fabulous master wing with full his and her dressing rooms. His masterful eye recreated an entirely new circulation.</p>
             <div><b>Sarah Rosen</b><span>October 5, 2021</span></div>
           </article>
           <article class="review-card">
-            <p>A gut renovation that aged well over 11 years, with responsive follow-up long after the work ended.</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Inson did a gut renovation of our apartment 11 years ago. He was extremely responsive and professional then, and has continued to follow up with us over the years. The apartment has aged really well.</p>
             <div><b>Cecile Scherer</b><span>September 22, 2021</span></div>
           </article>
           <article class="review-card">
-            <p>Estate-condition Park Avenue pied-a-terre reworked through kitchen planning, dressing rooms, bath detail, and taste.</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>We were lost on how to get our estate condition 3 bedroom pied a terre on Park Ave. We went with Inson's vision and were utterly impressed with the results. From reconfiguring kitchen and the master wing dressing bathroom combo to bath tile to sofa pillow trim, his taste is impeccable.</p>
             <div><b>Karrie Kan</b><span>March 2, 2021</span></div>
           </article>
           <article class="review-card">
-            <p>&ldquo;Very talented - his Rizzoli book is fab!!! Stunning work.&rdquo;</p>
+            <div class="review-stars" aria-label="5 star Google review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>Very talented - his Rizzoli book is fab!!! Stunning work.</p>
             <div><b>stephanie smart</b><span>January 2, 2021</span></div>
           </article>
         </div>
