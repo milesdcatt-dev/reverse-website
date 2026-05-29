@@ -1424,6 +1424,39 @@
     grid-template-columns: repeat(12, 1fr);
     gap: .75rem;
     margin-top: clamp(1.5rem, 4vw, 3.5rem);
+    scroll-margin-top: 7rem;
+  }
+  .project-gallery-head {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: end;
+    padding: 1rem;
+    color: rgba(255,250,241,.84);
+    border: 1px solid rgba(255,250,241,.16);
+    background:
+      linear-gradient(135deg, rgba(255,250,241,.08), rgba(255,250,241,.025)),
+      rgba(5,6,7,.34);
+    backdrop-filter: blur(12px);
+  }
+  .project-gallery-head h3 {
+    max-width: 15ch;
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(2.4rem, 4.6vw, 5rem);
+    font-weight: 400;
+    line-height: .96;
+  }
+  .project-gallery-head p {
+    max-width: 34rem;
+    color: rgba(255,250,241,.62);
+    line-height: 1.5;
+  }
+  .project-gallery-head span {
+    color: #f0d7ad;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
   }
   .project-card {
     position: relative;
@@ -1435,13 +1468,17 @@
     background: #111;
     box-shadow: 0 20px 60px rgba(0,0,0,.28);
   }
-  .project-card:nth-child(1),
-  .project-card:nth-child(6) {
+  .project-card:nth-of-type(1),
+  .project-card:nth-of-type(6),
+  .project-card:nth-of-type(14),
+  .project-card:nth-of-type(23) {
     grid-column: span 5;
     min-height: 24rem;
   }
-  .project-card:nth-child(4),
-  .project-card:nth-child(8) {
+  .project-card:nth-of-type(4),
+  .project-card:nth-of-type(8),
+  .project-card:nth-of-type(17),
+  .project-card:nth-of-type(27) {
     grid-column: span 4;
   }
   .project-card img {
@@ -1460,7 +1497,8 @@
     background: linear-gradient(180deg, transparent 25%, rgba(5,6,7,.78));
   }
   .project-card b,
-  .project-card span {
+  .project-card span,
+  .project-card em {
     position: absolute;
     z-index: 1;
     left: .85rem;
@@ -1473,11 +1511,31 @@
     text-transform: uppercase;
   }
   .project-card span {
-    bottom: .85rem;
+    bottom: 2.75rem;
     font-family: "Quattrocento", Georgia, serif;
-    font-size: clamp(1.35rem, 2vw, 2.25rem);
+    font-size: clamp(1.2rem, 1.6vw, 1.9rem);
     line-height: 1;
     text-shadow: 0 12px 28px rgba(0,0,0,.6);
+  }
+  .project-card em {
+    bottom: .85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .42rem;
+    width: fit-content;
+    max-width: calc(100% - 1.7rem);
+    color: rgba(255,250,241,.78);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .project-card em::before {
+    content: "";
+    width: .45rem;
+    height: .45rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
   }
   @media (hover: hover) {
     .project-card:hover img {
@@ -3343,6 +3401,9 @@
     .project-gallery {
       grid-template-columns: 1fr 1fr;
     }
+    .project-gallery-head {
+      grid-template-columns: 1fr;
+    }
     .project-card,
     .project-card:nth-child(n) {
       grid-column: auto;
@@ -3408,6 +3469,10 @@
     .project-card,
     .project-card:nth-child(n) {
       min-height: 20rem;
+    }
+    .project-gallery-head h3 {
+      max-width: 10ch;
+      font-size: clamp(2.4rem, 11vw, 3.7rem);
     }
     .media-card {
       border-width: .45rem;
@@ -3747,15 +3812,44 @@
           <div class="project-meta"><span>Sweden</span><span>Modernist restraint</span></div>
           <h3>Clean lines, quiet materials, exact balance.</h3>
         </article>
-        <div class="project-gallery" aria-label="Real project gallery from Inson Dubois Wood">
-          <a class="project-card" href="https://insonduboiswood.com/greenwich-manor-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/010-epicurean-distinction-1.jpg" alt="Greenwich Manor House" loading="lazy"><b>Project</b><span>Greenwich Manor House</span></a>
-          <a class="project-card" href="https://insonduboiswood.com/west-village-townhouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/012-001-1024x667.jpg" alt="West Village Townhouse" loading="lazy"><b>Project</b><span>West Village Townhouse</span></a>
-          <a class="project-card" href="https://insonduboiswood.com/palm-beach-residence/" target="_blank" rel="noreferrer"><img src="assets/inson/images/013-yndyoppq-1024x768.jpg" alt="Palm Beach Residence" loading="lazy"><b>Project</b><span>Palm Beach Residence</span></a>
-          <a class="project-card" href="https://insonduboiswood.com/lake-como-farm-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/022-insonwood-interiordesign-lakecomo-livingroom.jpg" alt="Lake Como Farm House" loading="lazy"><b>Project</b><span>Lake Como Farm House</span></a>
-          <a class="project-card" href="https://insonduboiswood.com/5th-avenue/" target="_blank" rel="noreferrer"><img src="assets/inson/images/027-insonwood-interiordesign-lauto-livingroom-e1666558191293.png" alt="5th Avenue Museum Mile" loading="lazy"><b>Project</b><span>5th Avenue Museum Mile</span></a>
-          <a class="project-card" href="https://insonduboiswood.com/greenwich-manor/" target="_blank" rel="noreferrer"><img src="assets/inson/images/028-insonwood-interiordesign-stanwich-11-diningroom.jpg" alt="Greenwich Manor" loading="lazy"><b>Project</b><span>Greenwich Manor</span></a>
-          <a class="project-card" href="https://insonduboiswood.com/paris/" target="_blank" rel="noreferrer"><img src="assets/inson/images/034-madeline0148.jpg" alt="Paris Penthouse" loading="lazy"><b>Project</b><span>Paris Penthouse</span></a>
-          <a class="project-card" href="https://insonduboiswood.com/palm-beach-villa/" target="_blank" rel="noreferrer"><img src="assets/inson/images/037-4-front-3.jpg" alt="Palm Beach Villa" loading="lazy"><b>Project</b><span>Palm Beach Villa</span></a>
+        <div class="project-gallery" aria-label="Complete project gallery from Inson Dubois Wood">
+          <div class="project-gallery-head">
+            <div>
+              <span>30 project pages</span>
+              <h3>Complete project archive.</h3>
+            </div>
+            <p>Each project card opens the original Inson Dubois Wood project page with its larger photo set, preserving the live site archive while making it feel designed.</p>
+          </div>
+          <a class="project-card" href="https://insonduboiswood.com/greenwich-manor-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/010-epicurean-distinction-1.jpg" alt="Greenwich Manor House" loading="lazy"><b>Project 01</b><span>Greenwich Manor House</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/midcentury-modern-pool-house-in-malmo-sweden/" target="_blank" rel="noreferrer"><img src="assets/inson/images/011-malmo0114.jpg" alt="Midcentury Modern Pool House in Malmo, Sweden" loading="lazy"><b>Project 02</b><span>Midcentury Modern Pool House in Malm&ouml;, Sweden</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/west-village-townhouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/012-001-1024x667.jpg" alt="West Village Townhouse" loading="lazy"><b>Project 03</b><span>West Village Townhouse</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/upper-east-side-townhouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/003-75thstreet-01.jpg" alt="Upper East Side Townhouse" loading="lazy"><b>Project 04</b><span>Upper East Side Townhouse</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/palm-beach-residence/" target="_blank" rel="noreferrer"><img src="assets/inson/images/013-yndyoppq-1024x768.jpg" alt="Palm Beach Residence" loading="lazy"><b>Project 05</b><span>Palm Beach Residence</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/tribeca-loft/" target="_blank" rel="noreferrer"><img src="assets/inson/images/014-insonwood-interiordesign-tribeca-livingroom.jpg" alt="Tribeca Loft" loading="lazy"><b>Project 06</b><span>Tribeca Loft</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/5th-avenue-condo/" target="_blank" rel="noreferrer"><img src="assets/inson/images/015-insonwood-interiordesign-uppereastside-2-moderndecor.png" alt="5th Avenue Condo" loading="lazy"><b>Project 07</b><span>5th Avenue Condo</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/upper-east-side-condo/" target="_blank" rel="noreferrer"><img src="assets/inson/images/016-inson-73rd-st0142.jpg" alt="Upper Eastside Condo" loading="lazy"><b>Project 08</b><span>Upper Eastside Condo</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/ues-condo-renovation/" target="_blank" rel="noreferrer"><img src="assets/inson/images/017-dsc-1407.jpg" alt="Upper Eastside Condo" loading="lazy"><b>Project 09</b><span>Upper Eastside Condo</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/greenwich-carriage-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/018-insonwood-interiordesign-greenwich-staircase.jpg" alt="Greenwich Carriage House" loading="lazy"><b>Project 10</b><span>Greenwich Carriage House</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/greenwich-village-church-condo/" target="_blank" rel="noreferrer"><img src="assets/inson/images/019-insonwood-interiordesign-judelaw-livingroom.jpg" alt="Greenwich Village Church Condo" loading="lazy"><b>Project 11</b><span>Greenwich Village Church Condo</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/central-park-penthouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/020-dale-ny-0240.jpg" alt="Central Park Penthouse" loading="lazy"><b>Project 12</b><span>Central Park Penthouse</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/ues-carriage-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg" alt="Upper East Side Carriage House" loading="lazy"><b>Project 13</b><span>Upper East Side Carriage House</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/lake-como-farm-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/022-insonwood-interiordesign-lakecomo-livingroom.jpg" alt="Lake Como Farm House" loading="lazy"><b>Project 14</b><span>Lake Como Farm House</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/ues-modern-studio/" target="_blank" rel="noreferrer"><img src="assets/inson/images/023-hyman-0006-1.jpg" alt="Upper East Side Studio" loading="lazy"><b>Project 15</b><span>Upper East Side Studio</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/townhouse/" target="_blank" rel="noreferrer"><img src="assets/inson/images/024-insonwood-interiordesign-holiday-livingroom.jpg" alt="Townhouse" loading="lazy"><b>Project 16</b><span>Townhouse</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/greenwich-village-townhouse-makeover/" target="_blank" rel="noreferrer"><img src="assets/inson/images/025-insonwood-interiordesign-greenwichave-livingroom3.jpg" alt="Greenwich Village Townhouse" loading="lazy"><b>Project 17</b><span>Greenwich Village Townhouse</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/xvii/" target="_blank" rel="noreferrer"><img src="assets/inson/images/026-insonwood-interiordesign-52parkave-livingroom3.jpg" alt="Park Avenue Duplex" loading="lazy"><b>Project 18</b><span>Park Avenue Duplex</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/5th-avenue/" target="_blank" rel="noreferrer"><img src="assets/inson/images/027-insonwood-interiordesign-lauto-livingroom-e1666558191293.png" alt="5th Avenue Museum Mile" loading="lazy"><b>Project 19</b><span>5th Avenue Museum Mile</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/greenwich-manor/" target="_blank" rel="noreferrer"><img src="assets/inson/images/028-insonwood-interiordesign-stanwich-11-diningroom.jpg" alt="Greenwich Manor" loading="lazy"><b>Project 20</b><span>Greenwich Manor</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/connecticut-country-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/029-insonwood-interiordesign-fallsvillage-livingroom2.jpg" alt="Connecticut Country House" loading="lazy"><b>Project 21</b><span>Connecticut Country House</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/academy-mansion/" target="_blank" rel="noreferrer"><img src="assets/inson/images/030-insonwood-interiordesign-bradfield-avantgarde1.jpg" alt="Mardi Gras Insipred Academy Mansion" loading="lazy"><b>Project 22</b><span>Mardi Gras Insipred Academy Mansion</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/xiv/" target="_blank" rel="noreferrer"><img src="assets/inson/images/031-insonwood-interiordesign-quogue-livingroom.jpg" alt="Hamptons Colonial" loading="lazy"><b>Project 23</b><span>Hamptons Colonial</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/xi/" target="_blank" rel="noreferrer"><img src="assets/inson/images/005-inson-thailand06ha.jpg" alt="Northern Thailand Retreat" loading="lazy"><b>Project 24</b><span>Northern Thailand Retreat</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/chiangmai-country-house/" target="_blank" rel="noreferrer"><img src="assets/inson/images/032-insonwood-interiordesign-chiangmai-livingroom.jpg" alt="Chiangmai Thailand Country House" loading="lazy"><b>Project 25</b><span>Chiangmai Thailand Country House</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/ues-modern-kitchen/" target="_blank" rel="noreferrer"><img src="assets/inson/images/033-75thstreet-8.jpg" alt="Upper Eastside Custom Modern Kitchen" loading="lazy"><b>Project 26</b><span>Upper Eastside Custom Modern Kitchen</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/paris/" target="_blank" rel="noreferrer"><img src="assets/inson/images/034-madeline0148.jpg" alt="Paris Penthouse" loading="lazy"><b>Project 27</b><span>Paris Penthouse</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/mediterranean-country-estate-villa/" target="_blank" rel="noreferrer"><img src="assets/inson/images/035-santanyi0483.jpg" alt="Mediterranean Country Estate Villa" loading="lazy"><b>Project 28</b><span>Mediterranean Country Estate Villa</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/lower-east-side-triplex/" target="_blank" rel="noreferrer"><img src="assets/inson/images/036-1l.jpg" alt="Lower East Side Triplex" loading="lazy"><b>Project 29</b><span>Lower East Side Triplex</span><em>View more photos</em></a>
+          <a class="project-card" href="https://insonduboiswood.com/palm-beach-villa/" target="_blank" rel="noreferrer"><img src="assets/inson/images/037-4-front-3.jpg" alt="Palm Beach Villa" loading="lazy"><b>Project 30</b><span>Palm Beach Villa</span><em>View more photos</em></a>
         </div>
       </div>
     </section>
