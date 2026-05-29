@@ -1537,6 +1537,167 @@
     border: 1px solid currentColor;
     transform: rotate(45deg);
   }
+  .project-card {
+    cursor: pointer;
+  }
+  body.project-drawer-open {
+    overflow: hidden;
+  }
+  .project-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    grid-template-columns: minmax(1rem, 1fr) minmax(20rem, 58rem);
+    background: rgba(0,0,0,.24);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .32s var(--ease);
+  }
+  .project-drawer[hidden] {
+    display: none;
+  }
+  .project-drawer.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .project-drawer-scrim {
+    border: 0;
+    background: rgba(0,0,0,.42);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+  }
+  .project-drawer-panel {
+    position: relative;
+    height: 100vh;
+    overflow: auto;
+    padding: clamp(1rem, 3vw, 2rem);
+    border-left: 1px solid rgba(238,213,174,.28);
+    background:
+      linear-gradient(140deg, rgba(42,34,28,.96), rgba(7,8,9,.98) 42%, rgba(20,13,12,.98)),
+      radial-gradient(circle at 18% 8%, rgba(221,194,142,.24), transparent 28%);
+    box-shadow: -34px 0 80px rgba(0,0,0,.42);
+    transform: translateX(2rem);
+    transition: transform .42s var(--ease);
+  }
+  .project-drawer.is-open .project-drawer-panel {
+    transform: translateX(0);
+  }
+  .project-drawer-kicker,
+  .project-drawer-count,
+  .project-source-link,
+  .project-image-tile span,
+  .project-image-tile small,
+  .project-drawer-close {
+    font-family: "Barlow Condensed", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .project-drawer-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: start;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(255,250,241,.14);
+  }
+  .project-drawer-kicker,
+  .project-drawer-count {
+    display: block;
+    color: #ecd4ad;
+    font-size: 11px;
+    letter-spacing: .04em;
+  }
+  .project-drawer-title {
+    max-width: 13ch;
+    margin-top: .45rem;
+    color: #fffaf1;
+    font-family: "Quattrocento", Georgia, serif;
+    font-size: clamp(2.6rem, 6vw, 5.9rem);
+    font-weight: 400;
+    line-height: .88;
+  }
+  .project-drawer-close {
+    min-width: 5.5rem;
+    min-height: 2.75rem;
+    border: 1px solid rgba(255,250,241,.35);
+    background: rgba(255,255,255,.04);
+    color: #fffaf1;
+    cursor: pointer;
+    transition: transform .22s ease, background .22s ease, border-color .22s ease;
+  }
+  .project-drawer-close:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,250,241,.72);
+    background: rgba(255,255,255,.08);
+  }
+  .project-drawer-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: end;
+    margin: 1rem 0 1.25rem;
+  }
+  .project-drawer-copy p {
+    max-width: 38rem;
+    color: rgba(255,250,241,.66);
+    line-height: 1.55;
+  }
+  .project-source-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0 1.1rem;
+    border: 1px solid rgba(222,16,31,.72);
+    background: rgba(222,16,31,.18);
+    color: #fffaf1;
+    font-size: 11px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .project-image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .75rem;
+  }
+  .project-image-tile {
+    display: grid;
+    gap: .45rem;
+    padding: .45rem;
+    border: 1px solid rgba(255,250,241,.14);
+    background: rgba(255,255,255,.035);
+    color: #fffaf1;
+    text-decoration: none;
+    transition: transform .24s ease, border-color .24s ease, background .24s ease;
+  }
+  .project-image-tile:hover {
+    transform: translateY(-3px);
+    border-color: rgba(238,213,174,.46);
+    background: rgba(255,255,255,.07);
+  }
+  .project-image-tile img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: rgba(255,255,255,.06);
+  }
+  .project-image-tile span {
+    color: #ecd4ad;
+    font-size: 10px;
+  }
+  .project-image-tile small {
+    overflow-wrap: anywhere;
+    color: rgba(255,250,241,.55);
+    font-size: 9px;
+    line-height: 1.25;
+  }
+  .project-drawer-empty {
+    padding: 1.2rem;
+    border: 1px solid rgba(255,250,241,.14);
+    color: rgba(255,250,241,.68);
+    background: rgba(255,255,255,.035);
+  }
   @media (hover: hover) {
     .project-card:hover img {
       transform: scale(1.06);
@@ -3409,6 +3570,20 @@
       grid-column: auto;
       min-height: 18rem;
     }
+    .project-drawer {
+      grid-template-columns: 1fr;
+    }
+    .project-drawer-scrim {
+      display: none;
+    }
+    .project-drawer-panel {
+      width: 100%;
+      border-left: 0;
+      transform: translateY(1.5rem);
+    }
+    .project-drawer.is-open .project-drawer-panel {
+      transform: translateY(0);
+    }
     .system-row {
       grid-template-columns: 3.8rem 1fr;
     }
@@ -3473,6 +3648,18 @@
     .project-gallery-head h3 {
       max-width: 10ch;
       font-size: clamp(2.4rem, 11vw, 3.7rem);
+    }
+    .project-drawer-head,
+    .project-drawer-copy {
+      grid-template-columns: 1fr;
+    }
+    .project-drawer-title {
+      max-width: 9ch;
+      font-size: clamp(2.5rem, 14vw, 4rem);
+    }
+    .project-image-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: .55rem;
     }
     .media-card {
       border-width: .45rem;
@@ -4217,6 +4404,27 @@
     </section>
   </main>
 
+  <aside class="project-drawer" hidden aria-hidden="true" aria-labelledby="project-drawer-title">
+    <button class="project-drawer-scrim" type="button" data-project-close aria-label="Close project image archive"></button>
+    <div class="project-drawer-panel" role="dialog" aria-modal="true" aria-describedby="project-drawer-note">
+      <header class="project-drawer-head">
+        <div>
+          <span class="project-drawer-kicker">Project image archive</span>
+          <h2 class="project-drawer-title" id="project-drawer-title">Project</h2>
+        </div>
+        <button class="project-drawer-close" type="button" data-project-close>Close</button>
+      </header>
+      <div class="project-drawer-copy">
+        <div>
+          <span class="project-drawer-count" data-project-count>Loading photos</span>
+          <p id="project-drawer-note">Open any thumbnail to view the original image file, or open the original project page for the complete live context.</p>
+        </div>
+        <a class="project-source-link" href="#" target="_blank" rel="noreferrer" data-project-source>Original project page</a>
+      </div>
+      <div class="project-image-grid" data-project-images></div>
+    </div>
+  </aside>
+
 <script>
 (() => {
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -4244,6 +4452,15 @@
   const sections = [...document.querySelectorAll("[data-label]")];
   const revealItems = [...document.querySelectorAll(".reveal, .stagger")];
   const cursorZones = [...document.querySelectorAll(".cursor-zone")];
+  const projectCards = [...document.querySelectorAll(".project-card")];
+  const projectDrawer = document.querySelector(".project-drawer");
+  const projectDrawerTitle = document.querySelector("#project-drawer-title");
+  const projectDrawerCount = document.querySelector("[data-project-count]");
+  const projectDrawerSource = document.querySelector("[data-project-source]");
+  const projectDrawerImages = document.querySelector("[data-project-images]");
+  const projectDrawerClose = [...document.querySelectorAll("[data-project-close]")];
+  let projectArchiveRequest = null;
+  let projectReturnFocus = null;
 
   function normalizeTopAnchor() {
     if (window.location.hash === "#top") {
@@ -4262,6 +4479,144 @@
   const cancelFrame = window.cancelAnimationFrame
     ? (id) => window.cancelAnimationFrame(id)
     : (id) => window.clearTimeout(id);
+
+  function normalizeUrl(value) {
+    try {
+      return new URL(value, window.location.href).href;
+    } catch (error) {
+      return value || "";
+    }
+  }
+
+  function imageFileLabel(url) {
+    try {
+      const name = new URL(url, window.location.href).pathname.split("/").pop() || "source image";
+      return decodeURIComponent(name).replace(/[-_]+/g, " ").replace(/\.[a-z0-9]+$/i, "");
+    } catch (error) {
+      return "source image";
+    }
+  }
+
+  function getProjectTitle(card) {
+    return card?.querySelector("span")?.textContent?.trim() || card?.querySelector("img")?.alt || "Project";
+  }
+
+  function loadProjectArchive() {
+    if (projectArchiveRequest) return projectArchiveRequest;
+    projectArchiveRequest = fetch("assets/inson/manifest.json", { cache: "force-cache" })
+      .then((response) => {
+        if (!response.ok) throw new Error("Project archive unavailable");
+        return response.json();
+      })
+      .then((manifest) => {
+        root.dataset.projectArchive = "loaded";
+        return manifest;
+      })
+      .catch((error) => {
+        root.dataset.projectArchive = "fallback";
+        return { images: [] };
+      });
+    return projectArchiveRequest;
+  }
+
+  function fallbackProjectImages(card) {
+    const image = card?.querySelector("img");
+    if (!image) return [];
+    return [{
+      url: image.currentSrc || image.src,
+      alt: image.alt || getProjectTitle(card)
+    }];
+  }
+
+  function findProjectImages(manifest, projectUrl) {
+    const normalizedProject = normalizeUrl(projectUrl);
+    const home = "https://insonduboiswood.com/";
+    return (manifest.images || [])
+      .filter((image) => {
+        const pages = image.pages || [];
+        return pages.some((page) => normalizeUrl(page) === normalizedProject) && !pages.includes(home);
+      })
+      .map((image) => ({
+        url: image.url || image.local,
+        alt: image.alt || imageFileLabel(image.url || image.local)
+      }))
+      .filter((image) => image.url);
+  }
+
+  function renderProjectImages(images, title) {
+    if (!projectDrawerImages || !projectDrawerCount) return;
+    projectDrawerImages.replaceChildren();
+    projectDrawerCount.textContent = `${images.length} ${images.length === 1 ? "image link" : "image links"}`;
+    if (!images.length) {
+      const empty = document.createElement("p");
+      empty.className = "project-drawer-empty";
+      empty.textContent = "No individual image links were found in the scraped archive yet. Use the original project page link for the live photo set.";
+      projectDrawerImages.append(empty);
+      return;
+    }
+    images.forEach((image, index) => {
+      const tile = document.createElement("a");
+      tile.className = "project-image-tile";
+      tile.href = image.url;
+      tile.target = "_blank";
+      tile.rel = "noreferrer";
+
+      const thumb = document.createElement("img");
+      thumb.src = image.url;
+      thumb.alt = `${title} image ${index + 1}`;
+      thumb.loading = "lazy";
+
+      const label = document.createElement("span");
+      label.textContent = `Image ${String(index + 1).padStart(2, "0")}`;
+
+      const link = document.createElement("small");
+      link.textContent = image.url;
+
+      tile.append(thumb, label, link);
+      projectDrawerImages.append(tile);
+    });
+  }
+
+  async function openProjectDrawer(card) {
+    if (!projectDrawer) return;
+    const title = getProjectTitle(card);
+    const sourceUrl = card.href;
+    projectReturnFocus = card;
+    projectDrawerTitle.textContent = title;
+    projectDrawerSource.href = sourceUrl;
+    projectDrawerSource.textContent = "Original project page";
+    projectDrawerCount.textContent = "Loading photo links";
+    projectDrawerImages.replaceChildren();
+    document.body.classList.add("project-drawer-open");
+    projectDrawer.hidden = false;
+    projectDrawer.setAttribute("aria-hidden", "false");
+    requestFrame(() => projectDrawer.classList.add("is-open"));
+    projectDrawer.querySelector(".project-drawer-close")?.focus({ preventScroll: true });
+
+    const manifest = await loadProjectArchive();
+    const images = findProjectImages(manifest, sourceUrl);
+    renderProjectImages(images.length ? images : fallbackProjectImages(card), title);
+  }
+
+  function closeProjectDrawer() {
+    if (!projectDrawer || projectDrawer.hidden) return;
+    projectDrawer.classList.remove("is-open");
+    projectDrawer.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("project-drawer-open");
+    window.setTimeout(() => {
+      if (!projectDrawer.classList.contains("is-open")) projectDrawer.hidden = true;
+    }, reduce ? 0 : 260);
+    projectReturnFocus?.focus?.({ preventScroll: true });
+  }
+
+  projectCards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button === 1) return;
+      event.preventDefault();
+      openProjectDrawer(card);
+    });
+  });
+  projectDrawerClose.forEach((item) => item.addEventListener("click", closeProjectDrawer));
   let rafId = 0;
   let mouseX = vw() / 2;
   let mouseY = vh() / 2;
@@ -4378,7 +4733,10 @@
     if (event.target.closest("a")) setMenu(false);
   });
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setMenu(false);
+    if (event.key === "Escape") {
+      closeProjectDrawer();
+      setMenu(false);
+    }
   });
   window.addEventListener("hashchange", normalizeTopAnchor);
   window.addEventListener("load", normalizeTopAnchor, { once: true });
