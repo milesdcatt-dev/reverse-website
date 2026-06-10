@@ -1,0 +1,123 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Archive | Inson Dubois Wood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --cream:#f4ecdf; --ink:#17110d; --soft:#fff8ec; --muted:#786b60; --line:rgba(225,199,160,.24); --red:#8b1623; --gold:#f0d7ad; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:#fff3df; background:radial-gradient(circle at 14% 20%, rgba(139,22,35,.28), transparent 28rem), radial-gradient(circle at 86% 8%, rgba(240,215,173,.16), transparent 24rem), linear-gradient(180deg,#17100e,#080707 65%,#120b0a); font-family:"Abel", Arial, sans-serif; }
+    a { color:inherit; }
+    .top { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; gap:1rem; align-items:center; padding:.75rem clamp(1rem,4vw,3rem); border-bottom:1px solid rgba(240,215,173,.22); background:rgba(12,9,8,.92); backdrop-filter:blur(14px); }
+    .brand { font-family:"Quattrocento", Georgia, serif; font-size:1.15rem; font-weight:700; text-decoration:none; }
+    .nav { display:flex; flex-wrap:wrap; gap:.35rem .9rem; font-size:.82rem; font-weight:800; text-transform:uppercase; }
+    .nav a { text-decoration:none; color:rgba(255,243,223,.7); }
+    .nav a:hover { color:#fff3df; }
+    .top, .hero, .grid, .foot { position:relative; }
+    .top { box-shadow:0 18px 54px rgba(0,0,0,.18); }
+    .hero { min-height:min(58svh, 40rem); }
+    .hero::after { content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px; background:linear-gradient(90deg, transparent, rgba(240,215,173,.42), transparent); }
+    main { width:min(88rem, calc(100% - 2rem)); margin:0 auto; padding:clamp(3rem,7vw,6rem) 0 5rem; }
+    .hero { display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(2rem,5vw,5rem); align-items:end; padding-bottom:clamp(2rem,5vw,4rem); border-bottom:1px solid rgba(240,215,173,.22); }
+    .kicker { color:var(--gold); font-size:.78rem; font-weight:900; text-transform:uppercase; }
+    h1 { margin:.5rem 0 0; max-width:11ch; font-family:"Quattrocento", Georgia, serif; font-size:clamp(4rem,9vw,8.5rem); line-height:.86; letter-spacing:0; }
+    .intro { max-width:48rem; color:rgba(255,243,223,.68); font-size:clamp(1.2rem,1.7vw,1.65rem); line-height:1.42; }
+    .rating { display:inline-flex; gap:.55rem; align-items:center; margin-top:1.2rem; padding:.85rem 1rem; border:1px solid rgba(240,215,173,.28); background:rgba(255,250,241,.06); font-weight:900; text-transform:uppercase; }
+    .stars { color:#ffbf18; letter-spacing:.04em; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:clamp(2rem,4vw,3rem); align-items:start; }
+    .review { position:relative; display:grid; gap:1rem; min-height:0; padding:1.05rem 1.1rem 1.2rem; color:var(--ink); border:0; border-left:.32rem solid var(--red); border-radius:6px; background:linear-gradient(145deg, rgba(255,250,241,.98), rgba(231,219,201,.95)); box-shadow:0 18px 44px rgba(0,0,0,.18); }
+    .review::after { content:"\201C"; position:absolute; right:.8rem; bottom:-.75rem; color:rgba(139,22,35,.1); font-family:"Quattrocento", Georgia, serif; font-size:7rem; line-height:1; }
+    .head { position:relative; z-index:1; display:grid; grid-template-columns:3rem 1fr auto; gap:.75rem; align-items:center; }
+    .head img { width:3rem; height:3rem; border-radius:50%; object-fit:cover; }
+    .head b { display:block; color:var(--red); font-weight:900; }
+    .head span { color:rgba(23,17,13,.52); }
+    .google { display:grid; place-items:center; width:1.55rem; height:1.55rem; border-radius:50%; background:#fff; color:#4285f4; font-weight:900; }
+    .quote { position:relative; z-index:1; margin:0; color:rgba(23,17,13,.78); font-size:1.06rem; line-height:1.48; text-wrap:pretty; }
+    .foot { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid rgba(240,215,173,.22); }
+    .button { padding:.85rem 1rem; text-decoration:none; border:1px solid rgba(240,215,173,.26); background:rgba(255,250,241,.06); font-weight:900; text-transform:uppercase; }
+    .button.primary { color:#fff3df; border-color:#7c121d; background:var(--red); }
+    @media (max-width:760px) { .top { align-items:flex-start; flex-direction:column; } .hero, .grid { grid-template-columns:1fr; } h1 { font-size:clamp(3.2rem,18vw,5rem); } }
+      .site-back {
+      position: fixed;
+      z-index: 60;
+      left: clamp(.8rem, 1.8vw, 1.35rem);
+      top: clamp(.8rem, 1.8vw, 1.35rem);
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      min-height: 2.35rem;
+      padding: .72rem .9rem;
+      color: #fff4dc;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font: 800 .64rem/1 "Inter", "Helvetica Neue", Arial, sans-serif;
+      border: 1px solid rgba(214, 182, 130, .32);
+      border-radius: 999px;
+      background: rgba(13, 8, 7, .76);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .24);
+      backdrop-filter: blur(14px);
+    }
+    .site-back::before {
+      content: "";
+      width: .46rem;
+      height: .46rem;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+    @media (max-width: 640px) {
+      .site-back { position: absolute; }
+    }
+  </style>
+</head>
+<body>
+  <a class="site-back" href="index.backup.2026-05-26.html#showcase">Back to site</a>
+  <header class="top">
+    <a class="brand" href="index.backup.2026-05-26.html#top">Inson Dubois Wood</a>
+    <nav class="nav" aria-label="Archive navigation">
+      <a href="inson-projects.html">Projects</a>
+      <a href="inson-biography.html">About</a>
+      <a href="inson-practice.html">Services</a>
+      <a href="inson-reviews.html">Reviews</a>
+      <a href="index.backup.2026-05-26.html#proof">Book</a>
+      <a href="inson-publications.html">Press</a>
+      <a href="inson-publications.html#journal">Blog</a>
+      <a href="index.backup.2026-05-26.html#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="kicker">Review archive</div>
+        <h1>Client notes on the work.</h1>
+      </div>
+      <div>
+        <p class="intro">The review archive keeps real client notes visible with names, dates, profile images, and practical themes: timelines, storage, budgets, contractors, and rooms that keep working.</p>
+        <div class="rating"><span>Excellent</span><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>49 Google reviews</span></div>
+      </div>
+    </section>
+    <section class="grid" aria-label="Google review archive">
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-ezra-bershatsky.png" alt="Ezra Bershatsky profile photo"><div><b>Ezra Bershatsky</b><span>July 27, 2022</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">It was my pleasure to work with the artist Inson Wood. He was kind and communicative but also very real in his preferred mode of informal short texts. He has very good taste and understands how to read his clients and deliver even with a vague brief.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-josie-lee.png" alt="Josie Lee profile photo"><div><b>Josie Lee</b><span>April 26, 2022</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">Inson helped me do what some would call an impossible task, renovating my entire apartment, creating sleek and space-efficient storage, and sticking to my budget. The end result is like the interior of a small yacht with a place for everything.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-rohan-shetty.png" alt="Rohan Shetty profile photo"><div><b>Rohan Shetty</b><span>November 18, 2021</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">Inson was referred by a friend as we were relocating to a large house outside the city. He exceeded our expectations while creating value added and a path to getting everything we wanted, using timeless materials with luxe finishes.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-kelly-williams.png" alt="Kelly Williams profile avatar"><div><b>Kelly Williams</b><span>November 16, 2021</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">We bought our first property as a full gut - what we thought would be impossible to complete in 3 months, Inson and his reliable team managed to do despite a challenging co-op board and managing agent.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-asher-friedman.png" alt="Asher Friedman profile avatar"><div><b>Asher Friedman</b><span>November 10, 2021</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">We were delighted to work with Inson and his team on our Tribeca loft. What was once a cold industrial space is now very livable and suits our family to a T.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-sandy-t.png" alt="Sandy T profile avatar"><div><b>Sandy T</b><span>November 1, 2021</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">Inson and his team were a godsend. We had a limited amount of time before we needed to leave our old residence and move into our new apartment on the Upper East Side.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-sarah-rosen.png" alt="Sarah Rosen profile avatar"><div><b>Sarah Rosen</b><span>October 5, 2021</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">Just finished a large 12,000 gut of a home we wanted to customize in Conyers Farm. We gutted 8 bathrooms and made a fabulous master wing with full his and her dressing rooms.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-cecile-scherer.png" alt="Cecile Scherer profile avatar"><div><b>Cecile Scherer</b><span>September 22, 2021</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">Inson did a gut renovation of our apartment 11 years ago. He was extremely responsive and professional then, and has continued to follow up with us over the years.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-karrie-kan.png" alt="Karrie Kan profile avatar"><div><b>Karrie Kan</b><span>March 2, 2021</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">We were lost on how to get our estate condition 3 bedroom pied a terre on Park Ave. We went with Inson's vision and were utterly impressed with the results.</p></article>
+      <article class="review"><div class="head"><img src="assets/inson/reviews/review-stephanie-smart.png" alt="Stephanie Smart profile avatar"><div><b>Stephanie Smart</b><span>January 2, 2021</span></div><span class="google">G</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="quote">Very talented - his Rizzoli book is fab!!! Stunning work.</p></article>
+    </section>
+    <div class="foot">
+      <a class="button primary" href="index.backup.2026-05-26.html#showcase">Back to reviews</a>
+      <a class="button" href="inson-projects.html">Open projects</a>
+    </div>
+  </main>
+</body>
+</html>
+

@@ -1,0 +1,143 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Greenwich Manor House | Inson Dubois Wood</title>
+  <meta name="description" content="Internal image gallery for Greenwich Manor House by Inson Dubois Wood.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#18110d; --muted:#76695d; --paper:#f4eadc; --ivory:#fff3df; --line:rgba(94,62,39,.18); --red:#8b1623; --dark:#120d0b; --gold:#d7b778; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:repeating-linear-gradient(90deg, rgba(80,55,37,.045) 0 1px, transparent 1px 5.6rem), radial-gradient(circle at 12% 0, #fff9ee 0, transparent 24rem), linear-gradient(180deg, #f8f1e7, var(--paper)); font-family:"Inter", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    .top { position:sticky; top:0; z-index:20; display:flex; justify-content:space-between; gap:1rem; align-items:center; padding:.75rem clamp(1rem,4vw,3rem); color:var(--ivory); border-bottom:1px solid rgba(240,215,173,.18); background:linear-gradient(180deg, rgba(18,13,11,.96), rgba(18,13,11,.88)); backdrop-filter:blur(16px); }
+    .brand { text-decoration:none; font-family:"Cormorant Garamond", Georgia, serif; font-size:1.35rem; font-weight:700; line-height:1; }
+    .nav { display:flex; flex-wrap:wrap; gap:.35rem .9rem; font-size:.68rem; font-weight:800; text-transform:uppercase; }
+    .nav a { text-decoration:none; color:rgba(255,243,223,.72); }
+    .nav a:hover { color:var(--ivory); }
+    main { width:min(96rem, calc(100% - 2rem)); margin:0 auto; padding:clamp(2rem,5vw,4.8rem) 0 5rem; }
+    .hero { display:grid; grid-template-columns:minmax(20rem,.78fr) minmax(22rem,1fr); gap:clamp(1.5rem,4vw,4rem); align-items:end; padding-bottom:clamp(1.4rem,3vw,2.4rem); border-bottom:1px solid var(--line); }
+    .kicker, .meta, .button { font-size:.68rem; font-weight:800; line-height:1.1; letter-spacing:0; text-transform:uppercase; }
+    .kicker { color:var(--red); }
+    h1 { margin:.45rem 0 0; max-width:14ch; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(3rem,6.2vw,6.05rem); font-weight:600; line-height:.92; letter-spacing:-.018em; text-wrap:balance; overflow-wrap:normal; }
+    .intro { max-width:50rem; color:rgba(45,36,28,.82); font-size:clamp(1rem,1.18vw,1.16rem); line-height:1.62; text-wrap:pretty; }
+    .summary { display:grid; grid-template-columns:repeat(3, 1fr); margin-top:1.35rem; border:1px solid var(--line); background:rgba(255,250,241,.42); }
+    .summary span { padding:1rem; border-right:1px solid var(--line); color:var(--muted); }
+    .summary span:last-child { border-right:0; }
+    .summary b { display:block; color:var(--ink); font-family:"Cormorant Garamond", Georgia, serif; font-size:2rem; line-height:1; }
+    .hero-image { min-height:clamp(20rem,38vw,34rem); border:1px solid rgba(94,62,39,.22); border-radius:18px; background:linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.12)), url("../assets/inson/images/010-epicurean-distinction-1.jpg") center / cover; box-shadow:0 30px 90px rgba(60,42,28,.18); }
+    .gallery-head { display:flex; justify-content:space-between; gap:1rem; align-items:end; margin:clamp(2rem,4vw,3rem) 0 1rem; }
+    .gallery-head h2 { margin:0; max-width:16ch; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(2.45rem,4.4vw,4.35rem); font-weight:600; line-height:.95; letter-spacing:-.012em; text-wrap:balance; }
+    .gallery-head p { max-width:34rem; margin:0; color:rgba(83,72,62,.82); line-height:1.6; text-wrap:pretty; }
+    .gallery { columns:4 17rem; column-gap:clamp(.85rem,1.5vw,1.25rem); }
+    .photo { display:block; margin:0 0 clamp(.85rem,1.5vw,1.25rem); break-inside:avoid; border:1px solid rgba(94,62,39,.18); border-radius:12px; overflow:hidden; background:#fff8ec; box-shadow:0 16px 38px rgba(60,42,28,.11); transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+    .photo img { display:block; width:100%; height:auto; filter:saturate(.98) contrast(1.02); }
+    .photo:hover { transform:translateY(-3px); border-color:rgba(139,22,35,.32); box-shadow:0 24px 58px rgba(60,42,28,.16); }
+    .pager { display:flex; justify-content:space-between; gap:.75rem; margin-top:clamp(2rem,4vw,3rem); padding-top:1.5rem; border-top:1px solid var(--line); }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:2.8rem; padding:.8rem 1rem; text-decoration:none; border:1px solid var(--line); border-radius:999px; background:#fff8ec; color:var(--ink); }
+    .button.primary { color:var(--ivory); border-color:#7c121d; background:linear-gradient(135deg, #a32733, #76151f); box-shadow:0 16px 42px rgba(139,22,35,.16); }
+    @media (max-width:900px) { .hero { grid-template-columns:1fr; } .hero-image { order:-1; min-height:62vw; } .summary { grid-template-columns:1fr; } .summary span { border-right:0; border-bottom:1px solid var(--line); } .summary span:last-child { border-bottom:0; } .gallery-head { display:grid; } }
+    @media (max-width:620px) { .top { align-items:flex-start; flex-direction:column; } main { width:min(100% - 1.1rem, 96rem); } h1 { font-size:clamp(2.65rem,12vw,4rem); line-height:.96; max-width:12ch; } .pager { flex-direction:column; } }
+      .site-back {
+      position: fixed;
+      z-index: 60;
+      left: clamp(.8rem, 1.8vw, 1.35rem);
+      top: clamp(.8rem, 1.8vw, 1.35rem);
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      min-height: 2.35rem;
+      padding: .72rem .9rem;
+      color: #fff3df;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font: 800 .64rem/1 "Inter", "Helvetica Neue", Arial, sans-serif;
+      border: 1px solid rgba(214, 182, 130, .34);
+      border-radius: 999px;
+      background: rgba(18, 13, 11, .82);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .2);
+      backdrop-filter: blur(14px);
+    }
+    .site-back::before {
+      content: "";
+      width: .46rem;
+      height: .46rem;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+    @media (max-width: 640px) {
+      .site-back { position: absolute; }
+    }
+  </style>
+</head>
+<body>
+  <a class="site-back" href="../inson-projects.html">Back to projects</a>
+  <header class="top">
+    <a class="brand" href="../index.backup.2026-05-26.html#top">Inson Dubois Wood</a>
+    <nav class="nav" aria-label="Project navigation">
+      <a href="../inson-projects.html">Projects</a>
+      <a href="../inson-biography.html">About</a>
+      <a href="../inson-practice.html">Services</a>
+      <a href="../inson-reviews.html">Reviews</a>
+      <a href="../index.backup.2026-05-26.html#proof">Book</a>
+      <a href="../inson-publications.html">Press</a>
+      <a href="../inson-publications.html#journal">Blog</a>
+      <a href="../index.backup.2026-05-26.html#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="kicker">Project gallery / 01</div>
+        <h1>Greenwich Manor House</h1>
+      </div>
+      <div>
+        <p class="intro">A self-contained gallery for Greenwich Manor House. Browse the residence here without leaving the new site; the photography is served from the local archive.</p>
+        <div class="summary" aria-label="Project summary">
+          <span><b>16</b>local images</span>
+          <span><b>01</b>archive position</span>
+          <span><b>Internal</b>no old-site handoff</span>
+        </div>
+      </div>
+      <div class="hero-image" aria-label="Greenwich Manor House featured image"></div>
+    </section>
+    <section aria-label="Greenwich Manor House image gallery">
+      <div class="gallery-head">
+        <h2>Greenwich Manor House photographs.</h2>
+        <p>16 local photographs, organized as a clean internal archive for this residence.</p>
+      </div>
+      <div class="gallery">
+        <a class="photo" href="../assets/inson/images/010-epicurean-distinction-1.jpg" aria-label="Open Greenwich Manor House image 1"><img src="../assets/inson/images/010-epicurean-distinction-1.jpg" alt="Greenwich Manor House image 1" loading="eager"></a>
+        <a class="photo" href="../assets/inson/images/069-epicurean-distinction-8.jpg" aria-label="Open Greenwich Manor House image 2"><img src="../assets/inson/images/069-epicurean-distinction-8.jpg" alt="Greenwich Manor House image 2" loading="eager"></a>
+        <a class="photo" href="../assets/inson/images/070-epicurean-distinction-9.jpg" aria-label="Open Greenwich Manor House image 3"><img src="../assets/inson/images/070-epicurean-distinction-9.jpg" alt="Greenwich Manor House image 3" loading="eager"></a>
+        <a class="photo" href="../assets/inson/images/071-epicurean-distinction-21.jpg" aria-label="Open Greenwich Manor House image 4"><img src="../assets/inson/images/071-epicurean-distinction-21.jpg" alt="Greenwich Manor House image 4" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/072-epicurean-distinction-7.jpg" aria-label="Open Greenwich Manor House image 5"><img src="../assets/inson/images/072-epicurean-distinction-7.jpg" alt="Greenwich Manor House image 5" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/073-epicurean-distinction-2.jpg" aria-label="Open Greenwich Manor House image 6"><img src="../assets/inson/images/073-epicurean-distinction-2.jpg" alt="Greenwich Manor House image 6" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/074-epicurean-distinction-10.jpg" aria-label="Open Greenwich Manor House image 7"><img src="../assets/inson/images/074-epicurean-distinction-10.jpg" alt="Greenwich Manor House image 7" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/075-epicurean-distinction-22.jpg" aria-label="Open Greenwich Manor House image 8"><img src="../assets/inson/images/075-epicurean-distinction-22.jpg" alt="Greenwich Manor House image 8" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/076-epicurean-distinction-6.jpg" aria-label="Open Greenwich Manor House image 9"><img src="../assets/inson/images/076-epicurean-distinction-6.jpg" alt="Greenwich Manor House image 9" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/077-epicurean-distinction-5.jpg" aria-label="Open Greenwich Manor House image 10"><img src="../assets/inson/images/077-epicurean-distinction-5.jpg" alt="Greenwich Manor House image 10" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/078-epicurean-distinction-13.jpg" aria-label="Open Greenwich Manor House image 11"><img src="../assets/inson/images/078-epicurean-distinction-13.jpg" alt="Greenwich Manor House image 11" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/079-insonwood-interiordesign-greenwich-hallway.png" aria-label="Open Greenwich Manor House image 12"><img src="../assets/inson/images/079-insonwood-interiordesign-greenwich-hallway.png" alt="Greenwich Manor House image 12" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/080-insonwood-interiordesign-greenwich-livingroom.jpg" aria-label="Open Greenwich Manor House image 13"><img src="../assets/inson/images/080-insonwood-interiordesign-greenwich-livingroom.jpg" alt="Greenwich Manor House image 13" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/081-insonwood-interiordesign-greenwich-livingroom2.png" aria-label="Open Greenwich Manor House image 14"><img src="../assets/inson/images/081-insonwood-interiordesign-greenwich-livingroom2.png" alt="Greenwich Manor House image 14" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/082-insonwood-interiordesign-greenwich-livingroom3.jpg" aria-label="Open Greenwich Manor House image 15"><img src="../assets/inson/images/082-insonwood-interiordesign-greenwich-livingroom3.jpg" alt="Greenwich Manor House image 15" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/083-insonwood-interiordesign-greenwich-livingroom5.png" aria-label="Open Greenwich Manor House image 16"><img src="../assets/inson/images/083-insonwood-interiordesign-greenwich-livingroom5.png" alt="Greenwich Manor House image 16" loading="lazy"></a>
+      </div>
+    </section>
+    <nav class="pager" aria-label="Project pager">
+      <a class="button" href="palm-beach-villa.html">Previous / Palm Beach Villa</a>
+      <a class="button primary" href="../inson-projects.html">Back to project archive</a>
+      <a class="button" href="midcentury-modern-pool-house-in-malmo-sweden.html">Next / Midcentury Modern Pool House in Malmo, Sweden</a>
+    </nav>
+  </main>
+</body>
+</html>
+
+

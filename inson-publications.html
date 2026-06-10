@@ -1,0 +1,172 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publications and Journal | Inson Dubois Wood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#17110d; --muted:#77695d; --paper:#f4ecdf; --line:rgba(72,48,32,.2); --red:#8b1623; --gold:#d7b778; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:repeating-linear-gradient(90deg, rgba(80,55,37,.045) 0 1px, transparent 1px 5.5rem), radial-gradient(circle at 10% 0, #fffaf0 0, transparent 24rem), linear-gradient(180deg,#f8f1e7,var(--paper)); font-family:"Abel", Arial, sans-serif; }
+    a { color:inherit; }
+    .top { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; gap:1rem; align-items:center; padding:.75rem clamp(1rem,4vw,3rem); border-bottom:1px solid var(--line); background:rgba(20,15,12,.92); color:#fff3df; backdrop-filter:blur(14px); }
+    .brand { font-family:"Quattrocento", Georgia, serif; font-size:1.15rem; font-weight:700; text-decoration:none; }
+    .nav { display:flex; flex-wrap:wrap; gap:.35rem .9rem; font-size:.82rem; font-weight:800; text-transform:uppercase; }
+    .nav a { text-decoration:none; color:rgba(255,243,223,.72); }
+    .nav a:hover { color:#fff3df; }
+    .top, .hero, .split-title, .press-grid, .journal, .foot { position:relative; }
+    .top { box-shadow:0 18px 54px rgba(30,20,14,.18); }
+    .hero { min-height:min(58svh, 40rem); }
+    .hero::after { content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px; background:linear-gradient(90deg, transparent, rgba(139,22,35,.42), transparent); }
+    main { width:min(94rem, calc(100% - 2rem)); margin:0 auto; padding:clamp(3rem,7vw,6rem) 0 5rem; }
+    .hero { display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(2rem,5vw,5rem); align-items:end; padding-bottom:clamp(2rem,5vw,4rem); border-bottom:1px solid var(--line); }
+    .kicker, .type { color:var(--red); font-size:.76rem; font-weight:900; text-transform:uppercase; }
+    h1 { margin:.5rem 0 0; max-width:11ch; font-family:"Quattrocento", Georgia, serif; font-size:clamp(4rem,9vw,8.5rem); line-height:.86; letter-spacing:0; }
+    h2 { margin:0; font-family:"Quattrocento", Georgia, serif; font-size:clamp(2.8rem,6vw,5.8rem); line-height:.9; }
+    .intro { max-width:48rem; color:var(--muted); font-size:clamp(1.2rem,1.7vw,1.65rem); line-height:1.42; }
+    .split-title { display:grid; grid-template-columns:.7fr 1.3fr; gap:2rem; align-items:end; margin:clamp(3rem,6vw,5rem) 0 1.25rem; padding-top:1.2rem; border-top:1px solid var(--line); }
+    .press-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:clamp(1rem,1.7vw,1.4rem); align-items:start; }
+    .press { display:grid; grid-template-rows:auto auto 1fr; gap:.55rem; padding:0 0 .9rem; text-decoration:none; border:0; border-bottom:1px solid rgba(72,48,32,.18); background:transparent; box-shadow:none; transition:transform .18s ease, filter .18s ease; }
+    .press img { display:block; width:100%; aspect-ratio:3/4; object-fit:contain; padding:.55rem; border:0; border-radius:6px; background:rgba(255,250,241,.7); box-shadow:0 14px 32px rgba(60,42,28,.12); }
+    .press b { color:var(--red); font-size:.72rem; font-weight:900; text-transform:uppercase; }
+    .press span { color:var(--muted); font-size:1.02rem; line-height:1.15; }
+    .press:hover { transform:translateY(-4px); filter:saturate(1.05); }
+    .journal { display:grid; gap:1rem; }
+    .note { display:grid; grid-template-columns:minmax(16rem,.55fr) 1fr; min-height:17rem; border:0; border-top:1px solid var(--line); background:linear-gradient(90deg, rgba(255,250,241,.42), transparent); box-shadow:none; overflow:hidden; }
+    .note-media { display:grid; grid-template-columns:repeat(2,1fr); min-height:100%; }
+    .note-media img { width:100%; height:100%; min-height:12rem; object-fit:cover; }
+    .note-media img:first-child { grid-row:span 2; }
+    .note-body { display:grid; align-content:center; gap:1rem; padding:clamp(1.1rem,2vw,2rem); }
+    .note h3 { margin:0; max-width:17ch; font-family:"Quattrocento", Georgia, serif; font-size:clamp(2rem,4vw,4.4rem); line-height:.94; }
+    .note p { margin:0; max-width:48rem; color:var(--muted); font-size:1.12rem; line-height:1.48; text-wrap:pretty; }
+    .button { justify-self:start; padding:.85rem 1rem; text-decoration:none; border:1px solid var(--line); background:#fff8ec; font-weight:900; text-transform:uppercase; }
+    .button.primary { color:#fff3df; border-color:#7c121d; background:var(--red); }
+    .foot { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--line); }
+    @media (max-width:1100px) { .press-grid { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+    @media (max-width:780px) { .top { align-items:flex-start; flex-direction:column; } .hero, .split-title, .note { grid-template-columns:1fr; } .press-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } h1 { font-size:clamp(3.2rem,18vw,5rem); } .note-media { min-height:15rem; } }
+    @media (max-width:520px) { .press-grid { grid-template-columns:1fr; } }
+      .site-back {
+      position: fixed;
+      z-index: 60;
+      left: clamp(.8rem, 1.8vw, 1.35rem);
+      top: clamp(.8rem, 1.8vw, 1.35rem);
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      min-height: 2.35rem;
+      padding: .72rem .9rem;
+      color: #fff4dc;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font: 800 .64rem/1 "Inter", "Helvetica Neue", Arial, sans-serif;
+      border: 1px solid rgba(214, 182, 130, .32);
+      border-radius: 999px;
+      background: rgba(13, 8, 7, .76);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .24);
+      backdrop-filter: blur(14px);
+    }
+    .site-back::before {
+      content: "";
+      width: .46rem;
+      height: .46rem;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+    @media (max-width: 640px) {
+      .site-back { position: absolute; }
+    }
+  </style>
+</head>
+<body>
+  <a class="site-back" href="index.backup.2026-05-26.html#scrape-map">Back to site</a>
+  <header class="top">
+    <a class="brand" href="index.backup.2026-05-26.html#top">Inson Dubois Wood</a>
+    <nav class="nav" aria-label="Archive navigation">
+      <a href="inson-projects.html">Projects</a>
+      <a href="inson-biography.html">About</a>
+      <a href="inson-practice.html">Services</a>
+      <a href="inson-reviews.html">Reviews</a>
+      <a href="index.backup.2026-05-26.html#proof">Book</a>
+      <a href="inson-publications.html">Press</a>
+      <a href="#journal">Blog</a>
+      <a href="index.backup.2026-05-26.html#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="kicker">Publications</div>
+        <h1>Published work and studio references.</h1>
+      </div>
+      <p class="intro">This archive brings together the Rizzoli monograph, shelter magazines, regional press, awards, and five journal entries from the live site.</p>
+    </section>
+
+    <section aria-label="Press archive">
+      <div class="split-title">
+        <h2>Press wall.</h2>
+        <p class="intro">Books, magazines, awards, and regional features. Each cover opens the original source page or image asset from the live archive.</p>
+      </div>
+      <div class="press-grid">
+        <a class="press" href="https://insonduboiswood.com/book/" target="_blank" rel="noreferrer"><img src="assets/inson/images/043-inson-dubois-wood-interiors-811x1024.jpg" alt="Inson Dubois Wood Interiors cover"><b>Book</b><span>Inson Dubois Wood Interiors</span></a>
+        <a class="press" href="https://www.teneues-boeken.nl/living-in-style-best-interior-design-on-the-planet.html" target="_blank" rel="noreferrer"><img src="assets/inson/images/044-living-in-style-best-interior-design-on-the-planet.jpg" alt="Best Interior Design on the Planet cover"><b>Publication</b><span>Best Interior Design on the Planet</span></a>
+        <a class="press" href="assets/inson/images/045-image-6487327.jpg" target="_blank" rel="noreferrer"><img src="assets/inson/images/045-image-6487327.jpg" alt="Social Life cover"><b>Magazine</b><span>Social Life</span></a>
+        <a class="press" href="https://www.architecturaldigest.com/gallery/eclectic-style-homes-inson-dubois-wood" target="_blank" rel="noreferrer"><img src="assets/inson/images/046-1016-ad-cover-789x1024.jpg" alt="Architectural Digest October 2016 cover"><b>Magazine</b><span>Architectural Digest October 2016</span></a>
+        <a class="press" href="https://insonduboiswood.com/luxe-magazine/" target="_blank" rel="noreferrer"><img src="assets/inson/images/047-luxe-magazine.jpg" alt="Luxe Magazine cover"><b>Magazine</b><span>Luxe Magazine</span></a>
+        <a class="press" href="https://insonduboiswood.com/the-world-of-vogue/" target="_blank" rel="noreferrer"><img src="assets/inson/images/048-the-world-in-vogue.jpg" alt="The World In Vogue cover"><b>Book</b><span>The World In Vogue</span></a>
+        <a class="press" href="https://insonduboiswood.com/architectural-digest-february-2010/" target="_blank" rel="noreferrer"><img src="assets/inson/images/049-architectural-diegest-february-2010-229x300.jpg" alt="Architectural Digest February 2010 cover"><b>Magazine</b><span>Architectural Digest February 2010</span></a>
+        <a class="press" href="https://insonduboiswood.com/ny-spaces/" target="_blank" rel="noreferrer"><img src="assets/inson/images/050-nyspaces-magazine.jpg" alt="NY Spaces cover"><b>Magazine</b><span>NY Spaces</span></a>
+        <a class="press" href="https://insonduboiswood.com/hamptons-cottages-and-gardens/" target="_blank" rel="noreferrer"><img src="assets/inson/images/051-hamptons-cottages-and-gardens.jpg" alt="Hamptons Cottages and Gardens cover"><b>Regional</b><span>Hamptons Cottages and Gardens</span></a>
+        <a class="press" href="https://insonduboiswood.com/traditional-home/" target="_blank" rel="noreferrer"><img src="assets/inson/images/052-traditional-home-october-2012.jpg" alt="Traditional Home October 2012 cover"><b>Magazine</b><span>Traditional Home October 2012</span></a>
+        <a class="press" href="https://insonduboiswood.com/traditional-home-march-2012/" target="_blank" rel="noreferrer"><img src="assets/inson/images/053-traditional-home-feb-march-2012.jpg" alt="Traditional Home February 2012 cover"><b>Magazine</b><span>Traditional Home February 2012</span></a>
+        <a class="press" href="assets/inson/images/054-new-american-luxury-magazine-december-2012.jpg" target="_blank" rel="noreferrer"><img src="assets/inson/images/054-new-american-luxury-magazine-december-2012.jpg" alt="New American Luxury December 2012 cover"><b>Trade</b><span>New American Luxury December 2012</span></a>
+        <a class="press" href="https://insonduboiswood.com/living-in-style-scandinavia/" target="_blank" rel="noreferrer"><img src="assets/inson/images/055-living-in-styles-scandinavia.jpg" alt="Living In Style Scandinavia cover"><b>Publication</b><span>Living In Style: Scandinavia</span></a>
+        <a class="press" href="https://insonduboiswood.com/designers-abroad/" target="_blank" rel="noreferrer"><img src="assets/inson/images/056-designers-abroad.jpg" alt="Designers Abroad cover"><b>Publication</b><span>Designers Abroad</span></a>
+        <a class="press" href="https://insonduboiswood.com/hyland-magazine/" target="_blank" rel="noreferrer"><img src="assets/inson/images/057-hyland-inson-dubois-wood.jpg" alt="Hyland Inson Dubois Wood cover"><b>Award</b><span>Hyland Magazine</span></a>
+        <a class="press" href="https://insonduboiswood.com/hyland-magazine-edition-20/" target="_blank" rel="noreferrer"><img src="assets/inson/images/058-hyland-magazine-edition-20.jpg" alt="Hyland Magazine Edition 20 cover"><b>Award</b><span>Hyland Magazine Edition 20</span></a>
+        <a class="press" href="https://insonduboiswood.com/avenue-november-2012/" target="_blank" rel="noreferrer"><img src="assets/inson/images/059-avenue-magazine-nov-2012.jpg" alt="Avenue Magazine November 2012 cover"><b>Magazine</b><span>Avenue Magazine November 2012</span></a>
+        <a class="press" href="https://insonduboiswood.com/avenue-november-2011/" target="_blank" rel="noreferrer"><img src="assets/inson/images/060-avenue-magazine-nov-2011.jpg" alt="Avenue Magazine November 2011 cover"><b>Magazine</b><span>Avenue Magazine November 2011</span></a>
+        <a class="press" href="https://insonduboiswood.com/resident/" target="_blank" rel="noreferrer"><img src="assets/inson/images/061-resident-magazine-september-2014.jpg" alt="Resident Magazine September 2014 cover"><b>Magazine</b><span>Resident September 2014</span></a>
+        <a class="press" href="https://insonduboiswood.com/modern-estate/" target="_blank" rel="noreferrer"><img src="assets/inson/images/062-modern-estates-winter-2007.jpg" alt="Modern Estates Winter 2007 cover"><b>Trade</b><span>Modern Estates Winter 2007</span></a>
+      </div>
+    </section>
+
+    <section class="journal" id="journal" aria-label="Journal archive">
+      <div class="split-title">
+        <h2>Journal.</h2>
+        <p class="intro">A compact set of references from the live blog: kitchens, French country estates, Le Corbusier, Normandy rooms, and Mediterranean outdoor living.</p>
+      </div>
+      <article class="note">
+        <div class="note-media"><img src="assets/inson/images/063-img-6644.jpg" alt="Custom kitchen"><img src="assets/inson/blog/custom-kitchen-secondary.jpg" alt="Kitchen detail"></div>
+        <div class="note-body"><div class="type">August 8, 2018 / Blog, custom, kitchen</div><h3>Custom kitchen ideas</h3><p>Kitchen references centered on black lacquer, long counters, concealed storage, and crisp material control.</p><a class="button" href="https://insonduboiswood.com/custom-kitchen-ideas/" target="_blank" rel="noreferrer">Open article</a></div>
+      </article>
+      <article class="note">
+        <div class="note-media"><img src="assets/inson/images/064-chateau-de-villette-library.jpg" alt="Chateau de Villette library"><img src="assets/inson/blog/villette-exterior.jpg" alt="Chateau exterior"><img src="assets/inson/blog/villette-garden.jpg" alt="Chateau garden"></div>
+        <div class="note-body"><div class="type">August 21, 2018 / Blog</div><h3>French countryside as private event setting</h3><p>Chateau de Villette near Paris is presented through Mansart, Le Notre, formal gardens, Jacques Garcia renovation, luxury suites, weddings, and private events.</p><a class="button" href="https://insonduboiswood.com/no-other-more-romantic-place-on-earth-like-the-french-countryside-to-host-a-private-event-or-wedding/" target="_blank" rel="noreferrer">Open article</a></div>
+      </article>
+      <article class="note">
+        <div class="note-media"><img src="assets/inson/images/065-6a00d8341d883053ef00e550ec18a78833-800wi.jpg" alt="Le Corbusier artwork"><img src="assets/inson/blog/le-corbusier-building.jpg" alt="Le Corbusier building"><img src="assets/inson/blog/le-corbusier-portrait.jpg" alt="Le Corbusier portrait"></div>
+        <div class="note-body"><div class="type">August 21, 2018 / Blog</div><h3>Le Corbusier as Renaissance man</h3><p>A design reference on Le Corbusier's range: art training, architecture, painting, planning, writing, travel, and modernist discipline.</p><a class="button" href="https://insonduboiswood.com/le-corbusier-architect-as-true-renaissance-man-was-also-an-artist-designer-planner-writer-and-athlete/" target="_blank" rel="noreferrer">Open article</a></div>
+      </article>
+      <article class="note">
+        <div class="note-media"><img src="assets/inson/images/066-main-chateau-salon-de-compagnie.jpg" alt="Chateau du Champ de Bataille"><img src="assets/inson/blog/champ-garden.jpg" alt="Garden room"><img src="assets/inson/blog/champ-pavillion.jpg" alt="Pavilion detail"></div>
+        <div class="note-body"><div class="type">August 21, 2018 / Blog</div><h3>Chateau du Champ de Bataille in Normandy</h3><p>A Louis XIV-era Baroque reference: Jacques Garcia's private domain, royal inventory furniture, tapestries, classical gardens, and atmosphere.</p><a class="button" href="https://insonduboiswood.com/chateau-du-champ-de-bataille-in-normandy-will-take-you-back-to-18th-century-france/" target="_blank" rel="noreferrer">Open article</a></div>
+      </article>
+      <article class="note">
+        <div class="note-media"><img src="assets/inson/images/067-santanyi0349.jpg" alt="South of Spain terrace"><img src="assets/inson/blog/spain-terrace.jpg" alt="South of Spain garden"><img src="assets/inson/blog/spain-pool.jpg" alt="South of Spain pool"></div>
+        <div class="note-body"><div class="type">August 27, 2018 / Blog</div><h3>The South of Spain</h3><p>A visual travel note on Mediterranean terraces, gardens, pool edges, outdoor rooms, climate, leisure, and landscape.</p><a class="button" href="https://insonduboiswood.com/the-south-of-spain/" target="_blank" rel="noreferrer">Open article</a></div>
+      </article>
+    </section>
+    <div class="foot">
+      <a class="button primary" href="index.backup.2026-05-26.html#scrape-map">Back to publication preview</a>
+      <a class="button" href="inson-projects.html">Open projects</a>
+      <a class="button" href="inson-reviews.html">Open reviews</a>
+    </div>
+  </main>
+</body>
+</html>
+

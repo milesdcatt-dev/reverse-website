@@ -1,0 +1,155 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central Park Penthouse | Inson Dubois Wood</title>
+  <meta name="description" content="Internal image gallery for Central Park Penthouse by Inson Dubois Wood.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#18110d; --muted:#76695d; --paper:#f4eadc; --ivory:#fff3df; --line:rgba(94,62,39,.18); --red:#8b1623; --dark:#120d0b; --gold:#d7b778; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:repeating-linear-gradient(90deg, rgba(80,55,37,.045) 0 1px, transparent 1px 5.6rem), radial-gradient(circle at 12% 0, #fff9ee 0, transparent 24rem), linear-gradient(180deg, #f8f1e7, var(--paper)); font-family:"Inter", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    .top { position:sticky; top:0; z-index:20; display:flex; justify-content:space-between; gap:1rem; align-items:center; padding:.75rem clamp(1rem,4vw,3rem); color:var(--ivory); border-bottom:1px solid rgba(240,215,173,.18); background:linear-gradient(180deg, rgba(18,13,11,.96), rgba(18,13,11,.88)); backdrop-filter:blur(16px); }
+    .brand { text-decoration:none; font-family:"Cormorant Garamond", Georgia, serif; font-size:1.35rem; font-weight:700; line-height:1; }
+    .nav { display:flex; flex-wrap:wrap; gap:.35rem .9rem; font-size:.68rem; font-weight:800; text-transform:uppercase; }
+    .nav a { text-decoration:none; color:rgba(255,243,223,.72); }
+    .nav a:hover { color:var(--ivory); }
+    main { width:min(96rem, calc(100% - 2rem)); margin:0 auto; padding:clamp(2rem,5vw,4.8rem) 0 5rem; }
+    .hero { display:grid; grid-template-columns:minmax(20rem,.78fr) minmax(22rem,1fr); gap:clamp(1.5rem,4vw,4rem); align-items:end; padding-bottom:clamp(1.4rem,3vw,2.4rem); border-bottom:1px solid var(--line); }
+    .kicker, .meta, .button { font-size:.68rem; font-weight:800; line-height:1.1; letter-spacing:0; text-transform:uppercase; }
+    .kicker { color:var(--red); }
+    h1 { margin:.45rem 0 0; max-width:14ch; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(3rem,6.2vw,6.05rem); font-weight:600; line-height:.92; letter-spacing:-.018em; text-wrap:balance; overflow-wrap:normal; }
+    .intro { max-width:50rem; color:rgba(45,36,28,.82); font-size:clamp(1rem,1.18vw,1.16rem); line-height:1.62; text-wrap:pretty; }
+    .summary { display:grid; grid-template-columns:repeat(3, 1fr); margin-top:1.35rem; border:1px solid var(--line); background:rgba(255,250,241,.42); }
+    .summary span { padding:1rem; border-right:1px solid var(--line); color:var(--muted); }
+    .summary span:last-child { border-right:0; }
+    .summary b { display:block; color:var(--ink); font-family:"Cormorant Garamond", Georgia, serif; font-size:2rem; line-height:1; }
+    .hero-image { min-height:clamp(20rem,38vw,34rem); border:1px solid rgba(94,62,39,.22); border-radius:18px; background:linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.12)), url("../assets/inson/images/020-dale-ny-0240.jpg") center / cover; box-shadow:0 30px 90px rgba(60,42,28,.18); }
+    .gallery-head { display:flex; justify-content:space-between; gap:1rem; align-items:end; margin:clamp(2rem,4vw,3rem) 0 1rem; }
+    .gallery-head h2 { margin:0; max-width:16ch; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(2.45rem,4.4vw,4.35rem); font-weight:600; line-height:.95; letter-spacing:-.012em; text-wrap:balance; }
+    .gallery-head p { max-width:34rem; margin:0; color:rgba(83,72,62,.82); line-height:1.6; text-wrap:pretty; }
+    .gallery { columns:4 17rem; column-gap:clamp(.85rem,1.5vw,1.25rem); }
+    .photo { display:block; margin:0 0 clamp(.85rem,1.5vw,1.25rem); break-inside:avoid; border:1px solid rgba(94,62,39,.18); border-radius:12px; overflow:hidden; background:#fff8ec; box-shadow:0 16px 38px rgba(60,42,28,.11); transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
+    .photo img { display:block; width:100%; height:auto; filter:saturate(.98) contrast(1.02); }
+    .photo:hover { transform:translateY(-3px); border-color:rgba(139,22,35,.32); box-shadow:0 24px 58px rgba(60,42,28,.16); }
+    .pager { display:flex; justify-content:space-between; gap:.75rem; margin-top:clamp(2rem,4vw,3rem); padding-top:1.5rem; border-top:1px solid var(--line); }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:2.8rem; padding:.8rem 1rem; text-decoration:none; border:1px solid var(--line); border-radius:999px; background:#fff8ec; color:var(--ink); }
+    .button.primary { color:var(--ivory); border-color:#7c121d; background:linear-gradient(135deg, #a32733, #76151f); box-shadow:0 16px 42px rgba(139,22,35,.16); }
+    @media (max-width:900px) { .hero { grid-template-columns:1fr; } .hero-image { order:-1; min-height:62vw; } .summary { grid-template-columns:1fr; } .summary span { border-right:0; border-bottom:1px solid var(--line); } .summary span:last-child { border-bottom:0; } .gallery-head { display:grid; } }
+    @media (max-width:620px) { .top { align-items:flex-start; flex-direction:column; } main { width:min(100% - 1.1rem, 96rem); } h1 { font-size:clamp(2.65rem,12vw,4rem); line-height:.96; max-width:12ch; } .pager { flex-direction:column; } }
+      .site-back {
+      position: fixed;
+      z-index: 60;
+      left: clamp(.8rem, 1.8vw, 1.35rem);
+      top: clamp(.8rem, 1.8vw, 1.35rem);
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      min-height: 2.35rem;
+      padding: .72rem .9rem;
+      color: #fff3df;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font: 800 .64rem/1 "Inter", "Helvetica Neue", Arial, sans-serif;
+      border: 1px solid rgba(214, 182, 130, .34);
+      border-radius: 999px;
+      background: rgba(18, 13, 11, .82);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .2);
+      backdrop-filter: blur(14px);
+    }
+    .site-back::before {
+      content: "";
+      width: .46rem;
+      height: .46rem;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+    @media (max-width: 640px) {
+      .site-back { position: absolute; }
+    }
+  </style>
+</head>
+<body>
+  <a class="site-back" href="../inson-projects.html">Back to projects</a>
+  <header class="top">
+    <a class="brand" href="../index.backup.2026-05-26.html#top">Inson Dubois Wood</a>
+    <nav class="nav" aria-label="Project navigation">
+      <a href="../inson-projects.html">Projects</a>
+      <a href="../inson-biography.html">About</a>
+      <a href="../inson-practice.html">Services</a>
+      <a href="../inson-reviews.html">Reviews</a>
+      <a href="../index.backup.2026-05-26.html#proof">Book</a>
+      <a href="../inson-publications.html">Press</a>
+      <a href="../inson-publications.html#journal">Blog</a>
+      <a href="../index.backup.2026-05-26.html#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="kicker">Project gallery / 12</div>
+        <h1>Central Park Penthouse</h1>
+      </div>
+      <div>
+        <p class="intro">A self-contained gallery for Central Park Penthouse. Browse the residence here without leaving the new site; the photography is served from the local archive.</p>
+        <div class="summary" aria-label="Project summary">
+          <span><b>28</b>local images</span>
+          <span><b>12</b>archive position</span>
+          <span><b>Internal</b>no old-site handoff</span>
+        </div>
+      </div>
+      <div class="hero-image" aria-label="Central Park Penthouse featured image"></div>
+    </section>
+    <section aria-label="Central Park Penthouse image gallery">
+      <div class="gallery-head">
+        <h2>Central Park Penthouse photographs.</h2>
+        <p>28 local photographs, organized as a clean internal archive for this residence.</p>
+      </div>
+      <div class="gallery">
+        <a class="photo" href="../assets/inson/images/020-dale-ny-0240.jpg" aria-label="Open Central Park Penthouse image 1"><img src="../assets/inson/images/020-dale-ny-0240.jpg" alt="Central Park Penthouse image 1" loading="eager"></a>
+        <a class="photo" href="../assets/inson/images/178-dale-ny-0081-1.jpg" aria-label="Open Central Park Penthouse image 2"><img src="../assets/inson/images/178-dale-ny-0081-1.jpg" alt="Central Park Penthouse image 2" loading="eager"></a>
+        <a class="photo" href="../assets/inson/images/179-dale-ny-0088-1.jpg" aria-label="Open Central Park Penthouse image 3"><img src="../assets/inson/images/179-dale-ny-0088-1.jpg" alt="Central Park Penthouse image 3" loading="eager"></a>
+        <a class="photo" href="../assets/inson/images/180-dale-ny-0093.jpg" aria-label="Open Central Park Penthouse image 4"><img src="../assets/inson/images/180-dale-ny-0093.jpg" alt="Central Park Penthouse image 4" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/181-dale-ny-0132.jpg" aria-label="Open Central Park Penthouse image 5"><img src="../assets/inson/images/181-dale-ny-0132.jpg" alt="Central Park Penthouse image 5" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/182-dale-ny-0146.jpg" aria-label="Open Central Park Penthouse image 6"><img src="../assets/inson/images/182-dale-ny-0146.jpg" alt="Central Park Penthouse image 6" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/183-dale-ny-0155.jpg" aria-label="Open Central Park Penthouse image 7"><img src="../assets/inson/images/183-dale-ny-0155.jpg" alt="Central Park Penthouse image 7" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/184-dale-ny-0159.jpg" aria-label="Open Central Park Penthouse image 8"><img src="../assets/inson/images/184-dale-ny-0159.jpg" alt="Central Park Penthouse image 8" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/185-dale-ny-0167.jpg" aria-label="Open Central Park Penthouse image 9"><img src="../assets/inson/images/185-dale-ny-0167.jpg" alt="Central Park Penthouse image 9" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/186-dale-ny-0172.jpg" aria-label="Open Central Park Penthouse image 10"><img src="../assets/inson/images/186-dale-ny-0172.jpg" alt="Central Park Penthouse image 10" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/187-dale-ny-0180.jpg" aria-label="Open Central Park Penthouse image 11"><img src="../assets/inson/images/187-dale-ny-0180.jpg" alt="Central Park Penthouse image 11" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/188-dale-ny-0184.jpg" aria-label="Open Central Park Penthouse image 12"><img src="../assets/inson/images/188-dale-ny-0184.jpg" alt="Central Park Penthouse image 12" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/189-dale-ny-0198.jpg" aria-label="Open Central Park Penthouse image 13"><img src="../assets/inson/images/189-dale-ny-0198.jpg" alt="Central Park Penthouse image 13" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/190-dale-ny-0209.jpg" aria-label="Open Central Park Penthouse image 14"><img src="../assets/inson/images/190-dale-ny-0209.jpg" alt="Central Park Penthouse image 14" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/191-dale-ny-0218.jpg" aria-label="Open Central Park Penthouse image 15"><img src="../assets/inson/images/191-dale-ny-0218.jpg" alt="Central Park Penthouse image 15" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/192-dale-ny-0223.jpg" aria-label="Open Central Park Penthouse image 16"><img src="../assets/inson/images/192-dale-ny-0223.jpg" alt="Central Park Penthouse image 16" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/193-dale-ny-0244.jpg" aria-label="Open Central Park Penthouse image 17"><img src="../assets/inson/images/193-dale-ny-0244.jpg" alt="Central Park Penthouse image 17" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/194-dale-ny-0263.jpg" aria-label="Open Central Park Penthouse image 18"><img src="../assets/inson/images/194-dale-ny-0263.jpg" alt="Central Park Penthouse image 18" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/195-dale-ny-0273.jpg" aria-label="Open Central Park Penthouse image 19"><img src="../assets/inson/images/195-dale-ny-0273.jpg" alt="Central Park Penthouse image 19" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/196-dale-ny-0275.jpg" aria-label="Open Central Park Penthouse image 20"><img src="../assets/inson/images/196-dale-ny-0275.jpg" alt="Central Park Penthouse image 20" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/197-dale-ny-0291-1.jpg" aria-label="Open Central Park Penthouse image 21"><img src="../assets/inson/images/197-dale-ny-0291-1.jpg" alt="Central Park Penthouse image 21" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/198-dale-ny-0303.jpg" aria-label="Open Central Park Penthouse image 22"><img src="../assets/inson/images/198-dale-ny-0303.jpg" alt="Central Park Penthouse image 22" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/199-dale-ny-0317.jpg" aria-label="Open Central Park Penthouse image 23"><img src="../assets/inson/images/199-dale-ny-0317.jpg" alt="Central Park Penthouse image 23" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/200-dale-ny-0356.jpg" aria-label="Open Central Park Penthouse image 24"><img src="../assets/inson/images/200-dale-ny-0356.jpg" alt="Central Park Penthouse image 24" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/201-dale-ny-0360.jpg" aria-label="Open Central Park Penthouse image 25"><img src="../assets/inson/images/201-dale-ny-0360.jpg" alt="Central Park Penthouse image 25" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/202-dale-ny-0371-1.jpg" aria-label="Open Central Park Penthouse image 26"><img src="../assets/inson/images/202-dale-ny-0371-1.jpg" alt="Central Park Penthouse image 26" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/203-dale-ny-0377-1.jpg" aria-label="Open Central Park Penthouse image 27"><img src="../assets/inson/images/203-dale-ny-0377-1.jpg" alt="Central Park Penthouse image 27" loading="lazy"></a>
+        <a class="photo" href="../assets/inson/images/204-dale-ny-0385.jpg" aria-label="Open Central Park Penthouse image 28"><img src="../assets/inson/images/204-dale-ny-0385.jpg" alt="Central Park Penthouse image 28" loading="lazy"></a>
+      </div>
+    </section>
+    <nav class="pager" aria-label="Project pager">
+      <a class="button" href="greenwich-village-church-condo.html">Previous / Greenwich Village Church Condo</a>
+      <a class="button primary" href="../inson-projects.html">Back to project archive</a>
+      <a class="button" href="ues-carriage-house.html">Next / Upper East Side Carriage House</a>
+    </nav>
+  </main>
+</body>
+</html>
+
+

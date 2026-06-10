@@ -1,0 +1,148 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Archive | Inson Dubois Wood</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#17110d; --muted:#75685d; --paper:#f4ecdf; --line:rgba(72,48,32,.2); --red:#8b1623; --gold:#d7b778; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:var(--ink); background:repeating-linear-gradient(90deg, rgba(80,55,37,.045) 0 1px, transparent 1px 5.5rem), radial-gradient(circle at 12% 0, #fffaf0 0, transparent 24rem), linear-gradient(180deg, #f8f1e7, var(--paper)); font-family:"Abel", Arial, sans-serif; }
+    a { color: inherit; }
+    .top { position: sticky; top:0; z-index:10; display:flex; justify-content:space-between; gap:1rem; align-items:center; padding:.75rem clamp(1rem,4vw,3rem); border-bottom:1px solid var(--line); background:rgba(20,15,12,.92); color:#fff3df; backdrop-filter:blur(14px); }
+    .brand { font-family:"Quattrocento", Georgia, serif; font-size:1.15rem; font-weight:700; text-decoration:none; }
+    .nav { display:flex; flex-wrap:wrap; gap:.35rem .9rem; font-size:.82rem; font-weight:800; text-transform:uppercase; }
+    .nav a { text-decoration:none; color:rgba(255,243,223,.72); }
+    .nav a:hover { color:#fff3df; }
+    .top, .hero, .grid, .foot { position:relative; }
+    .top { box-shadow:0 18px 54px rgba(30,20,14,.18); }
+    .hero { min-height:min(62svh, 42rem); }
+    .hero::after { content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px; background:linear-gradient(90deg, transparent, rgba(139,22,35,.42), transparent); }
+    main { width:min(94rem, calc(100% - 2rem)); margin:0 auto; padding:clamp(3rem,7vw,6rem) 0 5rem; }
+    .hero { display:grid; grid-template-columns:minmax(18rem,.8fr) 1.2fr; gap:clamp(2rem,5vw,5rem); align-items:end; padding-bottom:clamp(2rem,5vw,4rem); border-bottom:1px solid var(--line); }
+    .kicker, .meta { color:var(--red); font-size:.78rem; font-weight:900; text-transform:uppercase; }
+    h1 { margin:.5rem 0 0; max-width:11ch; font-family:"Quattrocento", Georgia, serif; font-size:clamp(4rem,10vw,9rem); line-height:.86; letter-spacing:0; }
+    .intro { max-width:48rem; color:var(--muted); font-size:clamp(1.2rem,1.7vw,1.7rem); line-height:1.42; }
+    .summary { display:grid; grid-template-columns:repeat(3, 1fr); border:1px solid var(--line); margin-top:1.4rem; }
+    .summary span { padding:1rem; border-right:1px solid var(--line); }
+    .summary span:last-child { border-right:0; }
+    .summary b { display:block; color:var(--ink); font-family:"Quattrocento", Georgia, serif; font-size:2rem; line-height:1; }
+    .grid { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:clamp(1.15rem,2vw,1.8rem) clamp(1rem,1.7vw,1.35rem); align-items:start; margin-top:clamp(2rem,4vw,3.5rem); padding-top:clamp(1rem,2vw,1.5rem); }
+    .card { display:grid; grid-template-rows:auto auto 1fr; gap:.55rem; min-height:100%; padding:0 0 .95rem; text-decoration:none; border:0; border-bottom:1px solid rgba(72,48,32,.2); background:transparent; box-shadow:none; transition:transform .18s ease, filter .18s ease; }
+    .card img { display:block; width:100%; aspect-ratio:5/4; object-fit:cover; border:0; border-radius:6px; filter:saturate(.92) contrast(1.02); box-shadow:0 14px 34px rgba(60,42,28,.12); }
+    .card b { min-height:2.25em; font-family:"Quattrocento", Georgia, serif; font-size:1.12rem; line-height:1.08; text-wrap:balance; }
+    .card small { color:var(--red); font-size:.7rem; font-weight:900; text-transform:uppercase; }
+    .card:hover { transform:translateY(-4px); filter:saturate(1.05); }
+    .foot { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--line); }
+    .button { padding:.85rem 1rem; text-decoration:none; border:1px solid var(--line); background:#fff8ec; font-weight:900; text-transform:uppercase; }
+    .button.primary { color:#fff3df; border-color:#7c121d; background:var(--red); }
+    @media (max-width:1100px) { .grid { grid-template-columns:repeat(3, minmax(0, 1fr)); } }
+    @media (max-width:760px) { .top { align-items:flex-start; flex-direction:column; } .hero { grid-template-columns:1fr; } .summary { grid-template-columns:1fr; } .summary span { border-right:0; border-bottom:1px solid var(--line); } .summary span:last-child { border-bottom:0; } .grid { grid-template-columns:repeat(2, minmax(0, 1fr)); } h1 { font-size:clamp(3.2rem,18vw,5rem); } }
+    @media (max-width:520px) { .grid { grid-template-columns:1fr; } }
+      .site-back {
+      position: fixed;
+      z-index: 60;
+      left: clamp(.8rem, 1.8vw, 1.35rem);
+      top: clamp(.8rem, 1.8vw, 1.35rem);
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      min-height: 2.35rem;
+      padding: .72rem .9rem;
+      color: #fff4dc;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font: 800 .64rem/1 "Inter", "Helvetica Neue", Arial, sans-serif;
+      border: 1px solid rgba(214, 182, 130, .32);
+      border-radius: 999px;
+      background: rgba(13, 8, 7, .76);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .24);
+      backdrop-filter: blur(14px);
+    }
+    .site-back::before {
+      content: "";
+      width: .46rem;
+      height: .46rem;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+    @media (max-width: 640px) {
+      .site-back { position: absolute; }
+    }
+  </style>
+</head>
+<body>
+  <a class="site-back" href="index.backup.2026-05-26.html#visuals">Back to site</a>
+  <header class="top">
+    <a class="brand" href="index.backup.2026-05-26.html#top">Inson Dubois Wood</a>
+    <nav class="nav" aria-label="Archive navigation">
+      <a href="inson-projects.html">Projects</a>
+      <a href="inson-biography.html">About</a>
+      <a href="inson-practice.html">Services</a>
+      <a href="inson-reviews.html">Reviews</a>
+      <a href="index.backup.2026-05-26.html#proof">Book</a>
+      <a href="inson-publications.html">Press</a>
+      <a href="inson-publications.html#journal">Blog</a>
+      <a href="index.backup.2026-05-26.html#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="kicker">Project archive</div>
+        <h1>Thirty residential project pages.</h1>
+      </div>
+      <div>
+        <p class="intro">A complete visual index of the residential project archive. Each card opens an internal project gallery and local image set.</p>
+        <div class="summary" aria-label="Archive summary">
+          <span><b>30</b>project pages</span>
+          <span><b>5</b>countries and regions represented</span>
+          <span><b>30</b>internal image galleries</span>
+        </div>
+      </div>
+    </section>
+    <section class="grid" aria-label="Complete project archive">
+      <a class="card" href="projects/greenwich-manor-house.html"><img src="assets/inson/images/010-epicurean-distinction-1.jpg" alt="Greenwich Manor House"><small>Open gallery</small><b>Greenwich Manor House</b></a>
+      <a class="card" href="projects/midcentury-modern-pool-house-in-malmo-sweden.html"><img src="assets/inson/images/011-malmo0114.jpg" alt="Midcentury Modern Pool House in Malmo, Sweden"><small>Open gallery</small><b>Midcentury Modern Pool House in Malmo, Sweden</b></a>
+      <a class="card" href="projects/west-village-townhouse.html"><img src="assets/inson/images/012-001-1024x667.jpg" alt="West Village Townhouse"><small>Open gallery</small><b>West Village Townhouse</b></a>
+      <a class="card" href="projects/upper-east-side-townhouse.html"><img src="assets/inson/images/003-75thstreet-01.jpg" alt="Upper East Side Townhouse"><small>Open gallery</small><b>Upper East Side Townhouse</b></a>
+      <a class="card" href="projects/palm-beach-residence.html"><img src="assets/inson/images/013-yndyoppq-1024x768.jpg" alt="Palm Beach Residence"><small>Open gallery</small><b>Palm Beach Residence</b></a>
+      <a class="card" href="projects/tribeca-loft.html"><img src="assets/inson/images/014-insonwood-interiordesign-tribeca-livingroom.jpg" alt="Tribeca Loft"><small>Open gallery</small><b>Tribeca Loft</b></a>
+      <a class="card" href="projects/5th-avenue-condo.html"><img src="assets/inson/images/015-insonwood-interiordesign-uppereastside-2-moderndecor.png" alt="5th Avenue Condo"><small>Open gallery</small><b>5th Avenue Condo</b></a>
+      <a class="card" href="projects/upper-east-side-condo.html"><img src="assets/inson/images/016-inson-73rd-st0142.jpg" alt="Upper Eastside Condo"><small>Open gallery</small><b>Upper Eastside Condo</b></a>
+      <a class="card" href="projects/ues-condo-renovation.html"><img src="assets/inson/images/017-dsc-1407.jpg" alt="Upper Eastside Condo renovation"><small>Open gallery</small><b>Upper Eastside Condo</b></a>
+      <a class="card" href="projects/greenwich-carriage-house.html"><img src="assets/inson/images/018-insonwood-interiordesign-greenwich-staircase.jpg" alt="Greenwich Carriage House"><small>Open gallery</small><b>Greenwich Carriage House</b></a>
+      <a class="card" href="projects/greenwich-village-church-condo.html"><img src="assets/inson/images/019-insonwood-interiordesign-judelaw-livingroom.jpg" alt="Greenwich Village Church Condo"><small>Open gallery</small><b>Greenwich Village Church Condo</b></a>
+      <a class="card" href="projects/central-park-penthouse.html"><img src="assets/inson/images/020-dale-ny-0240.jpg" alt="Central Park Penthouse"><small>Open gallery</small><b>Central Park Penthouse</b></a>
+      <a class="card" href="projects/ues-carriage-house.html"><img src="assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg" alt="Upper East Side Carriage House"><small>Open gallery</small><b>Upper East Side Carriage House</b></a>
+      <a class="card" href="projects/lake-como-farm-house.html"><img src="assets/inson/images/022-insonwood-interiordesign-lakecomo-livingroom.jpg" alt="Lake Como Farm House"><small>Open gallery</small><b>Lake Como Farm House</b></a>
+      <a class="card" href="projects/ues-modern-studio.html"><img src="assets/inson/images/023-hyman-0006-1.jpg" alt="Upper East Side Studio"><small>Open gallery</small><b>Upper East Side Studio</b></a>
+      <a class="card" href="projects/townhouse.html"><img src="assets/inson/images/024-insonwood-interiordesign-holiday-livingroom.jpg" alt="Townhouse"><small>Open gallery</small><b>Townhouse</b></a>
+      <a class="card" href="projects/greenwich-village-townhouse-makeover.html"><img src="assets/inson/images/025-insonwood-interiordesign-greenwichave-livingroom3.jpg" alt="Greenwich Village Townhouse"><small>Open gallery</small><b>Greenwich Village Townhouse</b></a>
+      <a class="card" href="projects/xvii.html"><img src="assets/inson/images/026-insonwood-interiordesign-52parkave-livingroom3.jpg" alt="Park Avenue Duplex"><small>Open gallery</small><b>Park Avenue Duplex</b></a>
+      <a class="card" href="projects/5th-avenue.html"><img src="assets/inson/images/027-insonwood-interiordesign-lauto-livingroom-e1666558191293.png" alt="5th Avenue Museum Mile"><small>Open gallery</small><b>5th Avenue Museum Mile</b></a>
+      <a class="card" href="projects/greenwich-manor.html"><img src="assets/inson/images/028-insonwood-interiordesign-stanwich-11-diningroom.jpg" alt="Greenwich Manor"><small>Open gallery</small><b>Greenwich Manor</b></a>
+      <a class="card" href="projects/connecticut-country-house.html"><img src="assets/inson/images/029-insonwood-interiordesign-fallsvillage-livingroom2.jpg" alt="Connecticut Country House"><small>Open gallery</small><b>Connecticut Country House</b></a>
+      <a class="card" href="projects/academy-mansion.html"><img src="assets/inson/images/030-insonwood-interiordesign-bradfield-avantgarde1.jpg" alt="Mardi Gras Inspired Academy Mansion"><small>Open gallery</small><b>Mardi Gras Inspired Academy Mansion</b></a>
+      <a class="card" href="projects/xiv.html"><img src="assets/inson/images/031-insonwood-interiordesign-quogue-livingroom.jpg" alt="Hamptons Colonial"><small>Open gallery</small><b>Hamptons Colonial</b></a>
+      <a class="card" href="projects/xi.html"><img src="assets/inson/images/005-inson-thailand06ha.jpg" alt="Northern Thailand Retreat"><small>Open gallery</small><b>Northern Thailand Retreat</b></a>
+      <a class="card" href="projects/chiangmai-country-house.html"><img src="assets/inson/images/032-insonwood-interiordesign-chiangmai-livingroom.jpg" alt="Chiangmai Thailand Country House"><small>Open gallery</small><b>Chiangmai Thailand Country House</b></a>
+      <a class="card" href="projects/ues-modern-kitchen.html"><img src="assets/inson/images/033-75thstreet-8.jpg" alt="Upper Eastside Custom Modern Kitchen"><small>Open gallery</small><b>Upper Eastside Custom Modern Kitchen</b></a>
+      <a class="card" href="projects/paris.html"><img src="assets/inson/images/034-madeline0148.jpg" alt="Paris Penthouse"><small>Open gallery</small><b>Paris Penthouse</b></a>
+      <a class="card" href="projects/mediterranean-country-estate-villa.html"><img src="assets/inson/images/035-santanyi0483.jpg" alt="Mediterranean Country Estate Villa"><small>Open gallery</small><b>Mediterranean Country Estate Villa</b></a>
+      <a class="card" href="projects/lower-east-side-triplex.html"><img src="assets/inson/images/036-1l.jpg" alt="Lower East Side Triplex"><small>Open gallery</small><b>Lower East Side Triplex</b></a>
+      <a class="card" href="projects/palm-beach-villa.html"><img src="assets/inson/images/037-4-front-3.jpg" alt="Palm Beach Villa"><small>Open gallery</small><b>Palm Beach Villa</b></a>
+    </section>
+    <div class="foot">
+      <a class="button primary" href="index.backup.2026-05-26.html#visuals">Back to selected rooms</a>
+      <a class="button" href="inson-publications.html">Open publications</a>
+    </div>
+  </main>
+</body>
+</html>
+
