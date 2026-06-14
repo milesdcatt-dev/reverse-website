@@ -23,7 +23,7 @@
     .hero { display:grid; grid-template-columns:minmax(20rem,.78fr) minmax(22rem,1fr); gap:clamp(1.5rem,4vw,4rem); align-items:end; padding-bottom:clamp(1.4rem,3vw,2.4rem); border-bottom:1px solid var(--line); }
     .kicker, .meta, .button { font-size:.68rem; font-weight:800; line-height:1.1; letter-spacing:0; text-transform:uppercase; }
     .kicker { color:var(--red); }
-    h1 { margin:.45rem 0 0; max-width:14ch; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(3rem,6.2vw,6.05rem); font-weight:600; line-height:.92; letter-spacing:-.018em; text-wrap:balance; overflow-wrap:normal; }
+    h1 { margin:.45rem 0 0; max-width:14ch; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(3rem,6.2vw,6.05rem); font-weight:600; line-height:.98; letter-spacing:-.012em; text-wrap:balance; overflow-wrap:normal; }
     .intro { max-width:50rem; color:rgba(45,36,28,.82); font-size:clamp(1rem,1.18vw,1.16rem); line-height:1.62; text-wrap:pretty; }
     .summary { display:grid; grid-template-columns:repeat(3, 1fr); margin-top:1.35rem; border:1px solid var(--line); background:rgba(255,250,241,.42); }
     .summary span { padding:1rem; border-right:1px solid var(--line); color:var(--muted); }
@@ -31,17 +31,17 @@
     .summary b { display:block; color:var(--ink); font-family:"Cormorant Garamond", Georgia, serif; font-size:2rem; line-height:1; }
     .hero-image { min-height:clamp(20rem,38vw,34rem); border:1px solid rgba(94,62,39,.22); border-radius:18px; background:linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.12)), url("../assets/inson/images/023-hyman-0006-1.jpg") center / cover; box-shadow:0 30px 90px rgba(60,42,28,.18); }
     .gallery-head { display:flex; justify-content:space-between; gap:1rem; align-items:end; margin:clamp(2rem,4vw,3rem) 0 1rem; }
-    .gallery-head h2 { margin:0; max-width:16ch; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(2.45rem,4.4vw,4.35rem); font-weight:600; line-height:.95; letter-spacing:-.012em; text-wrap:balance; }
+    .gallery-head h2 { margin:0; max-width:16ch; font-family:"Cormorant Garamond", Georgia, serif; font-size:clamp(2.45rem,4.4vw,4.35rem); font-weight:600; line-height:1; letter-spacing:-.012em; text-wrap:balance; }
     .gallery-head p { max-width:34rem; margin:0; color:rgba(83,72,62,.82); line-height:1.6; text-wrap:pretty; }
     .gallery { columns:4 17rem; column-gap:clamp(.85rem,1.5vw,1.25rem); }
     .photo { display:block; margin:0 0 clamp(.85rem,1.5vw,1.25rem); break-inside:avoid; border:1px solid rgba(94,62,39,.18); border-radius:12px; overflow:hidden; background:#fff8ec; box-shadow:0 16px 38px rgba(60,42,28,.11); transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
-    .photo img { display:block; width:100%; height:auto; filter:saturate(.98) contrast(1.02); }
+    .photo img { display:block; width:100%; height:auto; filter:saturate(1.05) contrast(1.04); }
     .photo:hover { transform:translateY(-3px); border-color:rgba(139,22,35,.32); box-shadow:0 24px 58px rgba(60,42,28,.16); }
     .pager { display:flex; justify-content:space-between; gap:.75rem; margin-top:clamp(2rem,4vw,3rem); padding-top:1.5rem; border-top:1px solid var(--line); }
     .button { display:inline-flex; align-items:center; justify-content:center; min-height:2.8rem; padding:.8rem 1rem; text-decoration:none; border:1px solid var(--line); border-radius:999px; background:#fff8ec; color:var(--ink); }
     .button.primary { color:var(--ivory); border-color:#7c121d; background:linear-gradient(135deg, #a32733, #76151f); box-shadow:0 16px 42px rgba(139,22,35,.16); }
     @media (max-width:900px) { .hero { grid-template-columns:1fr; } .hero-image { order:-1; min-height:62vw; } .summary { grid-template-columns:1fr; } .summary span { border-right:0; border-bottom:1px solid var(--line); } .summary span:last-child { border-bottom:0; } .gallery-head { display:grid; } }
-    @media (max-width:620px) { .top { align-items:flex-start; flex-direction:column; } main { width:min(100% - 1.1rem, 96rem); } h1 { font-size:clamp(2.65rem,12vw,4rem); line-height:.96; max-width:12ch; } .pager { flex-direction:column; } }
+    @media (max-width:620px) { .top { align-items:flex-start; flex-direction:column; } main { width:min(100% - 1.1rem, 96rem); } h1 { font-size:clamp(2.65rem,12vw,4rem); line-height:1.02; max-width:12ch; } .pager { flex-direction:column; } }
       .site-back {
       position: fixed;
       z-index: 60;
@@ -79,16 +79,16 @@
 <body>
   <a class="site-back" href="../inson-projects.html">Back to projects</a>
   <header class="top">
-    <a class="brand" href="../index.backup.2026-05-26.html#top">Inson Dubois Wood</a>
+    <a class="brand" href="../index.html#top">Inson Dubois Wood</a>
     <nav class="nav" aria-label="Project navigation">
       <a href="../inson-projects.html">Projects</a>
       <a href="../inson-biography.html">About</a>
       <a href="../inson-practice.html">Services</a>
       <a href="../inson-reviews.html">Reviews</a>
-      <a href="../index.backup.2026-05-26.html#proof">Book</a>
+      <a href="../index.html#proof">Book</a>
       <a href="../inson-publications.html">Press</a>
       <a href="../inson-publications.html#journal">Blog</a>
-      <a href="../index.backup.2026-05-26.html#contact">Contact</a>
+      <a href="../index.html#contact">Contact</a>
     </nav>
   </header>
   <main>

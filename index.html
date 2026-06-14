@@ -1,21 +1,21 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Inson Dubois Wood — Residential Design and Interiors</title>
+<title>Inson Dubois Wood · Residential Design and Interiors</title>
 <meta name="description" content="A New York residential design and interiors studio. Architecture-first practice with a 330-page Rizzoli monograph and three decades of international work." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap">
 <style>
   /* ================================================================
-     Inson Dubois Wood — modernist color-blocked redesign
+     Inson Dubois Wood: modernist color-blocked redesign
      Foundation: palette, type, grid, nav, footer, section scaffolding
      ================================================================ */
 
   :root {
-    /* Palette — flat, saturated, color-blocking */
+    /* Palette: flat, saturated, color-blocking */
     --bone:       #f1ece1;   /* page base, warm cream */
     --paper:      #faf6ec;   /* secondary cream */
     --ink:        #14110d;   /* near-black */
@@ -102,7 +102,7 @@
   .section--ink  { background: var(--ink);        color: var(--bone); }
   .section--terra{ background: var(--terracotta); color: var(--paper); }
   .section--ochre{ background: var(--ochre);      color: var(--ink); }
-  .section--teal { background: var(--teal);       color: var(--paper); }
+  .section--teal { background: var(--ink);        color: var(--paper); }
   .section--oxblood{ background: var(--oxblood);  color: var(--paper); }
   .section--paper{ background: var(--paper);      color: var(--ink); }
 
@@ -481,54 +481,12 @@
     .marquee-track { animation: none; }
   }
 
-  /* ================== CURSOR CHIP ================== */
-  .cursor-chip {
-    position: fixed;
-    top: 0; left: 0;
-    z-index: 999;
-    width: 10px;
-    height: 10px;
-    background: var(--terracotta);
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-    transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), background 0.3s, opacity 0.3s;
-    will-change: transform;
-  }
-  .cursor-chip.is-active { opacity: 1; }
-  .cursor-chip.is-zone {
-    width: 92px;
-    height: 92px;
-    background: var(--terracotta);
-  }
-  .cursor-chip .cursor-chip-label {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    font-family: var(--sans);
-    font-size: 0.6rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--bone);
-    font-weight: 600;
-    opacity: 0;
-    transition: opacity 0.25s;
-    text-align: center;
-    padding: 0 0.5rem;
-    pointer-events: none;
-  }
-  .cursor-chip.is-zone .cursor-chip-label { opacity: 1; }
-  @media (hover: none), (pointer: coarse) {
-    .cursor-chip { display: none !important; }
-  }
-
   /* ================== HERO PARALLAX + DRESSING ================== */
   .hero-image img { will-change: transform; transform: scale(1.06); }
   .hero-headline em { display: inline-block; transition: transform 0.5s var(--ease-out); }
   .hero-headline:hover em { transform: translateY(-3px) rotate(-1.5deg); }
 
-  /* Magnetic primary CTAs add transform via JS — keep transitions smooth */
+  /* Magnetic primary CTAs add transform via JS: keep transitions smooth */
   .magnetic { transition: transform 0.45s cubic-bezier(.22,1,.36,1); }
 
   /* Project card caption slide-up on hover */
@@ -590,7 +548,7 @@
     line-height: 0.98;
   }
 
-  /* "art book" — animated SVG underline */
+  /* "art book": animated SVG underline */
   .hero-headline em.kinetic { position: relative; }
   .hero-headline em.kinetic::after {
     content: "";
@@ -613,7 +571,7 @@
     50%      { background-position: 100% 50%; }
   }
 
-  /* Project image — clip-path mask reveal on scroll */
+  /* Project image: clip-path mask reveal on scroll */
   .project { overflow: hidden; }
   .project img {
     clip-path: inset(0 100% 0 0);
@@ -631,12 +589,8 @@
     pointer-events: none;
   }
   .project:hover::after { opacity: 1; }
-  .project[data-accent="terra"]::before { background: var(--terracotta); }
-  .project[data-accent="ochre"]::before { background: var(--ochre); color: var(--ink); }
-  .project[data-accent="teal"]::before { background: var(--teal); }
-  .project[data-accent="oxblood"]::before { background: var(--oxblood); }
 
-  /* Bolder marquee — larger, all-caps display serif */
+  /* Bolder marquee: larger, all-caps display serif */
   .marquee {
     padding: clamp(1.4rem, 2.4vw, 2rem) 0;
     border-top: var(--rule) solid var(--line);
@@ -688,7 +642,7 @@
   }
   .section--ink .eyebrow::before { background: var(--ochre); }
 
-  /* Project meta — flashier hover transition */
+  /* Project meta: flashier hover transition */
   .project-meta {
     transition: transform 0.5s var(--ease-out), letter-spacing 0.5s var(--ease-out);
   }
@@ -696,7 +650,7 @@
     letter-spacing: 0.005em;
   }
 
-  /* Hero scroll-drift — applied via JS --drift CSS var */
+  /* Hero scroll-drift: applied via JS --drift CSS var */
   .hero-meta { transform: translateY(calc(var(--drift, 0) * 1px)); }
   .hero-headline { transform: translateY(calc(var(--drift, 0) * -0.5px)); }
 
@@ -740,55 +694,6 @@
     box-shadow: 0 0 18px rgba(193, 66, 42, 0.6);
   }
 
-  /* ================== SECTION INDICATOR (floating right rail) ================== */
-  .rail {
-    position: fixed;
-    right: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 40;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    padding: 1rem 0.6rem;
-    background: rgba(241, 236, 225, 0.5);
-    backdrop-filter: blur(8px) saturate(1.1);
-    -webkit-backdrop-filter: blur(8px) saturate(1.1);
-    border: 1px solid rgba(20, 17, 13, 0.18);
-    border-radius: 30px;
-  }
-  .rail a {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    padding: 0.15rem 0.35rem;
-    transition: color 0.25s;
-  }
-  .rail a .dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: transparent;
-    border: 1px solid var(--ink);
-    transition: background 0.25s, transform 0.3s;
-    flex: 0 0 auto;
-  }
-  .rail a .label {
-    opacity: 0;
-    width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: opacity 0.3s, width 0.3s;
-  }
-  .rail a:hover .label { opacity: 1; width: auto; }
-  .rail a.is-active .dot { background: var(--terracotta); border-color: var(--terracotta); transform: scale(1.4); }
-  .rail a.is-active { color: var(--ink); }
-  .rail a.is-active .label { opacity: 1; width: auto; }
-  @media (max-width: 880px) { .rail { display: none; } }
-
   /* ================== HERO HEADLINE SPLIT-MASK REVEAL ================== */
   .hero-headline .line {
     display: block;
@@ -821,7 +726,7 @@
     .hero-headline em.kinetic { animation: none; }
   }
 
-  /* Hero credentials strip — number style for count-up */
+  /* Hero credentials strip: number style for count-up */
   .hero-strip b[data-num] {
     font-variant-numeric: tabular-nums;
   }
@@ -881,7 +786,7 @@
   }
   .marquee.marquee--reverse .marquee-track span { gap: 2.6rem; }
   .marquee.marquee--reverse .marquee-track span::after {
-    content: "—";
+    content: "·";
     color: var(--terracotta);
   }
   @keyframes marqueeReverse {
@@ -1178,7 +1083,8 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(.22,1,.36,1), filter 0.4s;
-    filter: saturate(0.95);
+    filter: saturate(1.05) contrast(1.03);
+    image-rendering: -webkit-optimize-contrast;
   }
   .project::after {
     content: "";
@@ -1214,21 +1120,8 @@
     white-space: nowrap;
   }
   .project:hover img,
-  .project:focus-visible img { transform: scale(1.045); filter: saturate(1.05); }
+  .project:focus-visible img { transform: scale(1.045); filter: saturate(1.12) contrast(1.06); }
   .project:hover::after { opacity: 0.85; }
-  .project[data-accent="terra"]::before,
-  .project[data-accent="ochre"]::before,
-  .project[data-accent="teal"]::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0;
-    width: 4px;
-    height: 100%;
-    z-index: 3;
-  }
-  .project[data-accent="terra"]::before { background: var(--terracotta); }
-  .project[data-accent="ochre"]::before { background: var(--ochre); }
-  .project[data-accent="teal"]::before  { background: var(--teal); }
 
   .projects-feature {
     grid-column: span 2;
@@ -1294,6 +1187,42 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(241,236,225,.7);
+  }
+  .about-aside {
+    position: sticky;
+    top: calc(var(--nav-h) + 1.5rem);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 2vw, 1.75rem);
+  }
+  @media (max-width: 880px) {
+    .about-aside { position: static; }
+  }
+  .about-facts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: clamp(1rem, 2vw, 1.75rem);
+    row-gap: 0.85rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(20,17,13,.16);
+  }
+  .about-facts dt {
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bone-muted);
+    font-weight: 600;
+    align-self: baseline;
+    padding-top: 0.18rem;
+  }
+  .about-facts dd {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.3;
+    color: var(--ink);
   }
   .about-copy {
     display: flex;
@@ -1365,15 +1294,15 @@
   }
   @media (max-width: 720px) { .awards-grid { grid-template-columns: repeat(2, 1fr); } }
   .award {
-    padding: 1.5rem 1.25rem;
+    padding: 1.75rem 1.4rem 1.5rem;
     border-right: 1px solid var(--line);
     background: var(--bone);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-    min-height: 180px;
+    display: grid;
+    grid-template-rows: 56px 1fr auto auto;
+    row-gap: 0.5rem;
+    min-height: 220px;
   }
+  .award > div { display: contents; }
   .award:last-child { border-right: 0; }
   @media (max-width: 720px) {
     .award { border-right: 0; border-bottom: 1px solid var(--line); }
@@ -1381,25 +1310,31 @@
     .award:last-child { border-bottom: 0; }
   }
   .award b {
+    grid-row: 3;
     font-family: var(--serif);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 500;
-    line-height: 1.15;
+    line-height: 1.2;
+    color: var(--ink);
+    align-self: end;
   }
   .award span {
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
+    grid-row: 4;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--bone-muted);
+    color: var(--ink-soft);
+    line-height: 1.5;
   }
   .award .badge {
+    grid-row: 1;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 56px;
     color: var(--terracotta);
   }
-  .award .badge svg { height: 100%; width: auto; display: block; }
+  .award .badge svg { height: 44px; width: auto; display: block; }
 
   /* ================== SERVICES ================== */
   .services-grid {
@@ -1851,8 +1786,9 @@
     color: rgba(241,236,225,.65);
   }
   .press-quote cite::before {
-    content: "— ";
+    content: "";
   }
+  .press-quote cite { display: block; margin-top: .65rem; }
 
   /* ================== PRESS WALL ================== */
   .press-intro {
@@ -2041,37 +1977,30 @@
   }
   .journal-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--ink);
     border: 1px solid var(--ink);
-    background: var(--ochre);
   }
   @media (max-width: 900px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 540px) { .journal-grid { grid-template-columns: 1fr; } }
   .entry {
-    background: var(--ochre);
-    padding: 1.5rem;
-    border-right: 1px solid var(--ink);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    min-height: 280px;
-    color: var(--ink);
-    transition: background 0.25s, color 0.25s;
-  }
-  .entry:last-child { border-right: 0; }
-  @media (max-width: 900px) {
-    .entry { border-right: 0; border-bottom: 1px solid var(--ink); }
-    .entry:nth-child(2n) { border-right: 0; }
-    .entry:last-child { border-bottom: 0; }
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.85rem 1.65rem 1.65rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 1.1rem;
+    min-height: 260px;
+    transition: background 0.3s, transform 0.3s;
   }
   .entry header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     gap: 0.5rem;
-    border-bottom: 1px solid rgba(20,17,13,.32);
-    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(241,236,225,.22);
+    padding-bottom: 0.85rem;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -2079,106 +2008,164 @@
   .entry header b {
     font-family: var(--sans);
     font-weight: 600;
+    color: var(--ochre);
+  }
+  .entry header span {
+    color: rgba(241,236,225,.55);
   }
   .entry h3 {
     margin: 0;
     font-family: var(--serif);
-    font-size: clamp(1.18rem, 1.6vw, 1.4rem);
-    line-height: 1.15;
+    font-size: clamp(1.15rem, 1.55vw, 1.4rem);
+    line-height: 1.2;
     font-weight: 400;
-    flex: 1;
+    color: var(--paper);
+    text-wrap: pretty;
+    align-self: start;
   }
   .entry .read {
-    margin-top: auto;
-    font-size: 0.72rem;
+    align-self: end;
+    font-size: 0.7rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    color: var(--ochre);
+    transition: color 0.25s, gap 0.25s;
+  }
+  .entry .read::after { content: "→"; transition: transform 0.25s; }
+  .entry:hover { background: var(--terracotta); }
+  .entry:hover header b,
+  .entry:hover .read { color: var(--paper); }
+  .entry:hover .read { gap: 0.85rem; }
+  .entry:hover header { border-bottom-color: rgba(241,236,225,.32); }
+
+  .entry--cta {
+    background: var(--bone);
+    color: var(--ink);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: 0.6rem;
+    padding: 1.85rem;
+  }
+  .entry--cta b {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+    font-weight: 400;
+    line-height: 1.2;
     color: var(--ink);
   }
-  .entry .read::after { content: "→"; }
-  .entry--feature {
-    grid-column: span 2;
-    background: var(--ink);
+  .entry--cta span {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+  .entry--cta:hover {
+    background: var(--terracotta);
     color: var(--paper);
   }
-  .entry--feature header { border-bottom-color: rgba(241,236,225,.28); }
-  .entry--feature .read { color: var(--ochre); }
-  @media (max-width: 900px) { .entry--feature { grid-column: span 2; } }
-  @media (max-width: 540px) { .entry--feature { grid-column: span 1; } }
-  .entry:hover { background: var(--ink); color: var(--paper); }
-  .entry:hover header { border-bottom-color: rgba(241,236,225,.28); }
-  .entry:hover .read { color: var(--ochre); }
-  .entry--feature:hover { background: var(--terracotta); color: var(--paper); }
+  .entry--cta:hover b,
+  .entry--cta:hover span { color: var(--paper); }
 
   /* ================== CONTACT ================== */
   .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.05fr 1fr;
     gap: 0;
-    border: 1px solid var(--paper);
+    border: 1px solid rgba(241,236,225,.16);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-grid::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--terracotta);
+    z-index: 2;
   }
   @media (max-width: 880px) { .contact-grid { grid-template-columns: 1fr; } }
   .contact-card {
-    background: var(--teal);
+    background: linear-gradient(180deg, rgba(241,236,225,.04), rgba(241,236,225,0));
     color: var(--paper);
     padding: clamp(2rem, 4vw, 3.5rem);
-    border-right: 1px solid var(--paper);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    text-align: center;
+    border-right: 1px solid rgba(241,236,225,.16);
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: clamp(1.5rem, 2.5vw, 2.25rem);
     position: relative;
   }
   @media (max-width: 880px) {
-    .contact-card { border-right: 0; border-bottom: 1px solid var(--paper); }
+    .contact-card { border-right: 0; border-bottom: 1px solid rgba(241,236,225,.16); }
   }
-  .fleur {
-    width: 36px;
-    height: 36px;
+  .contact-card .monogram {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+    line-height: .9;
+    font-weight: 400;
     color: var(--ochre);
-    flex: 0 0 auto;
+    letter-spacing: -.02em;
+  }
+  .contact-card .monogram small {
+    display: block;
+    font-family: var(--sans);
+    font-size: .65rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: rgba(241,236,225,.5);
+    font-weight: 600;
+    margin-top: .7rem;
   }
   .contact-card .lede {
     font-family: var(--serif);
-    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
-    line-height: 1.2;
-    max-width: 22ch;
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    line-height: 1.25;
+    max-width: 32ch;
     margin: 0;
+    color: var(--paper);
+    text-wrap: pretty;
   }
   .contact-rows {
     width: 100%;
-    max-width: 360px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    align-self: end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(1.2rem, 2.5vw, 2.2rem);
+    border-top: 1px solid rgba(241,236,225,.18);
   }
   .contact-rows > div {
-    padding: 1rem 0;
-    border-top: 1px solid rgba(241,236,225,.22);
+    padding: 1.15rem 0;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.4rem;
   }
-  .contact-rows > div:last-child {
-    border-bottom: 1px solid rgba(241,236,225,.22);
+  .contact-rows > div:first-child {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid rgba(241,236,225,.12);
+  }
+  @media (max-width: 720px) {
+    .contact-rows { grid-template-columns: 1fr; }
+    .contact-rows > div:nth-child(2) { border-bottom: 1px solid rgba(241,236,225,.12); }
   }
   .contact-rows .label {
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
+    font-size: 0.66rem;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: rgba(241,236,225,.6);
+    color: var(--ochre);
+    font-weight: 600;
   }
   .contact-rows .value {
     font-family: var(--serif);
-    font-size: 1.08rem;
-    line-height: 1.3;
+    font-size: 1.05rem;
+    line-height: 1.4;
     color: var(--paper);
   }
+  .contact-rows .value a { transition: color .25s; }
   .contact-rows .value a:hover { color: var(--ochre); }
 
   .inquiry {
@@ -2286,6 +2273,43 @@
   }
   .contact-note .btn--solid::before { background: var(--ink); }
 
+  .contact-steps {
+    list-style: none;
+    margin: 0;
+    padding: clamp(1.5rem, 3vw, 2rem) 0;
+    border-top: 1px solid rgba(20,17,13,.16);
+    border-bottom: 1px solid rgba(20,17,13,.16);
+    display: grid;
+    gap: 1.1rem;
+  }
+  .contact-steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+  }
+  .contact-steps li .step-num {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--terracotta);
+    font-weight: 500;
+    line-height: 1;
+  }
+  .contact-steps li .step-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .contact-steps li .step-text b {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -.01em;
+    margin-bottom: .15rem;
+  }
+
 </style>
 </head>
 <body>
@@ -2294,17 +2318,6 @@
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ================== SIDE RAIL ================== -->
-  <nav class="rail" id="rail" aria-label="Section indicator">
-    <a href="#hero"     data-rail="hero"><span class="dot"></span><span class="label">00 &middot; Hero</span></a>
-    <a href="#projects" data-rail="projects"><span class="dot"></span><span class="label">01 &middot; Projects</span></a>
-    <a href="#about"    data-rail="about"><span class="dot"></span><span class="label">02 &middot; About</span></a>
-    <a href="#services" data-rail="services"><span class="dot"></span><span class="label">03 &middot; Services</span></a>
-    <a href="#reviews"  data-rail="reviews"><span class="dot"></span><span class="label">04 &middot; Reviews</span></a>
-    <a href="#book"     data-rail="book"><span class="dot"></span><span class="label">05 &middot; Book</span></a>
-    <a href="#press"    data-rail="press"><span class="dot"></span><span class="label">06 &middot; Press</span></a>
-    <a href="#journal"  data-rail="journal"><span class="dot"></span><span class="label">07 &middot; Journal</span></a>
-    <a href="#contact"  data-rail="contact"><span class="dot"></span><span class="label">08 &middot; Contact</span></a>
-  </nav>
 
   <!-- ================== NOW PLAYING ================== -->
   <div class="now-playing" id="now-playing" aria-hidden="true">
@@ -2329,13 +2342,10 @@
     <div class="loader-bar" id="loader-bar"></div>
   </div>
 
-  <!-- ================== CURSOR CHIP ================== -->
-  <div class="cursor-chip" id="cursor"><span class="cursor-chip-label" id="cursor-label"></span></div>
-
   <!-- ================== TOPBAR ================== -->
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#top" aria-label="Inson Dubois Wood — home">
+      <a class="brand" href="#top" aria-label="Inson Dubois Wood · home">
         <b>Inson Dubois Wood</b>
         <span>Residential Design &amp; Interiors</span>
       </a>
@@ -2378,7 +2388,7 @@
         </div>
         <div class="hero-image">
           <img src="assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg"
-               alt="Waterfall Mansion living room — large abstract paintings, Marc Chagall lithograph, sculptural lighting"
+               alt="Waterfall Mansion living room · large abstract paintings, Marc Chagall lithograph, sculptural lighting"
                loading="eager" />
           <div class="hero-caption"><span class="dot"></span><span>Waterfall Mansion / New York</span></div>
         </div>
@@ -2428,26 +2438,26 @@
     <!-- ================== REVERSE MARQUEE ================== -->
     <div class="marquee marquee--reverse" aria-hidden="true">
       <div class="marquee-track">
-        <span>Waterfall Mansion &mdash; Upper East Side</span>
-        <span>Saint-Tropez Villa &mdash; Côte d&rsquo;Azur</span>
-        <span>Lake Como Farmhouse &mdash; Italy</span>
-        <span>Greenwich Manor &mdash; Connecticut</span>
-        <span>Palm Beach Residence &mdash; Florida</span>
-        <span>West Village Townhouse &mdash; New York</span>
-        <span>5th Avenue Condo &mdash; Central Park</span>
-        <span>Malmö Pool House &mdash; Sweden</span>
-        <span>Tribeca Loft &mdash; New York</span>
-        <span>Academy Mansion &mdash; New York</span>
-        <span>Waterfall Mansion &mdash; Upper East Side</span>
-        <span>Saint-Tropez Villa &mdash; Côte d&rsquo;Azur</span>
-        <span>Lake Como Farmhouse &mdash; Italy</span>
-        <span>Greenwich Manor &mdash; Connecticut</span>
-        <span>Palm Beach Residence &mdash; Florida</span>
-        <span>West Village Townhouse &mdash; New York</span>
-        <span>5th Avenue Condo &mdash; Central Park</span>
-        <span>Malmö Pool House &mdash; Sweden</span>
-        <span>Tribeca Loft &mdash; New York</span>
-        <span>Academy Mansion &mdash; New York</span>
+        <span>Waterfall Mansion &middot; Upper East Side</span>
+        <span>Saint-Tropez Villa &middot; Côte d&rsquo;Azur</span>
+        <span>Lake Como Farmhouse &middot; Italy</span>
+        <span>Greenwich Manor &middot; Connecticut</span>
+        <span>Palm Beach Residence &middot; Florida</span>
+        <span>West Village Townhouse &middot; New York</span>
+        <span>5th Avenue Condo &middot; Central Park</span>
+        <span>Malmö Pool House &middot; Sweden</span>
+        <span>Tribeca Loft &middot; New York</span>
+        <span>Academy Mansion &middot; New York</span>
+        <span>Waterfall Mansion &middot; Upper East Side</span>
+        <span>Saint-Tropez Villa &middot; Côte d&rsquo;Azur</span>
+        <span>Lake Como Farmhouse &middot; Italy</span>
+        <span>Greenwich Manor &middot; Connecticut</span>
+        <span>Palm Beach Residence &middot; Florida</span>
+        <span>West Village Townhouse &middot; New York</span>
+        <span>5th Avenue Condo &middot; Central Park</span>
+        <span>Malmö Pool House &middot; Sweden</span>
+        <span>Tribeca Loft &middot; New York</span>
+        <span>Academy Mansion &middot; New York</span>
       </div>
     </div>
 
@@ -2462,7 +2472,7 @@
       </div>
 
       <div class="projects-toolbar">
-        <span class="count">A moving archive of city apartments, townhouses, country houses, and international estates &mdash; 30 projects.</span>
+        <span class="count">A moving archive of city apartments, townhouses, country houses, and international estates, across 30 projects.</span>
         <div class="filters" role="tablist" aria-label="Project filters">
           <button type="button" class="is-on" data-filter="all">All</button>
           <button type="button" data-filter="city">City</button>
@@ -2521,7 +2531,7 @@
           <div class="project-meta"><b>Central Park Penthouse</b><span>New York</span></div>
         </a>
         <a class="project reveal" data-cursor="Visit" data-accent="terra" data-tags="city" href="projects/ues-carriage-house.html" target="_blank" rel="noopener">
-          <img loading="lazy" src="assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg" alt="Upper East Side Carriage House — Waterfall Mansion">
+          <img loading="lazy" src="assets/inson/images/021-insonwood-interiordesign-waterfallmansion-living7.jpg" alt="Upper East Side Carriage House · Waterfall Mansion">
           <div class="project-meta"><b>Waterfall Mansion</b><span>Upper East Side</span></div>
         </a>
         <a class="project reveal" data-cursor="Visit" data-accent="ochre" data-tags="international" href="projects/lake-como-farm-house.html" target="_blank" rel="noopener">
@@ -2606,21 +2616,29 @@
       </div>
 
       <div class="about-grid">
-        <figure class="about-portrait reveal" aria-label="Inson Dubois Wood, principal">
-          <img src="assets/inson/images/038-insondwood-biophoto.jpg"
-               alt="Black-and-white portrait of Inson Dubois Wood, architect and interior designer" loading="lazy">
-          <figcaption class="about-portrait-caption">
-            <b>Inson Dubois Wood</b>
-            <span>Architect &middot; Interior Designer &middot; Artist</span>
-          </figcaption>
-        </figure>
+        <div class="about-aside">
+          <figure class="about-portrait reveal" aria-label="Inson Dubois Wood, principal">
+            <img src="assets/inson/images/038-insondwood-biophoto.jpg"
+                 alt="Black-and-white portrait of Inson Dubois Wood, architect and interior designer" loading="lazy">
+            <figcaption class="about-portrait-caption">
+              <b>Inson Dubois Wood</b>
+              <span>Architect &middot; Interior Designer &middot; Artist</span>
+            </figcaption>
+          </figure>
+          <dl class="about-facts reveal">
+            <dt>Based</dt><dd>New York</dd>
+            <dt>Founded</dt><dd>2005</dd>
+            <dt>Trained</dt><dd>Harvard GSD &middot; Cornell</dd>
+            <dt>Monograph</dt><dd>Rizzoli, 2016</dd>
+          </dl>
+        </div>
 
         <div class="about-copy">
-          <p class="about-intro reveal">Architect, interior designer, artist, and sole principal &mdash; Inson Dubois Wood authors the whole residence under one design eye.</p>
+          <p class="about-intro reveal">Architect, interior designer, artist, and sole principal. Inson Dubois Wood authors the whole residence under one design eye.</p>
 
           <div class="chapter reveal">
             <b data-no="01">Education</b>
-            <p>Master of Architecture, Harvard Graduate School of Design. Bachelor of Architecture, Cornell. At Harvard, he studied under Frank Gehry, Rem Koolhaas, Wolf D. Prix of Coop Himmelb(l)au, and Zaha Hadid &mdash; graduating at the top of his class with traveling fellowships.</p>
+            <p>Master of Architecture, Harvard Graduate School of Design. Bachelor of Architecture, Cornell. At Harvard, he studied under Frank Gehry, Rem Koolhaas, Wolf D. Prix of Coop Himmelb(l)au, and Zaha Hadid, graduating at the top of his class with traveling fellowships.</p>
           </div>
           <div class="chapter reveal">
             <b data-no="02">Apprenticeship</b>
@@ -2628,7 +2646,7 @@
           </div>
           <div class="chapter reveal">
             <b data-no="03">Studio</b>
-            <p>Founded his own studio in 2005, based in New York. Work has since included projects in Austria, France, Italy, Japan, Sweden, and Thailand &mdash; from Waterfall Mansion in New York to a family home in Greenwich to a villa in Saint-Tropez.</p>
+            <p>Founded his own studio in 2005, based in New York. Work has since included projects in Austria, France, Italy, Japan, Sweden, and Thailand, from Waterfall Mansion in New York to a family home in Greenwich to a villa in Saint-Tropez.</p>
           </div>
           <div class="chapter reveal">
             <b data-no="04">Range</b>
@@ -2770,7 +2788,7 @@
 
       <div class="reviews-grid">
         <blockquote class="quote quote--lead reveal">
-          <p>An impossible co-op board, a three-month timeline, and a first property &mdash; he turned the entire gut renovation into a jewel-box apartment without a single missed milestone.</p>
+          <p>An impossible co-op board, a three-month timeline, and a first property. He turned the entire gut renovation into a jewel-box apartment without a single missed milestone.</p>
           <footer>
             <b>Kelly Williams</b>
             <span>Nov 2021 &middot; Google</span>
@@ -2786,7 +2804,7 @@
         </blockquote>
 
         <blockquote class="quote quote--sm reveal">
-          <p>A yacht-like, deeply efficient apartment &mdash; sleek storage, creative details, budget-aware alternatives whenever they mattered.</p>
+          <p>A yacht-like, deeply efficient apartment, with sleek storage, creative details, and budget-aware alternatives whenever they mattered.</p>
           <footer>
             <b>Josie Lee</b>
             <span>Apr 2022</span>
@@ -2794,7 +2812,7 @@
         </blockquote>
 
         <blockquote class="quote quote--sm reveal">
-          <p>A Tribeca loft made livable for a family &mdash; mudroom vestibule, lacquer kitchen, walnut millwork, durable construction throughout.</p>
+          <p>A Tribeca loft made livable for a family, with a mudroom vestibule, lacquer kitchen, walnut millwork, and durable construction throughout.</p>
           <footer>
             <b>Asher Friedman</b>
             <span>Nov 2021</span>
@@ -2834,7 +2852,7 @@
         </figure>
 
         <div class="book-meta">
-          <p class="lede reveal">The first monograph on the interior design work of the New York&ndash;based architect, and an essential resource for those seeking to <strong>create luxurious modernist spaces</strong>. From the opulent Waterfall Mansion in New York to a family home in Greenwich to a charming villa in Saint-Tropez on the French Riviera.</p>
+          <p class="lede reveal">The first monograph on the interior design work of the New York-based architect, and an essential resource for those seeking to <strong>create luxurious modernist spaces</strong>. From the opulent Waterfall Mansion in New York to a family home in Greenwich to a charming villa in Saint-Tropez on the French Riviera.</p>
 
           <div class="book-stats reveal">
             <div><b>330</b><span>Pages, hardcover</span></div>
@@ -2856,7 +2874,7 @@
           <cite>HuffingtonPost.com</cite>
         </blockquote>
         <blockquote class="press-quote reveal">
-          <p>By the time architectural and interior designer Inson Dubois Wood struck out on his own, he had a <strong>wealth of experience under his belt</strong>. He had worked with two legendary talents&mdash;first Juan Pablo Molyneux, then David Easton&mdash;and studied at both Cornell and Harvard.</p>
+          <p>By the time architectural and interior designer Inson Dubois Wood struck out on his own, he had a <strong>wealth of experience under his belt</strong>. He had worked with two legendary talents (first Juan Pablo Molyneux, then David Easton) and studied at both Cornell and Harvard.</p>
           <cite>Architectural Digest</cite>
         </blockquote>
         <blockquote class="press-quote reveal">
@@ -2880,7 +2898,7 @@
           <cite>Katie D.I.D Blog</cite>
         </blockquote>
         <blockquote class="press-quote reveal">
-          <p>There&rsquo;s something <strong>slightly mysterious</strong> about Inson Dubois Wood: Interiors. That applies to both the man &mdash; the principal of his own design firm, who is not pictured anywhere in the book &mdash; and the rooms lavishly documented within.</p>
+          <p>There&rsquo;s something <strong>slightly mysterious</strong> about Inson Dubois Wood: Interiors. That applies to both the man (the principal of his own design firm, who is not pictured anywhere in the book) and the rooms lavishly documented within.</p>
           <cite>1stDibs.com</cite>
         </blockquote>
       </div>
@@ -2996,17 +3014,17 @@
       </div>
 
       <div class="journal-intro">
-        <p>A small collection of essays from the studio &mdash; the French countryside, Le Corbusier as Renaissance man, a Normandy château, the South of Spain, and the studio&rsquo;s own custom kitchens.</p>
+        <p>A small collection of essays from the studio: the French countryside, Le Corbusier as Renaissance man, a Normandy château, the South of Spain, and the studio&rsquo;s own custom kitchens.</p>
         <a class="btn" href="https://insonduboiswood.com/blog/" target="_blank" rel="noopener"><span>Full archive</span></a>
       </div>
 
       <div class="journal-grid">
-        <a class="entry entry--feature reveal" href="https://insonduboiswood.com/blog/" target="_blank" rel="noopener">
+        <a class="entry reveal" href="https://insonduboiswood.com/blog/" target="_blank" rel="noopener">
           <header>
             <b>Essay &middot; 03</b>
             <span>Aug 2018</span>
           </header>
-          <h3>Le Corbusier &mdash; Architect as true Renaissance Man was also an Artist, Designer, Planner, Writer, and Athlete.</h3>
+          <h3>Le Corbusier. Architect as true Renaissance Man, also an Artist, Designer, Planner, Writer, and Athlete.</h3>
           <span class="read">Read essay</span>
         </a>
         <a class="entry reveal" href="https://insonduboiswood.com/blog/" target="_blank" rel="noopener">
@@ -3022,7 +3040,7 @@
             <b>Travel &middot; 02</b>
             <span>Aug 2018</span>
           </header>
-          <h3>Château du Champ de Bataille &mdash; Normandy, 18th-century France.</h3>
+          <h3>Château du Champ de Bataille. Normandy, 18th century France.</h3>
           <span class="read">Read essay</span>
         </a>
         <a class="entry reveal" href="https://insonduboiswood.com/blog/" target="_blank" rel="noopener">
@@ -3041,6 +3059,10 @@
           <h3>Custom kitchen ideas from the studio.</h3>
           <span class="read">Read essay</span>
         </a>
+        <a class="entry entry--cta reveal" href="https://insonduboiswood.com/blog/" target="_blank" rel="noopener">
+          <b>The full journal</b>
+          <span>Browse archive →</span>
+        </a>
       </div>
     </section>
 
@@ -3056,9 +3078,10 @@
 
       <div class="contact-grid">
         <div class="contact-card reveal">
-          <svg class="fleur" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-            <path d="M16 2c-1 3-3 5-5 6 1 1 2 2 2 4 0 1.5-1 3-2 4 1 1 2 2 2 4-2 1-4 2-5 4 1 1 3 1 5 1-1 1-1 2-1 3h8c0-1 0-2-1-3 2 0 4 0 5-1-1-2-3-3-5-4 0-2 1-3 2-4-1-1-2-2.5-2-4 0-2 1-3 2-4-2-1-4-3-5-6zm0 12a2 2 0 110 4 2 2 0 010-4z"/>
-          </svg>
+          <div class="monogram">
+            IDW
+            <small>Studio · Est. 2005</small>
+          </div>
 
           <p class="lede">Every project begins with a visit to the residence and a conversation about the standard.</p>
 
@@ -3076,17 +3099,27 @@
               <span class="value"><a href="mailto:inson@insonwood.com">inson@insonwood.com</a></span>
             </div>
           </div>
-
-          <svg class="fleur" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true" style="transform: scaleY(-1)">
-            <path d="M16 2c-1 3-3 5-5 6 1 1 2 2 2 4 0 1.5-1 3-2 4 1 1 2 2 2 4-2 1-4 2-5 4 1 1 3 1 5 1-1 1-1 2-1 3h8c0-1 0-2-1-3 2 0 4 0 5-1-1-2-3-3-5-4 0-2 1-3 2-4-1-1-2-2.5-2-4 0-2 1-3 2-4-2-1-4-3-5-6zm0 12a2 2 0 110 4 2 2 0 010-4z"/>
-          </svg>
         </div>
 
         <aside class="contact-note reveal" aria-label="Contact protocol">
           <div>
             <h3>Reach the studio directly.</h3>
-            <p>The live contact page is deliberately simple: office, phone, and email. No booking widget. No generic form. The tone is private, direct, and appropriate for residential clients.</p>
+            <p>Office, phone, and email. No booking widget, no generic form. The tone is private, direct, and appropriate for residential clients.</p>
           </div>
+          <ol class="contact-steps">
+            <li>
+              <span class="step-num">01</span>
+              <span class="step-text"><b>Introduction</b>A short conversation about the residence, the brief, and the standard you have in mind.</span>
+            </li>
+            <li>
+              <span class="step-num">02</span>
+              <span class="step-text"><b>The visit</b>A walk through the rooms to read the light, the proportions, and the constraints first-hand.</span>
+            </li>
+            <li>
+              <span class="step-num">03</span>
+              <span class="step-text"><b>The proposal</b>A tailored scope and design direction, resolved under one design eye.</span>
+            </li>
+          </ol>
           <div class="contact-actions">
             <a class="btn btn--solid" href="mailto:inson@insonwood.com"><span>Email Inson</span></a>
             <a class="btn" href="tel:+12123431077"><span>Call the studio</span></a>
@@ -3216,37 +3249,6 @@
       });
       el.addEventListener("mouseleave", () => {
         el.style.transform = "";
-      });
-    });
-  }
-
-  /* ---------- Cursor chip ---------- */
-  const cursor = document.getElementById("cursor");
-  const cursorLabel = document.getElementById("cursor-label");
-  if (cursor && !reduce && !coarse) {
-    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    let lx = mx, ly = my;
-    let alive = true;
-    document.addEventListener("mousemove", (e) => {
-      mx = e.clientX; my = e.clientY;
-      cursor.classList.add("is-active");
-    }, { passive: true });
-    document.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
-    const tick = () => {
-      lx += (mx - lx) * 0.2;
-      ly += (my - ly) * 0.2;
-      cursor.style.transform = `translate(${lx}px, ${ly}px) translate(-50%, -50%)`;
-      if (alive) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-
-    document.querySelectorAll("[data-cursor]").forEach(zone => {
-      zone.addEventListener("mouseenter", () => {
-        cursor.classList.add("is-zone");
-        if (cursorLabel) cursorLabel.textContent = zone.dataset.cursor;
-      });
-      zone.addEventListener("mouseleave", () => {
-        cursor.classList.remove("is-zone");
       });
     });
   }
